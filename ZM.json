@@ -1,0 +1,484 @@
+{
+ "country": "ZM",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "In Zambia each university sets its own entry requirements by school and runs its own application process; there is no single national application service. The University of Zambia accepts applications online through its application portal or on paper forms, and its yearly admission advert lists minimum O-level credits (including English) that differ by school. It states that meeting the minimum does not guarantee admission.",
+  "official_url": "https://unza.zm/sites/default/files/article_files/2025-01/2026%20ADMISSION%20ADVERT.pdf",
+  "notes": "Intake adverts, closing dates, programme lists and entry requirements change every year; check each university's current admission advert and portal. Programme lists here come from the universities' own programme pages or adverts and may lag behind new programmes."
+ },
+ "universities": [
+  {
+   "id": "unza",
+   "name": "University of Zambia",
+   "short": "UNZA",
+   "type": "public",
+   "city": "Lusaka",
+   "url": "https://www.unza.zm/",
+   "admissions_url": "https://unza.zm/sites/default/files/article_files/2025-01/2026%20ADMISSION%20ADVERT.pdf",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Engineering",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering - Civil and Environmental Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering - Electrical and Electronic Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering - Mechanical Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering - Agricultural Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering - Geomatic Engineering"
+      }
+     ]
+    },
+    {
+     "name": "School of Mines",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering - Mining Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Geology"
+      },
+      {
+       "name": "Bachelor of Engineering in Metallurgical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "School of Natural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Computer Science in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Mathematics"
+      },
+      {
+       "name": "Bachelor of Science in Statistics"
+      },
+      {
+       "name": "Bachelor of Science in Physics"
+      },
+      {
+       "name": "Bachelor of Science in Chemistry"
+      },
+      {
+       "name": "Bachelor of Science in Actuarial Science"
+      }
+     ]
+    },
+    {
+     "name": "School of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Pharmacy"
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy"
+      },
+      {
+       "name": "Bachelor of Science in Radiography"
+      },
+      {
+       "name": "Bachelor of Science in Biomedical Science"
+      }
+     ]
+    },
+    {
+     "name": "School of Humanities and Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Arts in Economics"
+      },
+      {
+       "name": "Bachelor of Arts in Psychology"
+      },
+      {
+       "name": "Bachelor of Arts in History"
+      },
+      {
+       "name": "Bachelor of Arts in Political Science"
+      },
+      {
+       "name": "Bachelor of Social Work"
+      },
+      {
+       "name": "Bachelor of Business Administration"
+      }
+     ]
+    },
+    {
+     "name": "School of Agricultural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Human Nutrition"
+      },
+      {
+       "name": "Bachelor of Food Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Agricultural Economics"
+      },
+      {
+       "name": "Bachelor of Science in Agronomy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cbu",
+   "name": "Copperbelt University",
+   "short": "CBU",
+   "type": "public",
+   "city": "Kitwe",
+   "url": "https://www.cbu.ac.zm/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Business",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Accountancy"
+      },
+      {
+       "name": "Bachelor of Science in Banking & Finance"
+      },
+      {
+       "name": "Bachelor of Science in Business Administration"
+      },
+      {
+       "name": "Bachelor of Science in Marketing"
+      },
+      {
+       "name": "Bachelor of Science in Economics"
+      }
+     ]
+    },
+    {
+     "name": "School of the Built Environment",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Architecture"
+      },
+      {
+       "name": "Bachelor of Science in Quantity Surveying"
+      },
+      {
+       "name": "Bachelor of Science in Construction Management"
+      },
+      {
+       "name": "Bachelor of Science in Urban and Regional Planning"
+      }
+     ]
+    },
+    {
+     "name": "School of Information and Communication Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Computer Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Information Systems"
+      }
+     ]
+    },
+    {
+     "name": "Michael Chilufya Sata School of Medicine",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Physiotherapy"
+      },
+      {
+       "name": "Bachelor of Science in Clinical Medicine"
+      },
+      {
+       "name": "Bachelor of Science in Biomedical Sciences"
+      },
+      {
+       "name": "Bachelor of Science in Public Health"
+      }
+     ]
+    },
+    {
+     "name": "School of Humanities and Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Laws"
+      },
+      {
+       "name": "Bachelor of Arts in Public Administration"
+      },
+      {
+       "name": "Bachelor of Arts in Development Studies"
+      },
+      {
+       "name": "Bachelor of Science in Hospitality and Tourism Management"
+      }
+     ]
+    },
+    {
+     "name": "School of Mathematics and Natural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Chemistry Education"
+      },
+      {
+       "name": "Bachelor of Science in Physics Education"
+      },
+      {
+       "name": "Bachelor of Science in Biology Education"
+      },
+      {
+       "name": "Bachelor of Science in Mathematics Education"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mulungushi",
+   "name": "Mulungushi University",
+   "short": "MU",
+   "type": "public",
+   "city": "Kabwe",
+   "url": "https://www.mu.ac.zm/",
+   "admissions_url": "https://www.mu.ac.zm/images/List_of_Undergraduate_Programmes.pdf",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Business Studies",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB)"
+      },
+      {
+       "name": "Bachelor of Banking and Finance"
+      },
+      {
+       "name": "Bachelor of Accounting and Finance"
+      },
+      {
+       "name": "Bachelor of Business Administration and Entrepreneurship"
+      },
+      {
+       "name": "Bachelor of Marketing"
+      }
+     ]
+    },
+    {
+     "name": "School of Agriculture and Natural Resources",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Science in Agronomy"
+      },
+      {
+       "name": "Bachelor of Science in Agricultural Economics"
+      },
+      {
+       "name": "Bachelor of Science in Natural Resources Management"
+      }
+     ]
+    },
+    {
+     "name": "School of Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Arts in Economics"
+      },
+      {
+       "name": "Bachelor of Social Work"
+      },
+      {
+       "name": "Bachelor of Public Administration"
+      },
+      {
+       "name": "Bachelor of Psychology"
+      }
+     ]
+    },
+    {
+     "name": "School of Medicine and Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+      },
+      {
+       "name": "Bachelor of Pharmacy"
+      },
+      {
+       "name": "Bachelor of Science in Biomedical Sciences"
+      },
+      {
+       "name": "Bachelor of Science in Nursing"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "knu",
+   "name": "Kwame Nkrumah University",
+   "short": "KNU",
+   "type": "public",
+   "city": "Kabwe",
+   "url": "https://www.nkrumah.edu.zm/",
+   "admissions_url": "https://www.nkrumah.edu.zm/home/programmes.php",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Business Studies",
+     "courses": [
+      {
+       "name": "Bachelor of Accountancy"
+      },
+      {
+       "name": "Bachelor of Business Administration"
+      },
+      {
+       "name": "Bachelor of Arts in Economics"
+      },
+      {
+       "name": "Bachelor of Science in Marketing"
+      },
+      {
+       "name": "Bachelor of Science in Procurement and Supply Chain Management"
+      }
+     ]
+    },
+    {
+     "name": "School of Natural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Mathematics"
+      },
+      {
+       "name": "Bachelor of Science in Physics and Mathematics with Education"
+      },
+      {
+       "name": "Bachelor of Science in Biology and Chemistry with Education"
+      },
+      {
+       "name": "Bachelor of Science in Chemistry and Physics with Education"
+      }
+     ]
+    },
+    {
+     "name": "School of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Primary Education"
+      },
+      {
+       "name": "Bachelor of Education in Early Childhood Education"
+      },
+      {
+       "name": "Bachelor of Education in Educational Psychology"
+      },
+      {
+       "name": "Bachelor of Education in Sociology of Education"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "zcas",
+   "name": "ZCAS University",
+   "short": "ZCASU",
+   "type": "other",
+   "city": "Lusaka",
+   "url": "https://zcasu.edu.zm/",
+   "admissions_url": "https://zcasu.edu.zm/programmes",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Business",
+     "courses": [
+      {
+       "name": "Bachelor of Accounting",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Accounting and Finance",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Business Administration",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science Banking and Finance",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Finance and Investment Management",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Computing, Technology and Applied Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Data Science"
+      },
+      {
+       "name": "Bachelor of Science in Cyber Security"
+      },
+      {
+       "name": "Bachelor of Science in Software Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Information Technology"
+      }
+     ]
+    },
+    {
+     "name": "School of Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Arts in Economics"
+      },
+      {
+       "name": "Bachelor of Arts in Human Resource Management"
+      },
+      {
+       "name": "Bachelor of Arts in Public Administration"
+      },
+      {
+       "name": "Bachelor of Science in Development Studies"
+      }
+     ]
+    },
+    {
+     "name": "School of Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB Generic)"
+      },
+      {
+       "name": "Bachelor of Laws (LLB Commercial Law)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
