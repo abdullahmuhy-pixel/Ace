@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ace Academy: Free Online Certificate Courses in IT, Finance, Health, Teaching and More</title>
+<meta name="description" content="Ace Academy offers online certificate courses for students and professionals: accounting, economics, banking, psychology, teaching, networking, health and more. Learn at your own pace and earn a verifiable certificate.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0b6b3a">
+<meta property="og:type" content="website"><meta property="og:title" content="Ace Academy: online certificate courses"><meta property="og:description" content="Learn at your own pace and earn a verifiable certificate in finance, IT, health, teaching, humanities and more.">
+<link rel="icon" href="../app/icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#f5f7f4;--card:#fff;--ink:#12201a;--mut:#58675f;--line:#dbe4de;--pri:#0b6b3a;--pri2:#0e8a4b;--priInk:#fff;--soft:#e6f3ea;--warn:#8a5a00;--bad:#a12b2b;--gold:#c8962e;--sh:0 1px 2px rgba(10,30,20,.06),0 8px 24px rgba(10,30,20,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--pri2:#6fe0a0;--priInk:#06210f;--soft:#1a2c22;--warn:#f0c26a;--bad:#ff9b9b;--sh:none}}
+:root[data-theme=dark]{--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--pri2:#6fe0a0;--priInk:#06210f;--soft:#1a2c22;--warn:#f0c26a;--bad:#ff9b9b;--sh:none}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--pri)}button{font:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;min-height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo i{width:26px;height:26px;border-radius:50%;background:var(--ink);display:grid;place-items:center}.logo i:after{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.logo small{font-weight:600;color:var(--mut);margin-left:2px}
+nav.m{display:flex;gap:4px;margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav.m a,nav.m button{border:0;background:none;color:var(--ink);text-decoration:none;padding:8px 11px;border-radius:9px;font-weight:600;font-size:14.5px}
+nav.m a:hover,nav.m button:hover{background:var(--soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--pri);background:var(--pri);color:var(--priInk);padding:11px 18px;border-radius:11px;font-weight:700;text-decoration:none;min-height:44px}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--ink)}.btn.s{padding:7px 12px;min-height:36px;font-size:14px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.hero{padding:44px 0 28px}
+.eyebrow{font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.hero h1{font-size:clamp(30px,5.2vw,52px);line-height:1.06;letter-spacing:-.025em;margin:12px 0 14px;max-width:18ch;text-wrap:balance}
+.hero p{max-width:60ch;color:var(--mut);font-size:18px;margin:0 0 20px}
+.search{display:flex;gap:8px;max-width:620px}
+.search input{flex:1;min-width:0;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;color:var(--mut)}.stats b{display:block;font-size:26px;color:var(--ink);letter-spacing:-.02em}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 13px;border-radius:999px;font-size:14px;font-weight:600}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.chip small{opacity:.65;font-weight:500}
+h2.sec{font-size:24px;letter-spacing:-.015em;margin:34px 0 6px}.lede{color:var(--mut);margin:0 0 16px;max-width:64ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;min-width:0}
+.card .band{height:84px;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 14px;color:#fff;font-weight:700}
+.card .band span{font-size:34px;line-height:1}.card .band em{font-style:normal;font-size:12px;background:rgba(0,0,0,.28);padding:3px 9px;border-radius:999px}
+.card .bd{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:17px;line-height:1.25;margin:0;text-wrap:balance}.card p{margin:0;color:var(--mut);font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+.meta b{color:var(--ink)}
+.f-it{background:linear-gradient(135deg,#1e5ac8,#3b82f6)}.f-biz{background:linear-gradient(135deg,#9a5b12,#d38a2a)}.f-fin{background:linear-gradient(135deg,#0b6b3a,#27a35f)}.f-health{background:linear-gradient(135deg,#a3283d,#e0536a)}.f-edu{background:linear-gradient(135deg,#6b3fb3,#9a6ee0)}.f-hum{background:linear-gradient(135deg,#7a4a2a,#b07a4f)}.f-soc{background:linear-gradient(135deg,#0f6f7a,#2fb0bf)}.f-sci{background:linear-gradient(135deg,#305a9a,#5b8fd6)}.f-eng{background:linear-gradient(135deg,#555d66,#8a949f)}.f-law{background:linear-gradient(135deg,#27304a,#4b5a86)}.f-creative{background:linear-gradient(135deg,#b3306b,#e6639b)}.f-life{background:linear-gradient(135deg,#3a6b1e,#79b04a)}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--pri)}
+.pill.plan{background:transparent;border:1px dashed var(--line);color:var(--mut)}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--sh)}
+.crumbs{margin:18px 0 8px;font-size:14px;color:var(--mut)}.crumbs a{color:var(--mut)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}nav.m a.hide{display:none}}
+.syl{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.syl li{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--card);text-align:left;width:100%;color:inherit;font:inherit}
+button.li{cursor:pointer}.syl .n{width:30px;height:30px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.syl .done .n{background:var(--pri);color:var(--priInk)}.syl small{color:var(--mut);display:block}
+.bar2{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.bar2 i{display:block;height:100%;background:var(--pri)}
+.lesson{max-width:760px;margin:0 auto}.lesson h1{font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;margin:6px 0 14px;text-wrap:balance}
+.lesson p{font-size:17.5px;line-height:1.7;margin:0 0 14px}.lesson h3{margin:24px 0 6px;font-size:20px}
+.lesson ul,.lesson ol{padding-left:22px;font-size:17px;line-height:1.65}.lesson li{margin-bottom:6px}
+.tip{background:var(--soft);border-left:4px solid var(--pri);border-radius:10px;padding:12px 14px;margin:16px 0}
+pre{background:#0f1a14;color:#e9f3ed;padding:14px;border-radius:12px;overflow:auto;font-size:14px}
+.q{border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px;background:var(--card)}
+.q b{display:block;margin-bottom:8px}.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:6px 0;cursor:pointer;background:var(--bg)}
+.opt input{margin-top:5px}.opt.sel{border-color:var(--pri);background:var(--soft)}
+.ok{color:var(--pri);font-weight:700}.no{color:var(--bad);font-weight:700}
+.err{background:color-mix(in srgb,var(--bad) 12%,transparent);border:1px solid var(--bad);color:var(--bad);padding:10px 12px;border-radius:10px;margin:12px 0}
+.notice{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0;color:var(--ink)}
+.tpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:12px 0}
+.tpl{border:2px solid var(--line);border-radius:10px;padding:5px;background:var(--card);text-align:center;font-size:13px;font-weight:600;color:var(--ink)}
+.tpl.on{border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 25%,transparent)}.tpl svg{width:100%;height:auto;display:block;border-radius:5px}
+.certbox{background:#fff;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.18);overflow:hidden}.certbox svg{display:block;width:100%;height:auto}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.creator{background:linear-gradient(135deg,var(--ink),#16382a);color:#fff;border-radius:20px;padding:28px;margin-top:36px}
+.creator h2{margin:0 0 8px;font-size:26px;letter-spacing:-.02em}.creator p{color:#cfe2d6;max-width:62ch}.creator .btn{background:var(--gold);border-color:var(--gold);color:#201400}
+footer{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 40px;color:var(--mut);font-size:14px}
+footer a{color:var(--mut);margin-right:14px}
+details.rm{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;margin:10px 0;background:var(--card)}details.rm summary{cursor:pointer;font-weight:700}
+details.rm ul{columns:2;margin:10px 0 0;padding-left:18px;color:var(--mut)}@media(max-width:560px){details.rm ul{columns:1}}
+.hide-print{}
+@media print{body{background:#fff}header.top,footer,.hide-print,.crumbs{display:none!important}.certbox{box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="top hide-print"><div class="wrap bar">
+<a class="logo" href="#/"><i></i>Ace <small>Academy</small></a>
+<nav class="m"><a href="#/" class="hide">Courses</a><a href="#/certificates" class="hide">Certificates</a><a href="../" class="hide" id="siteLink">Ace Education</a><a href="#/me" id="meLink">My learning</a><button id="authBtn" type="button">Sign in</button></nav>
+</div></header>
+<main id="app" class="wrap" aria-live="polite"><p style="padding:40px 0">Loading…</p></main>
+<footer class="hide-print"><div class="wrap"><a href="#/">Courses</a><a href="#/certificates">Certificates</a><a href="../verify/">Verify a certificate</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><p>Ace Academy is part of Ace Education. Certificates show course completion and are not accredited qualifications. Courses are for learning and do not replace professional advice, training or licensing.</p></div></footer>
+<script src="../config.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" onload="window.AceAcademy&&AceAcademy.render()" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js';s.onload=function(){window.AceAcademy&&AceAcademy.render()};document.head.appendChild(s)"></script>
+<script>
+(function(){
+'use strict';
+var CFG=window.ACE_CONFIG||{}, $=function(s,r){return (r||document).querySelector(s)};
+var FIELDS=[
+{id:'it',n:'IT and Computing',e:'💻',rm:['Cybersecurity Fundamentals','Cloud Computing Basics','Web Development with React','Databases and Data Modelling','Mobile App Development','Linux Command Line','Machine Learning Foundations','IT Helpdesk and Technical Support','UX Design Basics','DevOps Basics']},
+{id:'biz',n:'Business and Management',e:'📈',rm:['Marketing Fundamentals','Human Resource Management','Operations and Supply Chain','Sales and Negotiation','Business Law Basics','Agile and Scrum','Leadership and Management','Business Communication','Retail and Trade Management','Import and Export Basics']},
+{id:'fin',n:'Finance, Accounting and Banking',e:'🏦',rm:['Cost and Management Accounting','Auditing Basics','Taxation Basics','Investment and Markets','Microfinance','Insurance Basics','Financial Modelling in Spreadsheets','Public Finance Basics']},
+{id:'health',n:'Health and Medicine',e:'⚕️',rm:['First Aid and CPR','Public Health Basics','Nursing Fundamentals','Pharmacology Basics','Nutrition and Dietetics','Mental Health Awareness','Medical Terminology','Maternal and Child Health','Infection Prevention and Control','Health Records and Informatics']},
+{id:'edu',n:'Teaching and Education',e:'🎓',rm:['Early Childhood Education','Inclusive and Special Needs Education','Curriculum Design','Educational Technology','Classroom Assessment Methods','Online Tutoring','Educational Leadership']},
+{id:'hum',n:'Literature, Language and Philosophy',e:'📚',rm:['History Skills','World Religions and Ethics','Creative Writing','Translation Basics','Introduction to Linguistics','African Literature','Journalism Basics','Beginner French, Spanish, Arabic and Swahili']},
+{id:'soc',n:'Psychology and Social Sciences',e:'🧠',rm:['Sociology Basics','Political Science Introduction','Human Geography','Development Economics','Anthropology Introduction','International Relations','Social Work Basics','Research Methods']},
+{id:'sci',n:'Science and Mathematics',e:'🔬',rm:['Physics for Beginners','Chemistry Foundations','Cells and Genetics','Environmental Science','Astronomy','Algebra','Introduction to Calculus','Climate Science']},
+{id:'eng',n:'Engineering, Trades and Agriculture',e:'🛠️',rm:['Civil Engineering Basics','Electrical Engineering Basics','Mechanical Engineering Basics','Renewable Energy','Surveying','Technical Drawing','Solar Installation','Electrical Installation','Plumbing','Carpentry and Joinery','Welding Basics','Auto Mechanics','Agriculture and Agribusiness']},
+{id:'law',n:'Law and Public Service',e:'⚖️',rm:['Introduction to Law','Constitutional Law Basics','Human Rights','Contract Law','Criminal Law Basics','Public Administration','Procurement Basics','Legal Research']},
+{id:'creative',n:'Creative and Media',e:'🎨',rm:['Photography Basics','Video Editing','Music Production','Fashion Design Basics','Content Creation','Podcasting','Animation Basics','Interior Design Introduction']},
+{id:'life',n:'Study and Life Skills',e:'🌱',rm:['Emotional Intelligence','Career Planning','Parenting Basics','Financial Literacy for Teens','Memory Techniques']}
+];
+var FBY={};FIELDS.forEach(function(f){FBY[f.id]=f});
+var LEVEL={all:'All levels',secondary:'Secondary',university:'University'};
+var S={idx:null,course:null,sb:null,user:null,prog:{},certs:[],q:'',field:'all',level:'all',quiz:{ans:{},res:null,busy:false},err:'',tpl:0,busy:false};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+function jget(u){return fetch(u).then(function(r){if(!r.ok)throw new Error('Could not load '+u);return r.json()})}
+function msg(e){return (e&&(e.message||e.error_description))||'Something went wrong. Try again.'}
+function signedIn(){return !!S.user}
+function guestProg(){try{return JSON.parse(ls('acad-prog')||'{}')}catch(e){return{}}}
+function done(slug){var a=S.prog[slug]||[];var g=guestProg()[slug]||[];return Array.from(new Set(a.concat(g)))}
+function fmtDate(d){try{return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(e){return ''}}
+function title(t){document.title=t}
+
+/* ---------------- supabase ---------------- */
+function loadSB(){
+  if(!CFG.supabaseUrl||!CFG.supabaseAnonKey)return Promise.resolve(null);
+  return new Promise(function(ok){
+    function go(){
+      try{
+        S.sb=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey,{auth:{storage:{
+          getItem:function(k){try{var a=localStorage.getItem(k);return a!=null?a:sessionStorage.getItem(k)}catch(e){return null}},
+          setItem:function(k,v){try{if(sessionStorage.getItem(k)!=null&&localStorage.getItem(k)==null)sessionStorage.setItem(k,v);else localStorage.setItem(k,v)}catch(e){}},
+          removeItem:function(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}}}});
+        S.sb.auth.getSession().then(function(r){S.user=r.data&&r.data.session?r.data.session.user:null;ok(S.sb)}).catch(function(){ok(S.sb)});
+        S.sb.auth.onAuthStateChange(function(_e,s){var u=s?s.user:null;if((u&&u.id)!==(S.user&&S.user.id)){S.user=u;refreshUser().then(route)}});
+      }catch(e){ok(null)}
+    }
+    if(window.supabase)return go();
+    var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';s.onload=go;s.onerror=function(){ok(null)};document.head.appendChild(s);
+  });
+}
+function refreshUser(){
+  S.prog={};S.certs=[];updateAuth();
+  if(!S.sb||!S.user)return Promise.resolve();
+  return Promise.all([
+    S.sb.from('course_progress').select('course,lessons_done,best_score'),
+    S.sb.from('certificates').select('course,code,score,issued_at,holder_name')
+  ]).then(function(r){
+    (r[0].data||[]).forEach(function(p){S.prog[p.course]=p.lessons_done||[]});
+    S.certs=r[1].data||[];
+  }).catch(function(){});
+}
+function updateAuth(){var b=$('#authBtn');if(b)b.textContent=S.user?'Sign out':'Sign in';}
+$('#authBtn').addEventListener('click',function(){
+  if(S.user&&S.sb){S.sb.auth.signOut().then(function(){S.user=null;S.prog={};S.certs=[];updateAuth();location.hash='#/'})}
+  else location.href='../login/?next=academy';
+});
+
+/* ---------------- certificate templates ---------------- */
+function x(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function wrap(t,n){var w=String(t).split(/\s+/),l=[],c='';w.forEach(function(a){if((c+' '+a).trim().length>n&&c){l.push(c);c=a}else c=(c+' '+a).trim()});if(c)l.push(c);return l.slice(0,3)}
+function qrSVG(url,px,x0,y0,fg){
+  try{if(typeof qrcode!=='function')return '';var q=qrcode(0,'M');q.addData(url);q.make();var n=q.getModuleCount(),m=px/n,r='';
+    for(var i=0;i<n;i++)for(var j=0;j<n;j++)if(q.isDark(i,j))r+='<rect x="'+(x0+j*m).toFixed(2)+'" y="'+(y0+i*m).toFixed(2)+'" width="'+(m+.4).toFixed(2)+'" height="'+(m+.4).toFixed(2)+'"/>';
+    return '<g fill="'+fg+'">'+r+'</g>';}catch(e){return ''}
+}
+function star(cx,cy,r,fill){var p=[];for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.42:r;p.push((cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1))}return '<polygon points="'+p.join(' ')+'" fill="'+fill+'"/>'}
+function seal(cx,cy,r,c1,c2){var s='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+c1+'"/><circle cx="'+cx+'" cy="'+cy+'" r="'+(r-7)+'" fill="none" stroke="'+c2+'" stroke-width="2"/>'+star(cx,cy,r*.5,c2);return s}
+var TPL=[
+{id:'classic',n:'Classic Gold',bg:'#fffaf0',ink:'#2b2112',mut:'#6d5a35',acc:'#b8892b',font:'Georgia,"Times New Roman",serif',align:'c',
+ deco:function(){var s='<rect x="30" y="30" width="1140" height="790" fill="none" stroke="#b8892b" stroke-width="10"/><rect x="52" y="52" width="1096" height="746" fill="none" stroke="#b8892b" stroke-width="2"/>';
+  [[52,52,1,1],[1148,52,-1,1],[52,798,1,-1],[1148,798,-1,-1]].forEach(function(c){s+='<path d="M'+c[0]+' '+(c[1]+c[3]*70)+' L'+c[0]+' '+c[1]+' L'+(c[0]+c[2]*70)+' '+c[1]+'" fill="none" stroke="#b8892b" stroke-width="6"/>'});
+  return s}},
+{id:'modern',n:'Modern Green',bg:'#ffffff',ink:'#11201a',mut:'#52645b',acc:'#0b6b3a',font:'system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif',align:'l',
+ deco:function(){return '<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b6b3a"/><stop offset="1" stop-color="#27a35f"/></linearGradient></defs><rect width="150" height="850" fill="url(#g1)"/><circle cx="75" cy="110" r="30" fill="#0f1f17"/><circle cx="75" cy="110" r="11" fill="#e0b13c"/><text x="0" y="0" fill="#fff" font-size="24" font-weight="800" text-anchor="middle" transform="translate(85 470) rotate(-90)" letter-spacing="8">ACE ACADEMY</text><rect x="210" y="96" width="90" height="6" fill="#e0b13c"/>'}},
+{id:'academic',n:'Academic Navy',bg:'#fbfbf8',ink:'#14284b',mut:'#4a5b7a',acc:'#14284b',font:'Georgia,"Times New Roman",serif',align:'c',
+ deco:function(){var s='<rect x="0" y="0" width="1200" height="850" fill="#14284b"/><rect x="26" y="26" width="1148" height="798" fill="#fbfbf8"/><rect x="44" y="44" width="1112" height="762" fill="none" stroke="#c8a24a" stroke-width="3"/><rect x="54" y="54" width="1092" height="742" fill="none" stroke="#14284b" stroke-width="1"/>';
+  s+='<path d="M600 66 l28 9 v26 c0 17 -12 29 -28 35 c-16 -6 -28 -18 -28 -35 v-26z" fill="#14284b"/>'+star(600,98,12,'#c8a24a');return s}},
+{id:'minimal',n:'Minimal Ink',bg:'#ffffff',ink:'#111111',mut:'#666666',acc:'#111111',font:'"Helvetica Neue",Helvetica,Arial,sans-serif',align:'l',
+ deco:function(){return '<rect x="40" y="40" width="1120" height="770" fill="none" stroke="#111" stroke-width="2"/><rect x="120" y="112" width="60" height="6" fill="#111"/><line x1="120" y1="612" x2="1080" y2="612" stroke="#111" stroke-width="1"/>'}},
+{id:'savanna',n:'Savanna Pattern',bg:'#fdf3e3',ink:'#3a2412',mut:'#7a5a3a',acc:'#b5481f',font:'Georgia,"Times New Roman",serif',align:'c',
+ deco:function(){var cs=['#b5481f','#e0a21f','#2f7a4a','#3a2412'],s='<rect x="0" y="0" width="1200" height="850" fill="#fdf3e3"/>';
+  for(var i=0;i<30;i++){var xx=i*40;s+='<polygon points="'+xx+',0 '+(xx+20)+',34 '+(xx+40)+',0" fill="'+cs[i%4]+'"/><polygon points="'+xx+',850 '+(xx+20)+',816 '+(xx+40)+',850" fill="'+cs[(i+2)%4]+'"/>'}
+  for(var j=0;j<21;j++){var yy=j*40+25;s+='<polygon points="0,'+yy+' 34,'+(yy+20)+' 0,'+(yy+40)+'" fill="'+cs[j%4]+'"/><polygon points="1200,'+yy+' 1166,'+(yy+20)+' 1200,'+(yy+40)+'" fill="'+cs[(j+1)%4]+'"/>'}
+  s+='<rect x="64" y="64" width="1072" height="738" fill="none" stroke="#b5481f" stroke-width="2"/>';return s}},
+{id:'royal',n:'Royal Night',bg:'#0e1a2e',ink:'#f4e6bd',mut:'#c9b887',acc:'#d9b45a',font:'Georgia,"Times New Roman",serif',align:'c',
+ deco:function(){return '<rect x="30" y="30" width="1140" height="790" fill="none" stroke="#d9b45a" stroke-width="4"/><rect x="46" y="46" width="1108" height="758" fill="none" stroke="#d9b45a" stroke-width="1"/><circle cx="600" cy="112" r="26" fill="none" stroke="#d9b45a" stroke-width="2"/>'+star(600,112,16,'#d9b45a')}}
+];
+function certSVG(t,d,small){
+  var T=TPL[t],c=T.align==='c',X=c?600:210,an=c?'middle':'start',nm=String(d.name||''),ns=nm.length>30?40:nm.length>22?48:58;
+  var lines=wrap(d.course,c?42:44),cs=lines.length>1?36:42,cy=lines.length>1?520:535;
+  var verify=d.verify,qr=qrSVG(verify,104,c?1040:1000,628,T.id==='royal'?'#f4e6bd':T.ink);
+  var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" font-family=\''+T.font.replace(/'/g,"&apos;").replace(/"/g,'&quot;')+'\'><rect width="1200" height="850" fill="'+T.bg+'"/>'+T.deco();
+  s+='<text x="'+X+'" y="'+(c?168:150)+'" text-anchor="'+an+'" font-size="20" letter-spacing="7" fill="'+T.mut+'">ACE ACADEMY</text>';
+  s+='<text x="'+X+'" y="'+(c?240:250)+'" text-anchor="'+an+'" font-size="62" font-weight="700" fill="'+T.ink+'">Certificate of Completion</text>';
+  s+='<text x="'+X+'" y="'+(c?305:318)+'" text-anchor="'+an+'" font-size="24" fill="'+T.mut+'" font-style="italic">This certifies that</text>';
+  s+='<text x="'+X+'" y="'+(c?390:402)+'" text-anchor="'+an+'" font-size="'+ns+'" font-weight="700" fill="'+T.ink+'">'+x(nm)+'</text>';
+  s+='<line x1="'+(c?240:210)+'" y1="'+(c?414:424)+'" x2="'+(c?960:900)+'" y2="'+(c?414:424)+'" stroke="'+T.acc+'" stroke-width="2"/>';
+  s+='<text x="'+X+'" y="'+(c?462:476)+'" text-anchor="'+an+'" font-size="22" fill="'+T.mut+'" font-style="italic">has successfully completed the course</text>';
+  lines.forEach(function(l,i){s+='<text x="'+X+'" y="'+(cy+(c?0:5)+i*(cs+8))+'" text-anchor="'+an+'" font-size="'+cs+'" font-weight="700" fill="'+T.acc+'">'+x(l)+'</text>'});
+  s+='<text x="'+X+'" y="'+(c?622:640)+'" text-anchor="'+an+'" font-size="21" fill="'+T.mut+'">Score '+x(d.score)+'%  •  '+x(d.hours)+' study hours  •  Issued '+x(d.date)+'</text>';
+  s+='<g><line x1="'+(c?150:210)+'" y1="702" x2="'+(c?420:480)+'" y2="702" stroke="'+T.mut+'" stroke-width="1.2"/><text x="'+(c?285:345)+'" y="728" text-anchor="middle" font-size="17" fill="'+T.mut+'">Authorised by Ace Academy</text></g>';
+  if(T.id==='classic')s+=seal(600,690,46,'#b8892b','#fffaf0');
+  s+=qr;
+  s+='<text x="'+(c?1092:1052)+'" y="746" text-anchor="middle" font-size="12.5" fill="'+T.mut+'">Scan to verify</text>';
+  s+='<text x="'+(c?600:210)+'" y="768" text-anchor="'+(c?'middle':'start')+'" font-size="15" fill="'+T.mut+'" font-family="ui-monospace,Menlo,monospace">Certificate ID '+x(d.code)+'  •  '+x(d.verifyShort)+'</text>';
+  if(!small)s+='<text x="'+(c?600:210)+'" y="790" text-anchor="'+(c?'middle':'start')+'" font-size="12" fill="'+T.mut+'">Shows completion of an online course. It is not an accredited qualification.</text>';
+  return s+'</svg>';
+}
+function certData(slug){
+  var c=S.certs.find(function(k){return k.course===slug});if(!c)return null;
+  var meta=(S.idx||[]).find(function(k){return k.slug===slug})||{};
+  var base=location.origin+location.pathname.replace(/academy\/?(index\.html)?$/,'')+'verify/?code='+c.code;
+  return{name:c.holder_name||'Learner',course:meta.title||slug,score:c.score,hours:meta.hours||'',date:fmtDate(c.issued_at),code:c.code,verify:base,verifyShort:base.replace(/^https?:\/\//,'').slice(0,60)};
+}
+function sampleData(){var base=location.origin+location.pathname.replace(/academy\/?(index\.html)?$/,'')+'verify/';return{name:'Your Name',course:'Accounting Fundamentals',score:92,hours:4,date:fmtDate(new Date()),code:'SAMPLE000012',verify:base,verifyShort:base.replace(/^https?:\/\//,'').slice(0,60)}}
+
+/* ---------------- views ---------------- */
+function fieldCounts(){var m={};(S.idx||[]).forEach(function(c){m[c.field]=(m[c.field]||0)+1});return m}
+function courseCard(c){
+  var f=FBY[c.field]||FBY.life;
+  return '<a class="card" href="#/c/'+esc(c.slug)+'"><div class="band f-'+esc(f.id)+'"><span>'+f.e+'</span><em>'+esc(LEVEL[c.level]||'')+'</em></div><div class="bd"><h3>'+esc(c.title)+'</h3><p>'+esc(c.summary)+'</p><div class="meta"><span><b>'+esc(c.lessons)+'</b> lessons</span><span><b>'+esc(c.hours)+'</b> hours</span><span>🎓 Certificate</span></div></div></a>';
+}
+function filtered(){
+  var q=S.q.trim().toLowerCase();
+  return (S.idx||[]).filter(function(c){
+    if(S.field!=='all'&&c.field!==S.field)return false;
+    if(S.level!=='all'&&c.level!==S.level&&c.level!=='all')return false;
+    if(q&&(c.title+' '+c.summary+' '+(FBY[c.field]||{}).n+' '+c.audience).toLowerCase().indexOf(q)<0)return false;
+    return true});
+}
+function viewHome(){
+  var cnt=fieldCounts(),n=(S.idx||[]).length,hrs=(S.idx||[]).reduce(function(a,c){return a+(+c.hours||0)},0),qs=(S.idx||[]).reduce(function(a,c){return a+(+c.questions||0)},0),planned=FIELDS.reduce(function(a,f){return a+f.rm.length},0);
+  title('Ace Academy: Online Certificate Courses in IT, Finance, Health, Teaching and More');
+  var h='<section class="hero"><div class="eyebrow">Ace Academy · Certificate courses</div><h1>Learn a skill. Earn a certificate anyone can verify.</h1><p>Short professional courses in finance, IT, health, teaching, psychology, humanities and more. Read the lessons, pass the quiz, and get a certificate with its own verification code.</p>'+
+  '<form class="search" id="sf" role="search"><input id="q" type="search" placeholder="Search courses, e.g. accounting, networking, psychology" value="'+esc(S.q)+'" aria-label="Search courses"><button class="btn" type="submit">Search</button></form>'+
+  '<div class="stats"><div><b>'+n+'</b>courses ready</div><div><b>'+FIELDS.length+'</b>fields</div><div><b>'+Math.round(hrs)+'</b>study hours</div><div><b>'+qs+'</b>quiz questions</div></div></section>';
+  h+='<div class="chips" role="tablist"><button class="chip '+(S.field==='all'?'on':'')+'" data-act="field" data-v="all">All <small>'+n+'</small></button>'+FIELDS.map(function(f){return '<button class="chip '+(S.field===f.id?'on':'')+'" data-act="field" data-v="'+f.id+'">'+f.e+' '+esc(f.n)+' <small>'+(cnt[f.id]||0)+'</small></button>'}).join('')+'</div>';
+  var list=filtered();
+  h+='<div class="grid" id="grid">'+(list.length?list.map(courseCard).join(''):'<p class="lede">No course matches yet. Try another word, or see the planned courses below.</p>')+'</div>';
+  h+='<h2 class="sec">Planned courses</h2><p class="lede">We are adding courses in every field. These are planned and not yet available. Each one will have lessons, a quiz and a certificate.</p>';
+  h+=FIELDS.map(function(f){return '<details class="rm"><summary>'+f.e+' '+esc(f.n)+' <span class="pill plan">'+f.rm.length+' planned</span></summary><ul>'+f.rm.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></details>'}).join('');
+  h+='<h2 class="sec">Choose your certificate design</h2><p class="lede">When you pass a course you can pick any of six designs, download it as an image, print it as a PDF, and share a link that lets anyone check it is genuine.</p><div class="tpls">'+TPL.map(function(t,i){return '<div class="tpl">'+certSVG(i,sampleData(),true)+t.n+'</div>'}).join('')+'</div>';
+  h+='<section class="creator"><div class="eyebrow" style="color:#9fc5ae">Coming soon</div><h2>Teach on Ace Academy</h2><p>Lecturers, private teachers, tutoring centres and professionals will be able to publish video lessons and courses, build a subscriber base and earn from every subscription, while Ace handles hosting, payments and certificates. We are building this now. If you want to be among the first creators, message us.</p><a class="btn" href="https://wa.me/27732891424?text=I%20want%20to%20teach%20on%20Ace%20Academy" target="_blank" rel="noopener">Message us on WhatsApp</a></section>';
+  return h;
+}
+function viewCourse(slug){
+  var meta=(S.idx||[]).find(function(c){return c.slug===slug});
+  if(!meta)return '<div class="crumbs"><a href="#/">Courses</a></div><div class="pane"><h2>Course not found</h2><p>It may have moved. <a href="#/">See all courses</a>.</p></div>';
+  var c=S.course&&S.course.slug===slug?S.course:null;
+  if(!c)return '<div class="crumbs"><a href="#/">Courses</a> / '+esc(meta.title)+'</div><p>Loading course…</p>';
+  var f=FBY[meta.field]||FBY.life,dn=done(slug),all=dn.length>=c.lessons.length,pct=Math.round(100*Math.min(dn.length,c.lessons.length)/c.lessons.length),cert=S.certs.find(function(k){return k.course===slug});
+  title(c.title+' | Ace Academy certificate course');
+  var first=c.lessons.find(function(l){return dn.indexOf(l.id)<0})||c.lessons[0];
+  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/" data-act="field" data-v="'+f.id+'">'+esc(f.n)+'</a></div>';
+  h+='<div class="two"><div><div class="pane"><span class="pill">'+f.e+' '+esc(f.n)+'</span><h1 style="font-size:clamp(26px,4.4vw,38px);letter-spacing:-.02em;margin:10px 0 8px;text-wrap:balance">'+esc(c.title)+'</h1><p style="color:var(--mut);font-size:17.5px;margin:0 0 12px">'+esc(c.summary)+'</p><div class="meta"><span><b>'+c.lessons.length+'</b> lessons</span><span><b>'+esc(c.hours)+'</b> hours</span><span><b>'+c.quiz.length+'</b> quiz questions</span><span>Pass mark <b>'+c.pass_mark+'%</b></span><span>'+esc(LEVEL[c.level]||'')+'</span></div><p style="margin:12px 0 0;font-size:14.5px;color:var(--mut)"><b style="color:var(--ink)">Who it is for:</b> '+esc(c.audience)+'</p></div>';
+  h+='<h2 class="sec">What you will study</h2><ul class="syl">'+c.lessons.map(function(l,i){var d=dn.indexOf(l.id)>=0;return '<li class="'+(d?'done':'')+'"><a href="#/c/'+esc(slug)+'/l/'+esc(l.id)+'" style="display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none;width:100%"><span class="n">'+(d?'✓':(i+1))+'</span><span><b>'+esc(l.title)+'</b><small>'+l.minutes+' min</small></span></a></li>'}).join('')+'</ul></div>';
+  h+='<aside class="pane" style="position:sticky;top:76px"><b>Your progress</b><div class="bar2"><i style="width:'+pct+'%"></i></div><small style="color:var(--mut)">'+Math.min(dn.length,c.lessons.length)+' of '+c.lessons.length+' lessons complete</small>';
+  h+='<div class="row"><a class="btn" href="#/c/'+esc(slug)+'/l/'+esc(first.id)+'">'+(dn.length?'Continue':'Start course')+'</a></div>';
+  h+='<div class="row" style="margin-top:0"><a class="btn o" '+(all?'href="#/c/'+esc(slug)+'/quiz"':'aria-disabled="true" style="opacity:.55;pointer-events:none"')+'>Take the final quiz</a></div>';
+  if(!all)h+='<small style="color:var(--mut)">Finish every lesson to unlock the quiz.</small>';
+  if(cert)h+='<div class="notice">🎓 You earned this certificate.<div class="row"><a class="btn s" href="#/cert/'+esc(slug)+'">View and download</a></div></div>';
+  else if(!signedIn())h+='<div class="notice">You can read all lessons without an account. <a href="../login/?next=academy">Create a free account or sign in</a> to save progress, take the quiz and earn the certificate.</div>';
+  h+='</aside></div>';
+  return h;
+}
+function block(b){
+  if(b.p!=null)return '<p>'+esc(b.p)+'</p>';if(b.h!=null)return '<h3>'+esc(b.h)+'</h3>';
+  if(b.list)return '<ul>'+b.list.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>';
+  if(b.steps)return '<ol>'+b.steps.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>';
+  if(b.tip!=null)return '<div class="tip">💡 '+esc(b.tip)+'</div>';if(b.code!=null)return '<pre><code>'+esc(b.code)+'</code></pre>';return '';
+}
+function viewLesson(slug,lid){
+  var c=S.course;if(!c||c.slug!==slug)return '<p>Loading…</p>';
+  var i=c.lessons.findIndex(function(l){return l.id===lid}),l=c.lessons[i];if(!l)return '<div class="pane"><a href="#/c/'+esc(slug)+'">Back to the course</a></div>';
+  var d=done(slug).indexOf(lid)>=0,nx=c.lessons[i+1],pv=c.lessons[i-1];
+  title(l.title+' | '+c.title);
+  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a></div><article class="lesson"><small style="color:var(--mut)">Lesson '+(i+1)+' of '+c.lessons.length+' · '+l.minutes+' min</small><div class="bar2"><i style="width:'+Math.round(100*(i+1)/c.lessons.length)+'%"></i></div><h1>'+esc(l.title)+'</h1>'+l.body.map(block).join('')+(S.err?'<div class="err">'+esc(S.err)+'</div>':'');
+  h+='<div class="row">'+(pv?'<a class="btn o" href="#/c/'+esc(slug)+'/l/'+esc(pv.id)+'">← Previous</a>':'')+'<button class="btn" data-act="complete" data-v="'+esc(lid)+'" '+(S.busy?'disabled':'')+'>'+(d?'Completed. ':'Mark complete and ')+(nx?'continue →':'go to quiz →')+'</button></div></article>';
+  return h;
+}
+function viewQuiz(slug){
+  var c=S.course;if(!c||c.slug!==slug)return '<p>Loading…</p>';
+  title('Final quiz | '+c.title);var q=S.quiz;
+  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a> / Quiz</div><div class="lesson">';
+  if(!signedIn())return h+'<div class="pane"><h2 style="margin-top:0">Sign in to take the quiz</h2><p>Quizzes are marked securely on our server so certificates are genuine. Reading the lessons is free without an account, but you need a free account for the quiz and the certificate.</p><a class="btn" href="../login/?next=academy">Create account or sign in</a></div></div>';
+  if(q.res){
+    var r=q.res;h+='<div class="pane" style="text-align:center"><div style="font-size:48px">'+(r.passed?'🎓':'📚')+'</div><h2 style="margin:6px 0">'+r.score+'% ('+r.correct+' of '+r.total+')</h2><p>'+(r.passed?'You passed. Your certificate is ready.':'The pass mark is '+r.pass_mark+'%. Review the lessons and try again.')+'</p>'+(r.passed?'<a class="btn" href="#/cert/'+esc(slug)+'">Choose a design and download</a>':'<a class="btn" href="#/c/'+esc(slug)+'">Back to the lessons</a>')+'</div><h3 style="margin-top:24px">Review</h3>';
+    c.quiz.forEach(function(qq,i){var rv=(r.review||[]).find(function(y){return y.qid===qq.id})||{};h+='<div class="q"><b>'+(i+1)+'. '+esc(qq.q)+'</b>'+(rv.ok?'<span class="ok">✓ Correct</span>':'<span class="no">✗ '+esc(rv.why||'Not correct')+'</span>')+'</div>'});
+    return h+'</div>';
+  }
+  var n=Object.keys(q.ans).length;
+  h+='<h1 style="font-size:30px;letter-spacing:-.02em;margin:8px 0">Final quiz</h1><p style="color:var(--mut)">'+n+' of '+c.quiz.length+' answered. Pass mark '+c.pass_mark+'%. You have 5 attempts a day.</p>';
+  c.quiz.forEach(function(qq,i){h+='<div class="q"><b>'+(i+1)+'. '+esc(qq.q)+'</b>'+qq.options.map(function(o,oi){var on=q.ans[qq.id]===oi;return '<label class="opt '+(on?'sel':'')+'"><input type="radio" name="'+esc(qq.id)+'" data-act="ans" data-q="'+esc(qq.id)+'" data-v="'+oi+'" '+(on?'checked':'')+'><span>'+'ABCD'[oi]+'. '+esc(o)+'</span></label>'}).join('')+'</div>'});
+  h+=(S.err?'<div class="err">'+esc(S.err)+'</div>':'')+'<button class="btn" data-act="submit" '+(n<c.quiz.length||q.busy?'disabled':'')+'>'+(q.busy?'Marking…':'Submit answers')+'</button></div>';
+  return h;
+}
+function tplPicker(slug,d){
+  var cur=S.tpl,h='<div class="tpls hide-print">'+TPL.map(function(t,i){return '<button class="tpl '+(i===cur?'on':'')+'" data-act="tpl" data-v="'+i+'" aria-label="'+esc(t.n)+'">'+certSVG(i,d,true)+t.n+'</button>'}).join('')+'</div>';return h;
+}
+function viewCert(slug){
+  var d=certData(slug),meta=(S.idx||[]).find(function(c){return c.slug===slug});
+  if(!d){return '<div class="crumbs"><a href="#/">Courses</a></div><div class="pane"><h2 style="margin-top:0">No certificate yet</h2><p>Complete the course and pass the final quiz to earn this certificate.</p><a class="btn" href="#/c/'+esc(slug)+'">Go to the course</a></div>'}
+  title('Your certificate | '+d.course);
+  var h='<div class="crumbs hide-print"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(d.course)+'</a> / Certificate</div><h1 class="hide-print" style="font-size:30px;letter-spacing:-.02em;margin:6px 0">Congratulations, '+esc(d.name.split(' ')[0])+'.</h1><p class="lede hide-print">Choose a design, then download or print your certificate. The name on it comes from your Ace profile.</p>';
+  h+=tplPicker(slug,d)+'<div class="certbox" id="certbox">'+certSVG(S.tpl,d)+'</div>';
+  var ln='https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name='+encodeURIComponent(d.course)+'&organizationName='+encodeURIComponent('Ace Academy')+'&certId='+encodeURIComponent(d.code)+'&certUrl='+encodeURIComponent(d.verify);
+  h+='<div class="row hide-print"><button class="btn" data-act="png">Download image (PNG)</button><button class="btn o" data-act="print">Print or save as PDF</button><button class="btn o" data-act="copy" data-v="'+esc(d.verify)+'">Copy verification link</button><a class="btn o" href="'+esc(ln)+'" target="_blank" rel="noopener">Add to LinkedIn</a></div><p class="hide-print" style="color:var(--mut);font-size:14px">Anyone can check this certificate at <a href="'+esc(d.verify)+'" target="_blank" rel="noopener">the verification page</a> using code <b>'+esc(d.code)+'</b>.</p>';
+  return h;
+}
+function viewCertificates(){
+  title('Certificate designs | Ace Academy');
+  return '<section class="hero"><div class="eyebrow">Certificates</div><h1>Six designs. One genuine record.</h1><p>Every certificate has a unique ID and a QR code that opens the verification page. Pick the design you like when you earn it.</p></section><div class="tpls">'+TPL.map(function(t,i){return '<div class="tpl">'+certSVG(i,sampleData(),true)+t.n+'</div>'}).join('')+'</div><p><a class="btn" href="#/">Browse courses</a></p>';
+}
+function viewMe(){
+  title('My learning | Ace Academy');
+  var h='<section class="hero" style="padding-bottom:10px"><div class="eyebrow">My learning</div><h1 style="font-size:34px">Your courses and certificates</h1></section>';
+  if(!signedIn()&&!Object.keys(guestProg()).length)return h+'<div class="pane"><p>Sign in to see your progress and certificates across devices.</p><a class="btn" href="../login/?next=academy">Sign in or create account</a></div>';
+  if(S.certs.length)h+='<h2 class="sec">Certificates</h2><div class="grid">'+S.certs.map(function(k){var m=(S.idx||[]).find(function(c){return c.slug===k.course})||{title:k.course,field:'life'},f=FBY[m.field]||FBY.life;return '<a class="card" href="#/cert/'+esc(k.course)+'"><div class="band f-'+f.id+'"><span>🎓</span><em>'+esc(k.score)+'%</em></div><div class="bd"><h3>'+esc(m.title)+'</h3><div class="meta"><span>Issued '+esc(fmtDate(k.issued_at))+'</span><span>ID '+esc(k.code)+'</span></div></div></a>'}).join('')+'</div>';
+  var slugs=Array.from(new Set(Object.keys(S.prog).concat(Object.keys(guestProg())))).filter(function(s){return !S.certs.find(function(k){return k.course===s})});
+  var items=slugs.map(function(s){return (S.idx||[]).find(function(c){return c.slug===s})}).filter(Boolean);
+  if(items.length)h+='<h2 class="sec">In progress</h2><div class="grid">'+items.map(courseCard).join('')+'</div>';
+  if(!S.certs.length&&!items.length)h+='<div class="pane"><p>You have not started a course yet.</p><a class="btn" href="#/">Browse courses</a></div>';
+  return h;
+}
+
+/* ---------------- router and events ---------------- */
+function route(){
+  var h=location.hash.replace(/^#\/?/,''),p=h.split('/'),app=$('#app'),out='';
+  window.scrollTo(0,0);
+  if(!S.idx){app.innerHTML='<p style="padding:40px 0">Loading courses…</p>';return}
+  if(p[0]==='c'&&p[1]){
+    var slug=p[1];
+    if(!S.course||S.course.slug!==slug){S.course=null;S.err='';S.quiz={ans:{},res:null,busy:false};app.innerHTML=viewCourse(slug);jget('../app/courses/'+encodeURIComponent(slug)+'.json').then(function(c){S.course=c;render()}).catch(function(e){app.innerHTML='<div class="pane"><h2>This course could not be loaded.</h2><p>'+esc(msg(e))+'</p><a href="#/">Back to courses</a></div>'});return}
+    S.err='';
+  }
+  render();
+}
+function render(){
+  var h=location.hash.replace(/^#\/?/,''),p=h.split('/'),app=$('#app'),out='';
+  if(p[0]==='c'&&p[1]){out=p[2]==='l'?viewLesson(p[1],p[3]):p[2]==='quiz'?viewQuiz(p[1]):viewCourse(p[1])}
+  else if(p[0]==='cert'&&p[1])out=viewCert(p[1]);
+  else if(p[0]==='certificates')out=viewCertificates();
+  else if(p[0]==='me')out=viewMe();
+  else out=viewHome();
+  app.innerHTML=out;
+}
+window.addEventListener('hashchange',route);
+document.addEventListener('submit',function(e){if(e.target.id==='sf'){e.preventDefault();S.q=$('#q').value;S.field='all';render();var g=$('#grid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'})}});
+document.addEventListener('input',function(e){if(e.target.id==='q'&&!e.target.form.dataset.busy){S.q=e.target.value;var g=$('#grid');if(g){var l=filtered();g.innerHTML=l.length?l.map(courseCard).join(''):'<p class="lede">No course matches yet. Try another word.</p>'}}});
+function saveGuest(slug,id){var g=guestProg();g[slug]=g[slug]||[];if(g[slug].indexOf(id)<0)g[slug].push(id);ls('acad-prog',JSON.stringify(g))}
+function toPNG(){
+  var svg=$('#certbox svg');if(!svg)return;
+  var str=new XMLSerializer().serializeToString(svg),img=new Image(),url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(str);
+  img.onload=function(){var cv=document.createElement('canvas');cv.width=2400;cv.height=1700;var g=cv.getContext('2d');g.drawImage(img,0,0,2400,1700);
+    cv.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ace-academy-certificate.png';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)},'image/png')};
+  img.onerror=function(){S.err='Could not make the image. Use Print instead.'};img.src=url;
+}
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,v=t.dataset.v;
+  var h=location.hash.replace(/^#\/?/,''),p=h.split('/'),slug=p[1];
+  if(a==='field'){S.field=v;if(p[0]!==''&&p[0]!==undefined&&h!==''){location.hash='#/'}else render();return}
+  if(a==='tpl'){S.tpl=+v;ls('acad-tpl',v);render();return}
+  if(a==='png'){toPNG();return}
+  if(a==='print'){window.print();return}
+  if(a==='copy'){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(function(){t.textContent='Copied'}).catch(function(){window.prompt&&0;t.textContent=v});return}
+  if(a==='complete'){
+    var lid=v,c=S.course,i=c.lessons.findIndex(function(l){return l.id===lid}),nx=c.lessons[i+1];
+    S.busy=true;S.err='';render();
+    var next=function(){S.busy=false;location.hash=nx?'#/c/'+slug+'/l/'+nx.id:'#/c/'+slug+(done(slug).length>=c.lessons.length?'/quiz':'')};
+    saveGuest(slug,lid);
+    if(S.sb&&S.user)S.sb.rpc('mark_lesson',{p_course:slug,p_lesson:lid}).then(function(r){if(r.error)throw r.error;S.prog[slug]=Array.from(new Set((S.prog[slug]||[]).concat([lid])));next()}).catch(function(er){S.busy=false;S.err=/unknown lesson/i.test(msg(er))?'Your progress is saved on this device. This course is not switched on for certificates yet.':msg(er);next()});
+    else next();
+    return}
+  if(a==='submit'){
+    var c2=S.course;S.quiz.busy=true;S.err='';render();
+    S.sb.rpc('submit_course_quiz',{p_course:c2.slug,p_answers:S.quiz.ans}).then(function(r){if(r.error)throw r.error;S.quiz.busy=false;S.quiz.res=r.data;
+      if(r.data&&r.data.passed&&r.data.code&&!S.certs.find(function(k){return k.course===c2.slug}))return refreshUser().then(render);render()}).catch(function(er){S.quiz.busy=false;S.err=msg(er);render()});
+    return}
+});
+document.addEventListener('change',function(e){var t=e.target;if(t.dataset&&t.dataset.act==='ans'){S.quiz.ans[t.dataset.q]=+t.dataset.v;var sc=window.scrollY;render();window.scrollTo(0,sc)}});
+
+window.AceAcademy={S:S,render:render,route:route};
+/* ---------------- start ---------------- */
+S.tpl=Math.max(0,Math.min(TPL.length-1,+(ls('acad-tpl')||0)));
+jget('../app/courses/index.json').then(function(i){S.idx=i}).catch(function(){S.idx=[]}).then(function(){
+  route();
+  return loadSB().then(refreshUser).then(function(){if(S.user)route()});
+});
+})();
+</script>
+</body>
+</html>
