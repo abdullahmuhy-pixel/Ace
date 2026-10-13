@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>Ace key maker</title>
+<style>
+:root{--bg:#f4f7f5;--card:#fff;--text:#14211b;--muted:#5a6b62;--primary:#0b6b3a;--border:#d8e3dc;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1713;--card:#16221b;--text:#e8f2ec;--muted:#9bb0a5;--primary:#5fd18f;--border:#27382e;--warn:#ffc86b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:20px 16px}
+.wrap{max-width:640px;margin:0 auto}h1{font-size:22px;margin:0 0 6px}p{color:var(--muted)}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}
+label{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+textarea{width:100%;min-height:74px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;resize:vertical}
+button{border:0;border-radius:10px;background:var(--primary);color:var(--bg);padding:12px 16px;font:inherit;font-weight:700;cursor:pointer;margin:6px 8px 0 0}
+button.alt{background:transparent;color:var(--primary);border:1px solid var(--primary)}.warn{color:var(--warn);font-weight:600}
+</style></head><body><div class="wrap">
+<h1>Ace key maker</h1>
+<p>Makes the secret values for push notifications and the daily reminder job. Everything is created inside your browser on this device. Nothing is sent anywhere or saved.</p>
+<p class="warn">Copy each value straight into Supabase (Edge Functions, Secrets) and into GitHub (Settings, Secrets), then close this page. Anyone who sees the private key can send push messages as you.</p>
+<button id="go">Make new keys</button>
+<div id="out" class="card" hidden>
+ <label for="pub">VAPID_PUBLIC_KEY (Supabase secret) and vapidPublicKey in config.js</label><textarea id="pub" readonly></textarea><button class="alt" data-c="pub">Copy</button>
+ <label for="prv">VAPID_PRIVATE_KEY (Supabase secret only. Never put in GitHub files.)</label><textarea id="prv" readonly></textarea><button class="alt" data-c="prv">Copy</button>
+ <label for="cron">CRON_SECRET (Supabase secret AND GitHub secret, same value)</label><textarea id="cron" readonly></textarea><button class="alt" data-c="cron">Copy</button>
+ <label for="sub">VAPID_SUBJECT (Supabase secret): your own e-mail, written like this</label><textarea id="sub" readonly>mailto:you@example.com</textarea>
+</div>
+<p id="msg" class="warn"></p></div>
+<script>
+(function(){
+  function b64u(buf){var s='',b=new Uint8Array(buf);for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+  function fromB64u(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';var r=atob(s),a=new Uint8Array(r.length);for(var i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return a}
+  var msg=document.getElementById('msg');
+  async function make(){
+    msg.textContent='';
+    if(!(window.crypto&&crypto.subtle)){msg.textContent='This browser cannot make keys here (it needs https).';return}
+    var kp=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+    var raw=await crypto.subtle.exportKey('raw',kp.publicKey);           // 65 bytes, starts with 0x04
+    var jwk=await crypto.subtle.exportKey('jwk',kp.privateKey);          // d = 32-byte private scalar
+    var cron=new Uint8Array(32);crypto.getRandomValues(cron);
+    document.getElementById('pub').value=b64u(raw);
+    document.getElementById('prv').value=jwk.d;
+    document.getElementById('cron').value=b64u(cron);
+    document.getElementById('out').hidden=false;
+  }
+  document.getElementById('go').addEventListener('click',function(){make().catch(function(e){msg.textContent='Could not make keys: '+e.message})});
+  document.addEventListener('click',function(e){var id=e.target.getAttribute&&e.target.getAttribute('data-c');if(!id)return;var t=document.getElementById(id);t.select();
+    (navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).then(function(){msg.textContent='Copied.'}).catch(function(){try{document.execCommand('copy');msg.textContent='Copied.'}catch(x){msg.textContent='Select the text and copy it.'}})});
+})();
+</script></body></html>

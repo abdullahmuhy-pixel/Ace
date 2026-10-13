@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>Ace Education family view</title>
+<style>
+:root{--bg:#f4f7f5;--card:#fff;--text:#14211b;--muted:#5a6b62;--primary:#0b6b3a;--border:#d8e3dc;--bad:#a12b2b;--bar:#bfe3cc}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1713;--card:#16221b;--text:#e8f2ec;--muted:#9bb0a5;--primary:#5fd18f;--border:#27382e;--bad:#ff8c8c;--bar:#25503a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:20px 16px}
+.wrap{max-width:560px;margin:0 auto}h1{font-size:22px;margin:0 0 2px}h2{font-size:15px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+p{color:var(--muted);margin:4px 0}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}
+.big{display:flex;gap:10px}.big div{flex:1;text-align:center}.big b{display:block;font-size:26px;color:var(--primary);font-variant-numeric:tabular-nums}.big span{font-size:12px;color:var(--muted)}
+.bars{display:flex;gap:6px;align-items:flex-end;height:90px}.bars div{flex:1;text-align:center;font-size:11px;color:var(--muted)}.bars i{display:block;background:var(--bar);border-radius:5px 5px 0 0;min-height:2px;margin-bottom:3px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--border)}.row:first-of-type{border-top:0}
+form{display:flex;gap:8px;margin:16px 0}input{flex:1;min-width:0;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font:inherit;letter-spacing:.1em;text-transform:uppercase}
+button{border:0;border-radius:10px;background:var(--primary);color:var(--bg);padding:12px 18px;font:inherit;font-weight:700;cursor:pointer}
+.no{color:var(--bad);font-weight:700}.small{font-size:13px}
+</style></head><body><div class="wrap">
+<h1>Ace Education: family view</h1>
+<form id="f"><input id="c" maxlength="20" placeholder="LINK CODE" autocomplete="off" aria-label="Link code"><button>Open</button></form>
+<div id="out" aria-live="polite"></div></div>
+<script src="../config.js"></script>
+<script>
+(function(){
+  var cfg=window.ACE_CONFIG||{},out=document.getElementById('out'),inp=document.getElementById('c');
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+  function pct(c,q){return q?Math.round(100*c/q)+'%':'-'}
+  function render(d){
+    var w=d.week||[],mx=Math.max.apply(null,w.map(function(x){return x.questions}).concat([1])),tq=0,tc=0;
+    w.forEach(function(x){tq+=x.questions;tc+=x.correct});
+    var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var h='<p>Progress for <b>'+esc(d.first_name||'your student')+'</b>. Read-only; shared by the student.</p>'
+      +'<div class="card big"><div><b>'+esc(d.streak)+'</b><span>day streak</span></div><div><b>'+tq+'</b><span>questions this week</span></div><div><b>'+pct(tc,tq)+'</b><span>correct this week</span></div></div>'
+      +'<div class="card"><h2>Last 7 days</h2><div class="bars">'+w.map(function(x){var dt=new Date(x.day+'T00:00:00');return '<div title="'+x.questions+' questions"><i style="height:'+Math.round(70*x.questions/mx)+'px"></i>'+days[dt.getDay()]+'</div>'}).join('')+'</div></div>';
+    if((d.subjects||[]).length)h+='<div class="card"><h2>Subjects, last 30 days</h2>'+d.subjects.map(function(s){return '<div class="row"><span>'+esc(s.subject)+'</span><span>'+s.questions+' questions, '+pct(s.correct,s.questions)+'</span></div>'}).join('')+'</div>';
+    var a=d.attendance_30d||{},at=0;for(var k in a)at+=a[k];
+    if(at)h+='<div class="card"><h2>School attendance, last 30 days</h2><div class="row"><span>Present</span><span>'+(a.present||0)+'</span></div><div class="row"><span>Late</span><span>'+(a.late||0)+'</span></div><div class="row"><span>Absent</span><span>'+(a.absent||0)+'</span></div><div class="row"><span>Excused</span><span>'+(a.excused||0)+'</span></div></div>';
+    if((d.courses||[]).length)h+='<div class="card"><h2>Courses</h2>'+d.courses.map(function(c){return '<div class="row"><span>'+esc(c.title)+'</span><span>'+(c.certified?'Certificate earned':esc(c.lessons)+' of '+esc(c.of)+' lessons')+'</span></div>'}).join('')+'</div>';
+    h+='<p class="small">This link expires on '+esc(String(d.expires_at).slice(0,10))+'. The student can stop it at any time. It does not show messages, notes or group posts.</p>';
+    out.innerHTML=h;
+  }
+  function open(code){
+    code=(code||'').replace(/[^A-Za-z0-9]/g,'').toUpperCase();
+    if(code.length<12){out.innerHTML='<p class="no">Enter the full 12-character code.</p>';return}
+    if(!cfg.supabaseUrl||!cfg.supabaseAnonKey){out.innerHTML='<p class="no">This page is not connected yet.</p>';return}
+    out.innerHTML='<p>Opening…</p>';
+    fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/rest/v1/rpc/family_view',{method:'POST',headers:{'Content-Type':'application/json',apikey:cfg.supabaseAnonKey,Authorization:'Bearer '+cfg.supabaseAnonKey},body:JSON.stringify({p_code:code})})
+    .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+      if(!d){out.innerHTML='<p class="no">That link has expired, was stopped, or the code is wrong. Ask the student for a new one.</p>';return}
+      render(d);
+    }).catch(function(){out.innerHTML='<p class="no">Could not open right now. Try again.</p>'});
+  }
+  document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();open(inp.value)});
+  var q=new URLSearchParams(location.search).get('c');
+  if(q){inp.value=q;try{history.replaceState(null,'',location.pathname)}catch(e){}open(q)}
+})();
+</script></body></html>
