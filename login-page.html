@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F7F9FC"></head><body>
+<title>Ace Education Sign-in</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#F7F9FC;--surface:#fff;--tint:#EEF3FA;--text:#0F172A;--text2:rgba(15,23,42,.7);--text3:rgba(15,23,42,.55);--border:#D3DCE9;--ink:var(--primary-dark);--green:#15803D;--red:#B91C1C;--gold:#B45309}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1220;--surface:#121A2B;--tint:#182238;--text:#E8EDF4;--text2:rgba(232,237,244,.75);--text3:rgba(232,237,244,.6);--border:#2A3648;--ink:color-mix(in srgb,var(--primary) 45%,#fff);--green:#4ADE80;--red:#F87171;--gold:#F59E0B}}
+:root[data-theme="dark"]{--bg:#0B1220;--surface:#121A2B;--tint:#182238;--text:#E8EDF4;--text2:rgba(232,237,244,.75);--text3:rgba(232,237,244,.6);--border:#2A3648;--ink:color-mix(in srgb,var(--primary) 45%,#fff);--green:#4ADE80;--red:#F87171;--gold:#F59E0B}
+[data-country="NG"]{--primary:#008751;--primary-dark:#005C37;--accent:#F5C518}
+[data-country="GH"]{--primary:#006B3F;--primary-dark:#00472A;--accent:#CE1126}
+[data-country="SL"]{--primary:#118AC9;--primary-dark:#0B5D88;--accent:#17B978}
+[data-country="GM"]{--primary:#0C1C8C;--primary-dark:#08125C;--accent:#CE1126}
+[data-country="KE"]{--primary:#922724;--primary-dark:#631816;--accent:#111}
+[data-country="ZM"]{--primary:#197B30;--primary-dark:#105220;--accent:#EF7D00}
+[data-country="GB"]{--primary:#00247D;--primary-dark:#001854;--accent:#CF142B}
+[data-country="CA"]{--primary:#D80621;--primary-dark:#A30419;--accent:#1A1A1A}
+[data-country="ES"]{--primary:#AA152B;--primary-dark:#7A0F1E;--accent:#F1BF00}
+[data-country="ZA"]{--primary:#007749;--primary-dark:#005233;--accent:#FFB81C}
+[data-country="UG"]{--primary:#D90000;--primary-dark:#8F0000;--accent:#FCDC04}
+[data-country="TZ"]{--primary:#1EB53A;--primary-dark:#0E7A24;--accent:#FCD116}
+[data-country="IE"]{--primary:#169B62;--primary-dark:#0E6B43;--accent:#FF883E}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,system-ui,sans-serif;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px}
+button,select,input{font:inherit;color:inherit}button,select{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;display:flex;gap:8px}
+.top select,.top button{background:var(--surface);border:1px solid var(--border);border-radius:99px;padding:7px 12px;font-weight:600;font-size:13px}
+.wrap{width:100%;max-width:400px}
+.logo{text-align:center;font-weight:800;font-size:34px;letter-spacing:-.5px}.logo b{color:var(--gold)}.logo sup{font-size:13px;color:var(--ink);letter-spacing:0;margin-left:4px;vertical-align:baseline}
+.tag{text-align:center;color:var(--text3);font-size:12px;margin:2px 0 18px}
+.tabs{display:flex;background:var(--tint);border-radius:12px;padding:4px;margin-bottom:14px}
+.tabs button{flex:1;border:0;background:none;border-radius:9px;padding:9px 4px;font-weight:600;color:var(--text2);font-size:13px}
+.tabs .on{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(15,23,42,.14)}
+.hint{text-align:center;color:var(--text3);font-size:12px;margin:0 0 14px}
+h2{margin:0 0 2px;text-align:center;font-size:17px}.sub{text-align:center;color:var(--text3);font-size:12px;margin:0 0 14px}.ic{text-align:center;font-size:32px}
+label.l{display:block;font-weight:600;font-size:12px;color:var(--text2);margin:0 0 5px}
+.fd{margin-bottom:12px}
+input.i,select.i,.pw{width:100%;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:12px;font-size:15px}
+.pw{display:flex;padding:0}.pw input{flex:1;min-width:0;border:0;background:none;padding:12px;font-size:15px;border-radius:10px}.pw button{border:0;background:none;padding:0 12px;font-size:13px;font-weight:600;color:var(--ink)}
+.pw:focus-within,input.i:focus,select.i:focus{outline:3px solid var(--accent);outline-offset:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rm{display:flex;gap:8px;align-items:center;color:var(--text2);margin:2px 0 14px}.rm input{width:18px;height:18px;accent-color:var(--primary)}
+.go{width:100%;border:0;border-radius:12px;padding:14px;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--primary-dark),var(--primary));box-shadow:0 6px 16px color-mix(in srgb,var(--primary) 30%,transparent)}
+.lnk{border:0;background:none;padding:0;color:var(--gold);font-weight:600;text-decoration:underline;font-size:inherit}
+.fp{text-align:center;color:var(--text3);font-size:12px;margin:12px 0}
+.or{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:11px;margin:12px 0}.or::before,.or::after{content:"";flex:1;height:1px;background:var(--border)}
+.tour{width:100%;border:1px solid var(--border);background:var(--tint);border-radius:12px;padding:12px;font-weight:600;color:var(--text2)}
+.err{background:color-mix(in srgb,var(--red) 10%,var(--surface));color:var(--red);border:1px solid color-mix(in srgb,var(--red) 35%,var(--surface));border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+.ok{background:color-mix(in srgb,var(--green) 12%,var(--surface));color:var(--green);border:1px solid color-mix(in srgb,var(--green) 35%,var(--surface));border-radius:10px;padding:10px 12px;font-weight:600;font-size:13px;margin-bottom:12px}
+.bk{border:0;background:none;color:var(--ink);font-weight:600;padding:0 0 10px}
+.otp{letter-spacing:.5em;text-align:center;font-weight:700;font-size:22px}
+.st{display:flex;gap:6px;justify-content:center;margin-bottom:14px}.st i{width:28px;height:4px;border-radius:9px;background:var(--border)}.st i.on{background:var(--primary)}
+.done{text-align:center;padding:12px 0}.done .ic{font-size:44px}
+.fine{font-size:12px;color:var(--text3);margin:0 0 12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="top"><select id="cty" aria-label="Country"></select><button id="mo" aria-label="Toggle dark mode">🌙</button></div>
+<div class="wrap" id="w"></div>
+<script src="../config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const G=(a,b,p)=>Array.from({length:b-a+1},(_,i)=>p+(a+i));
+const C={
+NG:{n:'Nigeria',f:'🇳🇬',x:['WASSCE','NECO SSCE','UTME (JAMB)'],tg:'WASSCE • NECO • UTME Exam Prep • SSS 1–3',gr:G(1,3,'SSS '),cl:'SSS 2A',u:'Lagos',p:'NDPA'},
+GH:{n:'Ghana',f:'🇬🇭',x:['WASSCE'],tg:'WASSCE Exam Prep • SHS 1–3',gr:[...G(1,3,'JHS '),...G(1,3,'SHS ')],cl:'SHS 2A',u:'Accra',p:'DPA 2012'},
+SL:{n:'Sierra Leone',f:'🇸🇱',x:['WASSCE'],tg:'WASSCE Exam Prep • SSS 1–3',gr:[...G(1,3,'JSS '),...G(1,3,'SSS ')],cl:'SSS 2A',u:'Freetown',p:''},
+GM:{n:'The Gambia',f:'🇬🇲',x:['WASSCE'],tg:'WASSCE Exam Prep • Grade 10–12',gr:G(7,12,'Grade '),cl:'Grade 11A',u:'Banjul',p:''},
+KE:{n:'Kenya',f:'🇰🇪',x:['KCSE','CATs','Joint mocks'],tg:'KCSE Exam Prep • Form 1–4',gr:G(1,4,'Form '),cl:'Form 3A',u:'Nairobi',p:'DPA 2019'},
+ZM:{n:'Zambia',f:'🇿🇲',x:['ECZ Grade 12','ECZ Grade 9'],tg:'ECZ Grade 9 and 12 Exam Prep • Grade 8–12',gr:G(8,12,'Grade '),cl:'Grade 11A',u:'Lusaka',p:'DPA 2021'},
+GB:{n:'United Kingdom',f:'🇬🇧',x:['GCSE','AS-Level','A-Level'],tg:'GCSE • A-Level Exam Prep • Year 10–13',gr:G(10,13,'Year '),cl:'Year 12A',u:'London',p:'UK GDPR'},
+CA:{n:'Canada',f:'🇨🇦',x:['OSSD','Provincial diploma exams'],tg:'OSSD Exam Prep • Grade 9–12',gr:G(9,12,'Grade '),cl:'Grade 11A',u:'Ontario',p:'PIPEDA'},
+ES:{n:'España',f:'🇪🇸',l:'es',x:['EBAU / Selectividad','2º Bachillerato'],tg:'ESO • Bachillerato • Preparación EBAU',gr:['3º ESO','4º ESO','1º Bachillerato','2º Bachillerato'],cl:'1º Bach. A',u:'Madrid',p:'RGPD'},
+IE:{n:'Ireland',f:'🇮🇪',x:['Leaving Certificate','Junior Cycle'],tg:'Junior Cycle • Leaving Cert Exam Prep',gr:['3rd Year','5th Year','6th Year'],cl:'5th Year A',u:'Dublin',p:'GDPR'},
+ZA:{n:'South Africa',f:'🇿🇦',x:['NSC', 'Grade 11 exams'],tg:'NSC Exam Prep • Grade 8–12',gr:G(8,12,'Grade '),cl:'Grade 11A',u:'Johannesburg',p:'POPIA'},
+UG:{n:'Uganda',f:'🇺🇬',x:['UCE', 'UACE'],tg:'UCE and UACE Exam Prep • S1–S6',gr:G(1,6,'S'),cl:'S4A',u:'Kampala',p:'DPPA 2019'},
+TZ:{n:'Tanzania',f:'🇹🇿',x:['CSEE', 'ACSEE'],tg:'CSEE and ACSEE Exam Prep • Form 1–6',gr:G(1,6,'Form '),cl:'Form 4A',u:'Dar es Salaam',p:'PDPA 2022'}};
+const CFG=window.ACE_CONFIG||{};
+const LIVE=!!(CFG.supabaseUrl&&CFG.supabaseAnonKey&&window.supabase);
+let SB=null;
+function sb(remember){const store=remember===false?window.sessionStorage:window.localStorage;
+ SB=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey,{auth:{storage:store,persistSession:true,autoRefreshToken:true}});return SB}
+async function fn(name,body,token){
+ let r;try{r=await fetch(CFG.supabaseUrl+'/functions/v1/'+name,{method:'POST',headers:{'Content-Type':'application/json',apikey:CFG.supabaseAnonKey,Authorization:'Bearer '+(token||CFG.supabaseAnonKey)},body:JSON.stringify(body)})}catch(e){throw new Error(NET[LANG()])}
+ let j={};try{j=await r.json()}catch(e){}
+ if(!r.ok)throw new Error(j.error||NET[LANG()]);return j}
+const NET={en:'Could not reach the server. Check your connection and try again.',es:'No se pudo conectar con el servidor. Revisa tu conexión.'};
+const LANG=()=>C[S.c].l||'en';
+const STAFF=['teacher','subject_teacher','school_admin','platform_admin'];
+const T={en:{tabs:['🎓 Student login','Join school','🧑‍🏫 Staff login'],h1:'Log in with your email or username, or the details your school gave you.',id:'Email, username or student number',pw:'Password',show:'Show',hide:'Hide',rm:'Remember me on this device',in:'Sign In →',fg:'Forgot password?',rs:'Reset it',or:'OR',tour:'👀 Take a tour, no account needed',e1:'Enter your username and password.',e2:'Password must be at least 8 characters.',
+ sj:'Ask your teacher for your school code. Accounts are created through your school.',sc:'School code',find:'Find my school →',bad:'Enter the school code your teacher gave you.',fn:'First name',sn:'Surname',un:'Username',em:'Email address (optional)',gd:'Class level',tx:'Exam you are preparing for',sel:'Select',ca:'Create account →',ag:'I agree to the Terms and Privacy Policy',agE:'Tick the box to accept the Terms and Privacy Policy.',need:'Fill in every field.',
+ sh:'Staff login',ss:'For school admins, teachers and subject teachers. Use the details your school gave you.',ae:'Staff email',ap:'Staff password',acc:'Access dashboard →',nr:'School not registered yet?',ct:'Contact us to onboard your school',
+ rt:'Reset your password',rs1:'Enter the email on your account and we will send a 6-digit code.',send:'Send code →',code:'6-digit code',ver:'Verify code →',np:'New password',cp:'Confirm password',upd:'Update password →',mm:'Passwords do not match.',bl:'← Back to sign in',dn:LIVE?'You are signed in.':'Preview sign-in: school accounts are not connected yet, so any details open the student app. Choose your country there.',sent:'Code sent. It expires in 10 minutes.',wrong:'This account is not a student account. Use Staff login.',wrongS:'This account is not a staff account. Use Student login.',cpt:'Choose a new password',cps:'Your school gave you a temporary password. Choose your own to continue.',setp:'Save and continue →',pdone:'Password updated. You can sign in now.',school:'School',nosig:'Not signed in yet.'},
+es:{tabs:['🎓 Alumnado','Unirse al centro','🧑‍🏫 Profesorado'],h1:'Inicia sesión con tu correo, usuario o los datos que te dio tu centro.',id:'Correo, usuario o número de alumno',pw:'Contraseña',show:'Ver',hide:'Ocultar',rm:'Recordarme en este dispositivo',in:'Entrar →',fg:'¿Olvidaste tu contraseña?',rs:'Restablecer',or:'O',tour:'👀 Ver una demo, sin cuenta',e1:'Introduce tu usuario y contraseña.',e2:'La contraseña debe tener al menos 8 caracteres.',
+ sj:'Pide el código del centro a tu profesor. Las cuentas se crean a través del centro.',sc:'Código del centro',find:'Buscar mi centro →',bad:'Introduce el código que te dio tu profesor.',fn:'Nombre',sn:'Apellidos',un:'Usuario',em:'Correo electrónico (opcional)',gd:'Curso',tx:'Examen que preparas',sel:'Elegir',ca:'Crear cuenta →',ag:'Acepto los Términos y la Política de privacidad',agE:'Marca la casilla para aceptar los Términos y la Política de privacidad.',need:'Rellena todos los campos.',
+ sh:'Acceso del profesorado',ss:'Para administración, tutores y profesores. Usa los datos que te dio el centro.',ae:'Correo del profesorado',ap:'Contraseña',acc:'Acceder al panel →',nr:'¿Tu centro aún no está registrado?',ct:'Contáctanos para incorporarlo',
+ rt:'Restablecer contraseña',rs1:'Introduce el correo de tu cuenta y te enviaremos un código de 6 dígitos.',send:'Enviar código →',code:'Código de 6 dígitos',ver:'Verificar código →',np:'Nueva contraseña',cp:'Confirmar contraseña',upd:'Actualizar contraseña →',mm:'Las contraseñas no coinciden.',bl:'← Volver a entrar',dn:LIVE?'Has iniciado sesión.':'Acceso de prueba: las cuentas escolares aún no están conectadas. Elige tu país en la app.',sent:'Código enviado. Caduca en 10 minutos.',wrong:'Esta cuenta no es de alumnado. Usa el acceso del profesorado.',wrongS:'Esta cuenta no es de profesorado. Usa el acceso del alumnado.',cpt:'Elige una contraseña nueva',cps:'Tu centro te dio una contraseña temporal. Elige la tuya para continuar.',setp:'Guardar y continuar →',pdone:'Contraseña actualizada. Ya puedes entrar.',school:'Centro',nosig:'Aún no has iniciado sesión.'}};
+const $=q=>document.querySelector(q);
+
+const S={c:'NG',tab:0,step:1,fp:0,err:'',dark:false,done:'',pwv:false,ok:'',sc:'',busy:false,sch:null,rc:'',remail:'',cpw:false,dest:''};
+try{const v=localStorage.getItem('ace-country');if(v&&C[v])S.c=v}catch(e){}
+$('#cty').innerHTML=Object.keys(C).map(k=>`<option value="${k}">${C[k].f} ${C[k].n}</option>`).join('');
+const pwf=(id,l,t)=>`<div class="fd"><label class="l" for="${id}">${l}</label><div class="pw"><input id="${id}" type="${S.pwv?'text':'password'}" autocomplete="${id=='p'?'current-password':'new-password'}"><button type="button" data-a="pv" aria-label="${S.pwv?t.hide:t.show}">${S.pwv?t.hide:t.show}</button></div></div>`;
+const fld=(id,l,ph='',ty='text')=>`<div class="fd"><label class="l" for="${id}">${l}</label><input class="i" id="${id}" type="${ty}" placeholder="${ph}"></div>`;
+const er=()=>S.err?`<div class="err" role="alert">${S.err}</div>`:'';
+function panel(c,t){
+ if(S.cpw)return `<h2>${t.cpt}</h2><p class="sub">${t.cps}</p>${er()}${pwf('n1',t.np,t)}${pwf('n2',t.cp,t)}<button class="go" data-a="cpw">${S.busy?'…':t.setp}</button>`;
+ if(S.done)return `<div class="done"><div class="ic">✅</div><h2>${S.done}</h2><p class="sub">${t.dn}</p><a class="go" style="display:block;text-align:center;text-decoration:none" href="${S.dest||CFG.appUrl}">${c.l?'Abrir la app':'Open the student app'}</a><button class="tour" data-a="reset">${t.bl}</button></div>`;
+ if(S.fp){const steps=`<div class="st">${[1,2,3].map(i=>`<i class="${i<=S.fp?'on':''}"></i>`).join('')}</div>`;
+  const b=S.fp==1?`<p class="sub">${t.rs1}</p>${er()}${fld('em2',t.em.replace(' (optional)','').replace(' (opcional)',''),'name@example.com','email')}<button class="go" data-a="fp2">${S.busy?"…":t.send}</button>`:S.fp==2?`<div class="ok">${t.sent}</div>${er()}<div class="fd"><label class="l" for="ot">${t.code}</label><input class="i otp" id="ot" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000"></div><button class="go" data-a="fp3">${S.busy?"…":t.ver}</button>`:`${er()}${pwf('n1',t.np,t)}${pwf('n2',t.cp,t)}<button class="go" data-a="fp4">${S.busy?"…":t.upd}</button>`;
+  return `<button class="bk" data-a="reset">${t.bl}</button><h2>${t.rt}</h2>${steps}${b}`}
+ if(S.tab==0)return `${S.ok?`<div class="ok">${S.ok}</div>`:''}<p class="hint">${t.h1}</p>${er()}${fld('u',t.id)}${pwf('p',t.pw,t)}<label class="rm"><input type="checkbox"> ${t.rm}</label><button class="go" data-a="in">${S.busy?"…":t.in}</button><p class="fp">${t.fg} <button class="lnk" data-a="fp1">${t.rs}</button></p><div class="or">${t.or}</div><button class="tour" data-a="tour">${t.tour}</button>`;
+ if(S.tab==1){if(S.step==1)return `<p class="hint">${t.sj}</p>${er()}${fld('sc',t.sc,'GRF-2K4Q')}<button class="go" data-a="find">${S.busy?"…":t.find}</button>`;
+  return `<div class="ok">🏫 ${S.sch?S.sch.name+(S.sch.region?', '+S.sch.region:''):'Greenfield College (Demo), '+c.u}</div>${er()}<div class="two">${fld('fn',t.fn)}${fld('sn',t.sn)}</div>${fld('un2',t.un)}${fld('em3',t.em,'','email')}${pwf('p2',t.pw+' (min 8)',t)}<div class="two"><div class="fd"><label class="l" for="gd">${t.gd}</label><select class="i" id="gd"><option value="">${t.sel}</option>${((S.sch&&S.sch.grades&&S.sch.grades.length)?S.sch.grades:c.gr).map(g=>`<option>${g}</option>`).join('')}</select></div><div class="fd"><label class="l" for="tx">${t.tx}</label><select class="i" id="tx"><option value="">${t.sel}</option>${c.x.map(g=>`<option>${g}</option>`).join('')}</select></div></div><label class="rm"><input type="checkbox" id="ag"> ${t.ag}${c.p?` (${c.p})`:''}</label><button class="go" data-a="ca">${S.busy?"…":t.ca}</button>`}
+ return `<div class="ic">🏫</div><h2>${t.sh}</h2><p class="sub">${t.ss}</p>${er()}${fld('ae',t.ae,'','email')}${pwf('ap',t.ap,t)}<div id="rd"></div><button class="go" data-a="sin">${S.busy?"…":t.acc}</button><p class="fp">${t.nr} <button class="lnk">${t.ct}</button></p>`}
+function render(){const c=C[S.c],t=T[c.l||'en'],r=document.documentElement;r.dataset.country=S.c;r.lang=c.l||'en';S.dark?r.dataset.theme='dark':r.removeAttribute('data-theme');$('#cty').value=S.c;
+ const tm=$('meta[name=theme-color]');if(tm)tm.content=getComputedStyle(r).getPropertyValue('--bg').trim();
+ const tabs=S.done||S.fp?'':`<div class="tabs" role="tablist">${t.tabs.map((l,i)=>`<button role="tab" aria-selected="${i==S.tab}" class="${i==S.tab?'on':''}" data-a="tab" data-v="${i}">${l}</button>`).join('')}</div>`;
+ $('#w').innerHTML=`<div class="logo">Ace <b>Education</b><sup>${S.c}</sup></div><p class="tag">${c.tg}</p>${LIVE?'':'<div class="ok" style="margin-bottom:10px">Preview mode: not connected to a database yet.</div>'}${tabs}${panel(c,t)}`}
+const v=id=>($('#'+id)||{}).value||'';
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b||S.busy)return;const a=b.dataset.a,c=C[S.c],t=T[c.l||'en'];
+ const go=(f)=>{S.err='';f();render()};
+ const snap=()=>{const o={};['u','p','p2','ap','n1','n2','fn','sn','un2','em3','sc','ae','em2','ot'].forEach(k=>o[k]=v(k));o.gd=v('gd');o.tx=v('tx');return o};
+ const restore=o=>{for(const k in o){if($('#'+k)&&o[k])$('#'+k).value=o[k]}};
+ const run=async(f,keep)=>{S.busy=true;S.err='';const o=snap();render();restore(o);try{await f()}catch(x){S.err=x.message||NET[LANG()]}S.busy=false;render();if(S.err)restore(o)};
+ const dest=(role)=>(STAFF.includes(role)&&CFG.staffUrl)?CFG.staffUrl:CFG.appUrl;
+ const finish=async(user,wantStaff)=>{
+  const {data:p}=await SB.from('profiles').select('role,country_code,first_name').eq('id',user.id).single();
+  const staff=!!p&&STAFF.includes(p.role);
+  if(wantStaff!==staff){await SB.auth.signOut();throw new Error(wantStaff?t.wrongS:t.wrong)}
+  if(p&&C[p.country_code]){S.c=p.country_code;try{localStorage.setItem('ace-country',p.country_code)}catch(x){}}
+  S.dest=dest(p&&p.role);
+  if(user.user_metadata&&user.user_metadata.must_change_password){S.cpw=true;return}
+  S.done=(c.l?'Sesión iniciada':'Signed in')+(p?', '+p.first_name:'');
+  setTimeout(()=>{if(S.done&&S.dest)location.href=S.dest},900)};
+ const signIn=async(identifier,pw,wantStaff,remember)=>{
+  const {email}=wantStaff?{email:identifier.trim().toLowerCase()}:await fn('resolve-login',{identifier});
+  sb(remember);const {data,error}=await SB.auth.signInWithPassword({email,password:pw});
+  if(error)throw new Error(c.l?'Usuario o contraseña incorrectos.':'Wrong username or password.');
+  await finish(data.user,wantStaff)};
+ if(a=='tab')go(()=>{S.tab=+b.dataset.v;S.step=1;S.pwv=false;S.sch=null});
+ else if(a=='pv'){S.pwv=!S.pwv;const o=snap();render();restore(o)}
+ else if(a=='in'){if(!v('u').trim()||!v('p'))return go(()=>S.err=t.e1);
+  if(!LIVE)return go(()=>S.done=c.l?'Sesión iniciada':'Signed in');
+  const rem=!$('.rm input')||$('.rm input').checked;await run(()=>signIn(v('u'),v('p'),false,rem))}
+ else if(a=='tour')go(()=>{S.done=c.l?'Demo abierta':'Tour opened';S.dest=CFG.appUrl});
+ else if(a=='find'){if(v('sc').trim().length<4)return go(()=>S.err=t.bad);
+  if(!LIVE)return go(()=>S.step=2);
+  await run(async()=>{const r=await fn('lookup-school',{school_code:v('sc')});S.sch=r;S.sc=v('sc').trim().toUpperCase();if(C[r.country_code])S.c=r.country_code;S.step=2})}
+ else if(a=='ca'){if(!v('fn').trim()||!v('sn').trim()||!v('un2').trim()||!v('gd')||!v('tx'))return go(()=>S.err=t.need);if(v('p2').length<8)return go(()=>S.err=t.e2);if(!$('#ag').checked)return go(()=>S.err=t.agE);
+  if(!LIVE)return go(()=>S.done=c.l?'Cuenta creada':'Account created');
+  await run(async()=>{const un=v('un2').trim().toLowerCase(),pw=v('p2');
+   const r=await fn('join-school',{school_code:S.sc,first_name:v('fn'),surname:v('sn'),username:un,email:v('em3'),password:pw,class_level:v('gd'),exam_target:v('tx'),consent:true,consent_version:CFG.termsVersion});
+   sb(true);const {data,error}=await SB.auth.signInWithPassword({email:r.login_email,password:pw});if(error)throw new Error(error.message);
+   await finish(data.user,false)})}
+ else if(a=='sin'){if(!v('ae').includes('@')||!v('ap'))return go(()=>S.err=t.e1);
+  if(!LIVE)return go(()=>S.done=c.l?'Acceso concedido':'Access granted');
+  await run(()=>signIn(v('ae'),v('ap'),true,true))}
+ else if(a=='fp1')go(()=>S.fp=1);
+ else if(a=='fp2'){if(!v('em2').includes('@'))return go(()=>S.err=t.e1);
+  if(!LIVE)return go(()=>S.fp=2);
+  await run(async()=>{S.remail=v('em2').trim().toLowerCase();await fn('request-reset',{email:S.remail});S.fp=2})}
+ else if(a=='fp3'){if(v('ot').length<6)return go(()=>S.err=t.e1);go(()=>{S.rc=v('ot');S.fp=3})}
+ else if(a=='fp4'){if(v('n1').length<8)return go(()=>S.err=t.e2);if(v('n1')!=v('n2'))return go(()=>S.err=t.mm);
+  if(!LIVE)return go(()=>S.done=c.l?'Contraseña actualizada':'Password updated');
+  await run(async()=>{try{await fn('reset-password',{email:S.remail,code:S.rc,new_password:v('n1')})}catch(x){S.fp=2;throw x}
+   S.fp=0;S.tab=0;S.done='';S.ok=t.pdone})}
+ else if(a=='cpw'){if(v('n1').length<8)return go(()=>S.err=t.e2);if(v('n1')!=v('n2'))return go(()=>S.err=t.mm);
+  await run(async()=>{const {error}=await SB.auth.updateUser({password:v('n1'),data:{must_change_password:false}});if(error)throw new Error(error.message);
+   S.cpw=false;S.done=c.l?'Contraseña actualizada':'Password updated';setTimeout(()=>{if(S.done&&S.dest)location.href=S.dest},900)})}
+ else if(a=='reset')go(()=>{S.fp=0;S.done='';S.tab=0;S.step=1;S.cpw=false;S.sch=null;S.ok=''})});
+document.addEventListener('input',e=>{if(e.target.id!='ae'&&e.target.id!='ap')return;const t=T[C[S.c].l||'en'],em=v('ae').toLowerCase();
+ const role=em.includes('admin')?'School admin':em.includes('subject')?'Subject teacher':'Teacher';
+ $('#rd').innerHTML=em.includes('@')&&v('ap').length>=6?`<div class="ok">🏫 Greenfield College (Demo), ${C[S.c].cl} ${role}</div>`:''});
+$('#cty').onchange=e=>{S.c=e.target.value;S.err='';try{localStorage.setItem('ace-country',S.c)}catch(x){}render()};
+$('#mo').onclick=()=>{S.dark=!S.dark;render()};
+render();
+</script>
+
+</body></html>
