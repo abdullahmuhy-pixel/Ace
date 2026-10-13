@@ -1,0 +1,13 @@
+{
+  "name": "Ace Education",
+  "short_name": "Ace",
+  "description": "Exam preparation for secondary schools in ten countries: notes, quizzes, flashcards and mock exams.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1F4F1",
+  "theme_color": "#0A6B47",
+  "categories": ["education"],
+  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+}
