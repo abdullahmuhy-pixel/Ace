@@ -1,0 +1,802 @@
+{
+ "country": "NG",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "Admission to Nigerian universities is coordinated by the Joint Admissions and Matriculation Board (JAMB). Candidates sit the Unified Tertiary Matriculation Examination (UTME) and choose institutions and courses on JAMB's system. Universities then run their own screening (Post-UTME) and recommend candidates, and JAMB approves admissions through its Central Admissions Processing System (CAPS), where candidates accept or reject offers. Candidates with qualifications such as HND, NCE, a first degree or A-levels may apply for Direct Entry.",
+  "official_url": "https://www.jamb.gov.ng",
+  "notes": "Minimum scores, each university's own admittable scores, the UTME timetable, Post-UTME arrangements and available courses change every year. Check jamb.gov.ng and the admissions page of your chosen university each year."
+ },
+ "universities": [
+  {
+   "id": "unilag",
+   "name": "University of Lagos",
+   "short": "UNILAG",
+   "type": "public",
+   "city": "Lagos",
+   "url": "https://unilag.edu.ng",
+   "admissions_url": "https://admissions.unilag.edu.ng/programmes.html",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Chemical & Petroleum Engineering"
+      },
+      {
+       "name": "Civil & Environmental Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Electrical & Electronics Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Systems Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Mathematics"
+      },
+      {
+       "name": "Statistics"
+      },
+      {
+       "name": "Physics"
+      },
+      {
+       "name": "Microbiology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Clinical Sciences",
+     "courses": [
+      {
+       "name": "Medicine and Surgery"
+      },
+      {
+       "name": "Nursing"
+      },
+      {
+       "name": "Physiotherapy"
+      },
+      {
+       "name": "Radiography"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Management Sciences",
+     "courses": [
+      {
+       "name": "Accounting"
+      },
+      {
+       "name": "Actuarial Science"
+      },
+      {
+       "name": "Business Administration"
+      },
+      {
+       "name": "Finance"
+      },
+      {
+       "name": "Insurance"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Geography"
+      },
+      {
+       "name": "Mass Communication"
+      },
+      {
+       "name": "Political Science"
+      },
+      {
+       "name": "Psychology"
+      },
+      {
+       "name": "Sociology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Environmental Sciences",
+     "courses": [
+      {
+       "name": "Architecture"
+      },
+      {
+       "name": "Building"
+      },
+      {
+       "name": "Estate Management"
+      },
+      {
+       "name": "Quantity Surveying"
+      },
+      {
+       "name": "Urban & Regional Planning"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ui",
+   "name": "University of Ibadan",
+   "short": "UI",
+   "type": "public",
+   "city": "Ibadan",
+   "url": "https://ui.edu.ng",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Technology",
+     "courses": [
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical and Electronic Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Petroleum Engineering"
+      },
+      {
+       "name": "Food Technology"
+      },
+      {
+       "name": "Biomedical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Mathematics"
+      },
+      {
+       "name": "Microbiology"
+      },
+      {
+       "name": "Physics"
+      },
+      {
+       "name": "Statistics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts",
+     "courses": [
+      {
+       "name": "English"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "Linguistics and African Languages"
+      },
+      {
+       "name": "Music"
+      },
+      {
+       "name": "Philosophy"
+      },
+      {
+       "name": "Theatre Arts"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Computing",
+     "courses": [
+      {
+       "name": "Computer Science and Artificial Intelligence"
+      },
+      {
+       "name": "Data Science"
+      },
+      {
+       "name": "Software Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economics and Management Sciences",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Accounting"
+      },
+      {
+       "name": "Banking and Finance"
+      },
+      {
+       "name": "Marketing and Consumer Studies"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of the Social Sciences",
+     "courses": [
+      {
+       "name": "Political Science"
+      },
+      {
+       "name": "Sociology"
+      },
+      {
+       "name": "Psychology"
+      },
+      {
+       "name": "Geography"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "abu",
+   "name": "Ahmadu Bello University",
+   "short": "ABU",
+   "type": "public",
+   "city": "Zaria",
+   "url": "https://abu.edu.ng",
+   "admissions_url": "https://abu.edu.ng/admissions/admissions",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Agriculture",
+     "courses": [
+      {
+       "name": "B. Agriculture",
+       "years": 5
+      },
+      {
+       "name": "B. Fisheries and Aquaculture",
+       "years": 5
+      },
+      {
+       "name": "B. Forestry and Wildlife",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts",
+     "courses": [
+      {
+       "name": "English (Language)",
+       "years": 4
+      },
+      {
+       "name": "English (Literature)",
+       "years": 4
+      },
+      {
+       "name": "History",
+       "years": 4
+      },
+      {
+       "name": "French",
+       "years": 4
+      },
+      {
+       "name": "Arabic",
+       "years": 4
+      },
+      {
+       "name": "Theatre and Performing Arts",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Mining and Minerals Engineering",
+       "years": 5
+      },
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Chemical & Petroleum Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Environmental Design",
+     "courses": [
+      {
+       "name": "Fine Arts",
+       "years": 4
+      },
+      {
+       "name": "Industrial Design",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unn",
+   "name": "University of Nigeria, Nsukka",
+   "short": "UNN",
+   "type": "public",
+   "city": "Nsukka",
+   "url": "https://www.unn.edu.ng",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical Engineering"
+      },
+      {
+       "name": "Electronic Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Mechatronic Engineering"
+      },
+      {
+       "name": "Agricultural & Bioresources Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Physical Sciences",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Geology"
+      },
+      {
+       "name": "Mathematics"
+      },
+      {
+       "name": "Statistics"
+      },
+      {
+       "name": "Pure & Industrial Chemistry"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Political Science"
+      },
+      {
+       "name": "Psychology"
+      },
+      {
+       "name": "Geography"
+      },
+      {
+       "name": "Social Work"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Business Administration",
+     "courses": [
+      {
+       "name": "Accountancy"
+      },
+      {
+       "name": "Marketing"
+      },
+      {
+       "name": "Banking & Finance"
+      },
+      {
+       "name": "Management"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Biological Sciences",
+     "courses": [
+      {
+       "name": "Biochemistry"
+      },
+      {
+       "name": "Microbiology"
+      },
+      {
+       "name": "Zoology & Environmental Biology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Agriculture",
+     "courses": [
+      {
+       "name": "Agricultural Economics"
+      },
+      {
+       "name": "Animal Science"
+      },
+      {
+       "name": "Crop Science"
+      },
+      {
+       "name": "Food Science and Technology"
+      },
+      {
+       "name": "Soil Science"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "oau",
+   "name": "Obafemi Awolowo University",
+   "short": "OAU",
+   "type": "public",
+   "city": "Ile-Ife",
+   "url": "https://oauife.edu.ng",
+   "admissions_url": "https://oauife.edu.ng/admission-undergraduate-studies/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Biochemistry",
+       "years": 4
+      },
+      {
+       "name": "Botany",
+       "years": 4
+      },
+      {
+       "name": "Chemistry",
+       "years": 4
+      },
+      {
+       "name": "Mathematics",
+       "years": 4
+      },
+      {
+       "name": "Microbiology",
+       "years": 4
+      },
+      {
+       "name": "Physics",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Technology",
+     "courses": [
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Chemical Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Electronic and Electrical Engineering"
+      },
+      {
+       "name": "Aerospace Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts",
+     "courses": [
+      {
+       "name": "English"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "Linguistics"
+      },
+      {
+       "name": "Music"
+      },
+      {
+       "name": "Philosophy"
+      },
+      {
+       "name": "Dramatic Arts"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Administration",
+     "courses": [
+      {
+       "name": "Business Administration"
+      },
+      {
+       "name": "International Relations"
+      },
+      {
+       "name": "Public Administration"
+      },
+      {
+       "name": "Management & Accounting"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Agriculture",
+     "courses": [
+      {
+       "name": "Animal Science"
+      },
+      {
+       "name": "Agricultural Economics"
+      },
+      {
+       "name": "Soil Science and Land Resources Management"
+      },
+      {
+       "name": "Crop Production and Protection"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Geography"
+      },
+      {
+       "name": "Political Science"
+      },
+      {
+       "name": "Psychology"
+      },
+      {
+       "name": "Mass Communication"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "babcock",
+   "name": "Babcock University",
+   "short": "Babcock",
+   "type": "private",
+   "city": "Ilishan-Remo",
+   "url": "https://babcock.edu.ng",
+   "admissions_url": "https://babcock.edu.ng/admission/undergraduate",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Engineering",
+     "courses": [
+      {
+       "name": "Software Engineering"
+      },
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Information Technology"
+      }
+     ]
+    },
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "Medicine (MBBS)"
+      },
+      {
+       "name": "Nursing Science (BNSc)"
+      },
+      {
+       "name": "Medical Laboratory Science"
+      },
+      {
+       "name": "Public Health"
+      },
+      {
+       "name": "Biochemistry"
+      },
+      {
+       "name": "Physiology"
+      }
+     ]
+    },
+    {
+     "name": "School of Social and Management Sciences",
+     "courses": [
+      {
+       "name": "Accounting"
+      },
+      {
+       "name": "Business Administration"
+      },
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Finance"
+      },
+      {
+       "name": "Mass Communication"
+      },
+      {
+       "name": "Political Science"
+      }
+     ]
+    },
+    {
+     "name": "School of Education, Arts and Humanities",
+     "courses": [
+      {
+       "name": "English Studies"
+      },
+      {
+       "name": "History and International Studies"
+      },
+      {
+       "name": "Music"
+      },
+      {
+       "name": "Christian Religious Studies"
+      }
+     ]
+    },
+    {
+     "name": "School of Agriculture and Technology",
+     "courses": [
+      {
+       "name": "Agricultural Economics and Extension"
+      },
+      {
+       "name": "Animal Science"
+      },
+      {
+       "name": "Microbiology"
+      },
+      {
+       "name": "Physics"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "covenant",
+   "name": "Covenant University",
+   "short": "CU",
+   "type": "private",
+   "city": "Ota",
+   "url": "https://www.covenantuniversity.edu.ng",
+   "admissions_url": "https://admissions.covenantuniversity.edu.ng/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Engineering",
+     "courses": [
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Electrical and Electronics Engineering"
+      },
+      {
+       "name": "Information and Communication Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Petroleum Engineering"
+      }
+     ]
+    },
+    {
+     "name": "College of Science and Technology",
+     "courses": [
+      {
+       "name": "Architecture"
+      },
+      {
+       "name": "Building Technology"
+      },
+      {
+       "name": "Estate Management"
+      },
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Microbiology"
+      },
+      {
+       "name": "Biochemistry"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

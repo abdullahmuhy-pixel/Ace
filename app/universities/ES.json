@@ -1,0 +1,474 @@
+{
+ "country": "ES",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "To start an official university degree (grado) in Spain you must pass an access test, the PAU (also called EBAU or selectividad in some regions), normally taken after bachillerato. The mandatory phase has four exams (five in regions with a co-official language): Spanish Language and Literature II, History of Spain or History of Philosophy, a foreign language, and a subject from your bachillerato track. After that you apply for places through your region's pre-enrolment system, for example the single district of Madrid for the public universities there.",
+  "official_url": "https://web.ua.es/en/oia/faq/pruebas-de-acceso-a-la-universidad-pau.html",
+  "notes": "PAU dates, exam format and how marks are used for admission are set each year and differ by autonomous community. Check your regional university access office and each university's pre-enrolment page. Degree names are given in English with the Spanish or Catalan name in the note."
+ },
+ "universities": [
+  {
+   "id": "uam",
+   "name": "Autonomous University of Madrid",
+   "short": "UAM",
+   "type": "public",
+   "city": "Madrid",
+   "url": "https://www.uam.es/",
+   "admissions_url": "https://www.uam.es/uam/en/admision-grado",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Sciences",
+     "courses": [
+      {
+       "name": "Biology",
+       "years": 4,
+       "note": "Grado en Biología"
+      },
+      {
+       "name": "Biochemistry",
+       "years": 4,
+       "note": "Grado en Bioquímica"
+      },
+      {
+       "name": "Physics",
+       "years": 4,
+       "note": "Grado en Física"
+      },
+      {
+       "name": "Environmental Sciences",
+       "years": 4,
+       "note": "Grado en Ciencias Ambientales"
+      }
+     ]
+    },
+    {
+     "name": "Social and Legal Sciences",
+     "courses": [
+      {
+       "name": "Law",
+       "years": 4,
+       "note": "Grado en Derecho"
+      },
+      {
+       "name": "Economics",
+       "years": 4,
+       "note": "Grado en Economía"
+      },
+      {
+       "name": "Business Administration and Management",
+       "years": 4,
+       "note": "Grado en Administración y Dirección de Empresas"
+      },
+      {
+       "name": "Political Science and Public Administration",
+       "years": 4,
+       "note": "Grado en Ciencia Política y Administración Pública"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Medicine",
+       "years": 6,
+       "note": "Grado en Medicina"
+      },
+      {
+       "name": "Nursing",
+       "years": 4,
+       "note": "Grado en Enfermería"
+      },
+      {
+       "name": "Physiotherapy",
+       "years": 4,
+       "note": "Grado en Fisioterapia"
+      }
+     ]
+    },
+    {
+     "name": "Engineering and Architecture",
+     "courses": [
+      {
+       "name": "Computer Engineering",
+       "years": 4,
+       "note": "Grado en Ingeniería Informática"
+      },
+      {
+       "name": "Biomedical Engineering",
+       "years": 4,
+       "note": "Grado en Ingeniería Biomédica"
+      },
+      {
+       "name": "Data Science and Engineering",
+       "years": 4,
+       "note": "Grado en Ciencia e Ingeniería de Datos"
+      },
+      {
+       "name": "Telecommunication Technologies Engineering",
+       "years": 4,
+       "note": "Grado en Ingeniería de Tecnologías de Telecomunicación"
+      }
+     ]
+    },
+    {
+     "name": "Arts and Humanities",
+     "courses": [
+      {
+       "name": "Philosophy",
+       "years": 4,
+       "note": "Grado en Filosofía"
+      },
+      {
+       "name": "History of Art",
+       "years": 4,
+       "note": "Grado en Historia del Arte"
+      },
+      {
+       "name": "English Studies",
+       "years": 4,
+       "note": "Grado en Estudios Ingleses"
+      },
+      {
+       "name": "Archaeology",
+       "years": 4,
+       "note": "Grado en Arqueología"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucm",
+   "name": "Complutense University of Madrid",
+   "short": "UCM",
+   "type": "public",
+   "city": "Madrid",
+   "url": "https://www.ucm.es/",
+   "admissions_url": "https://www.ucm.es/oferta-academica",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Computer Science (Facultad de Informática)",
+     "courses": [
+      {
+       "name": "Computer Engineering",
+       "note": "Grado en Ingeniería Informática"
+      },
+      {
+       "name": "Software Engineering",
+       "note": "Grado en Ingeniería del Software"
+      },
+      {
+       "name": "Computer Systems Engineering",
+       "note": "Grado en Ingeniería de Computadores"
+      },
+      {
+       "name": "Data Engineering and Artificial Intelligence",
+       "note": "Grado en Ingeniería de Datos e Inteligencia Artificial"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Physics (Facultad de Ciencias Físicas)",
+     "courses": [
+      {
+       "name": "Physics",
+       "note": "Grado en Física; English-language group offered"
+      },
+      {
+       "name": "Materials Engineering",
+       "note": "Grado en Ingeniería de Materiales"
+      },
+      {
+       "name": "Mathematics and Physics double degree",
+       "note": "Matemáticas - Física"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Law (Facultad de Derecho)",
+     "courses": [
+      {
+       "name": "Law",
+       "note": "Grado en Derecho"
+      },
+      {
+       "name": "Criminology",
+       "note": "Grado en Criminología"
+      },
+      {
+       "name": "Labour Relations and Human Resources",
+       "note": "Grado en Relaciones Laborales y Recursos Humanos"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uv",
+   "name": "University of Valencia",
+   "short": "UV",
+   "type": "public",
+   "city": "Valencia",
+   "url": "https://www.uv.es/",
+   "admissions_url": "https://www.uv.es/uvweb/college/en/undergraduate-studies/undergraduate-studies-/degree-programmes-offered-1285846094474.html",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Architecture and Engineering",
+     "courses": [
+      {
+       "name": "Chemical Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Data Science"
+      },
+      {
+       "name": "Telematics Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Sciences",
+     "courses": [
+      {
+       "name": "Biology"
+      },
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Mathematics"
+      },
+      {
+       "name": "Physics"
+      },
+      {
+       "name": "Biotechnology"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Medicine"
+      },
+      {
+       "name": "Nursing"
+      },
+      {
+       "name": "Pharmacy"
+      },
+      {
+       "name": "Psychology"
+      }
+     ]
+    },
+    {
+     "name": "Social and Legal Sciences",
+     "courses": [
+      {
+       "name": "Law"
+      },
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Journalism"
+      },
+      {
+       "name": "Business Management and Administration (ADE)"
+      }
+     ]
+    },
+    {
+     "name": "Arts and Humanities",
+     "courses": [
+      {
+       "name": "History"
+      },
+      {
+       "name": "Philosophy"
+      },
+      {
+       "name": "English Studies"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "us",
+   "name": "University of Seville",
+   "short": "US",
+   "type": "public",
+   "city": "Seville",
+   "url": "https://www.us.es/",
+   "admissions_url": "https://alojawebapps.us.es/centrosdptos/titulaciones/LSgradosramas.php",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering and Architecture",
+     "courses": [
+      {
+       "name": "Aerospace Engineering",
+       "note": "Grado en Ingeniería Aeroespacial"
+      },
+      {
+       "name": "Civil Engineering",
+       "note": "Grado en Ingeniería Civil"
+      },
+      {
+       "name": "Industrial Technologies Engineering",
+       "note": "Grado en Ingeniería de Tecnologías Industriales"
+      },
+      {
+       "name": "Fundamentals of Architecture",
+       "note": "Grado en Fundamentos de Arquitectura"
+      }
+     ]
+    },
+    {
+     "name": "Sciences",
+     "courses": [
+      {
+       "name": "Biology",
+       "note": "Grado en Biología"
+      },
+      {
+       "name": "Physics",
+       "note": "Grado en Física"
+      },
+      {
+       "name": "Mathematics",
+       "note": "Grado en Matemáticas"
+      },
+      {
+       "name": "Chemistry",
+       "note": "Grado en Química"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Medicine",
+       "note": "Grado en Medicina"
+      },
+      {
+       "name": "Nursing",
+       "note": "Grado en Enfermería"
+      },
+      {
+       "name": "Pharmacy",
+       "note": "Grado en Farmacia"
+      },
+      {
+       "name": "Dentistry",
+       "note": "Grado en Odontología"
+      }
+     ]
+    },
+    {
+     "name": "Social and Legal Sciences",
+     "courses": [
+      {
+       "name": "Law",
+       "note": "Grado en Derecho"
+      },
+      {
+       "name": "Economics",
+       "note": "Grado en Economía"
+      },
+      {
+       "name": "Business Administration and Management",
+       "note": "Grado en Administración y Dirección de Empresas"
+      },
+      {
+       "name": "Journalism",
+       "note": "Grado en Periodismo"
+      }
+     ]
+    },
+    {
+     "name": "Arts and Humanities",
+     "courses": [
+      {
+       "name": "History",
+       "note": "Grado en Historia"
+      },
+      {
+       "name": "Philosophy",
+       "note": "Grado en Filosofía"
+      },
+      {
+       "name": "English Studies",
+       "note": "Grado en Estudios Ingleses"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ub",
+   "name": "University of Barcelona",
+   "short": "UB",
+   "type": "public",
+   "city": "Barcelona",
+   "url": "https://www.ub.edu/portal/web/fisica/graus",
+   "admissions_url": "https://www.ub.edu/portal/web/medicina-ciencies-salut/graus/-/ensenyament/detallEnsenyament/4917583/22",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Medicine and Health Sciences (Facultat de Medicina i Ciències de la Salut)",
+     "courses": [
+      {
+       "name": "Medicine",
+       "note": "Grau en Medicina"
+      },
+      {
+       "name": "Biomedical Sciences",
+       "note": "Grau en Ciències Biomèdiques"
+      },
+      {
+       "name": "Biomedical Engineering",
+       "note": "Grau en Enginyeria Biomèdica"
+      },
+      {
+       "name": "Dentistry",
+       "note": "Grau en Odontologia"
+      },
+      {
+       "name": "Nursing",
+       "note": "Grau en Infermeria"
+      },
+      {
+       "name": "Podiatry",
+       "note": "Grau en Podologia"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Physics (Facultat de Física)",
+     "courses": [
+      {
+       "name": "Physics",
+       "note": "Grau de Física"
+      },
+      {
+       "name": "Electronic Telecommunications Engineering",
+       "note": "Grau d'Enginyeria Electrònica de Telecomunicació"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

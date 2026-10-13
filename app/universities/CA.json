@@ -1,0 +1,397 @@
+{
+ "country": "CA",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "Canada has no national application system: admission is organised by province and decided by each university. In Ontario, the Ontario Universities' Application Centre (OUAC) is a not-for-profit, centralized application service for applicants to Ontario universities, and the universities make the admission decisions. Outside Ontario, you usually apply directly through the university's own online system, for example at Dalhousie or the Université de Montréal, and deadlines vary by program.",
+  "official_url": "https://www.ouac.on.ca/",
+  "notes": "Application windows, deadlines and program lists change every year and differ by province. Quebec has its own system and French-language programs. Check the university admissions page, and OUAC for Ontario."
+ },
+ "universities": [
+  {
+   "id": "utoronto",
+   "name": "University of Toronto",
+   "short": "U of T",
+   "type": "public",
+   "city": "Toronto",
+   "url": "https://www.utoronto.ca/",
+   "admissions_url": "https://www.utoronto.ca/academics/undergraduate-programs",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Applied Science & Engineering",
+     "courses": [
+      {
+       "name": "Aerospace Science and Engineering"
+      },
+      {
+       "name": "Biomaterials and Biomedical Engineering"
+      },
+      {
+       "name": "Chemical Engineering and Applied Chemistry"
+      },
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical and Computer Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts & Science",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Biology"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "English"
+      },
+      {
+       "name": "Data Science"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ubc",
+   "name": "The University of British Columbia",
+   "short": "UBC",
+   "type": "public",
+   "city": "Vancouver",
+   "url": "https://www.ubc.ca/",
+   "admissions_url": "https://you.ubc.ca/programs/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Applied Science",
+     "courses": [
+      {
+       "name": "Biomedical Engineering"
+      },
+      {
+       "name": "Chemical Engineering"
+      },
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Nursing (BSN)"
+      }
+     ]
+    },
+    {
+     "name": "Other undergraduate degrees",
+     "courses": [
+      {
+       "name": "Bachelor of Arts"
+      },
+      {
+       "name": "Bachelor of Commerce"
+      },
+      {
+       "name": "Bachelor of Science"
+      },
+      {
+       "name": "Bachelor of Computer Science"
+      },
+      {
+       "name": "Bachelor of Music"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mcmaster",
+   "name": "McMaster University",
+   "short": "McMaster",
+   "type": "public",
+   "city": "Hamilton",
+   "url": "https://www.mcmaster.ca/",
+   "admissions_url": "https://future.mcmaster.ca/programs/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Chemical Engineering",
+       "years": 4
+      },
+      {
+       "name": "Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "Computer Engineering",
+       "years": 4
+      },
+      {
+       "name": "Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "Software Engineering",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Honours Health Sciences Program",
+       "note": "see official page for length"
+      },
+      {
+       "name": "Bachelor of Science Nursing Program",
+       "years": 4,
+       "note": "basic stream; other entry streams exist"
+      },
+      {
+       "name": "Midwifery Education Program",
+       "years": 4
+      },
+      {
+       "name": "Integrated Biomedical Engineering & Health Sciences (iBioMed)",
+       "note": "4-5 years depending on track"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dalhousie",
+   "name": "Dalhousie University",
+   "short": "Dal",
+   "type": "public",
+   "city": "Halifax",
+   "url": "https://www.dal.ca/",
+   "admissions_url": "https://www.dal.ca/study/faculties.html",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Computer Science",
+     "courses": [
+      {
+       "name": "Bachelor of Computer Science (BCS)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Applied Computer Science (BACS)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Management",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce Co-op (BComm)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Management (BMgmt)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Biology (BSc or BA)"
+      },
+      {
+       "name": "Chemistry (BSc or BA)"
+      },
+      {
+       "name": "Mathematics (BSc or BA)"
+      },
+      {
+       "name": "Physics (BSc or BA)"
+      },
+      {
+       "name": "Psychology (BSc or BA)"
+      },
+      {
+       "name": "Neuroscience (BSc or BA)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts and Social Sciences",
+     "courses": [
+      {
+       "name": "English"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "Philosophy"
+      },
+      {
+       "name": "Political Science"
+      },
+      {
+       "name": "Sociology & Social Anthropology"
+      },
+      {
+       "name": "Music"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ualberta",
+   "name": "University of Alberta",
+   "short": "UAlberta",
+   "type": "public",
+   "city": "Edmonton",
+   "url": "https://www.ualberta.ca/",
+   "admissions_url": "https://www.ualberta.ca/en/engineering/admissions-programs/undergraduate/explore-programs/index.html",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Mechanical Engineering",
+       "years": 4,
+       "note": "5-year co-op option"
+      },
+      {
+       "name": "Bachelor of Science in Chemical Engineering",
+       "years": 4,
+       "note": "5-year co-op option"
+      },
+      {
+       "name": "Bachelor of Science in Civil Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Electrical Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Computer Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Petroleum Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Computing Science",
+       "note": "subject area; see official page"
+      },
+      {
+       "name": "Mathematics",
+       "note": "subject area; see official page"
+      },
+      {
+       "name": "Physics",
+       "note": "subject area; see official page"
+      },
+      {
+       "name": "Chemistry",
+       "note": "subject area; see official page"
+      },
+      {
+       "name": "Psychology",
+       "note": "subject area; see official page"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "umontreal",
+   "name": "Université de Montréal",
+   "short": "UdeM",
+   "type": "public",
+   "city": "Montreal",
+   "url": "https://www.umontreal.ca/",
+   "admissions_url": "https://admission.umontreal.ca/baccalaureats-4-ans/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Arts and Sciences (Faculté des arts et des sciences)",
+     "courses": [
+      {
+       "name": "Computer Science",
+       "years": 3,
+       "note": "Baccalauréat en informatique"
+      },
+      {
+       "name": "Mathematics",
+       "note": "Mathématiques"
+      },
+      {
+       "name": "Psychology",
+       "note": "Psychologie"
+      },
+      {
+       "name": "Chemistry",
+       "note": "Chimie"
+      },
+      {
+       "name": "Physics",
+       "note": "Physique"
+      },
+      {
+       "name": "Economics",
+       "note": "Sciences économiques"
+      }
+     ]
+    },
+    {
+     "name": "Health sciences programmes",
+     "courses": [
+      {
+       "name": "Nursing",
+       "note": "Formation initiale; see official page"
+      },
+      {
+       "name": "Kinesiology",
+       "note": "Kinésiologie; see official page"
+      },
+      {
+       "name": "Biochemistry and Molecular Medicine",
+       "note": "see official page"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

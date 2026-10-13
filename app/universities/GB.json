@@ -1,0 +1,604 @@
+{
+ "country": "GB",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "Applications to UK undergraduate courses are made through UCAS, the shared admissions service, using the UCAS Hub and an application form that includes a personal statement. Each university decides its own offers. Some courses have earlier deadlines than others, and many deadlines are well before the course starts.",
+  "official_url": "https://www.ucas.com/undergraduate/applying-to-university",
+  "notes": "Deadlines, entry requirements and course lists change every year and differ between England, Scotland, Wales and Northern Ireland (for example, many Scottish degrees run 4 years). Check UCAS and each university's course page for the entry year you want."
+ },
+ "universities": [
+  {
+   "id": "ucl",
+   "name": "University College London",
+   "short": "UCL",
+   "type": "public",
+   "city": "London",
+   "url": "https://www.ucl.ac.uk/",
+   "admissions_url": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering and Computing",
+     "courses": [
+      {
+       "name": "Biochemical Engineering BEng",
+       "years": 3
+      },
+      {
+       "name": "Chemical Engineering BEng"
+      },
+      {
+       "name": "Civil Engineering BEng"
+      },
+      {
+       "name": "Electronic and Electrical Engineering BEng"
+      },
+      {
+       "name": "Computer Science BSc"
+      },
+      {
+       "name": "Data Science BSc"
+      }
+     ]
+    },
+    {
+     "name": "Sciences",
+     "courses": [
+      {
+       "name": "Chemistry BSc"
+      },
+      {
+       "name": "Astrophysics BSc",
+       "years": 3
+      },
+      {
+       "name": "Human Neuroscience BSc"
+      },
+      {
+       "name": "Architecture BSc"
+      }
+     ]
+    },
+    {
+     "name": "Arts, Humanities and Social Sciences",
+     "courses": [
+      {
+       "name": "Economics BSc (Econ)"
+      },
+      {
+       "name": "History BA"
+      },
+      {
+       "name": "Geography BA"
+      },
+      {
+       "name": "Ancient History BA"
+      },
+      {
+       "name": "History of Art BA"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "manchester",
+   "name": "The University of Manchester",
+   "short": "UoM",
+   "type": "public",
+   "city": "Manchester",
+   "url": "https://www.manchester.ac.uk/",
+   "admissions_url": "https://www.manchester.ac.uk/study/undergraduate/courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Engineering",
+     "courses": [
+      {
+       "name": "Mechanical Engineering BEng",
+       "years": 3
+      },
+      {
+       "name": "Computer Science BSc",
+       "years": 3
+      },
+      {
+       "name": "Computer Science and Mathematics BSc",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "School of Social Sciences",
+     "courses": [
+      {
+       "name": "Law LLB",
+       "years": 3
+      },
+      {
+       "name": "Economics BSc",
+       "years": 3,
+       "note": "3 or 4 years with placement or study abroad"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Biology, Medicine and Health",
+     "courses": [
+      {
+       "name": "Medicine MBChB",
+       "years": 5
+      },
+      {
+       "name": "Biochemistry BSc",
+       "years": 3
+      },
+      {
+       "name": "Neuroscience BSc",
+       "years": 3
+      },
+      {
+       "name": "Psychology BSc",
+       "years": 3,
+       "note": "4 years with placement or study abroad"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "edinburgh",
+   "name": "The University of Edinburgh",
+   "short": "UoE",
+   "type": "public",
+   "city": "Edinburgh",
+   "url": "https://www.ed.ac.uk/",
+   "admissions_url": "https://study.ed.ac.uk/programmes/undergraduate-a-z",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Mathematics, Computing and Informatics",
+     "courses": [
+      {
+       "name": "Applied Mathematics BSc (Hons)",
+       "note": "3-4 years"
+      },
+      {
+       "name": "Artificial Intelligence BSc (Hons)",
+       "years": 4
+      },
+      {
+       "name": "Computer Science BSc (Hons)",
+       "years": 4
+      },
+      {
+       "name": "Computer Science and Mathematics BSc (Hons)",
+       "years": 4
+      },
+      {
+       "name": "Informatics MInf",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Engineering and Physical Sciences",
+     "courses": [
+      {
+       "name": "Chemical Engineering BEng (Hons)",
+       "note": "3-4 years"
+      },
+      {
+       "name": "Civil Engineering BEng (Hons)",
+       "note": "3-4 years"
+      },
+      {
+       "name": "Chemistry BSc (Hons)",
+       "note": "3-4 years"
+      },
+      {
+       "name": "Astrophysics BSc (Hons)",
+       "note": "3-4 years"
+      }
+     ]
+    },
+    {
+     "name": "Arts, Business, Law and Social Sciences",
+     "courses": [
+      {
+       "name": "Economics MA (Hons)",
+       "years": 4
+      },
+      {
+       "name": "History MA (Hons)",
+       "years": 4
+      },
+      {
+       "name": "English Literature MA (Hons)",
+       "years": 4
+      },
+      {
+       "name": "Business Management MA (Hons)",
+       "years": 4
+      },
+      {
+       "name": "International Relations MA (Hons)",
+       "years": 4
+      },
+      {
+       "name": "Law LLB (Hons/Ord)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "glasgow",
+   "name": "University of Glasgow",
+   "short": "UofG",
+   "type": "public",
+   "city": "Glasgow",
+   "url": "https://www.gla.ac.uk/",
+   "admissions_url": "https://www.gla.ac.uk/undergraduate/degrees/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering",
+     "courses": [
+      {
+       "name": "Aeronautical Engineering BEng/MEng"
+      },
+      {
+       "name": "Biomedical Engineering BEng/MEng"
+      },
+      {
+       "name": "Civil Engineering BEng/MEng"
+      },
+      {
+       "name": "Electronics & Electrical Engineering BEng/MEng"
+      },
+      {
+       "name": "Mechanical Engineering BEng/MEng"
+      }
+     ]
+    },
+    {
+     "name": "Science and Computing",
+     "courses": [
+      {
+       "name": "Chemistry BSc/MSci"
+      },
+      {
+       "name": "Physics / Theoretical Physics BSc/MSci"
+      },
+      {
+       "name": "Mathematics BSc/MA/MA(SocSci)/MSci"
+      },
+      {
+       "name": "Neuroscience BSc/MSci"
+      },
+      {
+       "name": "Artificial Intelligence BSc/MSci"
+      },
+      {
+       "name": "Software Engineering BSc/MSci"
+      }
+     ]
+    },
+    {
+     "name": "Medicine and Health",
+     "courses": [
+      {
+       "name": "Medicine MBChB"
+      },
+      {
+       "name": "Dentistry BDS"
+      },
+      {
+       "name": "Nursing BN"
+      },
+      {
+       "name": "Veterinary Medicine & Surgery BVMS"
+      }
+     ]
+    },
+    {
+     "name": "Arts, Law and Social Sciences",
+     "courses": [
+      {
+       "name": "Scots Law LLB"
+      },
+      {
+       "name": "English Literature MA"
+      },
+      {
+       "name": "History MA/MA(SocSci)"
+      },
+      {
+       "name": "Psychology BSc/MA/MA(SocSci)"
+      },
+      {
+       "name": "Economics BAcc/BSc/MA/MA(SocSci)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cardiff",
+   "name": "Cardiff University",
+   "short": "Cardiff",
+   "type": "public",
+   "city": "Cardiff",
+   "url": "https://www.cardiff.ac.uk/",
+   "admissions_url": "https://www.cardiff.ac.uk/study/undergraduate/courses/a-to-z",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Engineering",
+     "courses": [
+      {
+       "name": "Civil Engineering BEng"
+      },
+      {
+       "name": "Mechanical Engineering BEng"
+      },
+      {
+       "name": "Electrical and Electronic Engineering BEng"
+      },
+      {
+       "name": "Architectural Engineering BEng"
+      },
+      {
+       "name": "Medical Engineering BEng"
+      }
+     ]
+    },
+    {
+     "name": "School of Computational and Mathematical Sciences",
+     "courses": [
+      {
+       "name": "Computer Science BSc"
+      },
+      {
+       "name": "Mathematics BSc"
+      },
+      {
+       "name": "Financial Mathematics BSc"
+      },
+      {
+       "name": "Applied Software Engineering BSc"
+      }
+     ]
+    },
+    {
+     "name": "School of Physical, Chemical, and Environmental Sciences",
+     "courses": [
+      {
+       "name": "Physics BSc"
+      },
+      {
+       "name": "Astrophysics BSc"
+      },
+      {
+       "name": "Chemistry BSc"
+      },
+      {
+       "name": "Medicinal Chemistry BSc"
+      }
+     ]
+    },
+    {
+     "name": "School of Law and Politics",
+     "courses": [
+      {
+       "name": "Law LLB"
+      },
+      {
+       "name": "Law with Criminology LLB"
+      },
+      {
+       "name": "Law with Politics and International Relations LLB"
+      }
+     ]
+    },
+    {
+     "name": "Cardiff Business School",
+     "courses": [
+      {
+       "name": "Business Management BSc"
+      },
+      {
+       "name": "Business Economics BSc"
+      },
+      {
+       "name": "Banking and Finance BSc"
+      },
+      {
+       "name": "Economics BSc"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swansea",
+   "name": "Swansea University",
+   "short": "Swansea",
+   "type": "public",
+   "city": "Swansea",
+   "url": "https://www.swansea.ac.uk/",
+   "admissions_url": "https://www.swansea.ac.uk/undergraduate/courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Law",
+     "courses": [
+      {
+       "name": "Law LLB (Hons)",
+       "note": "3 or 4 years depending on route"
+      },
+      {
+       "name": "Law with Criminology LLB"
+      },
+      {
+       "name": "Business Law LLB"
+      },
+      {
+       "name": "Law with Politics LLB"
+      }
+     ]
+    },
+    {
+     "name": "Medical School",
+     "courses": [
+      {
+       "name": "Medicine MB BCh"
+      },
+      {
+       "name": "Biochemistry BSc"
+      },
+      {
+       "name": "Genetics BSc"
+      },
+      {
+       "name": "Medical Pharmacology BSc"
+      },
+      {
+       "name": "Pharmacy MPharm"
+      }
+     ]
+    },
+    {
+     "name": "School of Psychology",
+     "courses": [
+      {
+       "name": "Psychology BSc (Hons)",
+       "years": 3,
+       "note": "4 years with foundation year"
+      },
+      {
+       "name": "Psychology MSci"
+      },
+      {
+       "name": "Criminology and Psychology BSc (Hons)"
+      },
+      {
+       "name": "Education and Psychology BSc (Hons)"
+      }
+     ]
+    },
+    {
+     "name": "School of Engineering and Applied Sciences",
+     "courses": [
+      {
+       "name": "Chemical Engineering"
+      },
+      {
+       "name": "Biomedical Engineering"
+      },
+      {
+       "name": "Materials Science and Engineering"
+      },
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Sport and Exercise Science BSc"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "qub",
+   "name": "Queen's University Belfast",
+   "short": "QUB",
+   "type": "public",
+   "city": "Belfast",
+   "url": "https://www.qub.ac.uk/",
+   "admissions_url": "https://www.qub.ac.uk/courses/undergraduate/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering and Computing",
+     "courses": [
+      {
+       "name": "Aerospace Engineering MEng"
+      },
+      {
+       "name": "Mechanical Engineering BEng"
+      },
+      {
+       "name": "Civil Engineering BEng"
+      },
+      {
+       "name": "Chemical Engineering with a Year in Industry BEng"
+      },
+      {
+       "name": "Computer Science with Artificial Intelligence BSc"
+      }
+     ]
+    },
+    {
+     "name": "Science",
+     "courses": [
+      {
+       "name": "Mathematics BSc"
+      },
+      {
+       "name": "Physics BSc"
+      },
+      {
+       "name": "Biochemistry BSc"
+      },
+      {
+       "name": "Agricultural Sciences BSc"
+      },
+      {
+       "name": "Psychology BSc"
+      }
+     ]
+    },
+    {
+     "name": "Medicine, Dentistry and Health",
+     "courses": [
+      {
+       "name": "Medicine MB"
+      },
+      {
+       "name": "Dentistry BDS"
+      },
+      {
+       "name": "Pharmacy MPharm"
+      },
+      {
+       "name": "Professional Nursing Adult Nursing BSc"
+      }
+     ]
+    },
+    {
+     "name": "Law, Business and Arts",
+     "courses": [
+      {
+       "name": "Law LLB"
+      },
+      {
+       "name": "Economics BSc"
+      },
+      {
+       "name": "English BA"
+      },
+      {
+       "name": "History BA"
+      },
+      {
+       "name": "Architecture BSc"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

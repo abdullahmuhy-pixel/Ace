@@ -1,0 +1,561 @@
+{
+ "country": "KE",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "Admission to public university degree programmes in Kenya is mainly through the Kenya Universities and Colleges Central Placement Service (KUCCPS), based on performance in the Kenya Certificate of Secondary Education (KCSE). Applicants choose programmes on the KUCCPS online portal, where a cluster weight is calculated from their KCSE subjects, and placement is competitive and depends on the vacancies available. Universities also admit self-sponsored students directly and publish their own intakes and minimum requirements.",
+  "official_url": "https://kuccps.net",
+  "notes": "Application windows, the list of programmes and the number of places, and the cluster subjects and weights for each programme change every year. Check kuccps.net and the admissions page of the university each year."
+ },
+ "universities": [
+  {
+   "id": "ku",
+   "name": "Kenyatta University",
+   "short": "KU",
+   "type": "public",
+   "city": "Nairobi",
+   "url": "https://www.ku.ac.ke",
+   "admissions_url": "https://admissions.ku.ac.ke/all-categories/admissions-intakes/undergraduate-self-sponsored-programmes-for-september-2026-intake",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Engineering & Architecture",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Civil Engineering)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Science (Mechanical Engineering)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Science (Electrical and Electronic Engineering)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Science (Petroleum Engineering)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Science (Biomedical Engineering)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Architecture",
+       "years": 6
+      }
+     ]
+    },
+    {
+     "name": "School of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Science (Medical Laboratory Science)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Nursing and Public Health)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Foods, Nutrition and Dietetics)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Pure and Applied Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Computer Science)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Information Technology",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Actuarial Science)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Biochemistry)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Microbiology)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Mathematics and Computer Science)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Business, Economics and Tourism",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Economics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Economics and Finance",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Human Resource Management",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Hospitality and Tourism Management)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Education & Lifelong Learning",
+     "courses": [
+      {
+       "name": "Bachelor of Education (Arts)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education (Science)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education (Early Childhood Education)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education (Special Needs Education)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Law, Arts & Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (Full Time)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts (Communication and Media Studies)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts (Psychology)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in International Relations and Diplomacy",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uon",
+   "name": "University of Nairobi",
+   "short": "UoN",
+   "type": "public",
+   "city": "Nairobi",
+   "url": "https://www.uonbi.ac.ke",
+   "admissions_url": "https://www.uonbi.ac.ke/undergraduate-programmes",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBCHB)"
+      },
+      {
+       "name": "Bachelor of Dental Surgery"
+      },
+      {
+       "name": "Bachelor of Pharmacy"
+      },
+      {
+       "name": "Bachelor of Science in Nursing"
+      },
+      {
+       "name": "Bachelor of Science in Medical Laboratory Science & Technology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Civil Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Electrical and Electronic Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Mechanical Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Geospatial Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Petroleum Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Biosystems Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Built Environment",
+     "courses": [
+      {
+       "name": "Bachelor of Architectural Studies"
+      },
+      {
+       "name": "Bachelor of Architecture"
+      },
+      {
+       "name": "Bachelor of Quantity Surveying"
+      },
+      {
+       "name": "Bachelor of Construction Management"
+      },
+      {
+       "name": "Bachelor of Real Estate"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Agriculture",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Science in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science in Food Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Agribusiness Management"
+      },
+      {
+       "name": "Bachelor of Science in Fisheries and Aquaculture Management"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jkuat",
+   "name": "Jomo Kenyatta University of Agriculture and Technology",
+   "short": "JKUAT",
+   "type": "public",
+   "city": "Juja",
+   "url": "https://www.jkuat.ac.ke",
+   "admissions_url": "https://www.jkuat.ac.ke/programmes-bachelor/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering",
+     "courses": [
+      {
+       "name": "BSc. Civil Engineering"
+      },
+      {
+       "name": "BSc. Mechanical Engineering"
+      },
+      {
+       "name": "BSc. Electrical and Electronic Engineering"
+      },
+      {
+       "name": "BSc. Mechatronics Engineering"
+      },
+      {
+       "name": "BSc. Aerospace Engineering"
+      },
+      {
+       "name": "BSc. Telecommunication and Information Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Computing and Information Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Information Technology"
+      },
+      {
+       "name": "Bachelor of Business Information Technology"
+      },
+      {
+       "name": "Bachelor of Science Computer Technology"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+      },
+      {
+       "name": "Bachelor of Nursing"
+      },
+      {
+       "name": "Bachelor of Pharmacy"
+      },
+      {
+       "name": "BSc. Medical Laboratory Sciences (MLS)"
+      },
+      {
+       "name": "BSc. Physiotherapy"
+      },
+      {
+       "name": "BSc. Public Health"
+      }
+     ]
+    },
+    {
+     "name": "Architecture and Built Environment",
+     "courses": [
+      {
+       "name": "Bachelor of Construction Management",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Quantity Surveying",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Real Estate",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Landscape Architecture",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Business and Management",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce"
+      },
+      {
+       "name": "Bachelor of Science in Banking and Finance"
+      },
+      {
+       "name": "Bachelor of Science in Human Resource Management"
+      },
+      {
+       "name": "Bachelor of Supply Chain Management"
+      }
+     ]
+    },
+    {
+     "name": "Agriculture and Food Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Science in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science in Food Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Agricultural Economics and Rural Development"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "egerton",
+   "name": "Egerton University",
+   "short": "Egerton",
+   "type": "public",
+   "city": "Njoro",
+   "url": "https://www.egerton.ac.ke",
+   "admissions_url": "https://www.egerton.ac.ke/students-admissions/admissions/undergraduate-admission",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Agriculture",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Science in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science in Animal Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Food Science & Technology"
+      },
+      {
+       "name": "Bachelor of Science in Agricultural Economics"
+      },
+      {
+       "name": "Bachelor of Agribusiness Management"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+      },
+      {
+       "name": "Bachelor of Science in Clinical Medicine"
+      },
+      {
+       "name": "Bachelor of Science in Nursing"
+      },
+      {
+       "name": "Bachelor of Science in Foods Nutrition and Dietetics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Water and Environmental Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Manufacturing Engineering and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Instrumentation and Control Engineering"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "maseno",
+   "name": "Maseno University",
+   "short": "Maseno",
+   "type": "public",
+   "city": "Maseno",
+   "url": "https://www.maseno.ac.ke",
+   "admissions_url": "https://programmes.maseno.ac.ke/all_programmes",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Computing and Information Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Information Technology"
+      },
+      {
+       "name": "Bachelor of Science in Computer Technology"
+      }
+     ]
+    },
+    {
+     "name": "Agriculture and Environmental Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agribusiness Management"
+      },
+      {
+       "name": "Bachelor of Science in Animal Science"
+      },
+      {
+       "name": "Bachelor of Science in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science in Fisheries and Aquaculture"
+      }
+     ]
+    },
+    {
+     "name": "Business and Economics",
+     "courses": [
+      {
+       "name": "Bachelor of Business Administration"
+      },
+      {
+       "name": "Bachelor of Economics"
+      },
+      {
+       "name": "Bachelor of Science in Accounting and Finance"
+      },
+      {
+       "name": "Bachelor of Procurement and Supply Chain Management"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine & Bachelor of Surgery"
+      },
+      {
+       "name": "Bachelor of Pharmacy"
+      },
+      {
+       "name": "Bachelor of Science in Nursing"
+      },
+      {
+       "name": "Bachelor of Science in Public Health"
+      },
+      {
+       "name": "Bachelor of Science in Medical Laboratory Science"
+      }
+     ]
+    },
+    {
+     "name": "Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Arts"
+      },
+      {
+       "name": "Bachelor of Science in Education"
+      },
+      {
+       "name": "Bachelor of Education in Early Childhood Education"
+      },
+      {
+       "name": "Bachelor of Education in Special Needs Education"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

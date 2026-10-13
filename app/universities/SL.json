@@ -1,0 +1,383 @@
+{
+ "country": "SL",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "In Sierra Leone each university receives and decides applications itself; there is no single national placement system for universities. For degree programmes the universities consulted ask for five credits at WASSCE or GCE O-Level (in not more than two sittings) including English Language, with extra subject requirements for some programmes. Diploma and certificate programmes ask for fewer credits.",
+  "official_url": "https://admissions.usl.edu.sl",
+  "notes": "Application windows, PIN or application procedures, programme availability and individual programme requirements change every year. Check the admissions page of the university you want (for example admissions.usl.edu.sl) each year."
+ },
+ "universities": [
+  {
+   "id": "usl",
+   "name": "University of Sierra Leone",
+   "short": "USL",
+   "type": "public",
+   "city": "Freetown",
+   "url": "https://usl.edu.sl",
+   "admissions_url": "https://admissions.usl.edu.sl",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Fourah Bay College: Faculty of Arts",
+     "courses": [
+      {
+       "name": "Bachelor of Arts in English",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in French",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Linguistics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Arabic",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Fourah Bay College: Faculty of Pure and Applied Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Biological Sciences",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Chemistry",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Physics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Geology",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Marine Science",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Mathematics and Statistics",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Fourah Bay College: Faculty of Engineering and Architecture",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Engineering in Electrical and Electronic Engineering",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Engineering in Mining Engineering",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science with Honours in Architecture",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Fourah Bay College: Faculty of Economics and Development Studies",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Accounting and Finance",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Economics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Commerce",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Fourah Bay College: Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Political Science",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Social Science in Sociology",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Social Work",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Peace and Conflict Studies",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "College of Medicine and Allied Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine Bachelor of Surgery",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Nursing",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Medical Laboratory Sciences",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science (Hons) in Public Health",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "njala",
+   "name": "Njala University",
+   "short": "Njala",
+   "type": "public",
+   "city": "Njala",
+   "url": "https://www.njala.edu.sl",
+   "admissions_url": "https://njala.edu.sl/admissions/undergraduate-admissions",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Agriculture and Food Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science with Honours in Agriculture General"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Animal Science"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Crop Science"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Soil Science"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Nutrition and Dietetics"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Agribusiness"
+      }
+     ]
+    },
+    {
+     "name": "School of Basic Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science with Honours in Biological Sciences"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Chemistry"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Physics"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Mathematics"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Statistics"
+      }
+     ]
+    },
+    {
+     "name": "School of Environmental Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science with Honours in Environment and Sustainable Development"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Development Studies"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Geography and Geographical Information Systems"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Surveying and Geo-informatics"
+      }
+     ]
+    },
+    {
+     "name": "School of Natural Resources Management",
+     "courses": [
+      {
+       "name": "Bachelor of Science with Honours in Forestry"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Aquaculture and Fisheries Management"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Wildlife Management and Conservation"
+      }
+     ]
+    },
+    {
+     "name": "School of Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science with Honours in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Agricultural Engineering"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Electronics and Telecommunication"
+      },
+      {
+       "name": "Bachelor of Science with Honours in Industrial Technology"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unimak",
+   "name": "University of Makeni",
+   "short": "UNIMAK",
+   "type": "private",
+   "city": "Makeni",
+   "url": "https://unimak.edu.sl",
+   "admissions_url": "https://unimak.edu.sl/application-and-entry-requirements/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Commerce and Management",
+     "courses": [
+      {
+       "name": "Accounting and Finance"
+      },
+      {
+       "name": "Banking and Finance"
+      },
+      {
+       "name": "Business Administration and Management"
+      },
+      {
+       "name": "Human Resource Management"
+      },
+      {
+       "name": "Procurement Logistics and Supply Chain Management"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Development Studies"
+      },
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Public Administration and Management"
+      },
+      {
+       "name": "Social Work"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Nursing and Allied Health Sciences",
+     "courses": [
+      {
+       "name": "Nursing"
+      },
+      {
+       "name": "Public Health"
+      },
+      {
+       "name": "Clinical Psychology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Mass Communication and Computer Science",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Mass Communication"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ebkust",
+   "name": "Ernest Bai Koroma University of Science and Technology",
+   "short": "EBKUST",
+   "type": "public",
+   "city": "Makeni",
+   "url": "https://ebkustsl.edu.sl",
+   "admissions_url": "https://ebkustsl.edu.sl/admissions/admission-requirement/undergraduate",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Hons) in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science (Hons) in Business Information Technology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Agriculture and Natural Resource Management",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Honours) in Agricultural Economics"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Agribusiness Management"
+      },
+      {
+       "name": "B.Sc Agriculture General"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Agricultural Extension"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Crop Science and Crop Protection"
+      },
+      {
+       "name": "B.Sc in Nutrition and Dietetics"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

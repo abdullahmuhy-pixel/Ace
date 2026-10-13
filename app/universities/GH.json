@@ -1,0 +1,609 @@
+{
+ "country": "GH",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "In Ghana each public and private university sets its own admission and runs its own application; there is no single national placement for universities. Applicants are mainly assessed on their WASSCE results (core subjects plus relevant electives), and universities publish programme-specific entry requirements, with mature-student, diploma/HND and international routes as well. The Ghana Tertiary Education Commission (GTEC) regulates and accredits tertiary institutions and has directed that entrance tests must not replace the WASSCE-based minimum entry requirements.",
+  "official_url": "https://gtec.edu.gh",
+  "notes": "Application windows, vouchers, programme availability and grades required for popular programmes change every year. Check the admissions page of each university (and gtec.edu.gh for accredited institutions) before applying."
+ },
+ "universities": [
+  {
+   "id": "ug",
+   "name": "University of Ghana",
+   "short": "UG",
+   "type": "public",
+   "city": "Accra",
+   "url": "https://www.ug.edu.gh",
+   "admissions_url": "https://admissions.ug.edu.gh/undergraduate/overview",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Basic and Applied Sciences",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Actuarial Science"
+      },
+      {
+       "name": "Biomedical Engineering"
+      },
+      {
+       "name": "Information Technology"
+      },
+      {
+       "name": "Mathematical Sciences"
+      }
+     ]
+    },
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "Medicine and Surgery (MB ChB)"
+      },
+      {
+       "name": "Dental Surgery (BDS)"
+      },
+      {
+       "name": "Nursing"
+      },
+      {
+       "name": "Physiotherapy"
+      },
+      {
+       "name": "Midwifery"
+      },
+      {
+       "name": "Doctor of Pharmacy"
+      }
+     ]
+    },
+    {
+     "name": "College of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education (Junior High School Specialism)"
+      },
+      {
+       "name": "Bachelor of Education (Early Grade Specialism)"
+      },
+      {
+       "name": "Bachelor of Education (Upper Grade Specialism)"
+      },
+      {
+       "name": "Bachelor of Science in Education"
+      }
+     ]
+    },
+    {
+     "name": "University of Ghana Business School",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Administration"
+      },
+      {
+       "name": "BSc Agriculture Agribusiness"
+      },
+      {
+       "name": "BSc Agriculture Agricultural Economics"
+      },
+      {
+       "name": "BSc Agriculture Animal Science"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "knust",
+   "name": "Kwame Nkrumah University of Science and Technology",
+   "short": "KNUST",
+   "type": "public",
+   "city": "Kumasi",
+   "url": "https://www.knust.edu.gh",
+   "admissions_url": "https://www.knust.edu.gh/admissions/prospective/applying",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Engineering",
+     "courses": [
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      },
+      {
+       "name": "Electrical/Electronic Engineering"
+      },
+      {
+       "name": "Computer Engineering"
+      },
+      {
+       "name": "Chemical Engineering"
+      },
+      {
+       "name": "Petroleum Engineering"
+      }
+     ]
+    },
+    {
+     "name": "College of Science",
+     "courses": [
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Biochemistry"
+      },
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Mathematics"
+      },
+      {
+       "name": "Physics"
+      },
+      {
+       "name": "Statistics"
+      }
+     ]
+    },
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "Human Biology (Medicine) (MBChB)"
+      },
+      {
+       "name": "Dental Surgery (BDS)"
+      },
+      {
+       "name": "Nursing"
+      },
+      {
+       "name": "Pharmacy (Pharm D)"
+      },
+      {
+       "name": "Medical Laboratory Science"
+      },
+      {
+       "name": "Physiotherapy and Sports Science"
+      }
+     ]
+    },
+    {
+     "name": "College of Art and Built Environment",
+     "courses": [
+      {
+       "name": "Architecture"
+      },
+      {
+       "name": "Quantity Surveying and Construction Economics"
+      },
+      {
+       "name": "Land Economy"
+      },
+      {
+       "name": "Communication Design"
+      },
+      {
+       "name": "Fashion Design"
+      }
+     ]
+    },
+    {
+     "name": "College of Agriculture and Natural Resources",
+     "courses": [
+      {
+       "name": "Agriculture"
+      },
+      {
+       "name": "Agribusiness Management"
+      },
+      {
+       "name": "Agricultural Biotechnology"
+      },
+      {
+       "name": "Forest Resources Technology"
+      },
+      {
+       "name": "Aquaculture and Water Resource Management"
+      }
+     ]
+    },
+    {
+     "name": "College of Humanities and Social Sciences",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "English"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "Law (LLB)"
+      },
+      {
+       "name": "Business Administration (Human Resource Management)"
+      },
+      {
+       "name": "Social Work"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucc",
+   "name": "University of Cape Coast",
+   "short": "UCC",
+   "type": "public",
+   "city": "Cape Coast",
+   "url": "https://ucc.edu.gh",
+   "admissions_url": "https://ucc.edu.gh/main/applicants-and-students/undergraduate-programmes",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Education Studies",
+     "courses": [
+      {
+       "name": "B.Ed. (Science)"
+      },
+      {
+       "name": "B.Ed. (Mathematics)"
+      },
+      {
+       "name": "B.Ed. (Arts)"
+      },
+      {
+       "name": "B.Ed. (Basic Education)"
+      },
+      {
+       "name": "B.Ed. (Early Childhood Education)"
+      }
+     ]
+    },
+    {
+     "name": "School of Business",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce (Accounting)"
+      },
+      {
+       "name": "Bachelor of Commerce (Finance)"
+      },
+      {
+       "name": "Bachelor of Commerce (Management)"
+      },
+      {
+       "name": "Bachelor of Commerce (Marketing)"
+      },
+      {
+       "name": "Bachelor of Commerce (Human Resources Management)"
+      }
+     ]
+    },
+    {
+     "name": "School of Physical Sciences",
+     "courses": [
+      {
+       "name": "B.Sc. (Computer Science)"
+      },
+      {
+       "name": "B.Sc. (Information Technology)"
+      },
+      {
+       "name": "B.Sc. (Mathematics)"
+      },
+      {
+       "name": "B.Sc. (Statistics)"
+      },
+      {
+       "name": "B.Sc. (Physics)"
+      },
+      {
+       "name": "B.Sc. (Actuarial Science)"
+      }
+     ]
+    },
+    {
+     "name": "School of Biological Sciences",
+     "courses": [
+      {
+       "name": "B.Sc. (Biochemistry)"
+      },
+      {
+       "name": "B.Sc. (Environmental Science)"
+      },
+      {
+       "name": "B.Sc. (Fisheries & Aquatic Science)"
+      },
+      {
+       "name": "B.Sc. (Molecular Biology and Biotechnology)"
+      }
+     ]
+    },
+    {
+     "name": "College of Health and Allied Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+      },
+      {
+       "name": "B.Sc. (Nursing)"
+      },
+      {
+       "name": "B.Sc. (Biomedical Sciences)"
+      },
+      {
+       "name": "B.Sc. (Medical Laboratory Technology)"
+      },
+      {
+       "name": "B.Sc. (Physician Assistant Studies)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Science",
+     "courses": [
+      {
+       "name": "B.A. (Social Science)"
+      },
+      {
+       "name": "B.A. (Anthropology)"
+      },
+      {
+       "name": "B.Sc. (Hospitality Management)"
+      },
+      {
+       "name": "B.Sc. (Tourism Management)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uds",
+   "name": "University for Development Studies",
+   "short": "UDS",
+   "type": "public",
+   "city": "Tamale",
+   "url": "https://www.uds.edu.gh",
+   "admissions_url": "https://www.uds.edu.gh/academics/programmes/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Business",
+     "courses": [
+      {
+       "name": "BSc. Accounting"
+      },
+      {
+       "name": "BSc. Banking and Finance"
+      },
+      {
+       "name": "BSc. Marketing"
+      },
+      {
+       "name": "BSc. Human Resource Management"
+      },
+      {
+       "name": "BSc. Procurement and Supply Chain Management"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Agriculture, Food and Consumer Sciences",
+     "courses": [
+      {
+       "name": "BSc. Agribusiness"
+      },
+      {
+       "name": "BSc. Food Science and Technology"
+      },
+      {
+       "name": "BSc. Agricultural and Food Economics"
+      },
+      {
+       "name": "BSc. Food Systems"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Physical Sciences",
+     "courses": [
+      {
+       "name": "BSc. Computer Science"
+      },
+      {
+       "name": "BSc. Mathematics"
+      },
+      {
+       "name": "BSc. Statistics"
+      },
+      {
+       "name": "BSc. Actuarial Science"
+      },
+      {
+       "name": "BSc. Engineering Physics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Bioscience",
+     "courses": [
+      {
+       "name": "BSc. Biochemistry"
+      },
+      {
+       "name": "BSc. Biological Science"
+      },
+      {
+       "name": "BSc. Aquaculture and Fisheries Science"
+      },
+      {
+       "name": "BSc. Forensic Science"
+      }
+     ]
+    },
+    {
+     "name": "School of Nursing and Midwifery",
+     "courses": [
+      {
+       "name": "BSc. Nursing"
+      },
+      {
+       "name": "BSc. Midwifery"
+      },
+      {
+       "name": "BSc. Paediatric Nursing"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education",
+     "courses": [
+      {
+       "name": "BEd. Basic Education"
+      },
+      {
+       "name": "BEd. Early Childhood Care and Education"
+      },
+      {
+       "name": "BEd. Business Studies"
+      },
+      {
+       "name": "BEd. Social Science"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uew",
+   "name": "University of Education, Winneba",
+   "short": "UEW",
+   "type": "public",
+   "city": "Winneba",
+   "url": "https://www.uew.edu.gh",
+   "admissions_url": "https://uew.edu.gh/admissions/direct",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Science Education",
+     "courses": [
+      {
+       "name": "B.Sc. (Chemistry Education)",
+       "years": 4
+      },
+      {
+       "name": "B.Sc. (Physics Education)",
+       "years": 4
+      },
+      {
+       "name": "B.Sc. (Integrated Science Education)",
+       "years": 4
+      },
+      {
+       "name": "B.Ed Mathematics Education",
+       "years": 4
+      },
+      {
+       "name": "B.Ed Computing Education",
+       "years": 4
+      },
+      {
+       "name": "B.Sc. Environmental Science",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Applied Behavioural Sciences in Education",
+     "courses": [
+      {
+       "name": "B.Ed. Early Grade Education",
+       "years": 4
+      },
+      {
+       "name": "B.Ed. Psychology",
+       "years": 4
+      },
+      {
+       "name": "B.Ed. Counselling Psychology",
+       "years": 4
+      },
+      {
+       "name": "B.Ed. Special Education",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ashesi",
+   "name": "Ashesi University",
+   "short": "Ashesi",
+   "type": "private",
+   "city": "Berekuso",
+   "url": "https://ashesi.edu.gh",
+   "admissions_url": "https://ashesi.edu.gh/how-to-apply/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Computer Science and Information Systems",
+     "courses": [
+      {
+       "name": "Computer Science (BSc)"
+      },
+      {
+       "name": "Computer Engineering (BSc)"
+      },
+      {
+       "name": "Management Information Systems (BSc)"
+      }
+     ]
+    },
+    {
+     "name": "Engineering",
+     "courses": [
+      {
+       "name": "Electrical and Electronics Engineering (BSc)"
+      },
+      {
+       "name": "Mechanical Engineering (BSc)"
+      },
+      {
+       "name": "Mechatronic Engineering (BSc)"
+      },
+      {
+       "name": "Biological Engineering (BSc)"
+      }
+     ]
+    },
+    {
+     "name": "Economics and Business Administration",
+     "courses": [
+      {
+       "name": "Business Administration (BSc)"
+      },
+      {
+       "name": "Economics (BSc)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1434 @@
+{
+ "country": "ZA",
+ "updated": "2026-10-13",
+ "admissions_overview": {
+  "summary": "Admission to South African public universities is handled by each university directly; there is no single central application service. Applicants usually apply online to each university, and are considered mainly on their National Senior Certificate (NSC) results, with a Bachelor's pass needed for degree study. Most degrees also set minimum levels in specific subjects (for example Mathematics for engineering, science and commerce, and Physical Sciences or Life Sciences for health and science programmes), and some programmes add the National Benchmark Tests (NBTs), an interview or a portfolio. Applicants with Cambridge, IB or other school-leaving qualifications are assessed separately. Entry requirements are published in each university's prospectus, so check the current prospectus. NSFAS (the National Student Financial Aid Scheme) is the main state bursary and loan scheme for eligible students at public universities.",
+  "official_url": "https://www.nsfas.org.za",
+  "notes": "Application opening and closing dates, programme lists and the minimum requirements for each programme change every year, and many programmes close early. Always check the current prospectus and admissions page of each university. Apply for NSFAS funding separately through the NSFAS website."
+ },
+ "universities": [
+  {
+   "id": "uct",
+   "name": "University of Cape Town",
+   "short": "UCT",
+   "type": "public",
+   "city": "Cape Town",
+   "url": "https://www.uct.ac.za",
+   "admissions_url": "https://uct.ac.za/students/applications-apply-undergraduate-qualifications/application-procedure",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering & the Built Environment",
+     "courses": [
+      {
+       "name": "BSc (Engineering) in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Chemical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Mechatronics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Architectural Studies",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Occupational Therapy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Audiology",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Actuarial Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Applied Mathematics",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biological Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce",
+     "courses": [
+      {
+       "name": "Bachelor of Business Science",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Commerce in Accounting",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Economics",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Information Systems",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Humanities and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Social Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Fine Art",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wits",
+   "name": "University of the Witwatersrand",
+   "short": "Wits",
+   "type": "public",
+   "city": "Johannesburg",
+   "url": "https://www.wits.ac.za",
+   "admissions_url": "https://www.wits.ac.za/applications/",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering & the Built Environment",
+     "courses": [
+      {
+       "name": "BSc (Engineering) in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Mining Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc (Engineering) in Chemical Engineering",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Architectural Studies",
+       "years": 3
+      },
+      {
+       "name": "BSc in Construction Studies",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBBCh)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Dental Science",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biological Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Physics",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce, Law & Management",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce in Accounting",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Economics",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Actuarial Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Education",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Fine Arts",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "su",
+   "name": "Stellenbosch University",
+   "short": "SU",
+   "type": "public",
+   "city": "Stellenbosch",
+   "url": "https://www.su.ac.za",
+   "admissions_url": "https://www.su.ac.za/en/apply",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "BEng in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Electrical and Electronic Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Industrial Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Chemical Engineering",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Medicine & Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Dietetics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Occupational Therapy",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Molecular Biology and Biotechnology",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economic & Management Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Management Sciences",
+       "years": 3
+      },
+      {
+       "name": "BCom in Actuarial Science",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of AgriSciences and Law",
+     "courses": [
+      {
+       "name": "BScAgric in Animal Sciences",
+       "years": 4
+      },
+      {
+       "name": "BScAgric in Plant Sciences",
+       "years": 4
+      },
+      {
+       "name": "BSc in Viticulture and Oenology",
+       "years": 4
+      },
+      {
+       "name": "BSc in Food Science",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "up",
+   "name": "University of Pretoria",
+   "short": "UP",
+   "type": "public",
+   "city": "Pretoria",
+   "url": "https://www.up.ac.za",
+   "admissions_url": "https://www.up.ac.za/online-application/online-application-0",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering, Built Environment & Information Technology",
+     "courses": [
+      {
+       "name": "BEng in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Mining Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Chemical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc in Information Technology",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Architecture",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Dentistry (BChD)",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing Science",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Natural & Agricultural Sciences",
+     "courses": [
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Actuarial and Financial Mathematics",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biological Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Agriculture",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economic & Management Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting Sciences",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Financial Sciences",
+       "years": 3
+      },
+      {
+       "name": "BCom in Informatics",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Veterinary Science and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Veterinary Science (BVSc)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Veterinary Nursing",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uj",
+   "name": "University of Johannesburg",
+   "short": "UJ",
+   "type": "public",
+   "city": "Johannesburg",
+   "url": "https://www.uj.ac.za",
+   "admissions_url": "https://www.uj.ac.za/admission-aid/undergraduate/",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering & the Built Environment",
+     "courses": [
+      {
+       "name": "BEng Tech in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng Tech in Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng Tech in Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Industrial Engineering",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Architecture",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Health Sciences in Radiography",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Health Sciences in Biomedical Technology",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Health Sciences in Chiropractic",
+       "years": 5
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Chemistry",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Business & Economics",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Marketing Management",
+       "years": 3
+      },
+      {
+       "name": "BCom in Human Resource Management",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Intermediate Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Communication",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Psychology",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ukzn",
+   "name": "University of KwaZulu-Natal",
+   "short": "UKZN",
+   "type": "public",
+   "city": "Durban",
+   "url": "https://www.ukzn.ac.za",
+   "admissions_url": "https://applications.ukzn.ac.za/",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Optometry",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Dental Therapy",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Agriculture, Engineering & Science",
+     "courses": [
+      {
+       "name": "BSc in Engineering (Civil)",
+       "years": 4
+      },
+      {
+       "name": "BSc in Engineering (Electrical)",
+       "years": 4
+      },
+      {
+       "name": "BSc in Engineering (Mechanical)",
+       "years": 4
+      },
+      {
+       "name": "BSc in Agricultural Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Education",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Psychology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Law & Management Studies",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Commerce in Accounting",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Economics",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Business Administration",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ufs",
+   "name": "University of the Free State",
+   "short": "UFS",
+   "type": "public",
+   "city": "Bloemfontein",
+   "url": "https://www.ufs.ac.za",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Dietetics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Natural & Agricultural Sciences",
+     "courses": [
+      {
+       "name": "BSc in Computer Science and Informatics",
+       "years": 3
+      },
+      {
+       "name": "BSc in Agriculture",
+       "years": 4
+      },
+      {
+       "name": "BSc in Biochemistry",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economic & Management Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Business Management",
+       "years": 3
+      },
+      {
+       "name": "BCom in Marketing Management",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Law",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of the Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Psychology",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nwu",
+   "name": "North-West University",
+   "short": "NWU",
+   "type": "public",
+   "city": "Potchefstroom",
+   "url": "https://www.nwu.ac.za",
+   "admissions_url": "https://studies.nwu.ac.za/studies/apply",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "BEng in Chemical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Electrical and Electronic Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Industrial Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng in Mechatronic Engineering",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Dietetics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Health Sciences in Physiotherapy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Natural and Agricultural Sciences",
+     "courses": [
+      {
+       "name": "BSc in Computer Science and Information Systems",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biological Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Agriculture",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economic and Management Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Industrial Psychology",
+       "years": 3
+      },
+      {
+       "name": "BCom in Management Accountancy",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Intermediate Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rhodes",
+   "name": "Rhodes University",
+   "short": "Rhodes",
+   "type": "public",
+   "city": "Makhanda",
+   "url": "https://www.ru.ac.za",
+   "admissions_url": "https://www.ru.ac.za/admissiongateway/",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematics",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biochemistry",
+       "years": 3
+      },
+      {
+       "name": "BSc in Geology",
+       "years": 3
+      },
+      {
+       "name": "BSc in Ichthyology and Fisheries Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce in Accounting",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Economics",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Business Science",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Commerce in Information Systems",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Journalism and Media Studies",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Social Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Fine Art",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uwc",
+   "name": "University of the Western Cape",
+   "short": "UWC",
+   "type": "public",
+   "city": "Cape Town",
+   "url": "https://www.uwc.ac.za",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Community and Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Dietetics",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Natural Sciences",
+     "courses": [
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biotechnology",
+       "years": 3
+      },
+      {
+       "name": "BSc in Chemical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Economic and Management Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Information Systems",
+       "years": 3
+      },
+      {
+       "name": "BCom in Industrial Psychology",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Law",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts and Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Psychology",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mandela",
+   "name": "Nelson Mandela University",
+   "short": "NMU",
+   "type": "public",
+   "city": "Gqeberha",
+   "url": "https://www.mandela.ac.za",
+   "admissions_url": "https://www.mandela.ac.za/Study-at-Mandela/Application",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering, the Built Environment & Information Technology",
+     "courses": [
+      {
+       "name": "BEng Tech in Civil Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng Tech in Electrical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BEng Tech in Mechanical Engineering",
+       "years": 4
+      },
+      {
+       "name": "BSc in Computer Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Architectural Studies",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)",
+       "years": 6
+      },
+      {
+       "name": "Bachelor of Pharmacy",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Nursing",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc in Mathematical Statistics",
+       "years": 3
+      },
+      {
+       "name": "BSc in Biochemistry",
+       "years": 3
+      },
+      {
+       "name": "BSc in Marine Biology",
+       "years": 3
+      },
+      {
+       "name": "BSc in Chemistry",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Business and Economic Sciences",
+     "courses": [
+      {
+       "name": "BCom in Accounting",
+       "years": 3
+      },
+      {
+       "name": "BCom in Economics",
+       "years": 3
+      },
+      {
+       "name": "BCom in Marketing Management",
+       "years": 3
+      },
+      {
+       "name": "BCom in Human Resource Management",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Education and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unisa",
+   "name": "University of South Africa",
+   "short": "UNISA",
+   "type": "public",
+   "city": "Pretoria",
+   "url": "https://www.unisa.ac.za",
+   "admissions_url": "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications",
+   "verified_on": "2026-10-13",
+   "faculties": [
+    {
+     "name": "College of Economic and Management Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce in Accounting Sciences",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Economics",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Business Management",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Commerce in Human Resource Management",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education in Foundation Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Intermediate Phase Teaching",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Education in Senior Phase and FET Teaching",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "College of Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB)",
+       "years": 4
+      },
+      {
+       "name": "Bachelor of Arts in Law",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Science, Engineering and Technology",
+     "courses": [
+      {
+       "name": "BSc in Computing",
+       "years": 3
+      },
+      {
+       "name": "BSc in Mathematical Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Life Sciences",
+       "years": 3
+      },
+      {
+       "name": "BSc in Environmental Management",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "College of Human Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Arts",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Psychology",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Arts in Communication Science",
+       "years": 3
+      },
+      {
+       "name": "Bachelor of Social Work",
+       "years": 4
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

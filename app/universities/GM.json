@@ -1,0 +1,267 @@
+{
+ "country": "GM",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "In The Gambia there is no single national university placement system; applicants apply to the university directly, usually through its online portal. The University of The Gambia asks for WASSCE or GCE O-Level with at least five credits including English Language and Mathematics, with a separate route for mature students. The National Accreditation and Quality Assurance Authority (NAQAA) accredits programmes and registers tertiary institutions.",
+  "official_url": "https://www.utg.edu.gm/admissions/",
+  "notes": "Application windows, programme availability and entry requirements for each programme change every year. Check the admissions page of the university, and naqaa.gm for accredited institutions."
+ },
+ "universities": [
+  {
+   "id": "utg",
+   "name": "University of The Gambia",
+   "short": "UTG",
+   "type": "public",
+   "city": "Serrekunda",
+   "url": "https://www.utg.edu.gm",
+   "admissions_url": "https://www.utg.edu.gm/admissions/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "School of Agriculture and Environment Sciences",
+     "courses": [
+      {
+       "name": "BSc Agriculture",
+       "years": 4
+      },
+      {
+       "name": "BSc Agricultural Economics",
+       "years": 4
+      },
+      {
+       "name": "BSc Agribusiness Management",
+       "years": 4
+      },
+      {
+       "name": "BSc Horticulture",
+       "years": 4
+      },
+      {
+       "name": "BSc Fisheries and Aquaculture",
+       "years": 4
+      },
+      {
+       "name": "BSc Food Science and Technology",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Arts and Sciences",
+     "courses": [
+      {
+       "name": "B.A. English",
+       "years": 4
+      },
+      {
+       "name": "B.A. History",
+       "years": 4
+      },
+      {
+       "name": "BSc Political Science",
+       "years": 4
+      },
+      {
+       "name": "BSc Psychology",
+       "years": 4
+      },
+      {
+       "name": "BSc Biology",
+       "years": 4
+      },
+      {
+       "name": "BSc Mathematics",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "School of Business and Public Administration",
+     "courses": [
+      {
+       "name": "BSc Economics"
+      },
+      {
+       "name": "BSc Banking and Finance"
+      },
+      {
+       "name": "BSc Accountancy"
+      },
+      {
+       "name": "BSc Marketing"
+      },
+      {
+       "name": "BSc Human Resource Management"
+      },
+      {
+       "name": "BA Public Administration"
+      }
+     ]
+    },
+    {
+     "name": "School of Medicine and Allied Health Sciences",
+     "courses": [
+      {
+       "name": "M.B/Ch.B. Medicine"
+      },
+      {
+       "name": "Bachelor of Dental Surgery (BDS)"
+      },
+      {
+       "name": "Doctor of Pharmacy (PharmD)"
+      },
+      {
+       "name": "BSc. Hons Medical Laboratory Science (MLS)"
+      },
+      {
+       "name": "BSc. Nursing and Reproductive Health"
+      },
+      {
+       "name": "BSc. Public and Environmental Health"
+      }
+     ]
+    },
+    {
+     "name": "School of Information, Technology and Communications",
+     "courses": [
+      {
+       "name": "BSc. Computer Science"
+      },
+      {
+       "name": "BSc. Information Systems"
+      },
+      {
+       "name": "BSc. Telecommunications"
+      }
+     ]
+    },
+    {
+     "name": "School of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Arts (Education) in English"
+      },
+      {
+       "name": "Bachelor of Arts (Education) in History"
+      },
+      {
+       "name": "Bachelor of Science (Education) in Mathematics"
+      },
+      {
+       "name": "Bachelor of Science (Education) in Biology"
+      },
+      {
+       "name": "Bachelor of Science (Education) in Chemistry"
+      },
+      {
+       "name": "Bachelor of Science (Education) in Physics"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ueg",
+   "name": "University of Education, The Gambia",
+   "short": "UEG",
+   "type": "public",
+   "city": "Brikama",
+   "url": "https://gc.edu.gm",
+   "admissions_url": "https://gc.edu.gm/sed/2026/05/20/admissions/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Bachelor of Science (Education) programmes",
+     "courses": [
+      {
+       "name": "B.Sc. Ed Biology"
+      },
+      {
+       "name": "B.Sc. Ed Chemistry"
+      },
+      {
+       "name": "B.Sc. Ed Physics"
+      },
+      {
+       "name": "B.Sc. Ed Mathematics"
+      },
+      {
+       "name": "B.Sc. Ed Agriculture"
+      },
+      {
+       "name": "B.Sc. Ed Economics"
+      }
+     ]
+    },
+    {
+     "name": "Bachelor of Arts (Education) programmes",
+     "courses": [
+      {
+       "name": "B.A. Ed English"
+      },
+      {
+       "name": "B.A. Ed French"
+      },
+      {
+       "name": "B.A. Ed History"
+      },
+      {
+       "name": "B.A. Ed Geography"
+      },
+      {
+       "name": "B.A. Ed Islamic Studies"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "iou",
+   "name": "International Open University",
+   "short": "IOU",
+   "type": "other",
+   "city": "The Gambia (online)",
+   "url": "https://iou.edu.gm",
+   "admissions_url": "https://iou.edu.gm/program/degree/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Departments of Information Technology and Psychology",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Information Technology (BSc IT)"
+      },
+      {
+       "name": "Bachelor of Science Degree in Psychology (BSc PSY)"
+      }
+     ]
+    },
+    {
+     "name": "Departments of Arabic, Islamic Studies and Islamic Economics",
+     "courses": [
+      {
+       "name": "Bachelors of Arts in Arabic Language Studies (BA ALS)"
+      },
+      {
+       "name": "Bachelor of Arts in Islamic Studies (BAIS)"
+      },
+      {
+       "name": "Bachelor of Science in Islamic Economics, Banking & Finance (B.Sc. IEBF)"
+      }
+     ]
+    },
+    {
+     "name": "Departments of Business Administration and Education",
+     "courses": [
+      {
+       "name": "Bachelor of Business Administration"
+      },
+      {
+       "name": "Bachelor of Education Degree with specialization in English (B.Ed. English)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

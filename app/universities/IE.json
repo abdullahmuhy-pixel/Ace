@@ -1,0 +1,501 @@
+{
+ "country": "IE",
+ "updated": "2026-10-07",
+ "admissions_overview": {
+  "summary": "Applications for most undergraduate courses in Irish higher education institutions go through the Central Applications Office (CAO). The institutions decide who is admitted and instruct CAO to make offers to successful candidates. CAO also lists access routes such as DARE and HEAR, mature applicants and medicine entry.",
+  "official_url": "https://www.cao.ie/",
+  "notes": "The CAO application opens each autumn for the following year's entry (the 2027 form opens in November) and course lists change yearly. Check cao.ie and each university or technological university course page."
+ },
+ "universities": [
+  {
+   "id": "tcd",
+   "name": "Trinity College Dublin, the University of Dublin",
+   "short": "TCD",
+   "type": "public",
+   "city": "Dublin",
+   "url": "https://www.tcd.ie/",
+   "admissions_url": "https://www.tcd.ie/courses/undergraduate/a-z-of-ug-courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Faculty of Science, Technology, Engineering and Mathematics",
+     "courses": [
+      {
+       "name": "Computer Science",
+       "years": 4
+      },
+      {
+       "name": "Mathematics",
+       "years": 4
+      },
+      {
+       "name": "Chemistry",
+       "years": 4,
+       "note": "Chemical Sciences"
+      },
+      {
+       "name": "Biological and Biomedical Sciences",
+       "years": 4
+      },
+      {
+       "name": "Engineering (B.A.I./M.A.I.)",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Arts, Humanities and Social Sciences",
+     "courses": [
+      {
+       "name": "English Studies",
+       "years": 4
+      },
+      {
+       "name": "History",
+       "years": 4
+      },
+      {
+       "name": "Drama and Theatre Studies",
+       "years": 4
+      },
+      {
+       "name": "Film",
+       "years": 4
+      },
+      {
+       "name": "Global Business (Bachelor in Business Studies)",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Dental Science",
+       "years": 5
+      },
+      {
+       "name": "Dental Hygiene",
+       "years": 2
+      },
+      {
+       "name": "Dental Nursing",
+       "years": 2
+      },
+      {
+       "name": "Dental Technology",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucd",
+   "name": "University College Dublin",
+   "short": "UCD",
+   "type": "public",
+   "city": "Dublin",
+   "url": "https://www.ucd.ie/",
+   "admissions_url": "https://www.ucd.ie/myucd/courses/a-z-course-list/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Engineering and Architecture",
+     "courses": [
+      {
+       "name": "Architecture"
+      },
+      {
+       "name": "Biomedical Engineering"
+      },
+      {
+       "name": "Chemical & Bioprocess Engineering"
+      },
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical/Electronic Engineering"
+      }
+     ]
+    },
+    {
+     "name": "College of Arts and Humanities",
+     "courses": [
+      {
+       "name": "Art History"
+      },
+      {
+       "name": "Drama Studies"
+      },
+      {
+       "name": "English"
+      },
+      {
+       "name": "Film Studies"
+      },
+      {
+       "name": "History"
+      },
+      {
+       "name": "Classics"
+      }
+     ]
+    },
+    {
+     "name": "College of Social Sciences and Law",
+     "courses": [
+      {
+       "name": "Economics"
+      },
+      {
+       "name": "Geography"
+      },
+      {
+       "name": "Law (BCL)"
+      },
+      {
+       "name": "Archaeology"
+      },
+      {
+       "name": "Criminology with Psychology"
+      }
+     ]
+    },
+    {
+     "name": "College of Health and Agricultural Sciences",
+     "courses": [
+      {
+       "name": "Animal Science"
+      },
+      {
+       "name": "Food Science"
+      },
+      {
+       "name": "Horticulture"
+      },
+      {
+       "name": "Forestry"
+      }
+     ]
+    },
+    {
+     "name": "College of Science",
+     "courses": [
+      {
+       "name": "Chemistry"
+      },
+      {
+       "name": "Computer Science"
+      },
+      {
+       "name": "Genetics"
+      },
+      {
+       "name": "Earth Sciences"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucc",
+   "name": "University College Cork",
+   "short": "UCC",
+   "type": "public",
+   "city": "Cork",
+   "url": "https://www.ucc.ie/",
+   "admissions_url": "https://www.ucc.ie/en/study/undergrad/courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Arts, Celtic Studies and Social Sciences",
+     "courses": [
+      {
+       "name": "Arts (CK101)"
+      },
+      {
+       "name": "Social Science (CK102)"
+      },
+      {
+       "name": "Film and Screen Media (CK105)"
+      },
+      {
+       "name": "English (CK109)"
+      },
+      {
+       "name": "Criminology (CK113)"
+      },
+      {
+       "name": "Applied Psychology (CK120)"
+      }
+     ]
+    },
+    {
+     "name": "College of Business and Law",
+     "courses": [
+      {
+       "name": "Commerce (CK201)"
+      },
+      {
+       "name": "Business Information Systems (CK203)"
+      },
+      {
+       "name": "Applied Economics (CK212)"
+      },
+      {
+       "name": "Law (Pathways) (CK301)",
+       "years": 4
+      },
+      {
+       "name": "Law and Business (CK307)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "galway",
+   "name": "University of Galway",
+   "short": "UG",
+   "type": "public",
+   "city": "Galway",
+   "url": "https://www.universityofgalway.ie/",
+   "admissions_url": "https://www.universityofgalway.ie/courses/undergraduate-courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "College of Arts, Social Sciences and Celtic Studies",
+     "courses": [
+      {
+       "name": "Bachelor of Arts (History)"
+      },
+      {
+       "name": "Bachelor of Arts (Journalism)"
+      },
+      {
+       "name": "Bachelor of Arts (Music)"
+      },
+      {
+       "name": "Bachelor of Arts (Drama, Theatre, and Performance Studies)"
+      },
+      {
+       "name": "Bachelor of Arts (Film & Digital Media)"
+      }
+     ]
+    },
+    {
+     "name": "College of Medicine and Health",
+     "courses": [
+      {
+       "name": "Medicine (Surgery & Obstetrics)"
+      },
+      {
+       "name": "Nursing Science (General)"
+      },
+      {
+       "name": "Midwifery Science"
+      },
+      {
+       "name": "Occupational Therapy"
+      },
+      {
+       "name": "Speech and Language Therapy"
+      }
+     ]
+    },
+    {
+     "name": "Engineering",
+     "courses": [
+      {
+       "name": "Biomedical Engineering"
+      },
+      {
+       "name": "Civil Engineering"
+      },
+      {
+       "name": "Electrical and Electronic Engineering"
+      },
+      {
+       "name": "Electronic and Computer Engineering"
+      },
+      {
+       "name": "Mechanical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Science",
+     "courses": [
+      {
+       "name": "Biomedical Science"
+      },
+      {
+       "name": "Computer Science and Information Technology"
+      },
+      {
+       "name": "Marine Science"
+      },
+      {
+       "name": "Mathematical Science"
+      },
+      {
+       "name": "Physics"
+      }
+     ]
+    },
+    {
+     "name": "Commerce and Law",
+     "courses": [
+      {
+       "name": "Commerce"
+      },
+      {
+       "name": "Commerce with Accounting"
+      },
+      {
+       "name": "Law (BCL)"
+      },
+      {
+       "name": "Law (BCL) and Business"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ul",
+   "name": "University of Limerick",
+   "short": "UL",
+   "type": "public",
+   "city": "Limerick",
+   "url": "https://www.ul.ie/",
+   "admissions_url": "https://www.ul.ie/courses",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Science and Engineering: Engineering",
+     "courses": [
+      {
+       "name": "Bachelor/Master of Engineering in Mechanical Engineering"
+      },
+      {
+       "name": "Bachelor/Master of Engineering in Civil Engineering"
+      },
+      {
+       "name": "Bachelor/Master of Engineering in Electrical Engineering"
+      },
+      {
+       "name": "Bachelor/Master of Engineering in Biomedical Engineering"
+      },
+      {
+       "name": "Bachelor/Masters of Engineering in Aeronautical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Science and Engineering: Science",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Mathematical Sciences"
+      },
+      {
+       "name": "Bachelor of Science in Applied Physics"
+      },
+      {
+       "name": "Bachelor of Science in Biomedical Science"
+      },
+      {
+       "name": "Bachelor of Science in Financial Mathematics"
+      }
+     ]
+    },
+    {
+     "name": "Science and Engineering: Computer Science",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Computer Systems"
+      },
+      {
+       "name": "Bachelor of Science Computer Games Development"
+      },
+      {
+       "name": "Bachelor of Science in Cyber Security and IT Forensics"
+      }
+     ]
+    },
+    {
+     "name": "Kemmy Business School",
+     "courses": [
+      {
+       "name": "Bachelor of Business Studies (BBS)"
+      },
+      {
+       "name": "BA in International Business (BAIB)"
+      },
+      {
+       "name": "BA in Law and Accounting"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tudublin",
+   "name": "Technological University Dublin",
+   "short": "TU Dublin",
+   "type": "public",
+   "city": "Dublin",
+   "url": "https://www.tudublin.ie/",
+   "admissions_url": "https://www.tudublin.ie/study/a-z-courses/",
+   "verified_on": "2026-10-07",
+   "faculties": [
+    {
+     "name": "Engineering (Level 8 honours degrees)",
+     "courses": [
+      {
+       "name": "Mechatronic Engineering"
+      },
+      {
+       "name": "Sustainable Energy Engineering"
+      },
+      {
+       "name": "Biomedical Design"
+      },
+      {
+       "name": "Product Design"
+      },
+      {
+       "name": "Computer Engineering in Mobile Systems"
+      }
+     ]
+    },
+    {
+     "name": "Business (Level 8 honours degrees)",
+     "courses": [
+      {
+       "name": "Accounting"
+      },
+      {
+       "name": "Business Analytics"
+      },
+      {
+       "name": "Business & Law"
+      },
+      {
+       "name": "Marketing"
+      },
+      {
+       "name": "Human Resource Management"
+      },
+      {
+       "name": "Economics & Finance"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
