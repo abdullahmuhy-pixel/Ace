@@ -1,0 +1,128 @@
+# Ace Education: full reference
+
+Exam prep and study app. 13 countries, 23 exams, 34,025 practice questions, 6,678 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+
+## Nigeria
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
+Exams: WASSCE and NECO SSCE for school leavers, and JAMB UTME for university admission.
+Grading: WASSCE/NECO: A1 to F9 (credit = C6 or better). UTME: 0 to 400.
+Levels: SS1 – SS3
+Totals: 63 subjects, 1,112 topics, 5,753 questions.
+- WASSCE (WAEC): Mathematics, English Language, Physics, Chemistry, Biology, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Information and Communication Technology, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French, Further Mathematics, Agricultural Science
+- UTME (JAMB): Mathematics, English Language, Physics, Biology, Chemistry, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Agricultural Science, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Visual Art, French
+- NECO (NECO): Mathematics, English Language, Physics, Chemistry, Biology, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Information and Communication Technology, Further Mathematics, Agricultural Science, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
+
+## Ghana
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ghana
+Exams: WASSCE at the end of senior high school and the BECE at the end of junior high school.
+Grading: WASSCE: A1 to F9. BECE: grades 1 to 9 in each subject.
+Levels: SHS 1 – SHS 3
+Totals: 33 subjects, 559 topics, 2,877 questions.
+- WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Integrated Science, Elective Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
+- BECE (WAEC): Mathematics, English Language, Integrated Science, Social Studies, Creative Arts and Design, Career Technology, French, Home Economics, Information and Communication Technology, Religious and Moral Education
+
+## Sierra Leone
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-sierra-leone
+Exams: WASSCE for senior secondary, the BECE for junior secondary and the NPSE for primary.
+Grading: WASSCE: A1 to F9.
+Levels: SS1 – SS3
+Totals: 42 subjects, 637 topics, 3,267 questions.
+- WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Integrated Science, Further Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
+- BECE (WAEC): Mathematics, English Language, Integrated Science, Social Studies, Agricultural Science, Business Studies, Basic Technology, French, Civic Education, Home Economics, Computer Studies, Religious and Moral Education
+- NPSE (WAEC): Mathematics, English Language, General Studies, Quantitative Aptitude, Verbal Aptitude, Science, Social Studies
+
+## The Gambia
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-gambia
+Exams: WASSCE at Grade 12 and the GABECE at the end of basic education.
+Grading: WASSCE: A1 to F9.
+Levels: Grade 10 – 12
+Totals: 35 subjects, 605 topics, 3,107 questions.
+- WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Further Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
+- GABECE (WAEC): Mathematics, English Language, Social and Environmental Studies, Science, Agricultural Science, Business Studies, Creative Arts, Basic Technology, French, Civic Education, Home Economics, Information and Communication Technology, Religious and Moral Education
+
+## Kenya
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-kenya
+Exams: KCSE, set and marked by KNEC at the end of Form 4.
+Grading: KCSE: mean grade A to E, from 12 points down to 1.
+Levels: Form 3 – Form 4
+Totals: 15 subjects, 292 topics, 1,523 questions.
+- KCSE (KNEC): Mathematics, Biology, Chemistry, Physics, Geography, History and Government, Business Studies, English Language, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Home Science
+
+## Zambia
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zambia
+Exams: ECZ Grade 12 school certificate examinations.
+Grading: ECZ: grades 1 (distinction) to 9.
+Levels: Grade 10 – 12
+Totals: 15 subjects, 317 topics, 1,647 questions.
+- ECZ Grade 12 (ECZ): Mathematics, Biology, Chemistry, Physics, Civic Education, Geography, English Language, Religious Education, Agricultural Science, Computer Studies, Literature in English, History, Commerce, Principles of Accounts, Additional Mathematics
+
+## United Kingdom
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-united-kingdom
+Exams: GCSE at 16 and A-Level at 18, set by AQA, Edexcel, OCR and WJEC.
+Grading: GCSE: 9 to 1. A-Level: A* to E.
+Levels: Year 10 – Year 13
+Totals: 25 subjects, 537 topics, 2,708 questions.
+- GCSE (AQA, Edexcel, OCR, WJEC): Physics, Mathematics, Biology, Chemistry, English Language, Geography, English Literature, History, Computer Science, Business, Religious Studies, Combined Science
+- A-Level (AQA, Edexcel, OCR): Mathematics, Biology, Chemistry, Physics, Further Mathematics, Economics, Psychology, Computer Science, Business, History, Geography, English Literature, Sociology
+
+## Canada
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-canada
+Exams: The Ontario Secondary School Diploma (OSSD), from the Ontario Ministry of Education.
+Grading: Percentage marks, with Ontario's achievement levels 1 to 4.
+Levels: Grade 11 – 12
+Totals: 21 subjects, 369 topics, 1,869 questions.
+- OSSD (Ontario Ministry of Education): Physics, Mathematics, Biology, Chemistry, English, Canadian History, Advanced Functions, Calculus and Vectors, Data Management, Computer Science, Geography, Economics, Law, Psychology, Business
+- Provincial diploma exams (Alberta Education): Mathematics, Chemistry, Physics, Biology, Social Studies, English Language Arts
+
+## España
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-spain
+Exams: The EBAU / PAU university-entrance exam after 2º Bachillerato.
+Grading: EBAU: 0 to 14, from the general phase (0 to 10) plus the voluntary phase.
+Levels: 1º – 2º Bachillerato
+Totals: 20 subjects, 295 topics, 1,475 questions.
+- EBAU / Selectividad (Ministerio de Educación y comunidades autónomas): Matemáticas II, Física, Química, Biología, Historia de España, Lengua Castellana y Literatura II, Inglés, Historia de la Filosofía, Matemáticas Aplicadas a las Ciencias Sociales II, Economía de la Empresa, Geografía, Dibujo Técnico II, Latín II, Geología y Ciencias Ambientales, Historia del Arte, Francés, Llengua catalana i literatura II, Valencià: llengua i literatura II, Lingua galega e literatura II, Euskara eta literatura II
+
+## Ireland
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ireland
+Exams: The Leaving Certificate, run by the State Examinations Commission.
+Grading: H1 to H8 (Higher) and O1 to O8 (Ordinary), turned into CAO points.
+Levels: 5th – 6th Year
+Totals: 18 subjects, 328 topics, 1,664 questions.
+- Leaving Certificate (State Examinations Commission (SEC)): Physics, Mathematics, Biology, Chemistry, English, Geography, Irish, History, Economics, Accounting, Business, Computer Science, Applied Mathematics, Agricultural Science, Politics and Society, Home Economics, French, Art
+
+## South Africa
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa
+Exams: The National Senior Certificate (NSC, "matric"), set by the Department of Basic Education and quality-assured by Umalusi.
+Grading: Level 1 to 7: 7 is 80 to 100%, 6 is 70 to 79%, 5 is 60 to 69%, 4 is 50 to 59%, 3 is 40 to 49%, 2 is 30 to 39% and 1 is 0 to 29%.
+Levels: Grade 10 – 12
+Totals: 23 subjects, 428 topics, 2,140 questions.
+- NSC (DBE and Umalusi): Mathematics, Mathematical Literacy, Physical Sciences, Life Sciences, Accounting, Business Studies, Economics, Geography, History, English Home Language, English First Additional Language, Agricultural Sciences, Information Technology, Computer Applications Technology, Tourism, Consumer Studies, Life Orientation, Engineering Graphics and Design, Religion Studies, Afrikaans First Additional Language, Civil Technology, Electrical Technology, Mechanical Technology
+
+## Uganda
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda
+Exams: The Uganda Certificate of Education (UCE, S4) and the Uganda Advanced Certificate of Education (UACE, S6), set by UNEB.
+Grading: UCE: grades 1 (best) to 9 and a division. UACE: principal passes A to F and subsidiary O or F.
+Levels: S1 – S6
+Totals: 28 subjects, 595 topics, 2,975 questions.
+- UCE (UNEB): Mathematics, English Language, Biology, Chemistry, Physics, Geography, History and Political Education, Commerce, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Entrepreneurship Education
+- UACE (UNEB): Mathematics, Physics, Biology, Literature in English, General Paper, Subsidiary ICT, Subsidiary Mathematics, Chemistry, Economics, Geography, History, Commerce, Entrepreneurship
+
+## Tanzania
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania
+Exams: The Certificate of Secondary Education Examination (CSEE, Form 4) and the Advanced Certificate of Secondary Education Examination (ACSEE, Form 6), set by NECTA.
+Grading: CSEE: divisions I to IV and 0 (grades A to F). ACSEE: grades A to F and S, with points for university.
+Levels: Form 1 – 6
+Totals: 28 subjects, 604 topics, 3,020 questions.
+- CSEE (NECTA): Basic Mathematics, English Language, Biology, Chemistry, Physics, Geography, History, Commerce, Bible Knowledge, Islamic Knowledge, Agriculture, Information and Computer Studies, Literature in English, Kiswahili
+- ACSEE (NECTA): Advanced Mathematics, Physics, Biology, General Studies, Information and Computer Studies, English Language, Basic Applied Mathematics, Chemistry, Economics, Geography, History, Accountancy, Commerce, Kiswahili
+
+## FAQ
+**Which exams does Ace Education cover today?** Twenty-three exams across thirteen countries: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; and CSEE and ACSEE in Tanzania. The Countries page shows exactly which subjects each one has.
+**Are the questions copied from past papers?** No. Topic lists follow each exam body's published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.
+**Has a teacher checked the content?** Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher's sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.
+**How do you make sure the content is local?** Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.
+**Is it free for students?** Anyone can create a student account and start practising. Schools and centres agree a plan with us for class tools and extra seats. See the Quote page.
+**Does it work on a phone with little data?** The app is a web page that works in a phone browser with no download. Pages are text-first and light. A dedicated data-saver mode and offline use are on the roadmap.
+**Is my data safe?** We collect only what the service needs, we do not sell data, and students or schools can ask for deletion at any time. The Privacy page lists the data-protection law that applies in each country.
+**Can a school use it for a whole class?** Yes. A school gets a school code and a staff dashboard: teachers add classes, students join with the code, and teachers see class results and set tasks. Ask us for a quote and we will onboard your school.
+**Which country is next?** The thirteen countries are open for content now. We add a country by adding a syllabus file, so new ones can follow quickly. Tell us which you need on the Contact page.

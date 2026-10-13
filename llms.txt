@@ -1,0 +1,37 @@
+# Ace Education
+
+> Ace Education is an exam prep and study app for secondary school and university students in 13 countries: Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, United Kingdom, Canada, España, Ireland, South Africa, Uganda, Tanzania. It offers topic notes, quizzes, a question bank, flashcards, timed mock exams, a weak-topic radar and an AI study buddy for 23 exams, written for each country's own exam body, subjects, currency and examples. Students can sign up free; schools and tutoring centres can ask for a plan.
+
+## Key pages
+- [Home](https://abdullahmuhy-pixel.github.io/Ace/): what Ace Education is and who it is for
+- [Countries and exams](https://abdullahmuhy-pixel.github.io/Ace/countries): every country, exam, grading scale and question count
+- [Features](https://abdullahmuhy-pixel.github.io/Ace/features): everything in the student app
+- [Syllabus explorer](https://abdullahmuhy-pixel.github.io/Ace/syllabus): browse every subject, module and topic
+- [For schools](https://abdullahmuhy-pixel.github.io/Ace/schools): class, teacher and admin tools
+- [Study guides](https://abdullahmuhy-pixel.github.io/Ace/guides): revision, mock exams and wellbeing
+- [Student app](https://abdullahmuhy-pixel.github.io/Ace/app/): the study app itself
+
+## Exam prep by country
+- [Nigeria: WASSCE, UTME, NECO](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria): 63 subjects, 5,753 practice questions
+- [Ghana: WASSCE, BECE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ghana): 33 subjects, 2,877 practice questions
+- [Sierra Leone: WASSCE, BECE, NPSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-sierra-leone): 42 subjects, 3,267 practice questions
+- [The Gambia: WASSCE, GABECE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-gambia): 35 subjects, 3,107 practice questions
+- [Kenya: KCSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-kenya): 15 subjects, 1,523 practice questions
+- [Zambia: ECZ Grade 12](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zambia): 15 subjects, 1,647 practice questions
+- [United Kingdom: GCSE, A-Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-united-kingdom): 25 subjects, 2,708 practice questions
+- [Canada: OSSD, Provincial diploma exams](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-canada): 21 subjects, 1,869 practice questions
+- [España: EBAU / Selectividad](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-spain): 20 subjects, 1,475 practice questions
+- [Ireland: Leaving Certificate](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ireland): 18 subjects, 1,664 practice questions
+- [South Africa: NSC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa): 23 subjects, 2,140 practice questions
+- [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 28 subjects, 2,975 practice questions
+- [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 28 subjects, 3,020 practice questions
+
+## Guides
+- [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)
+- [mock-exams](https://abdullahmuhy-pixel.github.io/Ace/guide-mock-exams)
+- [plan](https://abdullahmuhy-pixel.github.io/Ace/guide-plan)
+- [maths-habits](https://abdullahmuhy-pixel.github.io/Ace/guide-maths-habits)
+- [science-practicals](https://abdullahmuhy-pixel.github.io/Ace/guide-science-practicals)
+- [exam-systems](https://abdullahmuhy-pixel.github.io/Ace/guide-exam-systems)
+- [exam-stress](https://abdullahmuhy-pixel.github.io/Ace/guide-exam-stress)
+- [using-ace](https://abdullahmuhy-pixel.github.io/Ace/guide-using-ace)
