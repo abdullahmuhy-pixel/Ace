@@ -26,6 +26,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 [data-country="ZA"]{--primary:#007749;--primary-dark:#005233;--accent:#FFB81C}
 [data-country="UG"]{--primary:#D90000;--primary-dark:#8F0000;--accent:#FCDC04}
 [data-country="TZ"]{--primary:#1EB53A;--primary-dark:#0E7A24;--accent:#FCD116}
+[data-country="LR"]{--primary:#002868;--primary-dark:#001A45;--accent:#BF0A30}
 [data-country="CA"]{--primary:#D80621;--primary-dark:#A30419;--accent:#1A1A1A}
 [data-country="ES"]{--primary:#AA152B;--primary-dark:#7A0F1E;--accent:#F1BF00}
 [data-country="IE"]{--primary:#169B62;--primary-dark:#0E6B43;--accent:#FF883E}
@@ -179,7 +180,7 @@ let NGQ={};
    The syllabus, topic notes, question banks and flashcards for each country live in that country's own
    syllabus HTML file (for example nigeria-syllabus.html), which this portal fetches at run time.
    Nothing from those files is embedded in this app. */
-const ACE_CFG=Object.assign({syllabusFiles:{NG:'nigeria-syllabus.html',GH:'ghana-syllabus.html',SL:'sierra-leone-syllabus.html',GM:'gambia-syllabus.html',KE:'kenya-syllabus.html',ZM:'zambia-syllabus.html',GB:'uk-syllabus.html',CA:'canada-syllabus.html',ES:'spain-syllabus.html',IE:'ireland-syllabus.html',ZA:'south-africa-syllabus.html',UG:'uganda-syllabus.html',TZ:'tanzania-syllabus.html'}},window.ACE_CONFIG||{});
+const ACE_CFG=Object.assign({syllabusFiles:{NG:'nigeria-syllabus.html',GH:'ghana-syllabus.html',SL:'sierra-leone-syllabus.html',GM:'gambia-syllabus.html',KE:'kenya-syllabus.html',ZM:'zambia-syllabus.html',GB:'uk-syllabus.html',CA:'canada-syllabus.html',ES:'spain-syllabus.html',IE:'ireland-syllabus.html',ZA:'south-africa-syllabus.html',UG:'uganda-syllabus.html',TZ:'tanzania-syllabus.html',LR:'liberia-syllabus.html'}},window.ACE_CONFIG||{});
 const ACE_LOADED={};const ACE_CACHE={};
 function aceBuild(d){const CUR=d.currency||'',cu=x=>x==null?x:String(x).split('{{CUR}}').join(CUR),R={SYL:{},QB:{},TC:{},NGQ:{},FLASH:{},MOCK:{},QUIZ:(d.settings||{}).quiz_questions||5};
  for(const ek of Object.keys(d.exams)){R.SYL[ek]={};for(const sk of Object.keys(d.exams[ek].subjects)){const raw=d.exams[ek].subjects[sk];let mods=raw.modules,n=0;
@@ -211,7 +212,7 @@ const exk=ex=>{const c=C[S.c];if(c&&c.xk){const i=c.x.indexOf(ex);return c.xk[i<
 const realSub=(c,s,ex)=>ACE_LOADED[S.c]&&SYL[exk(ex)]&&SYL[exk(ex)][s];
 const nq=(c,s,i,ex)=>ACE_LOADED[S.c]?(NGQ[s]||0):QN[i];
 const SYLX=s=>{const c=C[S.c],e=SYL[exk(c.x[S.x%c.x.length])];return (e&&e[s])||(SYL.WASSCE||{})[s]};
-const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6']};
+const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6'],LR:['Grade 10','Grade 11','Grade 12']};
 let P={done:{},g:{},s:{},goal:20,rem:true,str:true,wk:false,hc:false,dy:false,email:'',vr:false};
 try{Object.assign(P,JSON.parse(localStorage.getItem('ace-prefs')||'{}'))}catch(e){}
 const svP=()=>{try{localStorage.setItem('ace-prefs',JSON.stringify(P))}catch(e){}};
@@ -233,7 +234,8 @@ ES:{n:'España',f:'🇪🇸',b:'EBAU',l:'es',x:['EBAU / Selectividad','2º Bachi
 IE:{n:'Ireland',f:'🇮🇪',b:'SEC',x:['Leaving Certificate','Junior Cycle'],s:['Higher Level Mathematics','English','Irish','Biology','Chemistry','Physics'],t:'ie',d:'2027-06-02',u:'Guest',p:'GDPR'},
 ZA:{n:'South Africa',f:'🇿🇦',b:'DBE and Umalusi',x:['NSC', 'Grade 11 exams'],s:['Mathematics', 'Mathematical Literacy', 'Physical Sciences', 'Life Sciences', 'Accounting', 'Geography'],t:'za',d:'2026-10-20',u:'Guest',p:'POPIA'},
 UG:{n:'Uganda',f:'🇺🇬',b:'UNEB',x:['UCE', 'UACE'],s:['Mathematics', 'English Language', 'Biology', 'Chemistry', 'Physics', 'Geography'],t:'ug',d:'2026-11-02',u:'Guest',p:'DPPA 2019'},
-TZ:{n:'Tanzania',f:'🇹🇿',b:'NECTA',x:['CSEE', 'ACSEE'],s:['Basic Mathematics', 'English Language', 'Biology', 'Chemistry', 'Physics', 'Geography'],t:'tz',d:'2026-11-02',u:'Guest',p:'PDPA 2022'}};
+TZ:{n:'Tanzania',f:'🇹🇿',b:'NECTA',x:['CSEE', 'ACSEE'],s:['Basic Mathematics', 'English Language', 'Biology', 'Chemistry', 'Physics', 'Geography'],t:'tz',d:'2026-11-02',u:'Guest',p:'PDPA 2022'},
+LR:{n:'Liberia',f:'🇱🇷',b:'WAEC',x:['WASSCE'],s:['Mathematics','English Language','Biology','Chemistry','Physics','Economics'],t:'waec',d:'2027-05-13',u:'Guest',p:''}};
 const G=['#1D5FBF,#0F3D73','#0E8AA3,#0A5C74','#15803D,#0B5A2A','#6366F1,#4338CA','#B45309,#7C3A06','#0F6BC0,#0B4A8A','#9333EA,#6B21A8','#C2410C,#7C2D12','#0D9488,#115E59','#BE185D,#831843'];
 const ICN=[[/math|matem|function/i,'📐'],[/english|lengua|inglés|irish|kiswahili/i,'📖'],[/phys|fís/i,'⚛️'],[/chem|quím/i,'🧪'],[/bio/i,'🧬'],[/econ/i,'📈'],[/science/i,'🔬'],[/histor/i,'🏛️'],[/geog/i,'🌍'],[/commerce|business/i,'💼'],[/govern/i,'⚖️'],[/account/i,'🧾'],[/civic/i,'🤝'],[/agri/i,'🌾']];
 const ic=s=>(ICN.find(a=>a[0].test(s))||[0,'📚'])[1];

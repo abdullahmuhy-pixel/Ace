@@ -4,7 +4,7 @@ const SITE_CONFIG = {
   appUrl: "app/",     // student app
   loginUrl: "login/",   // sign-in page
   email: "",            // public contact email, shown on the Contact page when set
-  whatsapp: "",         // digits only with country code, e.g. 2348012345678
+  whatsapp: "27732891424",         // digits only with country code, e.g. 2348012345678
   telegram: "",         // full link
   formEndpoint: "",     // URL that accepts a JSON POST for quote and contact forms
   founder: null         // {name, role, bio} to show a founder section on About
@@ -95,7 +95,13 @@ TZ:{name:'Tanzania',flag:'🇹🇿',lang:'English',levels:'Form 1 – 6',law:'PD
  intro:'Tanzania follows the NECTA and TIE syllabuses, with Tanzanian shillings (TSh) in the money questions and 18% VAT. ACSEE results go to the Central Admission System (CAS).',
  ex:{'CSEE':'The Form 4 national exam set by NECTA.','ACSEE':'The Form 6 national exam set by NECTA, graded A to F and S, with points used for admission.'},
  scale:'CSEE: divisions I to IV and 0 (grades A to F). ACSEE: grades A to F and S, with points for university.',
- next:['Fine Art','Remaining electives','Swahili-medium notes']}
+ next:['Fine Art','Remaining electives','Swahili-medium notes']},
+LR:{name:'Liberia',flag:'🇱🇷',lang:'English',levels:'Grade 10 – 12',law:'national data-protection requirements',
+ sys:'WASSCE at the end of senior high school (Grade 12), administered in Liberia by WAEC.',
+ intro:'Liberia follows the WAEC WASSCE syllabuses, with Liberian dollars (L$) in the money questions and Liberian history, geography and economy in the national topics. Candidates sit nine subjects.',
+ ex:{WASSCE:'The West African Senior School Certificate Examination, taken in Grade 12.'},
+ scale:'WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.',
+ next:['Government, Commerce and Financial Accounting','More electives','LJHSCE (Grade 9) subjects']}
 };
 
 const FEATURES = [
@@ -119,21 +125,20 @@ const FEATURES = [
  ['🎓','Certificate courses','33 short courses: study skills, coding (Python, JavaScript, SQL, HTML and CSS, Git), digital safety, AI literacy, business and money, public speaking and more. Quizzes are graded on the server and certificates can be verified by anyone.','Backend ready','Courses'],
  ['💬','Moderated study groups','Groups for a class, a school or a campus. No links or phone numbers, member reports, automatic hiding and teacher oversight for school groups.','Backend ready','Community'],
  ['👪','Share one plan with up to 3 others','One payer plus three members, each with their own account and privacy. Friends, classmates or siblings.','Backend ready','Accounts'],
- ['🧑‍🏫','Staff dashboard','Attendance, marks, tasks, notices, messages, live quizzes, parent digest, moderation, school settings and platform admin in one place.','Backend ready','Schools'],
+ ['🧑‍🏫','Staff dashboard','Attendance, marks, tasks, notices, messages, live quizzes, parent digest, moderation, school settings and platform admin in one place.','Live','Schools'],
  ['⚡','Live quiz','A teacher starts a quiz, students join with a code and answer on their phones. The answer key never reaches the student.','Backend ready','Schools'],
  ['🔔','Reminders and notices by push','Daily revision reminders and teacher notices delivered to the phone.','Backend ready','Habits'],
  ['🏠','Family view','A private link parents can open, with no account, to see streak, weekly practice and course progress. The student can stop it any time.','Backend ready','Accounts'],
- ['🔐','Username sign-in','Students sign in with a username their school gives them. No email needed.','Backend ready','Accounts'],
- ['📊','Weak Topic Radar','Finds the topics a student keeps getting wrong and points them at the next best practice.','Planned','Practise'],
- ['🧠','Tutor Mode','An AI that guides with questions instead of giving the answer.','Planned','Learn'],
- ['✍️','Essay and answer marking','Paste a written answer and get marks and feedback against the mark scheme.','Planned','Exam prep'],
+ ['🆓','Open student sign-up','Any student can create an account, choose a country, level and exam, and save progress across devices. No school needed.','Live','Accounts'],
+ ['🔐','Username sign-in','Students sign in with a username. No email needed, so a school can create accounts for a whole class.','Live','Accounts'],
+ ['📊','Weak Topic Radar','Finds the topics a student keeps getting wrong from their own quiz answers and offers a practice quiz for each.','Live','Practise'],
+ ['🧠','Tutor Mode','An AI that guides with questions and hints instead of giving the answer.','Live','Learn'],
+ ['✍️','Essay grader and mark scheme checker','Paste an essay or an answer and get an estimated mark, strengths and fixes. AI marking is an estimate, not an official mark.','Live','Exam prep'],
+ ['📄','Question generator','Paste your notes and get a practice paper with answers.','Live','Exam prep'],
  ['📐','Formula sheet','Every formula for the subject in one place, by topic.','Planned','Learn'],
  ['🗓️','Study planner and timetable','Exam dates, daily goals and a countdown that follow the national exam timetable.','Planned','Habits'],
- ['🧮','Grade calculator','Enter your marks and see what you need in the final exam for your target grade.','Planned','Exam prep'],
- ['📝','My notes','Write notes next to each topic and keep them with the subject.','Planned','Learn'],
- ['🍅','Pomodoro timer','A 25-minute focus timer that gives XP for finished sessions.','Planned','Habits'],
- ['👥','Study groups and class duel','Private groups with a leaderboard, and head-to-head quiz battles.','Planned','Habits']
-];
+  ['📝','My notes','Write notes next to each topic and keep them with the subject.','Planned','Learn'],
+  ];
 
 const SCHOOL = [
  ['👩‍🏫','Class teacher','Manage a class: add students, choose the subjects it studies, set targets and read who is falling behind.',
@@ -146,7 +151,7 @@ const SCHOOL = [
 const SCHOOL_STATUS = [
  ['Done','Database design with school, class, student, staff and subject tables, and row-level security so each school only sees its own data.'],
  ['Done','Server functions for creating a school, inviting staff, joining with a school code, bulk-creating student accounts, username sign-in, password reset and deleting an account.'],
- ['In build','Teacher, subject-teacher and admin dashboards on top of that backend. The staff sign-in screen exists as a preview and is not yet connected.'],
+ ['Done','Staff sign-in and dashboards for school admins, teachers and subject teachers, built on that backend.'],
  ['Next','Continuous-assessment markbook, attendance, report cards and exports.']
 ];
 
@@ -155,10 +160,10 @@ const FAQ = [
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
- ['Is it free for students?','Students reach the app through their school or centre, or through a link from us. Prices are agreed per school or centre. See the Quote page.'],
+ ['Is it free for students?','Anyone can create a student account and start practising. Schools and centres agree a plan with us for class tools and extra seats. See the Quote page.'],
  ['Does it work on a phone with little data?','The app is a web page that works in a phone browser with no download. Pages are text-first and light. A dedicated data-saver mode and offline use are on the roadmap.'],
  ['Is my data safe?','We collect only what the service needs, we do not sell data, and students or schools can ask for deletion at any time. The Privacy page lists the data-protection law that applies in each country.'],
- ['Can a school use it for a whole class?','The database and server functions for schools are built. The teacher and admin dashboards are being built on top of them, so schools can join the pilot list now.'],
+ ['Can a school use it for a whole class?','Yes. A school gets a school code and a staff dashboard: teachers add classes, students join with the code, and teachers see class results and set tasks. Ask us for a quote and we will onboard your school.'],
  ['Which country is next?','The thirteen countries are open for content now. We add a country by adding a syllabus file, so new ones can follow quickly. Tell us which you need on the Contact page.']
 ];
 
@@ -202,7 +207,7 @@ const COMPARE = [
 ];
 
 const ROADMAP = [
- ['Now','Thirteen countries with their own exams, subjects and syllabus files','Student app with notes, quizzes, flashcards, mocks and Ask Ace','Database and server functions for schools'],
+ ['Now','Thirteen countries with their own exams, subjects and syllabus files','Student app with notes, quizzes, flashcards, mocks, weak-topic radar and Ask Ace','Open student sign-up, school codes and a staff dashboard'],
  ['Next','Teacher review of every subject, country by country','Teacher review of every university entry, and more universities per country','Formula sheets, study planner and exam timetables'],
- ['Later','More subjects and exams per country, starting with the gaps listed on each country page','Weak Topic Radar, Tutor Mode and answer marking','Data-saver and offline modes, and more countries']
+ ['Later','More subjects and exams per country, starting with the gaps listed on each country page','Official past-paper style mark schemes, formula sheets and exam timetables','Data-saver and offline modes, and more countries']
 ];

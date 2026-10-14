@@ -18,17 +18,91 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
 const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
 
+const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia'};
+const PAGES = ['countries','features','syllabus','schools','guides','about','contact','quote','privacy','terms'];
+const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
+function parseRoute(r) {
+  r = String(r || '').replace(/\.html$/, '').replace(/\/+$/, '');
+  if (!r || r === 'index') return ['home', null];
+  let m = r.match(/^exam-prep-(.+)$/);
+  if (m) { const cc = Object.keys(SLUG).find(k => SLUG[k] === m[1]); if (cc) return ['country', cc]; }
+  m = r.match(/^guide-(.+)$/);
+  if (m && GUIDES.some(g => g[0] === m[1])) return ['guide', m[1]];
+  if (PAGES.includes(r)) return [r, null];
+  return ['home', null];
+}
 function go(page, arg) {
   S.page = page; S.arg = arg || null; S.formDone = null;
-  try { history.replaceState(null, '', '#' + (arg ? page + '-' + arg : page)); } catch (e) {}
+  try { history.pushState(null, '', pathFor(page, arg)); } catch (e) {}
   render(); window.scrollTo(0, 0);
+  try { document.title = routeMeta(S.page, S.arg).title; } catch (e) {}
 }
-function fromHash() {
-  let h = ''; try { h = (location.hash || '').slice(1); } catch (e) {}
-  if (!h) return;
-  const m = h.match(/^(country|guide)-(.+)$/);
-  if (m) { S.page = m[1]; S.arg = m[2].toLowerCase() === m[2] && m[1] === 'country' ? m[2].toUpperCase() : m[2]; }
-  else if (NAV.some(n => n[0] === h) || ['quote','privacy'].includes(h)) S.page = h;
+function fromLocation() {
+  let q = '', h = '';
+  try { q = new URLSearchParams(location.search).get('route'); h = (location.hash || '').slice(1); } catch (e) {}
+  if (q != null) { [S.page, S.arg] = parseRoute(q); return; }
+  const m = h.match(/^(country|guide)-(.+)$/);                      // old #country-NG links still work
+  if (m) { S.page = m[1]; S.arg = m[1] === 'country' ? m[2].toUpperCase() : m[2]; return; }
+  if (h && (PAGES.includes(h))) { S.page = h; return; }
+  let seg = ''; try { seg = location.pathname.split('/').pop(); } catch (e) {}
+  [S.page, S.arg] = parseRoute(seg);
+}
+window.addEventListener('popstate', () => { fromLocation(); render(); });
+
+/* ---------- search and AI metadata for every page ---------- */
+const exNames = cc => D[cc].ex.map(e => e.k);
+const joinAnd = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+function countryFaq(cc) {
+  const c = CM[cc], t = T[cc], ex = exNames(cc), first = D[cc].ex[0], subs = first.s.map(x => x.n);
+  return [
+    [`Which exams can I prepare for in ${c.name} with Ace Education?`, `${c.sys} Ace Education covers ${joinAnd(ex)} in ${c.name}, with ${t.subs} subjects and ${nf(t.q)} practice questions in total.`],
+    [`How do I prepare for ${joinAnd(ex.slice(0, 3))} in ${c.name}?`, `Open a subject, read the topic notes, take the five-question quiz, then sit a timed mock exam when you have covered a module. Ace Education shows your weakest topics so you know what to revise next.`],
+    [`Which ${first.k} subjects are covered in ${c.name}?`, `${subs.slice(0, 14).join(', ')}${subs.length > 14 ? ' and ' + (subs.length - 14) + ' more' : ''}.`],
+    [`How is ${first.k} graded in ${c.name}?`, `${c.scale} Levels covered: ${c.levels}.`],
+    [`Can I start studying for ${c.name} exams without a school code?`, `Yes. Anyone can create a student account on the sign-up page and choose their country, level and exam. Schools and centres can also join with a school code or ask us for a quote.`]
+  ];
+}
+function routeMeta(page, arg) {
+  const base = (typeof SITE_URL !== 'undefined' ? SITE_URL : ''), P = pathFor(page, arg), url = base + (P === './' ? '' : P);
+  const org = {'@type': 'Organization', '@id': base + '#org', name: 'Ace Education', url: base || undefined, logo: base + 'og-image.png', description: 'Exam preparation and study app for secondary school and university students in Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, Uganda, Tanzania, South Africa, the UK, Canada, Ireland and Spain.'};
+  const crumbs = items => ({'@type': 'BreadcrumbList', itemListElement: items.map((x, i) => ({'@type': 'ListItem', position: i + 1, name: x[0], item: base + x[1]}))});
+  const faq = qa => ({'@type': 'FAQPage', mainEntity: qa.map(f => ({'@type': 'Question', name: f[0], acceptedAnswer: {'@type': 'Answer', text: f[1]}}))});
+  const out = {path: P === './' ? '' : P, url, type: 'website', ld: []};
+  if (page === 'home') {
+    out.title = `Ace Education: Exam Prep and Study App for ${CCS.length} Countries`;
+    out.description = `Free-to-start exam prep and study app for secondary school and university students: WASSCE, NECO, JAMB, KCSE, GCSE, A-Level, NSC, UCE, CSEE, Leaving Cert, OSSD and EBAU. ${nf(TOT.q)} practice questions, topic notes, flashcards and mock exams.`.replace('Free-to-start ', '');
+    out.ld = [org, {'@type': 'WebSite', '@id': base + '#site', url: base || undefined, name: 'Ace Education', publisher: {'@id': base + '#org'}, inLanguage: ['en', 'es']},
+      {'@type': 'SoftwareApplication', name: 'Ace Education', applicationCategory: 'EducationalApplication', operatingSystem: 'Web (any phone, tablet or computer browser)', description: out.description, url: base || undefined, publisher: {'@id': base + '#org'}},
+      faq(FAQ.slice(0, 6))];
+  } else if (page === 'country') {
+    const c = CM[arg], t = T[arg], ex = exNames(arg), qa = countryFaq(arg);
+    out.title = `${joinAnd(ex.slice(0, 3)).replace(' and ', ' & ')} Exam Prep in ${c.name} | Ace Education`;
+    out.description = `${c.name} exam prep: ${ex.join(', ')}. ${t.subs} subjects, ${nf(t.q)} practice questions, ${nf(t.t)} topic notes, quizzes, flashcards and timed mock exams.`;
+    out.lang = arg === 'ES' ? 'es-ES' : 'en-' + arg;
+    out.faq = qa;
+    out.ld = [org, crumbs([['Home', ''], ['Exam prep in ' + c.name, P]]), faq(qa), {'@type': 'WebPage', name: out.title, url, about: ex.map(e => ({'@type': 'Thing', name: e})), inLanguage: arg === 'ES' ? 'es' : 'en', isPartOf: {'@id': base + '#site'}}];
+  } else if (page === 'guide') {
+    const g = GUIDES.find(x => x[0] === arg);
+    out.title = `${g[2]} | Ace Education Study Guides`; out.description = g[3]; out.type = 'article';
+    out.ld = [org, crumbs([['Home', ''], ['Guides', 'guides'], [g[2], P]]), {'@type': 'Article', headline: g[2], description: g[3], author: {'@id': base + '#org'}, publisher: {'@id': base + '#org'}, mainEntityOfPage: url}];
+  } else {
+    const M = {
+      countries: ['Exam Prep by Country: 13 Countries, 23 Exams | Ace Education', `Compare the exams Ace Education covers in ${CCS.length} countries: ${CCS.map(cc => CM[cc].name).join(', ')}. Grading scales, subjects and question counts for each.`],
+      features: ['Features: Topic Notes, Quizzes, Flashcards, Mock Exams and AI Tutor | Ace Education', 'Everything in the Ace Education study app: topic notes, quizzes, a question bank, flashcards, timed mock exams, daily challenge, weak-topic radar, an AI study buddy and university guides.'],
+      syllabus: ['Syllabus Explorer: Topics and Sample Questions for Every Subject | Ace Education', 'Browse every subject, module and topic Ace Education covers for each exam in each country, with real sample questions.'],
+      schools: ['Ace Education for Schools: Class, Teacher and Admin Tools', 'Run exam preparation for a whole class or school: add students, assign topics and quizzes, read class results and control AI help. Built for schools and tutoring centres.'],
+      quote: ['Get a School Quote | Ace Education', 'Tell us about your school, tutoring centre or organisation and we will send a plan that fits. Pricing is agreed per school or centre.'],
+      guides: ['Study Guides: Revision, Mock Exams and Exam Stress | Ace Education', 'Plain-language guides on active recall, mock exams, six-week revision plans, maths habits, science practicals, comparing exam systems and managing exam stress.'],
+      about: ['About Ace Education: Exam Prep Built for Each Country', 'Why we build exam preparation separately for each country, how content is written and checked, and where we are going next.'],
+      contact: ['Contact Ace Education', 'Ask about the app, a school plan, a missing subject or a mistake you found. We reply within one business day.'],
+      privacy: ['Privacy Policy | Ace Education', 'How Ace Education handles student data, what we collect, what we do not do, and the data-protection law we design for in each country.'],
+      terms: ['Terms of Use | Ace Education', 'The terms for using the Ace Education study app and website.']
+    }[page] || ['Ace Education', ''];
+    out.title = M[0]; out.description = M[1];
+    out.ld = [org, crumbs([['Home', ''], [M[0].split(' | ')[0], P]])];
+    if (page === 'contact' || page === 'quote') out.ld.push(faq(FAQ.slice(0, 6)));
+  }
+  return out;
 }
 
 /* ---------- shared pieces ---------- */
@@ -63,9 +137,9 @@ function countryCard(cc) {
 
 /* ---------- pages ---------- */
 function pHome() {
-  return `<section class="hero"><div><div class="eyebrow mono">Exam preparation for secondary schools · ${CCS.length} countries</div>
+  return `<section class="hero"><div><div class="eyebrow mono">Exam prep and study app · ${CCS.length} countries</div>
   <h1>Practise on questions written for the exam you will sit.</h1>
-  <p class="lead">Ace Education gives students topic notes, quizzes, flashcards and timed mock exams for ${TOT.exams} exams in ${CCS.length} countries, each built around its own exam body, subjects, currency and examples.</p>
+  <p class="lead">Ace Education is an exam prep and study app for secondary school and university students. It gives topic notes, quizzes, flashcards, timed mock exams and an AI study buddy for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU.</p>
   <div class="cta">${appBtn()}${btnGo('countries', 'See your country', '')}</div>
   <div class="facts"><div><b>${CCS.length}</b><span>countries open</span></div><div><b>${TOT.exams}</b><span>exams</span></div><div><b>${nf(TOT.q)}</b><span>practice questions</span></div><div><b>${nf(TOT.t)}</b><span>topic notes</span></div></div></div>
   <div><div class="chips" role="tablist" aria-label="Pick a country">${CCS.map(cc => `<button class="chip ${S.hero === cc ? 'on' : ''}" data-act="hero" data-cc="${cc}">${CM[cc].flag} ${cc}</button>`).join('')}</div>${qSheet(S.hero, 'hero')}</div></section>
@@ -82,7 +156,7 @@ function pHome() {
   <div class="card"><span class="ic">🧮</span><h3>Every number is recomputed</h3><p>Answers in mathematics, physics, chemistry, economics and accounting are worked out by a program before they go in. Duplicate options and answer positions are checked as well.</p></div>
   <div class="card"><span class="ic">🏷️</span><h3>Labelled until a teacher signs off</h3><p>New material carries a "needs review" label until a subject teacher approves it. That review is the next stage, and the label tells students where each item stands.</p></div></div></div></section>
 
-  <section class="band"><div class="wrap"><section class="blk"><div class="split"><div>${head('For schools', 'Tools for teachers are on the way.', 'The student app comes first. The school side is being built on a finished database and server layer, so a class can use Ace Education together.')}
+  <section class="band"><div class="wrap"><section class="blk"><div class="split"><div>${head('For schools', 'Tools for teachers and school admins.', 'Any student can sign up and practise alone. Schools get a school code, a staff dashboard and class results, so a whole class can use Ace Education together.')}
   <ul class="ticks">${SCHOOL_STATUS.map(s => `<li><span><b>${esc(s[0])}.</b> ${esc(s[1])}</span></li>`).join('')}</ul><div class="cta">${btnGo('schools', 'See the school plan', 'primary')}${btnGo('quote', 'Get a quote')}</div></div>
   <div class="grid">${SCHOOL.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p></div>`).join('')}</div></div></section></div></section>
 
@@ -112,6 +186,7 @@ function pCountry(cc) {
   <div style="margin-top:3rem">${head('Exams', c.sys)}<div class="grid">${exs}</div></div>
   <div class="split" style="margin-top:3rem;align-items:start"><div>${head('Grading and rules', 'Know the scale.')}<ul class="ticks"><li><span><b>Grading.</b> ${esc(c.scale)}</span></li><li><span><b>Levels covered.</b> ${esc(c.levels)}</span></li><li><span><b>Currency in questions.</b> ${esc(v.cur || 'n/a')}</span></li><li><span><b>Data protection.</b> ${esc(c.law)}</span></li></ul></div>${workedBlock(cc)}</div>
   <div style="margin-top:3rem" class="split"><div><h3>Content status</h3><p class="lede" style="font-size:1rem">${esc(statusLine(cc))}.</p></div><div><h3>Coming next in ${esc(c.name)}</h3><ul class="ticks">${c.next.map(n => `<li><span>${esc(n)}</span></li>`).join('')}</ul></div></div>
+  <div style="margin-top:3rem">${head('Questions', 'Common questions about ' + c.name + '.')}<div class="faq">${countryFaq(cc).map(f => `<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('')}</div></div>
   <div class="cta" style="margin-top:2rem">${btnGo('contact', 'Ask for a subject')}${btnGo('quote', 'Get a school quote')}</div></div></section>`;
 }
 
@@ -220,6 +295,15 @@ function pPrivacy() {
   <p class="mono" style="margin-top:1rem">Where a country has no single named law above, we follow the same minimal-collection rules and apply the stricter local rule once confirmed.</p></div></section>`;
 }
 
+function pTerms() {
+  return `<section class="blk"><div class="wrap" style="max-width:860px">${head('Terms', 'Terms of use.', 'Plain-language summary. This is a working draft and a lawyer should review it before you rely on it.')}
+  <div class="art"><h2>Using Ace Education</h2><ol><li>Ace Education is a study aid. It does not replace your teacher, your school or the official syllabus and timetable of your exam body.</li><li>Look after your password and do not share your account. Tell us if you think someone else has used it.</li><li>Be kind in study groups and messages. We may remove content and accounts that break this rule.</li></ol>
+  <h2>Accuracy</h2><ol><li>Notes and questions are written for the app and checked, but some items are still marked "needs review". Always confirm important facts against your syllabus and teacher.</li><li>Answers from Ace, the AI study buddy, can be wrong. Check them, especially for marks and exam rules.</li></ol>
+  <h2>Exam bodies</h2><ol><li>WAEC, NECO, JAMB, KNEC, ECZ, UNEB, NECTA, Umalusi, AQA, Edexcel, OCR, WJEC and other exam bodies are named only to say which exam a subject follows. Ace Education is not affiliated with them.</li></ol>
+  <h2>Schools and accounts</h2><ol><li>Schools are responsible for their staff and student accounts. A school or student can ask us to delete an account at any time.</li><li>We may change or stop parts of the service. We will try to give notice of big changes.</li></ol></div>
+  <p class="mono" style="margin-top:1rem">Questions about these terms? Use the <a data-go="contact">contact page</a>.</p></div></section>`;
+}
+
 /* ---------- shell ---------- */
 function header() {
   return `<header><div class="bar"><button class="brand" data-go="home" aria-label="Ace Education home"><i></i>Ace Education</button>
@@ -231,21 +315,34 @@ function footer() {
   return `<footer><div class="fgrid"><div><button class="brand" data-go="home" style="margin-bottom:.7rem"><i></i>Ace Education</button><p style="color:var(--ink2);font-size:.9rem;max-width:34ch">Exam preparation for secondary schools in ${CCS.length} countries, built around each country's own exams.</p></div>
   <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
   <div><h4>Countries</h4>${CCS.map(cc => `<a data-go="country" data-arg="${cc}">${cMeta(cc)}</a>`).join('')}</div>
-  <div><h4>Company</h4><a data-go="about">About</a><a data-go="guides">Guides</a><a data-go="quote">Get a quote</a><a data-go="contact">Contact</a><a data-go="privacy">Privacy</a></div></div>
+  <div><h4>Company</h4><a data-go="about">About</a><a data-go="guides">Guides</a><a data-go="quote">Get a quote</a><a data-go="contact">Contact</a><a data-go="privacy">Privacy</a><a data-go="terms">Terms</a></div></div>
   <div class="fine">© Ace Education. Content carries a "needs review" label until a subject teacher signs it off. Exam names belong to their exam bodies; Ace Education is not affiliated with them.</div></footer>`;
 }
 function render() {
   const P = S.page;
-  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : pHome();
+  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
   const keep = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.act === 'exq';
   $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer();
+  anchorize();
   if (keep) { const i = $('input[data-act="exq"]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
+}
+
+/* Turn every in-site button into a real link so search engines and AI crawlers can follow it. */
+function anchorize() {
+  document.querySelectorAll('[data-go]').forEach(el => {
+    const href = pathFor(el.dataset.go, el.dataset.arg || null);
+    if (el.tagName === 'A') { el.setAttribute('href', href); return; }
+    const a = document.createElement('a');
+    for (const at of el.attributes) a.setAttribute(at.name, at.value);
+    a.setAttribute('href', href); a.innerHTML = el.innerHTML;
+    el.replaceWith(a);
+  });
 }
 
 /* ---------- events ---------- */
 document.addEventListener('click', e => {
   const g = e.target.closest('[data-go]');
-  if (g) { e.preventDefault(); go(g.dataset.go, g.dataset.arg); return; }
+  if (g) { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; e.preventDefault(); go(g.dataset.go, g.dataset.arg); return; }
   const a = e.target.closest('[data-act]'); if (a) {
     const k = a.dataset.act;
     if (k === 'hero') { S.hero = a.dataset.cc; S.picked = null; render(); }
@@ -276,4 +373,4 @@ document.addEventListener('submit', e => {
   else done(false);
 });
 function alert_(f, m) { let n = f.querySelector('.err'); if (!n) { n = document.createElement('p'); n.className = 'note err'; f.prepend(n); } n.textContent = m; }
-fromHash(); render();
+fromLocation(); render(); try { document.title = routeMeta(S.page, S.arg).title; } catch (e) {}

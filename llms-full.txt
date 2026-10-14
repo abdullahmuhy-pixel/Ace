@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 13 countries, 23 exams, 34,025 practice questions, 6,678 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 14 countries, 24 exams, 35,247 practice questions, 6,908 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -115,6 +115,14 @@ Levels: Form 1 – 6
 Totals: 28 subjects, 604 topics, 3,020 questions.
 - CSEE (NECTA): Basic Mathematics, English Language, Biology, Chemistry, Physics, Geography, History, Commerce, Bible Knowledge, Islamic Knowledge, Agriculture, Information and Computer Studies, Literature in English, Kiswahili
 - ACSEE (NECTA): Advanced Mathematics, Physics, Biology, General Studies, Information and Computer Studies, English Language, Basic Applied Mathematics, Chemistry, Economics, Geography, History, Accountancy, Commerce, Kiswahili
+
+## Liberia
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia
+Exams: WASSCE at the end of senior high school (Grade 12), administered in Liberia by WAEC.
+Grading: WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.
+Levels: Grade 10 – 12
+Totals: 9 subjects, 230 topics, 1,222 questions.
+- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English
 
 ## FAQ
 **Which exams does Ace Education cover today?** Twenty-three exams across thirteen countries: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; and CSEE and ACSEE in Tanzania. The Countries page shows exactly which subjects each one has.

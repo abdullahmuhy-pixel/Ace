@@ -1,6 +1,6 @@
 # Ace Education
 
-> Ace Education is an exam prep and study app for secondary school and university students in 13 countries: Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, United Kingdom, Canada, España, Ireland, South Africa, Uganda, Tanzania. It offers topic notes, quizzes, a question bank, flashcards, timed mock exams, a weak-topic radar and an AI study buddy for 23 exams, written for each country's own exam body, subjects, currency and examples. Students can sign up free; schools and tutoring centres can ask for a plan.
+> Ace Education is an exam prep and study app for secondary school and university students in 14 countries: Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, United Kingdom, Canada, España, Ireland, South Africa, Uganda, Tanzania, Liberia. It offers topic notes, quizzes, a question bank, flashcards, timed mock exams, a weak-topic radar and an AI study buddy for 24 exams, written for each country's own exam body, subjects, currency and examples. Students can sign up free; schools and tutoring centres can ask for a plan.
 
 ## Key pages
 - [Home](https://abdullahmuhy-pixel.github.io/Ace/): what Ace Education is and who it is for
@@ -25,6 +25,7 @@
 - [South Africa: NSC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa): 23 subjects, 2,140 practice questions
 - [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 28 subjects, 2,975 practice questions
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 28 subjects, 3,020 practice questions
+- [Liberia: WASSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 9 subjects, 1,222 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)

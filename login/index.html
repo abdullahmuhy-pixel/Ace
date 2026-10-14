@@ -21,6 +21,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 [data-country="ZA"]{--primary:#007749;--primary-dark:#005233;--accent:#FFB81C}
 [data-country="UG"]{--primary:#D90000;--primary-dark:#8F0000;--accent:#FCDC04}
 [data-country="TZ"]{--primary:#1EB53A;--primary-dark:#0E7A24;--accent:#FCD116}
+[data-country="LR"]{--primary:#002868;--primary-dark:#001A45;--accent:#BF0A30}
 [data-country="IE"]{--primary:#169B62;--primary-dark:#0E6B43;--accent:#FF883E}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,system-ui,sans-serif;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px}
@@ -78,7 +79,8 @@ ES:{n:'España',f:'🇪🇸',l:'es',x:['EBAU / Selectividad','2º Bachillerato']
 IE:{n:'Ireland',f:'🇮🇪',x:['Leaving Certificate','Junior Cycle'],tg:'Junior Cycle • Leaving Cert Exam Prep',gr:['3rd Year','5th Year','6th Year'],cl:'5th Year A',u:'Dublin',p:'GDPR'},
 ZA:{n:'South Africa',f:'🇿🇦',x:['NSC', 'Grade 11 exams'],tg:'NSC Exam Prep • Grade 8–12',gr:G(8,12,'Grade '),cl:'Grade 11A',u:'Johannesburg',p:'POPIA'},
 UG:{n:'Uganda',f:'🇺🇬',x:['UCE', 'UACE'],tg:'UCE and UACE Exam Prep • S1–S6',gr:G(1,6,'S'),cl:'S4A',u:'Kampala',p:'DPPA 2019'},
-TZ:{n:'Tanzania',f:'🇹🇿',x:['CSEE', 'ACSEE'],tg:'CSEE and ACSEE Exam Prep • Form 1–6',gr:G(1,6,'Form '),cl:'Form 4A',u:'Dar es Salaam',p:'PDPA 2022'}};
+TZ:{n:'Tanzania',f:'🇹🇿',x:['CSEE', 'ACSEE'],tg:'CSEE and ACSEE Exam Prep • Form 1–6',gr:G(1,6,'Form '),cl:'Form 4A',u:'Dar es Salaam',p:'PDPA 2022'},
+LR:{n:'Liberia',f:'🇱🇷',x:['WASSCE'],tg:'WASSCE Exam Prep • Grade 10–12',gr:G(10,12,'Grade '),cl:'Grade 12A',u:'Monrovia',p:''}};
 const exFor=(c,g)=>{if(!g)return c.x;const jr=/^(JHS|JSS)|^Grade [789]$/.test(g);let r=c.x;
  if(g=='Primary 6')r=c.x.filter(k=>k=='NPSE');else if(jr&&c.x.some(k=>/^(BECE|GABECE)$/.test(k)))r=c.x.filter(k=>/^(BECE|GABECE)$/.test(k));
  else if(c.x.some(k=>/^(BECE|GABECE|NPSE)$/.test(k)))r=c.x.filter(k=>!/^(BECE|GABECE|NPSE)$/.test(k));return r.length?r:c.x};

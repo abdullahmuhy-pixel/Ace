@@ -51,7 +51,7 @@
   const sync = () => window.AceSync;
   const signedIn = () => !!(sync() && sync().signedIn && sync().signedIn());
   const needSignIn = () => `<div class="card"><b>${L('Sign in to use this', 'Inicia sesión para usar esto')}</b><p class="note">${L('This part is saved to your account. Open the sign-in page, then come back here.', 'Esta parte se guarda en tu cuenta. Abre la página de acceso y vuelve aquí.')}</p><a class="btn" style="display:inline-block;text-decoration:none" href="../login/">${L('Sign in', 'Entrar')}</a></div>`;
-  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania' };
+  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia' };
   const cname = () => NAMES[S.c] || S.c;
   const ex = () => C_().x[S.x % C_().x.length];
   const fail = e => { X.err = (e && (e.msg || e.message)) || L('Something went wrong. Try again.', 'Algo salió mal. Inténtalo de nuevo.'); };
@@ -72,7 +72,8 @@
     IE: 'Apply through the CAO using your Leaving Certificate results.',
     ZA: 'Apply directly to each university (many close in mid-year); your NSC results decide your Admission Point Score (APS), and NSFAS funds eligible students.',
     UG: "Apply to public universities through each university's own portal (Makerere and others) with your UACE results; government sponsorship is competitive, and private sponsorship is also available.",
-    TZ: 'Apply to universities through the Central Admission System (CAS) run by TCU, using your ACSEE results.'
+    TZ: 'Apply to universities through the Central Admission System (CAS) run by TCU, using your ACSEE results.',
+    LR: 'Apply to each university directly. Most ask for your WASSCE result and set their own entrance exam; the University of Liberia entrance exam tests English and Mathematics.'
   };
   function stages() {
     const c = C_(), exams = c.x.join(', ');

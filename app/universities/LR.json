@@ -1,0 +1,341 @@
+{
+ "country": "LR",
+ "updated": "2026-10-14",
+ "admissions_overview": {
+  "summary": "In Liberia each university admits its own students; there is no single national placement system. Universities ask for your WASSCE result and most set their own entrance exam. The University of Liberia's entrance exam, run by its Center for Testing and Evaluation, tests English and Mathematics, and candidates who pass then apply to a college.",
+  "official_url": "https://ul.edu.lr/new/",
+  "notes": "Entrance exam dates, pass marks, fees and programme lists change every year. Check the admissions page of the university you want each year. Programme placement under each college below follows the universities' own published lists; where a list did not name the college, the programme is placed under the college whose name matches it."
+ },
+ "universities": [
+  {
+   "id": "ul",
+   "name": "University of Liberia",
+   "short": "UL",
+   "type": "public",
+   "city": "Monrovia",
+   "url": "https://ul.edu.lr/new/",
+   "admissions_url": "https://ul.edu.lr/new/undergraduate-colleges/",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "T. J. R. Faulkner College of Science and Technology",
+     "courses": [
+      {
+       "name": "BSc General Biology"
+      },
+      {
+       "name": "BSc Chemistry"
+      },
+      {
+       "name": "BSc Physics"
+      },
+      {
+       "name": "BSc Mathematics"
+      },
+      {
+       "name": "BSc Geology"
+      },
+      {
+       "name": "BSc Zoology"
+      }
+     ]
+    },
+    {
+     "name": "College of Engineering",
+     "courses": [
+      {
+       "name": "BSc Civil Engineering"
+      },
+      {
+       "name": "BSc Electrical Engineering"
+      },
+      {
+       "name": "BSc Mining Engineering"
+      }
+     ]
+    },
+    {
+     "name": "A. Romeo Horton College of Business and Public Administration",
+     "courses": [
+      {
+       "name": "BBA Accounting"
+      },
+      {
+       "name": "BBA Management"
+      },
+      {
+       "name": "Bachelor of Public Administration"
+      }
+     ]
+    },
+    {
+     "name": "Liberia College of Social Sciences and Humanities",
+     "courses": [
+      {
+       "name": "BA English and Literature"
+      },
+      {
+       "name": "BA French"
+      },
+      {
+       "name": "BA History"
+      },
+      {
+       "name": "BA Geography"
+      },
+      {
+       "name": "BA Political Science"
+      },
+      {
+       "name": "BA Sociology and Anthropology"
+      },
+      {
+       "name": "BA Mass Communication"
+      }
+     ]
+    },
+    {
+     "name": "William R. Tolbert Jr. College of Agriculture and Forestry",
+     "courses": [
+      {
+       "name": "BSc General Agriculture"
+      },
+      {
+       "name": "BSc Agronomy"
+      },
+      {
+       "name": "BSc General Forestry"
+      },
+      {
+       "name": "BSc Wood Science and Technology"
+      }
+     ]
+    },
+    {
+     "name": "William V. S. Tubman College of Education",
+     "courses": [
+      {
+       "name": "BSc Primary Education"
+      },
+      {
+       "name": "BSc Secondary Education"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tubman",
+   "name": "William V. S. Tubman University",
+   "short": "TU",
+   "type": "public",
+   "city": "Harper",
+   "url": "https://www.tubmanu.edu.lr/index.html",
+   "admissions_url": "https://www.tubmanu.edu.lr/pages/academicaffairs",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "College of Engineering and Technology",
+     "courses": [
+      {
+       "name": "BSc Civil Engineering"
+      },
+      {
+       "name": "BSc Mechanical Engineering"
+      },
+      {
+       "name": "BSc Electrical Engineering"
+      },
+      {
+       "name": "BSc Computer Science"
+      }
+     ]
+    },
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "BSc Nursing"
+      },
+      {
+       "name": "BSc Midwifery"
+      },
+      {
+       "name": "BSc Public Health"
+      }
+     ]
+    },
+    {
+     "name": "College of Business and Administration",
+     "courses": [
+      {
+       "name": "BBA Accounting"
+      },
+      {
+       "name": "BBA Banking and Finance"
+      },
+      {
+       "name": "Bachelor of Public Administration"
+      },
+      {
+       "name": "BSc Economics"
+      }
+     ]
+    },
+    {
+     "name": "College of Arts and Sciences",
+     "courses": [
+      {
+       "name": "BSc Biology"
+      },
+      {
+       "name": "BSc Environmental Studies"
+      },
+      {
+       "name": "BA Psychology"
+      }
+     ]
+    },
+    {
+     "name": "College of Agriculture and Food Science",
+     "courses": [
+      {
+       "name": "BSc General Agriculture"
+      },
+      {
+       "name": "BSc Agronomy"
+      }
+     ]
+    },
+    {
+     "name": "College of Education",
+     "courses": [
+      {
+       "name": "BSc Primary Education"
+      },
+      {
+       "name": "BA Secondary Education"
+      },
+      {
+       "name": "BA Guidance and Counseling"
+      },
+      {
+       "name": "BA Early Childhood"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "umu",
+   "name": "United Methodist University",
+   "short": "UMU",
+   "type": "private",
+   "city": "Monrovia",
+   "url": "https://umu.edu.lr/",
+   "admissions_url": "https://umu.edu.lr/",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "College of Management and Administration",
+     "courses": [
+      {
+       "name": "BSc Management"
+      },
+      {
+       "name": "Bachelor of Banking and Finance"
+      },
+      {
+       "name": "Bachelor of Public Administration"
+      },
+      {
+       "name": "BSc Economics"
+      },
+      {
+       "name": "BSc Accounting"
+      }
+     ]
+    },
+    {
+     "name": "College of Liberal and Fine Arts",
+     "courses": [
+      {
+       "name": "BA Criminology"
+      },
+      {
+       "name": "BA History"
+      },
+      {
+       "name": "BA Geography"
+      },
+      {
+       "name": "BA Mass Communication"
+      },
+      {
+       "name": "BA Sociology"
+      },
+      {
+       "name": "BA Political Science"
+      }
+     ]
+    },
+    {
+     "name": "Joseph Jenkins Roberts College of Education",
+     "courses": [
+      {
+       "name": "BEd Primary Education"
+      },
+      {
+       "name": "BEd Secondary Education"
+      }
+     ]
+    },
+    {
+     "name": "College of Natural and Applied Sciences",
+     "courses": [
+      {
+       "name": "BSc Biology"
+      },
+      {
+       "name": "BSc Chemistry"
+      },
+      {
+       "name": "BSc Mathematics"
+      },
+      {
+       "name": "BSc Environmental Science"
+      },
+      {
+       "name": "BSc Marine Science"
+      },
+      {
+       "name": "BSc Zoology"
+      }
+     ]
+    },
+    {
+     "name": "Bishop Samuel J. Quire College of Information and Communication Technology",
+     "courses": [
+      {
+       "name": "BSc Information Technology"
+      },
+      {
+       "name": "BSc Computer Science"
+      }
+     ]
+    },
+    {
+     "name": "Winifred J. Harley College of Health Sciences",
+     "courses": [
+      {
+       "name": "BSc Nursing"
+      },
+      {
+       "name": "BSc Midwifery"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
