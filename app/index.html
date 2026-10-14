@@ -528,7 +528,9 @@ $('#fab').onclick=()=>{openAI('buddy');render()};
 useCountry(S.c);render();
 /* offline app shell + syllabus cache (only on a real http(s) host; sw.js sits next to this file) */
 try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/claude\.ai$/.test(location.hostname)){
- navigator.serviceWorker.register('sw.js').catch(()=>{});
+ const hadSW=!!navigator.serviceWorker.controller;let reloaded=false;
+ navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>{try{r.update()}catch(e){}}).catch(()=>{});
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(hadSW&&!reloaded&&!(S.qb&&S.qb.items&&!S.qb.done)){reloaded=true;location.reload()}});
  navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.type=='NEW_VERSION_READY')toast(C[S.c]&&C[S.c].l?'Hay una versión nueva. Recarga la página.':'A new version is ready. Reload the page.')})}}catch(e){}
 </script>
 <script src="today.js"></script>
