@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Learn from Teachers and Creators</title>
+<meta name="description" content="Find teachers, tutors and lecturers. Watch free previews and subscribe for full video lessons and notes.">
+<meta name="theme-color" content="#0b6b3a">
+<link rel="icon" href="../app/icon.svg" type="image/svg+xml">
+<script>try{var th=JSON.parse(localStorage.getItem("ace-prefs")||"{}").theme;if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
+<style>
+:root{--bg:#f5f7f4;--card:#fff;--ink:#12201a;--mut:#58675f;--line:#dbe4de;--pri:#0b6b3a;--priInk:#fff;--soft:#e6f3ea;--bad:#a12b2b}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--priInk:#06210f;--soft:#1a2c22;--bad:#ff9b9b}}
+:root[data-theme=dark]{--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--priInk:#06210f;--soft:#1a2c22;--bad:#ff9b9b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--pri)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);background:var(--card)}
+.bar{display:flex;align-items:center;gap:14px;min-height:58px;flex-wrap:wrap}
+.bar b{font-size:18px}.bar nav{margin-left:auto;display:flex;gap:14px;font-size:14px}
+main{padding-block:22px 70px}
+h1{font-size:clamp(26px,5vw,38px);line-height:1.1;margin:0 0 8px;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:19px;margin:0 0 10px}
+.mut{color:var(--mut);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card a.t{color:var(--ink);text-decoration:none;font-weight:700;display:block}
+.av{width:44px;height:44px;border-radius:50%;background:var(--soft);color:var(--pri);display:grid;place-items:center;font-weight:800;margin-bottom:8px}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;background:var(--soft);color:var(--pri)}
+input,select{padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;min-width:0}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.filters input{flex:1;min-width:180px}
+.btn{display:inline-block;border:1px solid var(--pri);background:var(--pri);color:var(--priInk);padding:10px 16px;border-radius:10px;font:700 15px inherit;cursor:pointer;text-decoration:none}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}.btn[disabled]{opacity:.55;cursor:not-allowed}
+.lesson{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:11px 0;border-top:1px solid var(--line)}
+.lesson:first-of-type{border-top:0}
+.player{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#000;max-width:100%}
+.notes{white-space:pre-wrap;margin-top:12px;max-width:68ch}
+.crumb{font-size:14px;margin-bottom:12px}
+.lock{background:var(--soft);border-radius:12px;padding:14px;margin-top:10px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media(min-width:800px){.cols{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}}
+textarea{width:100%;min-height:70px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><b><a href="#/" style="color:inherit;text-decoration:none">Creators</a></b><nav><a href="../academy/">Academy</a><a href="../studio/">Teach with us</a><a href="../app/">Student app</a></nav></div></header>
+<div class="wrap"><main id="main"><p class="mut">Loading…</p></main></div>
+<script src="../config.js"></script>
+<script>
+(function(){
+var CFG=window.ACE_CONFIG||{},S={sb:null,user:null,creators:[],courses:[]};
+var $=function(s){return document.querySelector(s)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+var FIELDS={it:'IT and computing',biz:'Business and management',fin:'Finance and accounting',health:'Health and medicine',edu:'Teaching and education',hum:'Humanities and languages',soc:'Social sciences',sci:'Sciences',eng:'Engineering and trades',law:'Law',creative:'Creative and media',life:'Life skills'};
+function money(minor,cur){var z={UGX:1,TZS:1,RWF:1,XOF:1,JPY:1},d=z[cur]?1:100;try{return new Intl.NumberFormat(undefined,{style:'currency',currency:cur,maximumFractionDigits:d===1?0:2}).format(minor/d)}catch(e){return (minor/d)+' '+cur}}
+function loadSB(){return new Promise(function(ok){
+  if(!CFG.supabaseUrl||!CFG.supabaseAnonKey)return ok(null);
+  function go(){S.sb=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey,{auth:{storage:{
+    getItem:function(k){try{var a=localStorage.getItem(k);return a!=null?a:sessionStorage.getItem(k)}catch(e){return null}},
+    setItem:function(k,v){try{if(sessionStorage.getItem(k)!=null&&localStorage.getItem(k)==null)sessionStorage.setItem(k,v);else localStorage.setItem(k,v)}catch(e){}},
+    removeItem:function(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}}}});
+    S.sb.auth.getSession().then(function(r){S.user=r.data&&r.data.session?r.data.session.user:null;ok(S.sb)}).catch(function(){ok(S.sb)})}
+  if(window.supabase)return go();
+  var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';s.onload=go;s.onerror=function(){ok(null)};document.head.appendChild(s)})}
+function initials(n){return String(n).split(/\s+/).slice(0,2).map(function(w){return w[0]||''}).join('').toUpperCase()}
+function embed(p,ref){
+  ref=String(ref||'').trim();if(!ref)return '';
+  var id,m;
+  if(p==='youtube'){m=ref.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);id=m?m[1]:ref;if(!/^[\w-]{11}$/.test(id))return '';return 'https://www.youtube-nocookie.com/embed/'+id}
+  if(p==='vimeo'){m=ref.match(/vimeo\.com\/(?:video\/)?(\d+)/);id=m?m[1]:ref;if(!/^\d+$/.test(id))return '';return 'https://player.vimeo.com/video/'+id}
+  if(p==='bunny'){m=ref.match(/embed\/(\d+\/[\w-]+)/);id=m?m[1]:ref;if(!/^\d+\/[\w-]+$/.test(id))return '';return 'https://iframe.mediadelivery.net/embed/'+id}
+  if(p==='cloudflare'){m=ref.match(/([a-f0-9]{32})/);return m?'https://iframe.cloudflarestream.com/'+m[1]:''}
+  return '';
+}
+function note(h){$('#main').innerHTML='<div class="card"><p>'+h+'</p></div>'}
+/* ---------- catalogue ---------- */
+function home(){
+  var m=$('#main');
+  m.innerHTML='<h1>Learn from real teachers</h1><p class="mut" style="max-width:60ch">Tutors, lecturers and schools publish video lessons and notes here. Watch the free previews, then subscribe to unlock everything from a creator.</p>'+
+   '<div class="filters"><input id="q" type="search" placeholder="Search creators and courses"><select id="f"><option value="">All subjects</option>'+Object.keys(FIELDS).map(function(k){return '<option value="'+k+'">'+FIELDS[k]+'</option>'}).join('')+'</select></div><div id="list"></div>';
+  Promise.all([S.sb.from('creator_profiles').select('user_id,handle,display_name,headline,country_code').eq('status','approved'),S.sb.from('creator_courses').select('id,slug,title,summary,field,level,creator_id').eq('status','approved')]).then(function(r){
+    S.creators=r[0].data||[];S.courses=r[1].data||[];paint();$('#q').oninput=paint;$('#f').onchange=paint;
+  });
+  function paint(){
+    var q=($('#q').value||'').toLowerCase(),f=$('#f').value,by={};S.creators.forEach(function(c){by[c.user_id]=c});
+    var cs=S.courses.filter(function(c){return (!f||c.field===f)&&(!q||(c.title+' '+c.summary+' '+(by[c.creator_id]||{}).display_name).toLowerCase().indexOf(q)>-1)});
+    var ids={};cs.forEach(function(c){ids[c.creator_id]=1});
+    var cr=S.creators.filter(function(c){return (!f&&!q&&true)||ids[c.user_id]||(!f&&(c.display_name+' '+(c.headline||'')).toLowerCase().indexOf(q)>-1)});
+    if(!cr.length&&!cs.length){$('#list').innerHTML='<div class="card"><p>Nothing here yet.</p><p class="mut">New creators are joining soon. Are you a teacher? <a href="../studio/">Start teaching</a>.</p></div>';return}
+    $('#list').innerHTML=(cr.length?'<h2 style="margin-top:8px">Creators</h2><div class="grid">'+cr.map(function(c){return '<div class="card"><div class="av">'+esc(initials(c.display_name))+'</div><a class="t" href="#/u/'+esc(c.handle)+'">'+esc(c.display_name)+'</a><span class="mut">'+esc(c.headline||'')+'</span></div>'}).join('')+'</div>':'')+
+     (cs.length?'<h2 style="margin-top:26px">Courses</h2><div class="grid">'+cs.map(function(c){var u=by[c.creator_id]||{};return '<div class="card"><span class="tag">'+esc(FIELDS[c.field]||c.field)+'</span><a class="t" style="margin-top:8px" href="#/c/'+esc(c.slug)+'">'+esc(c.title)+'</a><span class="mut">by '+esc(u.display_name||'')+'</span><p class="mut" style="margin:6px 0 0">'+esc(c.summary.slice(0,120))+(c.summary.length>120?'…':'')+'</p></div>'}).join('')+'</div>':'');
+  }
+}
+/* ---------- creator page ---------- */
+function creator(handle){
+  S.sb.from('creator_profiles').select('user_id,handle,display_name,headline,bio,country_code').eq('handle',handle).eq('status','approved').maybeSingle().then(function(r){
+    var c=r.data;if(!c)return note('Creator not found. <a href="#/">Back</a>');
+    Promise.all([S.sb.from('creator_courses').select('slug,title,summary,field').eq('creator_id',c.user_id).eq('status','approved'),S.sb.from('creator_plans').select('*').eq('creator_id',c.user_id).eq('active',true).order('amount_minor')]).then(function(x){
+      var cs=x[0].data||[],pl=x[1].data||[];document.title=c.display_name+' | Creators';
+      $('#main').innerHTML='<div class="crumb"><a href="#/">← All creators</a></div><div class="cols"><div><div class="av" style="width:60px;height:60px;font-size:20px">'+esc(initials(c.display_name))+'</div><h1>'+esc(c.display_name)+'</h1><p class="mut">'+esc(c.headline||'')+'</p><p style="max-width:64ch;white-space:pre-wrap">'+esc(c.bio||'')+'</p>'+
+       '<h2 style="margin-top:20px">Courses</h2>'+(cs.length?cs.map(function(k){return '<div class="card" style="margin-bottom:10px"><a class="t" href="#/c/'+esc(k.slug)+'">'+esc(k.title)+'</a><span class="mut">'+esc(k.summary)+'</span></div>'}).join(''):'<p class="mut">No published courses yet.</p>')+'</div>'+
+       '<aside>'+subBox(pl)+'</aside></div>';
+    });
+  });
+}
+function subBox(pl){
+  return '<div class="card"><h2>Subscribe</h2>'+(pl.length?pl.map(function(p){return '<p style="margin:0 0 8px"><b>'+money(p.amount_minor,p.currency_code)+'</b> per '+p.period+'<br><span class="mut">'+esc(p.name)+'</span></p>'}).join('')+'<button class="btn" disabled>Subscribe</button><p class="mut" style="margin-top:8px">Online payment is opening soon. Free preview lessons are available now.</p>':'<p class="mut">This creator has not set a price yet.</p>')+'</div>';
+}
+/* ---------- course page ---------- */
+function course(slug,lessonId){
+  S.sb.from('creator_courses').select('id,slug,title,summary,field,level,creator_id').eq('slug',slug).eq('status','approved').maybeSingle().then(function(r){
+    var c=r.data;if(!c)return note('Course not found. <a href="#/">Back</a>');
+    Promise.all([S.sb.from('creator_profiles').select('user_id,handle,display_name').eq('user_id',c.creator_id).single(),S.sb.from('creator_lessons').select('id,position,title,is_preview,duration_sec').eq('course_id',c.id).order('position'),S.sb.from('creator_plans').select('*').eq('creator_id',c.creator_id).eq('active',true).order('amount_minor')]).then(function(x){
+      var u=x[0].data||{},ls=x[1].data||[],pl=x[2].data||[];document.title=c.title+' | Creators';
+      $('#main').innerHTML='<div class="crumb"><a href="#/">Creators</a> / <a href="#/u/'+esc(u.handle)+'">'+esc(u.display_name)+'</a></div><div class="cols"><div><span class="tag">'+esc(FIELDS[c.field]||c.field)+'</span><h1 style="margin-top:8px">'+esc(c.title)+'</h1><p class="mut" style="max-width:64ch">'+esc(c.summary)+'</p><div id="view"></div>'+
+       '<div class="card" style="margin-top:14px"><h2>Lessons</h2>'+ls.map(function(l){return '<div class="lesson"><div>'+(l.position+1)+'. '+esc(l.title)+(l.duration_sec?' <span class="mut">· '+Math.max(1,Math.round(l.duration_sec/60))+' min</span>':'')+(l.is_preview?' <span class="tag">free</span>':'')+'</div><a class="btn o" style="padding:6px 12px;font-size:14px" href="#/c/'+esc(slug)+'/l/'+l.id+'">'+(l.is_preview?'Watch':'Open')+'</a></div>'}).join('')+'</div>'+
+       '<details style="margin-top:14px"><summary class="mut" style="cursor:pointer">Report this course</summary><p class="mut">Copyright problem, harmful or misleading? Tell us.</p><textarea id="rr" maxlength="600"></textarea><br><button class="btn o" id="rb" style="margin-top:8px">Send report</button> <span class="mut" id="rm"></span></details></div><aside>'+subBox(pl)+'</aside></div>';
+      $('#rb').onclick=function(){if(!S.user){$('#rm').textContent='Sign in to report.';return}var t=$('#rr').value.trim();if(t.length<5){$('#rm').textContent='Please say what is wrong.';return}
+        S.sb.rpc('report_creator_content',{p_course:c.id,p_reason:t}).then(function(e){$('#rm').textContent=e.error?e.error.message:'Thank you. We will review it.'})};
+      if(lessonId)lesson(lessonId,u);
+    });
+  });
+}
+function lesson(id,u){
+  var v=$('#view');v.innerHTML='<p class="mut">Loading lesson…</p>';
+  S.sb.rpc('get_lesson_content',{p_lesson:id}).then(function(r){
+    if(r.error){v.innerHTML='<div class="lock"><b>This lesson is for subscribers.</b><p class="mut" style="margin:6px 0 0">'+esc(r.error.message)+(S.user?'':' <a href="../login/?next=creators">Sign in</a> if you already subscribe.')+'</p></div>';return}
+    var d=(r.data||[])[0];if(!d){v.innerHTML='<p class="mut">This lesson has no content yet.</p>';return}
+    var src=embed(d.video_provider,d.video_ref),h='<h2>'+esc(d.title)+'</h2>';
+    if(src)h+='<iframe class="player" src="'+esc(src)+'" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+    else if(d.video_ref&&/^https:\/\//.test(d.video_ref))h+='<p><a class="btn" target="_blank" rel="noopener noreferrer" href="'+esc(d.video_ref)+'">Open video</a></p>';
+    if(d.body)h+='<div class="notes">'+esc(d.body)+'</div>';
+    v.innerHTML=h;v.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
+function route(){
+  if(!S.sb){note('Not configured: set the Supabase URL and anon key in config.js.');return}
+  var h=location.hash.replace(/^#\/?/,'').split('/');
+  if(h[0]==='u'&&h[1])return creator(decodeURIComponent(h[1]));
+  if(h[0]==='c'&&h[1])return course(decodeURIComponent(h[1]),h[2]==='l'?h[3]:null);
+  document.title='Learn from Teachers and Creators';home();
+}
+window.addEventListener('hashchange',route);
+loadSB().then(route);
+window.AceCreators={S:S,embed:embed};
+})();
+</script>
+</body>
+</html>
