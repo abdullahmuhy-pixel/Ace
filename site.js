@@ -6,7 +6,7 @@ const SITE_CONFIG = {
   appUrl: "app/",     // student app
   loginUrl: "login/",   // sign-in page
   email: "",            // public contact email, shown on the Contact page when set
-  whatsapp: "",         // digits only with country code, e.g. 2348012345678
+  whatsapp: "27732891424",         // digits only with country code, e.g. 2348012345678
   telegram: "",         // full link
   formEndpoint: "",     // URL that accepts a JSON POST for quote and contact forms
   founder: null         // {name, role, bio} to show a founder section on About
