@@ -101,7 +101,13 @@ LR:{name:'Liberia',flag:'🇱🇷',lang:'English',levels:'Grade 10 – 12',law:'
  intro:'Liberia follows the WAEC WASSCE syllabuses, with Liberian dollars (L$) in the money questions and Liberian history, geography and economy in the national topics. Candidates sit nine subjects.',
  ex:{WASSCE:'The West African Senior School Certificate Examination, taken in Grade 12.'},
  scale:'WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.',
- next:['Government, Commerce and Financial Accounting','More electives','LJHSCE (Grade 9) subjects']}
+ next:['Government, Commerce and Financial Accounting','More electives','LJHSCE (Grade 9) subjects']},
+MT:{name:'Malta',flag:'🇲🇹',lang:'English',levels:'Year 9 – 11',law:'GDPR',
+ sys:'The Secondary Education Certificate (SEC) at the end of secondary school (Year 11), set by MATSEC at the University of Malta. Sixth-form students then take the Matriculation Certificate.',
+ intro:'Malta follows the MATSEC SEC syllabuses, with euros (€) and 18% VAT in the money questions and Maltese and EU law in Computing and Business Studies. From 2027 each SEC subject combines school-based assessment (30%) with a MATSEC paper (70%).',
+ ex:{SEC:'The Secondary Education Certificate, taken at the end of Year 11. Paper I is school-based assessment (30%) and Paper II is set and marked by MATSEC (70%).'},
+ scale:'SEC: Paper II is sat at Levels 1–2 or 2–3, and results are reported as grades with 1 the highest; check MATSEC for the grade you need to continue a subject.',
+ next:['Maltese','Accounting, Economics, Geography and History','Matriculation Certificate (Advanced and Intermediate)']}
 };
 
 const FEATURES = [
@@ -119,7 +125,7 @@ const FEATURES = [
  ['✍️','What my teacher taught today','The student types what was covered in class. Ace returns a summary, key terms, a worked example and practice questions, and schedules revision.','Backend ready','Daily use'],
  ['🔁','Spaced revision','Short reviews after 1, 3, 7, 21 and 45 days. A wrong answer brings the topic back tomorrow.','Backend ready','Daily use'],
  ['🗺️','Road map to graduation','From lower secondary to career, with the next steps at each stage and a saved goal for course and university.','Live','Daily use'],
- ['🏛️','University explorer','Courses and how admission works at leading universities in each of the thirteen countries, with links to each official site.','Live','University'],
+ ['🏛️','University explorer','Courses and how admission works at leading universities in each country we cover, with links to each official site.','Live','University'],
  ['🧮','GPA, citation and focus tools','5.0, 4.0 and UK grade calculators with a "what do I need" planner, an APA and Harvard citation builder, and a focus timer.','Live','University'],
  ['📝','Lecture-note study packs','Paste your own lecture notes and get a summary, flashcards and practice questions.','Backend ready','University'],
  ['🎓','Certificate courses','33 short courses: study skills, coding (Python, JavaScript, SQL, HTML and CSS, Git), digital safety, AI literacy, business and money, public speaking and more. Quizzes are graded on the server and certificates can be verified by anyone.','Backend ready','Courses'],
@@ -156,7 +162,7 @@ const SCHOOL_STATUS = [
 ];
 
 const FAQ = [
- ['Which exams does Ace Education cover today?','Twenty-three exams across thirteen countries: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; and CSEE and ACSEE in Tanzania. The Countries page shows exactly which subjects each one has.'],
+ ['Which exams does Ace Education cover today?','More than twenty exams across fifteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; and the SEC in Malta. The Countries page shows exactly which subjects each one has.'],
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
@@ -164,7 +170,7 @@ const FAQ = [
  ['Does it work on a phone with little data?','The app is a web page that works in a phone browser with no download. Pages are text-first and light. A dedicated data-saver mode and offline use are on the roadmap.'],
  ['Is my data safe?','We collect only what the service needs, we do not sell data, and students or schools can ask for deletion at any time. The Privacy page lists the data-protection law that applies in each country.'],
  ['Can a school use it for a whole class?','Yes. A school gets a school code and a staff dashboard: teachers add classes, students join with the code, and teachers see class results and set tasks. Ask us for a quote and we will onboard your school.'],
- ['Which country is next?','The thirteen countries are open for content now. We add a country by adding a syllabus file, so new ones can follow quickly. Tell us which you need on the Contact page.']
+ ['Which country is next?','All the countries listed are open now. We add a country by adding a syllabus file, so new ones can follow quickly. Tell us which you need on the Contact page.']
 ];
 
 const GUIDES = [
@@ -178,8 +184,8 @@ const GUIDES = [
   ['Write each step on its own line. Examiners give method marks for working that is visible.','Check every answer: substitute back, estimate, or use another method.','Keep units and currency with every answer. A correct number with no unit often loses a mark.','Read the whole question twice, and underline what is actually being asked.','Practise by topic first, then mix topics, because the exam will not tell you which topic a question is from.'],'5 min'],
  ['science-practicals','Subject guides','Physics, Chemistry and Biology: from definitions to application','Science papers test whether you can apply an idea to a situation you have not seen.',
   ['Learn each definition word for word, then practise using it in a sentence about a real situation.','For calculations, write the formula, substitute with units, then answer with units.','In Chemistry, balance every equation and check the state symbols.','In Biology, learn process descriptions in order, and practise explaining why, not only what.'],'6 min'],
- ['exam-systems','Exam systems','How the thirteen exam systems compare','The thirteen countries in Ace Education test students in very different ways. Here is the quick difference.',
-  ['West Africa (Nigeria, Ghana, Sierra Leone, The Gambia): WASSCE grades run A1 to F9, and a credit is C6 or better.','Kenya: KCSE gives a mean grade A to E, with 12 points for A.','Zambia: ECZ grades run from 1 (best) to 9.','UK: GCSE uses 9 to 1 and A-Level uses A* to E.','Canada: marks in Ontario are percentages.','Spain: the EBAU is marked 0 to 14 including the voluntary phase.','Ireland: Leaving Certificate grades H1 to H8 and O1 to O8 turn into CAO points.','South Africa: the NSC reports achievement levels 1 to 7, where level 7 is 80 to 100%.','Uganda: UCE grades run 1 (best) to 9, and UACE gives principal passes A to F.','Tanzania: CSEE uses divisions I to IV and 0, and ACSEE grades run A to F.'],'4 min'],
+ ['exam-systems','Exam systems','How the exam systems compare','The countries in Ace Education test students in very different ways. Here is the quick difference.',
+  ['West Africa (Nigeria, Ghana, Sierra Leone, The Gambia, Liberia): WASSCE grades run A1 to F9, and a credit is C6 or better.','Kenya: KCSE gives a mean grade A to E, with 12 points for A.','Zambia: ECZ grades run from 1 (best) to 9.','UK: GCSE uses 9 to 1 and A-Level uses A* to E.','Canada: marks in Ontario are percentages.','Spain: the EBAU is marked 0 to 14 including the voluntary phase.','Ireland: Leaving Certificate grades H1 to H8 and O1 to O8 turn into CAO points.','South Africa: the NSC reports achievement levels 1 to 7, where level 7 is 80 to 100%.','Uganda: UCE grades run 1 (best) to 9, and UACE gives principal passes A to F.','Tanzania: CSEE uses divisions I to IV and 0, and ACSEE grades run A to F.','Malta: SEC Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest.'],'4 min'],
  ['exam-stress','Wellbeing','Managing exam stress','A little stress sharpens attention. Too much makes it hard to start. These habits help most students.',
   ['Sleep is part of revision. Memory is stored overnight, so cutting sleep to study usually backfires.','Break the work into small tasks that fit in 25 minutes. Starting is the hardest part.','Move for ten minutes between sessions. Walking is enough.','Talk to someone you trust. If worry is affecting your sleep or daily life for weeks, speak to a teacher, parent or a health professional.'],'5 min'],
  ['using-ace','Using Ace','Getting the most from Ace Education','Ace Education is built around a simple loop: learn a topic, test it, then sit a mock.',
@@ -187,7 +193,7 @@ const GUIDES = [
 ];
 
 const VALUES = [
- ['🎯','Local first','Every country gets its own exam bodies, subject list, currency and examples. We do not translate one syllabus thirteen times.'],
+ ['🎯','Local first','Every country gets its own exam bodies, subject list, currency and examples. We do not translate one syllabus over and over.'],
  ['🔍','Honest about quality','New content says "needs review" until a teacher signs it off. We would rather show you the status than hide it.'],
  ['🧮','Numbers checked by code','Worked answers in maths, science, economics and accounting are recomputed by a program before they go in.'],
  ['🔒','Privacy first','We collect only what the service needs, we do not sell data, and deletion is available on request.'],

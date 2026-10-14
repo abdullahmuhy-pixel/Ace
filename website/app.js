@@ -18,7 +18,7 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
 const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
 
-const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia'};
+const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta'};
 const PAGES = ['countries','features','syllabus','schools','guides','about','contact','quote','privacy','terms'];
 const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
 function parseRoute(r) {

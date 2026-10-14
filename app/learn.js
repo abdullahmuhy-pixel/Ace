@@ -74,7 +74,7 @@ ${c.quiz.map((x, i) => `<div class="card" style="margin-bottom:10px"><b>${i + 1}
   }
 
   /* ================= UNIVERSITIES ================= */
-  const CCS = ['NG', 'GH', 'SL', 'GM', 'KE', 'ZM', 'GB', 'CA', 'ES', 'IE', 'ZA', 'UG', 'TZ', 'LR'];
+  const CCS = ['NG', 'GH', 'SL', 'GM', 'KE', 'ZM', 'GB', 'CA', 'ES', 'IE', 'ZA', 'UG', 'TZ', 'LR', 'MT'];
   const uniCC = () => Lr.uni.cc || S.c;
   function uniResults() {
     const d = Lr.uni.data[uniCC()], q = Lr.uni.q.trim().toLowerCase(); if (!d) return '';

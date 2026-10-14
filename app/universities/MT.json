@@ -1,0 +1,162 @@
+{
+ "country": "MT",
+ "updated": "2026-10-14",
+ "admissions_overview": {
+  "summary": "In Malta you apply directly to each institution. Most University of Malta degrees need the Matriculation Certificate (two Advanced and three Intermediate subjects plus Systems of Knowledge, taken after two years of sixth form) together with SEC passes in Maltese, English Language and Mathematics, and many courses name extra subjects. MCAST and ITS courses accept SEC results directly, with the number and grade of passes depending on the level of the course.",
+  "official_url": "https://www.um.edu.mt",
+  "notes": "Entry requirements and course lists change from year to year. Always check the course page of the institution before you apply. Only a sample of courses is listed for each faculty or institute."
+ },
+ "universities": [
+  {
+   "id": "um",
+   "name": "University of Malta",
+   "short": "UM",
+   "type": "public",
+   "city": "Msida",
+   "url": "https://www.um.edu.mt",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "Faculty of Information and Communication Technology",
+     "courses": [
+      {
+       "name": "BSc (Hons) Computing Science"
+      },
+      {
+       "name": "BSc (Hons) Computer Engineering"
+      },
+      {
+       "name": "BSc (Hons) Microelectronics and Embedded Systems"
+      },
+      {
+       "name": "BSc in Information Technology (Hons)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc (Hons) in Biology and Physics"
+      },
+      {
+       "name": "BSc (Hons) in Biology and Mathematics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Medicine and Surgery",
+     "courses": [
+      {
+       "name": "Doctor of Medicine and Surgery"
+      },
+      {
+       "name": "BSc (Hons) in Medical Biochemistry"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mcast",
+   "name": "Malta College of Arts, Science and Technology",
+   "short": "MCAST",
+   "type": "public",
+   "city": "Paola",
+   "url": "https://mcast.edu.mt",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "Institute of Engineering and Transport",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering (Hons) in Electronics Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering (Hons) in Electronics and Control Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering (Hons) in Mechanical Engineering (Manufacturing)"
+      },
+      {
+       "name": "Bachelor of Engineering (Hons) in Mechanical Engineering (Plant)"
+      }
+     ]
+    },
+    {
+     "name": "Institute of Information and Communication Technology",
+     "courses": [
+      {
+       "name": "BSc (Hons) in Software Development"
+      },
+      {
+       "name": "BSc (Hons) in Cybersecurity"
+      },
+      {
+       "name": "BSc (Hons) in Computer Systems and Networks"
+      },
+      {
+       "name": "BSc (Hons) in Creative Computing"
+      },
+      {
+       "name": "BSc (Hons) in Digital Games Development"
+      },
+      {
+       "name": "BSc (Hons) in Applied Data Sciences"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "its",
+   "name": "Institute of Tourism Studies",
+   "short": "ITS",
+   "type": "public",
+   "city": "Luqa",
+   "url": "https://its.edu.mt",
+   "verified_on": "2026-10-14",
+   "faculties": [
+    {
+     "name": "Culinary Arts",
+     "courses": [
+      {
+       "name": "Bachelor in Culinary Arts (Hons)"
+      },
+      {
+       "name": "Undergraduate Diploma in Food Preparation and Production Management"
+      }
+     ]
+    },
+    {
+     "name": "Hospitality Management",
+     "courses": [
+      {
+       "name": "Bachelor in International Hospitality Management (Hons)"
+      },
+      {
+       "name": "Undergraduate Diploma in Rooms Division Management"
+      },
+      {
+       "name": "Undergraduate Diploma in Food and Beverage Management"
+      }
+     ]
+    },
+    {
+     "name": "Tourism, Travel and Events",
+     "courses": [
+      {
+       "name": "Undergraduate Diploma in Travel and Tourism Management"
+      },
+      {
+       "name": "Higher National Diploma in Tourist Guiding"
+      },
+      {
+       "name": "Undergraduate Diploma in Events Management"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
