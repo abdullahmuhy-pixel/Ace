@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Creator Studio</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b6b3a">
+<link rel="icon" href="../app/icon.svg" type="image/svg+xml">
+<script>try{var th=JSON.parse(localStorage.getItem("ace-prefs")||"{}").theme;if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
+<style>
+:root{--bg:#f5f7f4;--card:#fff;--ink:#12201a;--mut:#58675f;--line:#dbe4de;--pri:#0b6b3a;--priInk:#fff;--soft:#e6f3ea;--warn:#8a5a00;--bad:#a12b2b;--gold:#c8962e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--priInk:#06210f;--soft:#1a2c22;--warn:#f0c26a;--bad:#ff9b9b}}
+:root[data-theme=dark]{--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--priInk:#06210f;--soft:#1a2c22;--warn:#f0c26a;--bad:#ff9b9b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--pri)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);background:var(--card)}
+.bar{display:flex;align-items:center;gap:12px;min-height:58px;flex-wrap:wrap}
+.bar b{font-size:18px;letter-spacing:-.01em}.bar span{color:var(--mut);font-size:14px}
+.bar nav{margin-left:auto;display:flex;gap:12px;font-size:14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 4px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;font:600 14px inherit;white-space:nowrap;cursor:pointer}
+.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{padding-block:14px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 14px}
+h1{font-size:24px;margin:8px 0 6px}h2{font-size:18px;margin:0 0 10px}h3{font-size:15px;margin:0 0 6px}
+p{margin:0 0 10px}.mut{color:var(--mut);font-size:14px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.btn{border:1px solid var(--pri);background:var(--pri);color:var(--priInk);padding:10px 16px;border-radius:10px;font:700 15px inherit;cursor:pointer;margin:10px 8px 0 0}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}.btn.s{padding:6px 11px;font-size:13px;margin:4px 6px 0 0}
+.btn.d{background:transparent;color:var(--bad);border-color:var(--bad)}
+.btn[disabled]{opacity:.5}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;background:var(--soft);color:var(--pri)}
+.tag.w{color:var(--warn)}.tag.b{color:var(--bad)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.nums div{background:var(--soft);border-radius:12px;padding:12px}.nums b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.item{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}.item>div{min-width:0}
+#msg{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:560px;margin:auto;padding:12px 16px;border-radius:12px;background:var(--ink);color:var(--bg);z-index:9}
+#msg.bad{background:var(--bad);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}td,th{text-align:left;padding:7px 6px;border-top:1px solid var(--line)}
+.scroll{overflow-x:auto}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><b>Creator Studio</b><span>Teach, publish, get paid</span><nav><a href="../academy/">Academy</a><a href="../app/">Student app</a></nav></div></header>
+<div class="wrap"><div class="tabs" id="tabs"></div><main id="main"><p class="mut">Loading…</p></main></div>
+<div id="msg" hidden></div>
+<script src="../config.js"></script>
+<script>
+(function(){
+var CFG=window.ACE_CONFIG||{},S={sb:null,user:null,cp:null,tab:'home',admin:false,cur:null,ct:{}};
+var $=function(s){return document.querySelector(s)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function say(t,bad){var m=$('#msg');m.textContent=t;m.className=bad?'bad':'';m.hidden=false;clearTimeout(say.t);say.t=setTimeout(function(){m.hidden=true},bad?6000:3000)}
+function money(minor,cur){var z={UGX:1,TZS:1,RWF:1,XOF:1,JPY:1},d=z[cur]?1:100;try{return new Intl.NumberFormat(undefined,{style:'currency',currency:cur||'USD',maximumFractionDigits:d===1?0:2}).format(minor/d)}catch(e){return (minor/d).toFixed(2)+' '+cur}}
+function toMinor(v,cur){var z={UGX:1,TZS:1,RWF:1,XOF:1,JPY:1};return Math.round(parseFloat(v)*(z[cur]?1:100))}
+function slugify(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,50)}
+function run(p,ok){return p.then(function(r){if(r.error){say(r.error.message,1);return null}if(ok)say(ok);return r.data===undefined?true:(r.data===null?true:r.data)}).catch(function(e){say(e.message||'Something went wrong',1);return null})}
+function loadSB(){
+  return new Promise(function(ok){
+    if(!CFG.supabaseUrl||!CFG.supabaseAnonKey)return ok(null);
+    function go(){S.sb=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey,{auth:{storage:{
+      getItem:function(k){try{var a=localStorage.getItem(k);return a!=null?a:sessionStorage.getItem(k)}catch(e){return null}},
+      setItem:function(k,v){try{if(sessionStorage.getItem(k)!=null&&localStorage.getItem(k)==null)sessionStorage.setItem(k,v);else localStorage.setItem(k,v)}catch(e){}},
+      removeItem:function(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}}}});
+      S.sb.auth.getSession().then(function(r){S.user=r.data&&r.data.session?r.data.session.user:null;ok(S.sb)}).catch(function(){ok(S.sb)})}
+    if(window.supabase)return go();
+    var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';s.onload=go;s.onerror=function(){ok(null)};document.head.appendChild(s);
+  });
+}
+function tabs(){
+  var t=[['home','Overview']];
+  if(S.cp&&S.cp.status==='approved')t.push(['courses','Courses'],['plans','Plans'],['pay','Earnings']);
+  if(S.admin)t.push(['admin','Admin review']);
+  $('#tabs').innerHTML=t.map(function(x){return '<button data-t="'+x[0]+'" class="'+(S.tab===x[0]?'on':'')+'">'+x[1]+'</button>'}).join('');
+  [].forEach.call(document.querySelectorAll('#tabs button'),function(b){b.onclick=function(){S.tab=b.dataset.t;S.cur=null;draw()}});
+}
+function draw(){tabs();var m=$('#main');
+  if(!S.sb){m.innerHTML='<div class="card"><h2>Not configured</h2><p class="mut">Set the Supabase URL and public anon key in config.js.</p></div>';return}
+  if(!S.user){m.innerHTML='<div class="card"><h1>Teach on the platform</h1><p>Publish video lessons and notes behind a subscription. We handle payments and send you your share.</p><a class="btn" style="text-decoration:none;display:inline-block" href="../login/?next=studio">Sign in or create an account</a></div>';return}
+  ({home:home,courses:courses,plans:plans,pay:pay,admin:admin})[S.tab]();
+}
+function load(){
+  var q=S.sb.from('creator_profiles').select('*').eq('user_id',S.user.id).maybeSingle();
+  return Promise.all([q,S.sb.rpc('is_platform_admin')]).then(function(r){S.cp=r[0].data;S.admin=r[1].data===true;});
+}
+/* ---------- overview / apply ---------- */
+function home(){
+  var m=$('#main'),cp=S.cp;
+  if(!cp){
+    m.innerHTML='<div class="card"><h1>Become a creator</h1><p class="mut">Open to teachers, tutors, lecturers and schools. Applications are reviewed before you can publish.</p>'+
+    '<label>Handle (your public name in the address)</label><input id="h" placeholder="mrs-okafor-maths" maxlength="30">'+
+    '<label>Display name</label><input id="dn" maxlength="60"><label>Headline</label><input id="hl" maxlength="120" placeholder="Maths teacher, 12 years">'+
+    '<label>About you</label><textarea id="bio" maxlength="1500"></textarea>'+
+    '<label>Country</label><input id="cc" maxlength="2" placeholder="NG">'+
+    '<label style="display:flex;gap:8px;font-weight:500"><input id="ad" type="checkbox" style="width:auto"> I am 18 or older</label>'+
+    '<label style="display:flex;gap:8px;font-weight:500"><input id="tm" type="checkbox" style="width:auto"> I accept the creator terms: I own or have the right to publish everything I upload, and the platform fee applies to subscription income.</label>'+
+    '<button class="btn" id="go">Apply</button></div>';
+    $('#dn').oninput=function(){if(!$('#h').dataset.t){$('#h').value=slugify($('#dn').value)}};$('#h').oninput=function(){$('#h').dataset.t=1};
+    $('#go').onclick=function(){run(S.sb.rpc('apply_creator',{p_handle:$('#h').value,p_display_name:$('#dn').value,p_headline:$('#hl').value,p_bio:$('#bio').value,p_country:$('#cc').value.toUpperCase()||null,p_adult:$('#ad').checked,p_terms:$('#tm').checked?'2026-10':''}),'Application sent').then(function(r){if(r)load().then(draw)})};
+    return;
+  }
+  var st={pending:['Waiting for review','w'],approved:['Approved',''],rejected:['Not approved','b'],suspended:['Suspended','b']}[cp.status];
+  var h='<div class="card"><h1>'+esc(cp.display_name)+'</h1><p><span class="tag '+st[1]+'">'+st[0]+'</span> <span class="mut">@'+esc(cp.handle)+'</span></p>'+(cp.review_note?'<p class="mut">Note from the team: '+esc(cp.review_note)+'</p>':'')+
+    (cp.status==='pending'?'<p class="mut">We will review your application shortly. You can come back here to see the result.</p>':'')+'</div>';
+  m.innerHTML=h;
+  if(cp.status==='approved'){
+    Promise.all([S.sb.rpc('creator_stats'),S.sb.rpc('creator_balance')]).then(function(r){
+      var s=(r[0].data||[])[0]||{},b=r[1].data||[];
+      m.insertAdjacentHTML('beforeend','<div class="card"><h2>At a glance</h2><div class="nums"><div><b>'+(s.active_subscribers||0)+'</b>active subscribers</div><div><b>'+(s.courses||0)+'</b>courses</div>'+
+        b.map(function(x){return '<div><b>'+money(x.available_minor,x.currency_code)+'</b>available ('+x.currency_code+')</div>'}).join('')+'</div><p class="mut" style="margin-top:10px">Subscriber identities are private; you only see counts.</p></div>');
+    });
+  }
+}
+/* ---------- courses ---------- */
+var FIELDS={it:'IT and computing',biz:'Business and management',fin:'Finance and accounting',health:'Health and medicine',edu:'Teaching and education',hum:'Humanities and languages',soc:'Social sciences',sci:'Sciences',eng:'Engineering and trades',law:'Law',creative:'Creative and media',life:'Life skills'};
+function courses(){
+  var m=$('#main');
+  if(S.cur)return lessons();
+  S.sb.from('creator_courses').select('id,slug,title,summary,status,review_note').eq('creator_id',S.user.id).order('created_at',{ascending:false}).then(function(r){
+    var l=r.data||[];
+    m.innerHTML='<div class="card"><h2>Your courses</h2>'+(l.length?l.map(function(c){return '<div class="item"><div><b>'+esc(c.title)+'</b><br><span class="tag '+(c.status==='approved'?'':c.status==='rejected'?'b':'w')+'">'+c.status+'</span>'+(c.review_note?' <span class="mut">'+esc(c.review_note)+'</span>':'')+'</div><button class="btn s o" data-id="'+c.id+'">Open</button></div>'}).join(''):'<p class="mut">No courses yet.</p>')+'</div>'+
+    '<div class="card"><h2>New course</h2><label>Title</label><input id="t" maxlength="120"><label>Summary</label><textarea id="s" maxlength="600"></textarea>'+
+    '<div class="row"><div><label>Field</label><select id="f">'+Object.keys(FIELDS).map(function(k){return '<option value="'+k+'">'+FIELDS[k]+'</option>'}).join('')+'</select></div><div><label>Level</label><select id="lv"><option value="all">All levels</option><option value="secondary">Secondary</option><option value="university">University</option><option value="professional">Professional</option></select></div></div>'+
+    '<button class="btn" id="add">Create draft</button></div>';
+    [].forEach.call(m.querySelectorAll('[data-id]'),function(b){b.onclick=function(){S.cur=b.dataset.id;draw()}});
+    $('#add').onclick=function(){var t=$('#t').value.trim();var slug=slugify(t)+'-'+Math.random().toString(36).slice(2,6);
+      run(S.sb.from('creator_courses').insert({creator_id:S.user.id,slug:slug,title:t,summary:$('#s').value.trim(),field:$('#f').value,level:$('#lv').value}).select('id').single(),'Draft created').then(function(d){if(d&&d.id){S.cur=d.id;draw()}})};
+  });
+}
+function lessons(){
+  var m=$('#main'),id=S.cur;
+  Promise.all([S.sb.from('creator_courses').select('*').eq('id',id).single(),S.sb.from('creator_lessons').select('id,position,title,is_preview,duration_sec').eq('course_id',id).order('position')]).then(function(r){
+    var c=r[0].data,l=r[1].data||[];if(!c){S.cur=null;return draw()}
+    var edit=c.status==='draft'||c.status==='rejected';
+    m.innerHTML='<p><button class="btn s o" id="bk">← Courses</button></p><div class="card"><h2>'+esc(c.title)+'</h2><p><span class="tag '+(c.status==='approved'?'':'w')+'">'+c.status+'</span></p>'+
+    '<p class="mut">Needs at least 3 lessons, each with a video or notes, before you can submit it for review. Once submitted it is locked until reviewed.</p>'+
+    (l.length?l.map(function(x){return '<div class="item"><div><b>'+(x.position+1)+'. '+esc(x.title)+'</b>'+(x.is_preview?' <span class="tag">free preview</span>':'')+'</div>'+(edit?'<div><button class="btn s o" data-e="'+x.id+'">Edit</button><button class="btn s d" data-x="'+x.id+'">Delete</button></div>':'')+'</div>'}).join(''):'<p class="mut">No lessons yet.</p>')+
+    (edit?'<button class="btn" id="sub">Submit for review</button><button class="btn d" id="del">Delete course</button>':'')+'</div>'+
+    (edit?'<div class="card" id="lf"><h2>Add a lesson</h2><label>Title</label><input id="lt" maxlength="120">'+
+      '<div class="row"><div><label>Video host</label><select id="vp"><option value="">No video (notes only)</option><option value="bunny">Bunny Stream</option><option value="cloudflare">Cloudflare Stream</option><option value="vimeo">Vimeo</option><option value="youtube">YouTube (unlisted)</option><option value="other">Other link</option></select></div><div><label>Video ID or link</label><input id="vr" maxlength="300"></div><div><label>Minutes</label><input id="dm" type="number" min="0" max="360"></div></div>'+
+      '<label>Notes (optional, up to 20,000 characters)</label><textarea id="bd" style="min-height:140px" maxlength="20000"></textarea>'+
+      '<label style="display:flex;gap:8px;font-weight:500"><input id="pv" type="checkbox" style="width:auto"> Free preview for everyone</label>'+
+      '<button class="btn" id="al">Save lesson</button></div>':'');
+    $('#bk').onclick=function(){S.cur=null;draw()};
+    if(!edit)return;
+    var editing=null;
+    [].forEach.call(m.querySelectorAll('[data-e]'),function(b){b.onclick=function(){
+      S.sb.from('creator_lessons').select('id,title,is_preview,duration_sec').eq('id',b.dataset.e).single().then(function(a){
+        S.sb.from('creator_lesson_content').select('*').eq('lesson_id',b.dataset.e).maybeSingle().then(function(cn){
+          editing=b.dataset.e;var x=a.data,k=cn.data||{};$('#lf h2').textContent='Edit lesson';$('#lt').value=x.title;$('#vp').value=k.video_provider||'';$('#vr').value=k.video_ref||'';$('#dm').value=x.duration_sec?Math.round(x.duration_sec/60):'';$('#bd').value=k.body||'';$('#pv').checked=x.is_preview;$('#lf').scrollIntoView()})})}});
+    [].forEach.call(m.querySelectorAll('[data-x]'),function(b){b.onclick=function(){if(b.dataset.s!=='1'){b.dataset.s='1';b.textContent='Tap again to delete';return}run(S.sb.from('creator_lessons').delete().eq('id',b.dataset.x),'Deleted').then(function(){draw()})}});
+    $('#al').onclick=function(){
+      var row={title:$('#lt').value.trim(),is_preview:$('#pv').checked,duration_sec:$('#dm').value?Math.round($('#dm').value*60):null};
+      var cont={video_provider:$('#vp').value||null,video_ref:$('#vr').value.trim()||null,body:$('#bd').value.trim()||null};
+      if(editing){
+        run(S.sb.from('creator_lessons').update(row).eq('id',editing),null).then(function(ok){if(!ok)return;
+          return run(S.sb.from('creator_lesson_content').upsert(Object.assign({lesson_id:editing},cont)),'Lesson updated').then(function(){draw()})});
+      }else{
+        row.course_id=id;row.position=l.length?Math.max.apply(null,l.map(function(x){return x.position}))+1:0;
+        run(S.sb.from('creator_lessons').insert(row).select('id').single(),null).then(function(n){if(!n||!n.id)return;
+          return run(S.sb.from('creator_lesson_content').insert(Object.assign({lesson_id:n.id},cont)),'Lesson added').then(function(){draw()})});
+      }
+    };
+    $('#sub').onclick=function(){run(S.sb.rpc('submit_creator_course',{p_course:id}),'Submitted for review').then(function(ok){if(ok)draw()})};
+    $('#del').onclick=function(){if(this.dataset.s!=='1'){this.dataset.s='1';this.textContent='Tap again to delete the course';return}run(S.sb.from('creator_courses').delete().eq('id',id),'Course deleted').then(function(){S.cur=null;draw()})};
+  });
+}
+/* ---------- plans ---------- */
+function plans(){
+  var m=$('#main');
+  S.sb.from('creator_plans').select('*').eq('creator_id',S.user.id).order('created_at').then(function(r){
+    var l=r.data||[];
+    m.innerHTML='<div class="card"><h2>Subscription plans</h2>'+(l.length?l.map(function(p){return '<div class="item"><div><b>'+esc(p.name)+'</b><br><span class="mut">'+money(p.amount_minor,p.currency_code)+' per '+p.period+'</span> '+(p.active?'':'<span class="tag w">off</span>')+'</div><button class="btn s o" data-t="'+p.id+'" data-a="'+p.active+'">'+(p.active?'Turn off':'Turn on')+'</button></div>'}).join(''):'<p class="mut">No plans yet. Subscribers get access to all your approved courses.</p>')+'</div>'+
+    '<div class="card"><h2>New plan</h2><div class="row"><div><label>Name</label><input id="pn" maxlength="60" value="All access"></div><div><label>Currency</label><input id="pc" maxlength="3" value="NGN"></div><div><label>Price</label><input id="pa" type="number" min="0" step="any"></div><div><label>Billing</label><select id="pp"><option value="month">Monthly</option><option value="year">Yearly</option></select></div></div>'+
+    '<p class="mut" style="margin-top:10px">The platform fee is taken from each payment; the rest goes to your balance.</p><button class="btn" id="np">Add plan</button></div>';
+    [].forEach.call(m.querySelectorAll('[data-t]'),function(b){b.onclick=function(){run(S.sb.from('creator_plans').update({active:b.dataset.a!=='true'}).eq('id',b.dataset.t)).then(plans)}});
+    $('#np').onclick=function(){var cur=$('#pc').value.toUpperCase();run(S.sb.from('creator_plans').insert({creator_id:S.user.id,name:$('#pn').value,currency_code:cur,amount_minor:toMinor($('#pa').value,cur),period:$('#pp').value}),'Plan added').then(function(ok){if(ok)plans()})};
+  });
+}
+/* ---------- earnings ---------- */
+function pay(){
+  var m=$('#main');
+  Promise.all([S.sb.rpc('creator_balance'),S.sb.from('creator_payout_details').select('*').eq('user_id',S.user.id).maybeSingle(),S.sb.from('payout_requests').select('*').eq('creator_id',S.user.id).order('requested_at',{ascending:false}).limit(20),S.sb.from('creator_ledger').select('*').eq('creator_id',S.user.id).order('id',{ascending:false}).limit(30)]).then(function(r){
+    var b=r[0].data||[],pd=r[1].data,po=r[2].data||[],lg=r[3].data||[];
+    m.innerHTML='<div class="card"><h2>Balance</h2>'+(b.length?'<div class="nums">'+b.map(function(x){return '<div><b>'+money(x.available_minor,x.currency_code)+'</b>available<br><span class="mut">'+money(x.pending_minor,x.currency_code)+' on hold · '+money(x.withdrawn_minor,x.currency_code)+' paid out</span>'+(x.available_minor>0?'<br><button class="btn s" data-c="'+x.currency_code+'" data-a="'+x.available_minor+'">Request payout</button>':'')+'</div>'}).join('')+'</div>':'<p class="mut">No earnings yet.</p>')+'<p class="mut" style="margin-top:10px">New earnings are held for a few days before they can be paid out, to cover refunds.</p></div>'+
+    '<div class="card"><h2>How you get paid</h2><div class="row"><div><label>Method</label><select id="pm"><option value="bank">Bank transfer</option><option value="mobile_money">Mobile money</option><option value="other">Other</option></select></div></div><label>Details (account holder and bank, or mobile-money number and name)</label><textarea id="pdt" maxlength="400">'+esc(pd?pd.details:'')+'</textarea><button class="btn" id="sp">Save</button></div>'+
+    '<div class="card"><h2>Payout requests</h2>'+(po.length?'<div class="scroll"><table><tr><th>Date</th><th>Amount</th><th>Status</th></tr>'+po.map(function(p){return '<tr><td>'+new Date(p.requested_at).toLocaleDateString()+'</td><td>'+money(p.amount_minor,p.currency_code)+'</td><td>'+p.status+'</td></tr>'}).join('')+'</table></div>':'<p class="mut">None yet.</p>')+'</div>'+
+    '<div class="card"><h2>Recent activity</h2>'+(lg.length?'<div class="scroll"><table><tr><th>Date</th><th>Type</th><th>Amount</th></tr>'+lg.map(function(p){return '<tr><td>'+new Date(p.created_at).toLocaleDateString()+'</td><td>'+p.kind+'</td><td>'+money(p.amount_minor,p.currency_code)+'</td></tr>'}).join('')+'</table></div>':'<p class="mut">Nothing yet.</p>')+'</div>';
+    if(pd)$('#pm').value=pd.method;
+    $('#sp').onclick=function(){run(S.sb.from('creator_payout_details').upsert({user_id:S.user.id,method:$('#pm').value,details:$('#pdt').value.trim(),updated_at:new Date().toISOString()}),'Saved')};
+    [].forEach.call(m.querySelectorAll('[data-c]'),function(x){x.onclick=function(){run(S.sb.rpc('request_payout',{p_currency:x.dataset.c,p_amount:parseInt(x.dataset.a,10)}),'Payout requested').then(function(ok){if(ok)pay()})}});
+  });
+}
+/* ---------- admin ---------- */
+function admin(){
+  var m=$('#main');
+  Promise.all([S.sb.from('creator_profiles').select('user_id,handle,display_name,headline,bio,country_code,status,fee_pct').eq('status','pending'),S.sb.from('creator_courses').select('id,title,summary,creator_id').eq('status','submitted'),S.sb.from('payout_requests').select('*').eq('status','requested'),S.sb.from('marketplace_settings').select('*').limit(1)]).then(function(r){
+    var cr=r[0].data||[],co=r[1].data||[],po=r[2].data||[],st=(r[3].data||[])[0];
+    m.innerHTML=(st?'<div class="card"><h2>Platform fee</h2><p>Default fee is <b>'+esc(st.default_fee_pct)+'%</b> ('+esc(st.fee_basis)+' basis). Change it in the database settings table before launch. Override per creator below when approving.</p></div>':'')+
+    '<div class="card"><h2>Creator applications ('+cr.length+')</h2>'+(cr.length?cr.map(function(c){return '<div class="item"><div><b>'+esc(c.display_name)+'</b> <span class="mut">@'+esc(c.handle)+' · '+esc(c.country_code||'')+'</span><br><span class="mut">'+esc(c.headline||'')+'</span><br><span class="mut">'+esc((c.bio||'').slice(0,300))+'</span></div><div><input data-f="'+c.user_id+'" placeholder="fee % (optional)" style="width:130px;margin-bottom:4px"><br><button class="btn s" data-ca="'+c.user_id+'">Approve</button><button class="btn s d" data-cr="'+c.user_id+'">Reject</button></div></div>'}).join(''):'<p class="mut">None waiting.</p>')+'</div>'+
+    '<div class="card"><h2>Courses to review ('+co.length+')</h2>'+(co.length?co.map(function(c){return '<div class="item"><div><b>'+esc(c.title)+'</b><br><span class="mut">'+esc(c.summary)+'</span></div><div><button class="btn s" data-ka="'+c.id+'">Approve</button><button class="btn s d" data-kr="'+c.id+'">Reject</button></div></div>'}).join(''):'<p class="mut">None waiting.</p>')+'</div>'+
+    '<div class="card"><h2>Payout requests ('+po.length+')</h2>'+(po.length?po.map(function(p){return '<div class="item"><div><b>'+money(p.amount_minor,p.currency_code)+'</b> <span class="mut">'+new Date(p.requested_at).toLocaleDateString()+' · '+p.creator_id.slice(0,8)+'</span></div><div><input data-r="'+p.id+'" placeholder="transfer reference" style="width:170px;margin-bottom:4px"><br><button class="btn s" data-pp="'+p.id+'">Mark paid</button><button class="btn s d" data-pr="'+p.id+'">Reject</button></div></div>'}).join(''):'<p class="mut">None waiting.</p>')+'</div>';
+    function note(){return window.prompt?null:null}
+    function bind(attr,fn){[].forEach.call(m.querySelectorAll('['+attr+']'),function(b){b.onclick=function(){fn(b.getAttribute(attr),b)}})}
+    function fee(id){var i=m.querySelector('[data-f="'+id+'"]');return i&&i.value?parseFloat(i.value):null}
+    function done(ok){if(ok)admin()}
+    bind('data-ca',function(id){run(S.sb.rpc('review_creator',{p_user:id,p_decision:'approved',p_fee_pct:fee(id)}),'Approved').then(done)});
+    bind('data-cr',function(id){run(S.sb.rpc('review_creator',{p_user:id,p_decision:'rejected'}),'Rejected').then(done)});
+    bind('data-ka',function(id){run(S.sb.rpc('review_creator_course',{p_course:id,p_decision:'approved'}),'Approved').then(done)});
+    bind('data-kr',function(id){run(S.sb.rpc('review_creator_course',{p_course:id,p_decision:'rejected',p_note:'Please review the content and resubmit.'}),'Rejected').then(done)});
+    bind('data-pp',function(id){var i=m.querySelector('[data-r="'+id+'"]');run(S.sb.rpc('decide_payout',{p_payout:id,p_decision:'paid',p_ref:i&&i.value||null}),'Marked paid').then(done)});
+    bind('data-pr',function(id){run(S.sb.rpc('decide_payout',{p_payout:id,p_decision:'rejected'}),'Rejected; funds returned').then(done)});
+  });
+}
+loadSB().then(function(){if(!S.sb||!S.user)return;return load()}).then(draw,draw);
+window.AceStudio={S:S,draw:draw};
+})();
+</script>
+</body>
+</html>
