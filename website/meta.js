@@ -102,12 +102,12 @@ LR:{name:'Liberia',flag:'🇱🇷',lang:'English',levels:'Grade 10 – 12',law:'
  ex:{WASSCE:'The West African Senior School Certificate Examination, taken in Grade 12.'},
  scale:'WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.',
  next:['Government, Commerce and Financial Accounting','More electives','LJHSCE (Grade 9) subjects']},
-MT:{name:'Malta',flag:'🇲🇹',lang:'English',levels:'Year 9 – 11',law:'GDPR',
- sys:'The Secondary Education Certificate (SEC) at the end of secondary school (Year 11), set by MATSEC at the University of Malta. Sixth-form students then take the Matriculation Certificate.',
- intro:'Malta follows the MATSEC SEC syllabuses, with euros (€) and 18% VAT in the money questions and Maltese and EU law in Computing and Business Studies. From 2027 each SEC subject combines school-based assessment (30%) with a MATSEC paper (70%).',
- ex:{SEC:'The Secondary Education Certificate, taken at the end of Year 11. Paper I is school-based assessment (30%) and Paper II is set and marked by MATSEC (70%).'},
- scale:'SEC: Paper II is sat at Levels 1–2 or 2–3, and results are reported as grades with 1 the highest; check MATSEC for the grade you need to continue a subject.',
- next:['Maltese','Accounting, Economics, Geography and History','Matriculation Certificate (Advanced and Intermediate)']}
+MT:{name:'Malta',flag:'🇲🇹',lang:'English and Maltese',levels:'Year 9 – Sixth Form',law:'GDPR',
+ sys:'The Secondary Education Certificate (SEC) at the end of Year 11, and the Matriculation Certificate after two years of sixth form, both set by MATSEC at the University of Malta.',
+ intro:'Malta follows the MATSEC syllabuses: twelve SEC subjects, including Maltese, Accounting, Economics, Geography and History written for Malta, and ten Matriculation subjects including Systems of Knowledge. Money questions use euros (€) and 18% VAT, and Computing, Business and Economics use Maltese and EU law and institutions.',
+ ex:{SEC:'The Secondary Education Certificate, taken at the end of Year 11. Paper I is school-based assessment (30%) and Paper II is set and marked by MATSEC (70%).',Matriculation:'The Matriculation Certificate: two Advanced (AM) and four Intermediate (IM) subjects, one of them Systems of Knowledge, with at least 44 grade points.'},
+ scale:'SEC: Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest. Matriculation: grades A to E; AM gives 30 to 6 points and IM 10 to 2 points.',
+ next:['Matriculation Economics, Accounting and History','More Applied Mathematics','SEC listening and speaking practice']}
 };
 
 const FEATURES = [

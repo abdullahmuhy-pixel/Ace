@@ -82,7 +82,7 @@ ZA:{n:'South Africa',f:'🇿🇦',x:['NSC', 'Grade 11 exams'],tg:'NSC Exam Prep 
 UG:{n:'Uganda',f:'🇺🇬',x:['UCE', 'UACE'],tg:'UCE and UACE Exam Prep • S1–S6',gr:G(1,6,'S'),cl:'S4A',u:'Kampala',p:'DPPA 2019'},
 TZ:{n:'Tanzania',f:'🇹🇿',x:['CSEE', 'ACSEE'],tg:'CSEE and ACSEE Exam Prep • Form 1–6',gr:G(1,6,'Form '),cl:'Form 4A',u:'Dar es Salaam',p:'PDPA 2022'},
 LR:{n:'Liberia',f:'🇱🇷',x:['WASSCE'],tg:'WASSCE Exam Prep • Grade 10–12',gr:G(10,12,'Grade '),cl:'Grade 12A',u:'Monrovia',p:''},
-MT:{n:'Malta',f:'🇲🇹',x:['SEC'],tg:'SEC Exam Prep • Year 9–11',gr:G(9,11,'Year '),cl:'Year 10A',u:'Valletta',p:'GDPR'}};
+MT:{n:'Malta',f:'🇲🇹',x:['SEC','Matriculation'],tg:'SEC • Matriculation Exam Prep • Year 9 – Sixth Form',gr:[...G(9,11,'Year '),'Sixth Form 1','Sixth Form 2'],cl:'Year 10A',u:'Valletta',p:'GDPR'}};
 const exFor=(c,g)=>{if(!g)return c.x;const jr=/^(JHS|JSS)|^Grade [789]$/.test(g);let r=c.x;
  if(g=='Primary 6')r=c.x.filter(k=>k=='NPSE');else if(jr&&c.x.some(k=>/^(BECE|GABECE)$/.test(k)))r=c.x.filter(k=>/^(BECE|GABECE)$/.test(k));
  else if(c.x.some(k=>/^(BECE|GABECE|NPSE)$/.test(k)))r=c.x.filter(k=>!/^(BECE|GABECE|NPSE)$/.test(k));return r.length?r:c.x};

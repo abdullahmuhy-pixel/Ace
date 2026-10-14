@@ -1,6 +1,6 @@
 # Ace Education
 
-> Ace Education is an exam prep and study app for secondary school and university students in 15 countries: Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, United Kingdom, Canada, España, Ireland, South Africa, Uganda, Tanzania, Liberia, Malta. It offers topic notes, quizzes, a question bank, flashcards, timed mock exams, a weak-topic radar and an AI study buddy for 25 exams, written for each country's own exam body, subjects, currency and examples. Students can sign up free; schools and tutoring centres can ask for a plan.
+> Ace Education is an exam prep and study app for secondary school and university students in 15 countries: Nigeria, Ghana, Sierra Leone, The Gambia, Kenya, Zambia, United Kingdom, Canada, España, Ireland, South Africa, Uganda, Tanzania, Liberia, Malta. It offers topic notes, quizzes, a question bank, flashcards, timed mock exams, a weak-topic radar and an AI study buddy for 26 exams, written for each country's own exam body, subjects, currency and examples. Students can sign up free; schools and tutoring centres can ask for a plan.
 
 ## Key pages
 - [Home](https://abdullahmuhy-pixel.github.io/Ace/): what Ace Education is and who it is for
@@ -26,7 +26,7 @@
 - [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 28 subjects, 2,975 practice questions
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 28 subjects, 3,020 practice questions
 - [Liberia: WASSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 9 subjects, 1,222 practice questions
-- [Malta: SEC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 7 subjects, 803 practice questions
+- [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 22 subjects, 2,494 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)

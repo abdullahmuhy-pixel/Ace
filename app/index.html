@@ -213,7 +213,7 @@ const exk=ex=>{const c=C[S.c];if(c&&c.xk){const i=c.x.indexOf(ex);return c.xk[i<
 const realSub=(c,s,ex)=>ACE_LOADED[S.c]&&SYL[exk(ex)]&&SYL[exk(ex)][s];
 const nq=(c,s,i,ex)=>ACE_LOADED[S.c]?(NGQ[s]||0):QN[i];
 const SYLX=s=>{const c=C[S.c],e=SYL[exk(c.x[S.x%c.x.length])];return (e&&e[s])||(SYL.WASSCE||{})[s]};
-const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6'],LR:['Grade 10','Grade 11','Grade 12'],MT:['Year 9','Year 10','Year 11']};
+const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6'],LR:['Grade 10','Grade 11','Grade 12'],MT:['Year 9','Year 10','Year 11','Sixth Form 1','Sixth Form 2']};
 let P={done:{},g:{},s:{},goal:20,rem:true,str:true,wk:false,hc:false,dy:false,email:'',vr:false};
 try{Object.assign(P,JSON.parse(localStorage.getItem('ace-prefs')||'{}'))}catch(e){}
 const svP=()=>{try{localStorage.setItem('ace-prefs',JSON.stringify(P))}catch(e){}};
@@ -237,9 +237,9 @@ ZA:{n:'South Africa',f:'🇿🇦',b:'DBE and Umalusi',x:['NSC', 'Grade 11 exams'
 UG:{n:'Uganda',f:'🇺🇬',b:'UNEB',x:['UCE', 'UACE'],s:['Mathematics', 'English Language', 'Biology', 'Chemistry', 'Physics', 'Geography'],t:'ug',d:'2026-11-02',u:'Guest',p:'DPPA 2019'},
 TZ:{n:'Tanzania',f:'🇹🇿',b:'NECTA',x:['CSEE', 'ACSEE'],s:['Basic Mathematics', 'English Language', 'Biology', 'Chemistry', 'Physics', 'Geography'],t:'tz',d:'2026-11-02',u:'Guest',p:'PDPA 2022'},
 LR:{n:'Liberia',f:'🇱🇷',b:'WAEC',x:['WASSCE'],s:['Mathematics','English Language','Biology','Chemistry','Physics','Economics'],t:'waec',d:'2027-05-13',u:'Guest',p:''},
-MT:{n:'Malta',f:'🇲🇹',b:'MATSEC',x:['SEC'],s:['Mathematics','English Language','Physics','Chemistry','Biology','Computing'],t:'gb',d:'2027-04-22',u:'Guest',p:'GDPR'}};
+MT:{n:'Malta',f:'🇲🇹',b:'MATSEC',x:['SEC','Matriculation'],s:['Mathematics','English Language','Physics','Chemistry','Biology','Computing'],t:'gb',d:'2027-04-22',u:'Guest',p:'GDPR'}};
 const G=['#1D5FBF,#0F3D73','#0E8AA3,#0A5C74','#15803D,#0B5A2A','#6366F1,#4338CA','#B45309,#7C3A06','#0F6BC0,#0B4A8A','#9333EA,#6B21A8','#C2410C,#7C2D12','#0D9488,#115E59','#BE185D,#831843'];
-const ICN=[[/math|matem|function/i,'📐'],[/english|lengua|inglés|irish|kiswahili/i,'📖'],[/phys|fís/i,'⚛️'],[/chem|quím/i,'🧪'],[/bio/i,'🧬'],[/econ/i,'📈'],[/comput|\bict\b|informát/i,'💻'],[/science/i,'🔬'],[/histor/i,'🏛️'],[/geog/i,'🌍'],[/commerce|business/i,'💼'],[/govern/i,'⚖️'],[/account/i,'🧾'],[/civic/i,'🤝'],[/agri/i,'🌾']];
+const ICN=[[/math|matem|function/i,'📐'],[/english|lengua|inglés|irish|kiswahili|maltese|malti/i,'📖'],[/phys|fís/i,'⚛️'],[/chem|quím/i,'🧪'],[/bio/i,'🧬'],[/econ/i,'📈'],[/comput|\bict\b|informát/i,'💻'],[/psych/i,'🧠'],[/systems of knowledge/i,'🧭'],[/science/i,'🔬'],[/histor/i,'🏛️'],[/geog/i,'🌍'],[/commerce|business/i,'💼'],[/govern/i,'⚖️'],[/account/i,'🧾'],[/civic/i,'🤝'],[/agri/i,'🌾']];
 const ic=s=>(ICN.find(a=>a[0].test(s))||[0,'📚'])[1];
 const QN=[240,260,310,220,190,175,165,150,140,130];
 const QS={en:[['Solutions of x² + 5x + 6 = 0:',['x = −2 and x = −3','x = 2 and x = 3','x = −1 and x = −6','x = 1 and x = 6'],0],['Simplify 3x + 2x − x:',['5x','6x','4x','3x'],2],['The discriminant of x² − 4x + 4 = 0 is:',['4','0','8','16'],1]],es:[['Soluciones de x² + 5x + 6 = 0:',['x = −2 y x = −3','x = 2 y x = 3','x = −1 y x = −6','x = 1 y x = 6'],0],['Simplifica 3x + 2x − x:',['5x','6x','4x','3x'],2],['El discriminante de x² − 4x + 4 = 0 es:',['4','0','8','16'],1]]};
@@ -492,7 +492,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  else if(a=='nt'){if(v in P){P[v]=!P[v];svP()}}
  else if(a=='sheet')S.sh=v;
  else if(a=='shclose')S.sh=null;
- else if(a=='setgrade'){P.g[S.c]=v;svP();S.sh=null;{const jr=/^(JHS|JSS)|^Grade [789]$/.test(v),xs=c.xk||[],ji=xs.findIndex(k=>/^(BECE|GABECE)$/.test(k)),si=xs.findIndex(k=>k=='WASSCE'),ni=xs.findIndex(k=>k=='NPSE'),t=v=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0){S.x=t;S.sub=null;S.open=null}}}
+ else if(a=='setgrade'){P.g[S.c]=v;svP();S.sh=null;{const jr=/^(JHS|JSS)|^Grade [789]$/.test(v),xs=c.xk||[],ji=xs.findIndex(k=>/^(BECE|GABECE)$/.test(k)),si=xs.findIndex(k=>k=='WASSCE'),ni=xs.findIndex(k=>k=='NPSE'),t=v=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0){S.x=t;S.sub=null;S.open=null}const mi=xs.indexOf('Matriculation');if(mi>=0){S.x=/^Sixth Form/.test(v)?mi:0;S.sub=null;S.open=null}}}
  else if(a=='setgoal'){P.goal=+v;svP();S.sh=null}
  else if(a=='togsub'){const cur=(P.s[S.c]||c.s).slice(),j=cur.indexOf(v);if(j>=0){if(cur.length==1){toast(c.l?'Elige al menos una':'Keep at least one subject');return}cur.splice(j,1)}else cur.push(v);P.s[S.c]=c.s.filter(z=>cur.includes(z));svP()}
  else if(a=='savename'){const n=($('#sh-in').value||'').trim();if(!n){toast(c.l?'Escribe un nombre':'Enter a name');return}for(const k in C)C[k].u=n;try{localStorage.setItem('ace-name',n)}catch(z){}S.sh=null}
@@ -575,7 +575,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
   var n=function(x){return String(x).replace(/\s+/g,'').replace(/^SSS/,'SS').toLowerCase()};
   if(pl.class_level){var hit=(LV[S.c]||[]).filter(function(g){return n(g)===n(pl.class_level)})[0];if(hit){P.g[S.c]=hit;svP();
    var jr=/^(JHS|JSS)|^Grade [789]$/.test(hit),xs=C[S.c].xk||[],ji=xs.findIndex(function(k){return /^(BECE|GABECE)$/.test(k)}),si=xs.findIndex(function(k){return k=='WASSCE'}),ni=xs.findIndex(function(k){return k=='NPSE'});
-   var t=hit=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0)S.x=t}}
+   var t=hit=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0)S.x=t;var mi=xs.indexOf('Matriculation');if(mi>=0)S.x=/^Sixth Form/.test(hit)?mi:0}}
   if(pl.exam_target&&!pl.class_level){var xi=C[S.c].x.indexOf(pl.exam_target);if(xi>=0)S.x=xi}
  }catch(e){}}
  function pull(){return Promise.all([sb.from('user_stats').select('xp,streak,last_day').eq('user_id',uid).maybeSingle(),sb.from('progress').select('subject,topic,status').eq('user_id',uid),sb.from('profiles').select('first_name,surname,country_code,class_level,exam_target,contact_email').eq('id',uid).maybeSingle(),sb.from('quiz_attempts').select('subject,total,correct,kind').eq('user_id',uid).limit(3000)]).then(function(r){var pl=r[2]&&r[2].data;if(pl)applyProfile(pl);
