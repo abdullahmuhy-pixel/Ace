@@ -169,7 +169,7 @@
   function sidebar() {
     const nav = $('nav'); if (!nav || nav.querySelector('.nv-brand')) return;
     const es = (H.lang || 'en').startsWith('es');
-    const b = document.createElement('div'); b.className = 'nv-brand'; b.innerHTML = '<span class="ace" data-mood="idle"></span><span>Ace <b>Education</b></span>';
+    const b = document.createElement('div'); b.className = 'nv-brand'; b.innerHTML = '<span class="ace" data-mood="idle"></span><span>Ace <b>' + (window.ACE_MODE === 'campus' ? 'Campus' : 'Education') + '</b></span>';
     const f = document.createElement('div'); f.className = 'nv-foot';
     f.innerHTML = es ? '<b>Atajos de teclado</b>En una lección: <kbd>1</kbd>–<kbd>4</kbd> elegir, <kbd>Enter</kbd> comprobar, <kbd>R</kbd> leer en voz alta, <kbd>M</kbd> sonido.'
       : '<b>Keyboard shortcuts</b>In a lesson: <kbd>1</kbd>–<kbd>4</kbd> choose, <kbd>Enter</kbd> check, <kbd>R</kbd> read aloud, <kbd>M</kbd> mute.';

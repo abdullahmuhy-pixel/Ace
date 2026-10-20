@@ -52,7 +52,7 @@
   const signedIn = () => !!(sync() && sync().signedIn && sync().signedIn());
   const needSignIn = () => `<div class="card"><b>${L('Sign in to use this', 'Inicia sesión para usar esto')}</b><p class="note">${L('This part is saved to your account. Open the sign-in page, then come back here.', 'Esta parte se guarda en tu cuenta. Abre la página de acceso y vuelve aquí.')}</p><a class="btn" style="display:inline-block;text-decoration:none" href="../login/">${L('Sign in', 'Entrar')}</a></div>`;
   const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia', MT: 'Malta' };
-  const cname = () => NAMES[S.c] || S.c;
+  const hc = () => (typeof HOMECC === 'function' ? HOMECC() : S.c), cname = () => NAMES[hc()] || hc();
   const ex = () => C_().x[S.x % C_().x.length];
   const fail = e => { X.err = (e && (e.msg || e.message)) || L('Something went wrong. Try again.', 'Algo salió mal. Inténtalo de nuevo.'); };
 
@@ -86,7 +86,7 @@
       { k: 'ex', t: L('Final exams', 'Exámenes finales'), w: exams,
         a: [L('Work through every topic in your exam with the question bank.', 'Trabaja cada tema con el banco de preguntas.'), L('Do timed mock exams and review every wrong answer.', 'Haz simulacros cronometrados y revisa cada fallo.'), L('Check the exam body’s official timetable and rules.', 'Consulta el calendario oficial del examen.')] },
       { k: 'adm', t: L('Apply to university', 'Acceso a la universidad'), w: L('After your results', 'Tras tus resultados'),
-        a: [ADM[S.c] || '', L('Dates and rules change every year. Always confirm on the official site.', 'Las fechas cambian cada año. Confírmalas en el sitio oficial.'), L('Look for scholarships early and note their deadlines.', 'Busca becas pronto y anota sus plazos.')] },
+        a: [ADM[hc()] || '', L('Dates and rules change every year. Always confirm on the official site.', 'Las fechas cambian cada año. Confírmalas en el sitio oficial.'), L('Look for scholarships early and note their deadlines.', 'Busca becas pronto y anota sus plazos.')] },
       { k: 'u1', t: L('University: first year', 'Universidad: primer año'), w: L('Settle in', 'Adaptarse'),
         a: [L('Build a weekly timetable and use the focus timer.', 'Crea un horario semanal y usa el temporizador.'), L('Turn lecture notes into revision cards in Today.', 'Convierte tus apuntes en tarjetas en Hoy.'), L('Learn referencing early so you never lose marks for it.', 'Aprende a citar pronto.')] },
       { k: 'uf', t: L('University: later years', 'Universidad: años finales'), w: L('Specialise', 'Especializarse'),

@@ -1,0 +1,13 @@
+{
+  "name": "Ace Campus",
+  "short_name": "Ace Campus",
+  "description": "University courses with interactive lessons, practice and course finals, plus semester tools.",
+  "start_url": "../campus/",
+  "scope": "../campus/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3F6F2",
+  "theme_color": "#0A5E4D",
+  "categories": ["education"],
+  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+}

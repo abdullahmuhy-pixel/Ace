@@ -1,0 +1,37 @@
+/* Ace Campus identity. Same components as the school app; the ground changes from graph paper to a ruled
+   lecture pad with a margin line, and the ink from indigo to a deep library green with an amber highlighter. */
+html.campus{
+ --bg:#F3F6F2;--grid:#DCE6DE;--surface:#FFFFFF;--tint:#E8F0EA;--tint2:#D9E8DE;
+ --text:#10261F;--text2:rgba(16,38,31,.72);--text3:rgba(16,38,31,.52);--border:#D2E0D6;
+ --primary:#0E7C66;--primary-dark:#0A5E4D;--ink:#0A5E4D;--btn:#0E7C66;--btn-ledge:#08493C;
+ --accent:#F2A93B;--yellow:#F2A93B;--yellow-ledge:#C27F16;--margin:#E8A0A0;
+ --ledge:#C6D8CC;--shadow:0 10px 30px -12px rgba(10,94,77,.28)}
+@media (prefers-color-scheme:dark){html.campus:not([data-theme="light"]){
+ --bg:#0C1A16;--grid:#15281F;--surface:#12251F;--tint:#183229;--tint2:#1E3C31;--text:#E8F4EE;--text2:rgba(232,244,238,.76);--text3:rgba(232,244,238,.55);--border:#264539;
+ --primary:#4FD1B0;--primary-dark:#1C9E80;--ink:#8DE3CB;--btn:#1C9E80;--btn-ledge:#0B5545;--margin:#5A2F35;--ledge:#06110D;color-scheme:dark}}
+html.campus[data-theme="dark"]{
+ --bg:#0C1A16;--grid:#15281F;--surface:#12251F;--tint:#183229;--tint2:#1E3C31;--text:#E8F4EE;--text2:rgba(232,244,238,.76);--text3:rgba(232,244,238,.55);--border:#264539;
+ --primary:#4FD1B0;--primary-dark:#1C9E80;--ink:#8DE3CB;--btn:#1C9E80;--btn-ledge:#0B5545;--margin:#5A2F35;--ledge:#06110D;color-scheme:dark}
+/* ruled pad: horizontal rules only, plus a red margin line on wider screens */
+html.campus body{background-image:linear-gradient(var(--grid) 1px,transparent 1px);background-size:100% 30px}
+@media (min-width:900px){html.campus body{background-image:linear-gradient(90deg,transparent 71px,var(--margin) 71px,var(--margin) 72px,transparent 72px),linear-gradient(var(--grid) 1px,transparent 1px);background-size:100% 100%,100% 30px}}
+html.campus .logo b,html.campus .nv-brand b{color:var(--primary)}
+/* home header: the countdown reads like a highlighted date in a planner */
+html.campus .cp-hh .hh-cd b{background:linear-gradient(transparent 55%,color-mix(in srgb,var(--accent) 55%,transparent) 55%);color:var(--text);padding:0 4px}
+html.campus .cp-hh .tg{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.cp-q{opacity:.4}
+button.cp-add{display:block;width:100%;cursor:pointer;background:none;font:inherit;color:var(--text2)}
+.cp-w{flex:none;font-size:12px;padding:6px 10px;white-space:nowrap}
+/* semester planner */
+.cp-c{margin-bottom:10px;display:grid;gap:8px}
+.cp-r{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;justify-content:space-between}
+.cp-r>.xin{flex:1;min-width:0}.cp-r>.xin.xs{flex:none;width:96px}
+.cp-r .xl{flex:1;min-width:110px;margin:0}.cp-r .xl .xin.xs{width:100%}
+.cp-sum{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0}.cp-sum>div{flex:1;min-width:120px}
+.cp-sum b{display:block;font:800 26px/1.1 var(--fd);color:var(--ink);font-variant-numeric:tabular-nums}.cp-sum small{color:var(--text3);font-size:12px}
+.cp-t{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}.cp-t .sw{margin-top:8px}.cp-tm{flex:1;min-width:0;display:grid;gap:6px}
+.cp-t.dn .cp-tm{opacity:.55}.cp-t.dn .cp-tm .xin:first-child{text-decoration:line-through}
+/* onboarding programme chips */
+.cp-chips{gap:6px}.cp-chips button{border:2px solid var(--border);background:var(--surface);color:var(--text);border-radius:99px;padding:6px 12px;font:600 13px var(--fb);cursor:pointer}
+.cp-chips button.on{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 14%,var(--surface));color:var(--ink)}
+[data-country="UN"]{--cty:#0E7C66;--cty-dark:#0A5E4D;--cty-accent:#F2A93B}
