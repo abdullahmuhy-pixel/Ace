@@ -23,6 +23,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 [data-country="TZ"]{--primary:#1EB53A;--primary-dark:#0E7A24;--accent:#FCD116}
 [data-country="LR"]{--primary:#002868;--primary-dark:#001A45;--accent:#BF0A30}
 [data-country="MT"]{--primary:#CF142B;--primary-dark:#9B0F20;--accent:#5B6770}
+[data-country="BW"]{--primary:#4A8FC4;--primary-dark:#2A6390;--accent:#1C1C1C}
 [data-country="ZW"]{--primary:#1A7F37;--primary-dark:#0F5223;--accent:#FFD200}
 [data-country="IE"]{--primary:#169B62;--primary-dark:#0E6B43;--accent:#FF883E}
 *,*::before,*::after{box-sizing:inherit}
@@ -109,7 +110,8 @@ UG:{n:'Uganda',f:'🇺🇬',x:['UCE', 'UACE'],tg:'UCE and UACE Exam Prep • S1�
 TZ:{n:'Tanzania',f:'🇹🇿',x:['CSEE', 'ACSEE'],tg:'CSEE and ACSEE Exam Prep • Form 1–6',gr:G(1,6,'Form '),cl:'Form 4A',u:'Dar es Salaam',p:'PDPA 2022'},
 LR:{n:'Liberia',f:'🇱🇷',x:['WASSCE'],tg:'WASSCE Exam Prep • Grade 10–12',gr:G(10,12,'Grade '),cl:'Grade 12A',u:'Monrovia',p:''},
 MT:{n:'Malta',f:'🇲🇹',x:['SEC','Matriculation'],tg:'SEC • Matriculation Exam Prep • Year 9 – Sixth Form',gr:[...G(9,11,'Year '),'Sixth Form 1','Sixth Form 2'],cl:'Year 10A',u:'Valletta',p:'GDPR'},
-ZW:{n:'Zimbabwe',f:'🇿🇼',x:['O Level', 'A Level'],tg:'O Level and A Level Exam Prep • Form 1 – Upper 6',gr:[...G(1,4,'Form '),'Lower 6','Upper 6'],cl:'Form 4A',u:'Harare',p:'CDPA 2021'}};
+ZW:{n:'Zimbabwe',f:'🇿🇼',x:['O Level', 'A Level'],tg:'O Level and A Level Exam Prep • Form 1 – Upper 6',gr:[...G(1,4,'Form '),'Lower 6','Upper 6'],cl:'Form 4A',u:'Harare',p:'CDPA 2021'},
+BW:{n:'Botswana',f:'🇧🇼',x:['BGCSE'],tg:'BGCSE Exam Prep • Form 1–5',gr:G(1,5,'Form '),cl:'Form 5A',u:'Gaborone',p:'Data Protection Act'}};
 const exFor=(c,g)=>{if(!g)return c.x;const jr=/^(JHS|JSS)|^Grade [789]$/.test(g);let r=c.x;
  if(g=='Primary 6')r=c.x.filter(k=>k=='NPSE');else if(jr&&c.x.some(k=>/^(BECE|GABECE)$/.test(k)))r=c.x.filter(k=>/^(BECE|GABECE)$/.test(k));
  else if(c.x.some(k=>/^(BECE|GABECE|NPSE)$/.test(k)))r=c.x.filter(k=>!/^(BECE|GABECE|NPSE)$/.test(k));return r.length?r:c.x};

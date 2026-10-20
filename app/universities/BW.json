@@ -1,0 +1,178 @@
+{
+ "country": "BW",
+ "updated": "2026-10-20",
+ "admissions_overview": {
+  "summary": "In Botswana you apply directly to each institution, usually soon after BGCSE results come out. Admission is based on points from six BGCSE subjects: the University of Botswana, for example, asks for at least six subjects with no grade below E, English Language among them, and a minimum of 34 points for degree programmes (30 for diplomas), with higher points for competitive programmes. Government sponsorship for citizens is handled by the Department of Tertiary Education Financing (DTEF), which uses its own points system.",
+  "official_url": "https://www.ub.bw",
+  "notes": "University of Botswana programme names are from its official list of undergraduate programmes; for the other institutions the entries name the fields of study listed in the World Higher Education Database, not exact programme titles. Requirements change every year, so check each institution before applying."
+ },
+ "universities": [
+  {
+   "id": "ub",
+   "name": "University of Botswana",
+   "short": "UB",
+   "type": "public",
+   "city": "Gaborone",
+   "url": "https://www.ub.bw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculty of Business",
+     "courses": [
+      {
+       "name": "Bachelor of Accountancy"
+      },
+      {
+       "name": "Bachelor of Finance"
+      },
+      {
+       "name": "Bachelor of Information Systems (Business Information Systems)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Architecture"
+      },
+      {
+       "name": "Bachelor of Engineering (Civil)"
+      },
+      {
+       "name": "Bachelor of Geomatics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Nursing Science (Generic)"
+      },
+      {
+       "name": "Bachelor of Science (Environmental Health)"
+      },
+      {
+       "name": "Bachelor of Pharmacy"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Bachelor of Science (General)"
+      },
+      {
+       "name": "Bachelor of Science (Computer Science)"
+      },
+      {
+       "name": "Bachelor of Science in Applied Geophysics"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Laws"
+      },
+      {
+       "name": "Bachelor of Social Work"
+      },
+      {
+       "name": "Bachelor of Arts in Criminal Justice Studies"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "biust",
+   "name": "Botswana International University of Science and Technology",
+   "short": "BIUST",
+   "type": "public",
+   "city": "Palapye",
+   "url": "https://www.biust.ac.bw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculty of Engineering and Technology",
+     "courses": [
+      {
+       "name": "Mining Engineering (bachelor's)"
+      },
+      {
+       "name": "Chemical Engineering (bachelor's)"
+      },
+      {
+       "name": "Electrical and Electronic Engineering (bachelor's)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Computer Science (bachelor's)"
+      },
+      {
+       "name": "Physics (bachelor's)"
+      },
+      {
+       "name": "Biotechnology (bachelor's)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bac",
+   "name": "Botswana Accountancy College",
+   "short": "BAC",
+   "type": "other",
+   "city": "Gaborone",
+   "url": "https://www.bac.ac.bw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "School of Finance and Professional Studies",
+     "courses": [
+      {
+       "name": "Accountancy (bachelor's)"
+      },
+      {
+       "name": "Finance (bachelor's)"
+      },
+      {
+       "name": "Banking (bachelor's)"
+      }
+     ]
+    },
+    {
+     "name": "School of Computing and Information Systems",
+     "courses": [
+      {
+       "name": "Computer Science (bachelor's)"
+      },
+      {
+       "name": "Information Technology (bachelor's)"
+      }
+     ]
+    },
+    {
+     "name": "School of Business and Leisure",
+     "courses": [
+      {
+       "name": "Business Administration (bachelor's)"
+      },
+      {
+       "name": "Tourism (bachelor's)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

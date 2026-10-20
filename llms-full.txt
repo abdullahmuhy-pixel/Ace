@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 16 countries, 28 exams, 39,667 practice questions, 7,748 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 17 countries, 29 exams, 40,337 practice questions, 7,882 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -142,8 +142,16 @@ Totals: 10 subjects, 244 topics, 1,220 questions.
 - O Level (ZIMSEC): Mathematics, English Language, Chemistry, Biology, Physics, Computer Science
 - A Level (ZIMSEC): Mathematics, Physics, Chemistry, Biology
 
+## Botswana
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana
+Exams: The Botswana General Certificate of Secondary Education (BGCSE) at the end of Form 5, set by the Botswana Examinations Council (BEC). The Junior Certificate (JCE) comes at the end of Form 3.
+Grading: BGCSE grades run from A* (highest) to G; U means ungraded.
+Levels: Form 1 – Form 5
+Totals: 6 subjects, 134 topics, 670 questions.
+- BGCSE (BEC): Computer Studies, Mathematics, English Language, Biology, Chemistry, Physics
+
 ## FAQ
-**Which exams does Ace Education cover today?** More than twenty exams across sixteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
+**Which exams does Ace Education cover today?** More than twenty exams across seventeen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
 **Are the questions copied from past papers?** No. Topic lists follow each exam body's published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.
 **Has a teacher checked the content?** Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher's sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.
 **How do you make sure the content is local?** Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.
