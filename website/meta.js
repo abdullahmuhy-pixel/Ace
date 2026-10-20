@@ -122,10 +122,10 @@ BW:{name:'Botswana',flag:'🇧🇼',lang:'English and Setswana',levels:'Form 1 �
  next:["Science Double Award, Setswana, Geography and History", "Accounting, Commerce, Agriculture and Development Studies", "Teacher review of the Botswana content"]},
 FR:{name:'France',flag:'🇫🇷',lang:'Français',levels:'Seconde – Terminale',law:'RGPD',
  sys:"The baccalauréat général. Première students sit the épreuves anticipées (French, and from 2026 a written mathematics paper for every student); Terminale students sit philosophy, two specialty subjects and the Grand oral. Continuous assessment counts for 40% of the final mark.",
- intro:"France's content is written in French, and so is the app's interface for this country. Ace starts with the two épreuves anticipées of Première: mathématiques (specialty-maths version) and français, with the twelve set works and parcours for the 2027 session, essay and commentary method, and the grammar asked at the oral. For Terminale: philosophy (the seventeen notions and repères, with dissertation and text-commentary method) and four specialty subjects: mathématiques, physique-chimie, SVT and SES.",
+ intro:"France's content is written in French, and so is the app's interface for this country. Ace starts with the two épreuves anticipées of Première: mathématiques (specialty-maths version) and français, with the twelve set works and parcours for the 2027 session, essay and commentary method, and the grammar asked at the oral. For Terminale: philosophy (the seventeen notions and repères, with dissertation and text-commentary method) and seven specialty subjects: mathématiques, physique-chimie, SVT, SES, HGGSP, HLP and NSI.",
  ex:{"Épreuves anticipées": "Written papers taken at the end of Première: French (written and oral) and, from the 2026 session, a two-hour mathematics paper without a calculator, with 6 points of automatismes and 14 points of exercises.","Baccalauréat":"The final bac exams in Terminale: philosophy (4 hours, coefficient 8), two specialty subjects and the Grand oral."},
  scale:"Marks are out of 20. The bac is passed with an average of 10/20; mentions start at 12 (assez bien), 14 (bien) and 16 (très bien).",
- next:["Other specialties: HGGSP, HLP, NSI", "Grand oral preparation", "Teacher review of the French content"]}
+ next:["Sciences de l'ingénieur and LLCER anglais", "Grand oral preparation", "Teacher review of the French content"]}
 };
 
 const STUDENT_TOOLS = [
