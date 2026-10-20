@@ -1,0 +1,325 @@
+{
+ "country": "ZW",
+ "updated": "2026-10-20",
+ "admissions_overview": {
+  "summary": "In Zimbabwe you apply directly to each university through its own online portal; there is no central application system. Universities select mainly on A Level results (points from your best subjects), and most degrees also need five O Level passes at grade C or better, including English Language and usually Mathematics. Many universities have two intakes a year, in February and August, and some offer special entry for applicants with diplomas.",
+  "official_url": "https://www.zimche.ac.zw",
+  "notes": "Programme names come from university adverts and the ZIMCHE list of accredited programmes (March 2026). Entry requirements and intakes change every year, so check the university advert before you apply. Only a sample of programmes is listed."
+ },
+ "universities": [
+  {
+   "id": "uz",
+   "name": "University of Zimbabwe",
+   "short": "UZ",
+   "type": "public",
+   "city": "Harare",
+   "url": "https://www.uz.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "BSc Honours Degree in Biochemistry"
+      },
+      {
+       "name": "BSc Honours Degree in Chemistry"
+      },
+      {
+       "name": "BSc Honours Degree in Computer Science"
+      },
+      {
+       "name": "BSc Honours in Food Science and Technology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce",
+     "courses": [
+      {
+       "name": "Bachelor of Accountancy Honours Degree"
+      },
+      {
+       "name": "Bachelor of Business Studies Honours Degree"
+      },
+      {
+       "name": "Bachelor of Tourism and Hospitality Honours Degree"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering",
+     "courses": [
+      {
+       "name": "Bachelor of Science Honours in Engineering (Civil, Mining, Mechanical or Metallurgical Engineering)"
+      },
+      {
+       "name": "Bachelor of Science Honours Degree in Geoinformatics and Surveying"
+      }
+     ]
+    },
+    {
+     "name": "College of Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery Degree"
+      },
+      {
+       "name": "Bachelor of Pharmacy Honours Degree"
+      },
+      {
+       "name": "Bachelor of Science Honours Degree in Nursing Science"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws Honours (full time)"
+      },
+      {
+       "name": "Bachelor of Laws Honours (part time)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nust",
+   "name": "National University of Science and Technology",
+   "short": "NUST",
+   "type": "public",
+   "city": "Bulawayo",
+   "url": "https://www.nust.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculty of Commerce",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce Honours Degree in Accounting"
+      },
+      {
+       "name": "Bachelor of Commerce Honours Degree in Banking and Investment Management"
+      },
+      {
+       "name": "Bachelor of Commerce Honours Degree in Finance"
+      },
+      {
+       "name": "Bachelor of Commerce Honours Degree in Marketing"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Communication and Information Science",
+     "courses": [
+      {
+       "name": "Bachelor of Science Honours Degree in Library and Information Science"
+      },
+      {
+       "name": "Bachelor of Science Honours Degree in Records and Archives Management"
+      },
+      {
+       "name": "Bachelor of Science Honours Degree in Information Management and Technology"
+      }
+     ]
+    }
+   ],
+   "admissions_url": "https://apply.nust.ac.zw/apply/"
+  },
+  {
+   "id": "msu",
+   "name": "Midlands State University",
+   "short": "MSU",
+   "type": "public",
+   "city": "Gweru",
+   "url": "https://www.msu.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculty of Business Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce (Honours) in Accounting"
+      },
+      {
+       "name": "Bachelor of Commerce (Honours) in Marketing Management"
+      },
+      {
+       "name": "Bachelor of Commerce (Honours) in Banking and Finance"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Science and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Honours) in Chemical Technology"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Biotechnology and Bioinformatics"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Computer Science"
+      }
+     ]
+    }
+   ],
+   "admissions_url": "https://www.msu.ac.zw/admissions/"
+  },
+  {
+   "id": "cut",
+   "name": "Chinhoyi University of Technology",
+   "short": "CUT",
+   "type": "public",
+   "city": "Chinhoyi",
+   "url": "https://www.cut.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "School of Engineering Science and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering (Honours) in Mechatronic Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering (Honours) in Fuels and Energy Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering (Honours) in Production Engineering"
+      }
+     ]
+    },
+    {
+     "name": "School of Agricultural Sciences and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Honours) in Food Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Animal Production and Technology"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Crop Science and Technology"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gzu",
+   "name": "Great Zimbabwe University",
+   "short": "GZU",
+   "type": "public",
+   "city": "Masvingo",
+   "url": "https://www.gzu.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Munhumutapa School of Commerce",
+     "courses": [
+      {
+       "name": "Bachelor of Commerce (Honours) in Accounting"
+      },
+      {
+       "name": "Bachelor of Commerce (Honours) in Banking and Finance"
+      },
+      {
+       "name": "Bachelor of Commerce (Honours) in Economics"
+      }
+     ]
+    },
+    {
+     "name": "Julius Nyerere School of Social Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Honours) in Psychology"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Social Work"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Sociology"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hit",
+   "name": "Harare Institute of Technology",
+   "short": "HIT",
+   "type": "public",
+   "city": "Harare",
+   "url": "https://www.hit.ac.zw",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "School of Engineering and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Technology (Honours) in Electronic Engineering"
+      },
+      {
+       "name": "Bachelor of Technology (Honours) in Chemical and Process Systems Engineering"
+      }
+     ]
+    },
+    {
+     "name": "School of Information Science and Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Technology (Honours) in Computer Science"
+      },
+      {
+       "name": "Bachelor of Technology (Honours) in Information Technology"
+      },
+      {
+       "name": "Bachelor of Technology (Honours) in Software Engineering"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "au",
+   "name": "Africa University",
+   "short": "AU",
+   "type": "private",
+   "city": "Mutare",
+   "url": "https://www.africau.edu",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "College of Business, Peace, Leadership and Governance",
+     "courses": [
+      {
+       "name": "Bachelor of Accounting (Honours)"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Economics"
+      },
+      {
+       "name": "Bachelor of Business Studies (Honours) in Management"
+      }
+     ]
+    },
+    {
+     "name": "College of Health, Agriculture and Natural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science (Honours) in Agriculture and Natural Resources"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Medical Laboratory Sciences"
+      },
+      {
+       "name": "Bachelor of Science (Honours) in Nursing Science"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

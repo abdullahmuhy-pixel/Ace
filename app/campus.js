@@ -7,7 +7,7 @@
   'use strict';
   if (window.ACE_MODE !== 'campus') return;
   const KEY = 'ace-campus';
-  const CUR = { NG: '₦', GH: '₵', SL: 'Le', GM: 'D', KE: 'KSh', ZM: 'K', GB: '£', CA: '$', ES: '€', IE: '€', ZA: 'R', UG: 'USh', TZ: 'TSh', LR: 'L$', MT: '€' };
+  const CUR = { NG: '₦', GH: '₵', SL: 'Le', GM: 'D', KE: 'KSh', ZM: 'K', GB: '£', CA: '$', ES: '€', IE: '€', ZA: 'R', UG: 'USh', TZ: 'TSh', LR: 'L$', MT: '€', ZW: 'US$' };
   const SCALE = { NG: ['gpa', 'ng5'], GB: ['uk', 'ng5'], IE: ['uk', 'ng5'], MT: ['uk', 'ng5'], KE: ['uk', 'ng5'] };
   const FAC = [['health', /medic|health|nurs|pharm|dent|clinic|surg|anatom|physiother|radiograph|optom|public health/i], ['eng', /engineer|technolog|architect|survey/i],
     ['comp', /comput|software|informat|data|cyber|\bit\b|ict/i], ['law', /\blaw\b|legal|jurisprud/i], ['biz', /business|econom|account|financ|manag|commerce|market|bank|actuar|insur/i],
