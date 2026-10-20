@@ -29,7 +29,7 @@
   /* ---------- wiring (called from the main script) ---------- */
   A.setup = function () {
     const hc = home();
-    C.UN = { n: C[hc].n, f: '🎓', b: 'Ace Campus', x: ['First-year core'], s: ['Calculus I'], t: 'gb', d: (nextExam() || {}).exam || '', u: C[hc].u, p: C[hc].p, tl: 'campus', home: hc };
+    C.UN = { n: C[hc].n, f: '🎓', b: 'Ace Campus', x: ['First-year core'], s: ['Calculus I', 'Linear Algebra'], t: 'gb', d: (nextExam() || {}).exam || '', u: C[hc].u, p: C[hc].p, tl: 'campus', home: hc };
     LV.UN = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Postgraduate'];
     ACE_CFG.syllabusFiles.UN = 'campus-syllabus.html';
     T.campus = Object.assign({}, T.en, { nav: ['Home', 'Courses', 'Practice', 'Today', 'Tools'], sub: 'My courses', all: 'All courses', g1: 'Answer 20 questions', dc: 'Daily challenge', dcs: '10 questions from your courses', dn: 'Ace Campus follows the common first-year syllabus. Your own course outline decides what is examined.' });
