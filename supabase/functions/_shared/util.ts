@@ -184,3 +184,10 @@ export async function withRefund<T>(admin: SupabaseClient, userId: string, kind:
   try { return await fn(); }
   catch (e) { await admin.rpc("refund_ai", { p_user: userId, p_kind: kind }).then(() => {}, () => {}); throw e; }
 }
+
+/** Price in minor units for adding `qty` students to a licence that runs until `endMs`: the share of a year left,
+ *  never less than one month. Used by checkout-start and checked again by payments-webhook. */
+export function addPrice(perStudentMinor: number, qty: number, endMs: number, now = Date.now()) {
+  const days = Math.max(31, Math.ceil((endMs - now) / 86_400_000));
+  return Math.ceil(perStudentMinor * qty * Math.min(days, 366) / 366);
+}

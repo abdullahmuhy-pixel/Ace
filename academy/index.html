@@ -1303,9 +1303,9 @@ function viewQuiz(slug){
   var c=S.course;if(!c||c.slug!==slug)return '<p>Loading…</p>';
   title('Final quiz | '+c.title);var q=S.quiz;
   var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a> / Quiz</div><div class="lesson">';
-  if(!signedIn())return h+'<div class="pane"><h2 style="margin-top:0">Sign in to take the quiz</h2><p>Quizzes are marked securely on our server so certificates are genuine. Reading the lessons is free without an account, but you need a free account for the quiz and the certificate.</p><a class="btn" href="../login/?next=academy">Create account or sign in</a></div></div>';
+  if(!signedIn())return h+'<div class="pane"><h2 style="margin-top:0">Sign in to take the quiz</h2><p>Quizzes are marked securely on our server so certificates are genuine. Reading the lessons is free without an account, but you need a free account for the quiz. Verified certificates come with an Ace plan, a free trial or a school licence.</p><a class="btn" href="../login/?next=academy">Create account or sign in</a></div></div>';
   if(q.res){
-    var r=q.res;h+='<div class="pane" style="text-align:center"><div style="font-size:48px">'+(r.passed?'🎓':'📚')+'</div><h2 style="margin:6px 0">'+r.score+'% ('+r.correct+' of '+r.total+')</h2><p>'+(r.passed?'You passed. Your certificate is ready.':'The pass mark is '+r.pass_mark+'%. Review the lessons and try again.')+'</p>'+(r.passed?'<a class="btn" href="#/cert/'+esc(slug)+'">Choose a design and download</a>':'<a class="btn" href="#/c/'+esc(slug)+'">Back to the lessons</a>')+'</div><h3 style="margin-top:24px">Review</h3>';
+    var r=q.res;h+='<div class="pane" style="text-align:center"><div style="font-size:48px">'+(r.passed?'🎓':'📚')+'</div><h2 style="margin:6px 0">'+r.score+'% ('+r.correct+' of '+r.total+')</h2><p>'+(r.passed&&r.locked&&!r.code?'You passed, and your pass is saved. The verified certificate comes with an Ace plan, a free trial or a school licence.':r.passed?'You passed. Your certificate is ready.':'The pass mark is '+r.pass_mark+'%. Review the lessons and try again.')+'</p>'+(r.passed&&r.locked&&!r.code?'<a class="btn" href="../app/#plans">See plans</a> <button class="btn o" data-act="claim" data-slug="'+esc(slug)+'">I have a plan: claim it</button>':r.passed?'<a class="btn" href="#/cert/'+esc(slug)+'">Choose a design and download</a>':'<a class="btn" href="#/c/'+esc(slug)+'">Back to the lessons</a>')+(S.err?'<div class="err" style="margin-top:10px">'+esc(S.err)+'</div>':'')+'</div><h3 style="margin-top:24px">Review</h3>';
     c.quiz.forEach(function(qq,i){var rv=(r.review||[]).find(function(y){return y.qid===qq.id})||{};h+='<div class="q"><b>'+(i+1)+'. '+esc(qq.q)+'</b>'+(rv.ok?'<span class="ok">✓ Correct</span>':'<span class="no">✗ '+esc(rv.why||'Not correct')+'</span>')+'</div>'});
     return h+'</div>';
   }
@@ -1397,6 +1397,10 @@ document.addEventListener('click',function(e){
     if(done(slug).indexOf(lid)<0)touch(20,slug,lid);saveGuest(slug,lid);
     if(S.sb&&S.user)S.sb.rpc('mark_lesson',{p_course:slug,p_lesson:lid}).then(function(r){if(r.error)throw r.error;S.prog[slug]=Array.from(new Set((S.prog[slug]||[]).concat([lid])));next()}).catch(function(er){S.busy=false;S.err=/unknown lesson/i.test(msg(er))?'Your progress is saved on this device. This course is not switched on for certificates yet.':msg(er);next()});
     else next();
+    return}
+  if(a==='claim'){
+    var sl=t.dataset.slug;S.err='';
+    S.sb.rpc('claim_certificate',{p_course:sl}).then(function(r){if(r.error)throw r.error;if(S.quiz&&S.quiz.res){S.quiz.res.code=r.data.code;S.quiz.res.locked=false}return refreshUser().then(render)}).catch(function(er){S.err=msg(er);render()});
     return}
   if(a==='submit'){
     var c2=S.course;S.quiz.busy=true;S.err='';render();

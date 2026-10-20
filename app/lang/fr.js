@@ -2,6 +2,14 @@
 window.ACE_LANG=window.ACE_LANG||{};
 window.ACE_LANG.fr={
 "tr": {
+"You passed! Your verified certificate comes with a plan.": "Réussi ! Ton certificat vérifié est inclus dans un abonnement.",
+"Your pass is saved. Claim the certificate whenever you have a plan, a trial or a school licence.": "Ta réussite est enregistrée. Récupère le certificat dès que tu as un abonnement, un essai ou une licence de ton établissement.",
+"Claim my certificate": "Récupérer mon certificat",
+"Passed, certificate waiting": "Réussis, certificat en attente",
+"Get it with a plan": "L'obtenir avec un abonnement",
+"Certificate issued.": "Certificat délivré.",
+"Verified certificates come with a plan.": "Les certificats vérifiés sont inclus dans un abonnement.",
+"Verified certificates for the courses you pass": "Des certificats vérifiés pour les cours que tu réussis",
 "Your school has turned off AI help.": "Ton établissement a désactivé l'aide de l'IA.",
 "You have used all {n} AI questions your school allows for this period.": "Tu as utilisé les {n} questions d'IA autorisées par ton établissement pour cette période.",
 "You have used today's {n} for this tool. It resets tomorrow.": "Tu as utilisé les {n} d'aujourd'hui pour cet outil. Ça repart demain.",

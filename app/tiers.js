@@ -62,6 +62,7 @@
     if (k === 'essay') return F('Free accounts get {n} essay or answer marking a week.', 'Las cuentas gratis tienen {n} corrección de redacción o respuesta a la semana.', { n: cap != null ? cap : 1 });
     if (k === 'pack') return F('Free accounts get {n} study packs a week.', 'Las cuentas gratis tienen {n} packs de estudio a la semana.', { n: cap != null ? cap : 2 });
     if (k === 'mock') return F('You have used your free mock exam for {s}.', 'Ya has usado tu simulacro gratis de {s}.', { s: s || '' });
+    if (k === 'cert') return L('Verified certificates come with a plan.', 'Los certificados verificados vienen con un plan.');
     if (k === 'breakdown') return L('The topic-by-topic breakdown comes with a plan.', 'El desglose por temas viene con un plan.');
     return F('You have used your {n} free Ace messages for today.', 'Has usado tus {n} mensajes gratis de Ace de hoy.', { n: cap != null ? cap : 5 });
   }
@@ -77,6 +78,7 @@
       L('20 photo questions and 15 essay markings a day', '20 preguntas con foto y 15 correcciones al día'),
       L('Unlimited mock exams with a topic-by-topic breakdown', 'Simulacros ilimitados con desglose por temas'),
       L('Study packs from your notes whenever you need them', 'Packs de estudio de tus apuntes cuando quieras'),
+      L('Verified certificates for the courses you pass', 'Certificados verificados de los cursos que apruebes'),
     ];
     box = document.createElement('div');
     box.className = 'scrim'; box.id = 'ace-upsell';
@@ -114,6 +116,8 @@ ${signedIn() ? `<button class="nx" data-u="plans">${L('See plans', 'Ver planes')
 
   window.AceTier = { load, free, paid, canMock, noteMock, used, fail, upsell, status, usage, close, lim: () => lim };
   // load once the session is known, and again when the app comes back to the foreground
-  window.addEventListener('load', () => setTimeout(() => { if (sync()) sync().ready().then(ok => { if (ok) load(); }); }, 600));
+  window.addEventListener('load', () => setTimeout(() => {
+    if (sync()) sync().ready().then(ok => { if (ok) load(); if (ok && location.hash === '#plans') { const t = document.createElement('button'); t.hidden = true; t.dataset.a = 'tab'; t.dataset.v = 'plans'; document.body.appendChild(t); t.click(); t.remove(); history.replaceState(null, '', location.pathname + location.search); } });
+  }, 600));
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && signedIn()) load(true); });
 })();

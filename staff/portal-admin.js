@@ -170,9 +170,34 @@ A.csvschool = async () => { const s = must(await sb().rpc('school_summary')) || 
 A.opencls = el => { St.cls = el.dataset.id; St.view = 'overview'; T.go(); };
 
 /* ---------- settings ---------- */
+const money = (minor, cur) => { try { return new Intl.NumberFormat('en-GB', { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol', minimumFractionDigits: minor % 100 ? 2 : 0, maximumFractionDigits: minor % 100 ? 2 : 0 }).format(minor / 100); } catch (e) { return (minor / 100) + ' ' + cur; } };
+const fdate = d => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+// Settings > Plan: the free plan (1 class, 40 students), the 30-day school trial, and the per-student licence
+function planCard(p) {
+  if (!p) return '';
+  const left = d => Math.max(0, Math.ceil((Date.parse(d) - Date.now()) / 864e5));
+  const paid = p.licensed && p.status === 'active', trial = p.licensed && p.status === 'trialing';
+  let h = `<div class="card"><h2>Plan</h2>`;
+  if (paid) h += `<p><b>Licence active until ${esc(fdate(p.paid_until))}</b></p><p class="muted">${p.students} of ${p.seats || '–'} students in use. Every student in your ${isTutor() ? 'classes' : 'school'} gets Ace with up to 60 AI messages a day, unlimited mock exams and verified certificates.</p>`;
+  else if (trial) h += `<p><b>Free trial: ${left(p.trial_ends_at)} days left</b></p><p class="muted">Everything is switched on during the trial. After it ends, the free plan allows ${p.free_classes} active class of up to ${p.free_class_size} students, and students go back to their own free limits.</p>`;
+  else h += `<p><b>Free plan</b></p><p class="muted">${p.free_classes} active class of up to ${p.free_class_size} students. You have ${p.classes} active class${p.classes === 1 ? '' : 'es'} and ${p.students} students. Students use their own free AI limits (5 messages a day).</p>`;
+  if (!isAdmin()) return h + '</div>';
+  if (!p.plan) return h + `<p class="muted">Licences are not on sale in your country yet. Contact us for a quote.</p></div>`;
+  const per = money(p.plan.per_student, p.plan.currency), n0 = Math.max(p.min_students, p.students || 0);
+  if (paid) h += `<form data-f="buylic" data-add="1" class="row"><label>Add students<input name="students" type="number" min="1" max="20000" value="10" required></label><button class="b">Add and pay</button></form><p class="muted">${per} per student per year, charged only for the months left on your licence.</p>`;
+  else h += `<form data-f="buylic" class="row"><label>Students<input name="students" type="number" min="${p.min_students}" max="20000" value="${n0}" required data-per="${p.plan.per_student}" data-cur="${esc(p.plan.currency)}"></label><button class="b">Buy a 1-year licence</button></form><p class="muted">${per} per student per year, at least ${p.min_students} students. Payments are processed by Flutterwave.</p>`;
+  return h + '</div>';
+}
+F.buylic = async (d, f) => {
+  const o = await fn('checkout-start', { plan_code: St.plan.plan.code, students: +d.students, add: !!f.dataset.add });
+  await new Promise((ok, no) => { if (window.FlutterwaveCheckout) return ok(); const s = document.createElement('script'); s.src = 'https://checkout.flutterwave.com/v3.js'; s.onload = ok; s.onerror = () => no(new Error('Could not load the payment window.')); document.head.appendChild(s); });
+  window.FlutterwaveCheckout({ public_key: o.public_key, tx_ref: o.tx_ref, amount: o.amount, currency: o.currency, customer: o.customer, customizations: { title: o.title, description: o.description },
+    callback: () => { toast('Payment received. Your licence updates in a moment.'); setTimeout(() => T.go(), 6000); }, onclose: () => { } });
+};
 V.settings = async () => {
   const s = T.school;
-  return `${isAdmin() && s ? `<div class="card"><h2>${isTutor() ? 'Workspace' : 'School'}</h2><form data-f="wsname" class="row"><label style="flex:2 1 260px">Name<input name="name" required maxlength="120" value="${esc(s.name)}"></label><button class="b">Save</button></form><p class="muted">Code ${esc(s.school_code)} • ${esc(CN[s.country_code] || s.country_code)}</p></div>
+  St.plan = s ? (await sb().rpc('my_school_plan')).data : null;
+  return `${planCard(St.plan)}${isAdmin() && s ? `<div class="card"><h2>${isTutor() ? 'Workspace' : 'School'}</h2><form data-f="wsname" class="row"><label style="flex:2 1 260px">Name<input name="name" required maxlength="120" value="${esc(s.name)}"></label><button class="b">Save</button></form><p class="muted">Code ${esc(s.school_code)} • ${esc(CN[s.country_code] || s.country_code)}</p></div>
 <div class="card"><h2>AI help for your students</h2><form data-f="aiset" class="row"><label>Mode<select name="ai_mode">${[['full', 'Full'], ['limited', 'Limited'], ['off', 'Off']].map(k => opt(k[0], k[1], s.ai_mode === k[0])).join('')}</select></label><label>Questions per period<input name="ai_cap" type="number" min="0" max="500" value="${s.ai_cap == null ? '' : s.ai_cap}"></label><label>Period<select name="ai_period">${['daily', 'weekly'].map(k => opt(k, k, s.ai_period === k)).join('')}</select></label><button class="b">Save</button></form></div>` : ''}
 <div class="card"><h2>My profile</h2><form data-f="myname" class="row"><label>First name<input name="first_name" required maxlength="60" value="${esc(me().first_name)}"></label><label>Surname<input name="surname" required maxlength="60" value="${esc(me().surname)}"></label><button class="b">Save</button></form></div>
 <div class="card"><h2>Change password</h2><form data-f="pw" class="row"><label>New password (8+ characters)<input name="pw" type="password" minlength="8" required autocomplete="new-password"></label><button class="b">Change</button></form></div>

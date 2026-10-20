@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Ace plan prices per market (Oct 2026). Prints the SQL that seeds public.plans and checks every price rule.
-Run: python3 tools/plan_prices.py > /tmp/plans.sql"""
+Run: python3 tools/plan_prices.py [--school] > /tmp/plans.sql"""
 from decimal import Decimal as D
 # code: (country or None, currency, month, term, year, group-of-4 year)
 P = {
@@ -24,6 +24,10 @@ P = {
  'lr': ('LR', 'USD', '2', '5', '15', '37.50'),
 }
 CAMPUS = ('USD', '4.99', '39.99')   # Ace Campus, any country
+# School / tutor licence: price per student per year, about 30% of one student's yearly plan (minimum 30 students
+# for a school, 10 for a tutor; the minimum is enforced in the checkout-start function)
+SCHOOL = {'gb': '12', 'ie': '12', 'mt': '12', 'es': '12', 'fr': '12', 'ca': '18', 'za': '135', 'bw': '90', 'ng': '3600',
+          'gh': '45', 'ke': '450', 'ug': '15000', 'tz': '10500', 'zm': '90', 'sl': '90', 'gm': '300', 'zw': '4.50', 'lr': '4.50'}
 rows = []
 def minor(x): v = D(x) * 100; assert v == v.to_integral_value(), x; return int(v)
 for k, (cc, cur, m, t, y, g) in P.items():
@@ -36,13 +40,22 @@ for k, (cc, cur, m, t, y, g) in P.items():
              (f'{k}_term', 'Ace Termly', cc, cur, minor(t), 'term', 1),
              (f'{k}_year', 'Ace Yearly', cc, cur, minor(y), 'year', 1),
              (f'{k}_group', 'Ace Group (4 people)', cc, cur, minor(g), 'year', 4)]
+school_rows = []
+for k, per in SCHOOL.items():
+    cc, cur_, _, _, y_, _ = P[k]
+    assert D('0.28') <= D(per) / D(y_) <= D('0.32'), (k, D(per) / D(y_))
+    school_rows.append((f'{k}_school', 'School licence (per student, 1 year)', cc, cur_, minor(per), 'year', 1))
+assert set(SCHOOL) == set(P)
 cur, m, y = CAMPUS
 rows += [('campus_month', 'Ace Campus Monthly', None, cur, minor(m), 'month', 1),
          ('campus_year', 'Ace Campus Yearly', None, cur, minor(y), 'year', 1)]
 assert len({r[0] for r in rows}) == len(rows) == 18 * 4 + 2
 q = lambda s: 'null' if s is None else "'" + s.replace("'", "''") + "'"
+import sys
+school = '--school' in sys.argv
+aud = 'school' if school else 'student'
 print('insert into public.plans (code, name, country_code, currency_code, amount_minor, period, audience, seats, active) values')
-print(',\n'.join(f" ({q(c)}, {q(n)}, {q(cc)}, {q(cu)}, {a}, {q(p)}, 'student', {s}, true)" for c, n, cc, cu, a, p, s in rows))
+print(',\n'.join(f" ({q(c)}, {q(n)}, {q(cc)}, {q(cu)}, {a}, {q(p)}, '{aud}', {s}, true)" for c, n, cc, cu, a, p, s in (school_rows if school else rows)))
 print("on conflict (code) do update set name = excluded.name, country_code = excluded.country_code, currency_code = excluded.currency_code,\n"
       "  amount_minor = excluded.amount_minor, period = excluded.period, seats = excluded.seats, active = excluded.active;")
 
