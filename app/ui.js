@@ -5,8 +5,8 @@
   'use strict';
   const H = document.documentElement, $ = s => document.querySelector(s), $$ = s => Array.from(document.querySelectorAll(s));
   const RM = matchMedia('(prefers-reduced-motion: reduce)');
-  const pref = () => (window.P || {});
-  if (window.P) { if (P.snd == null) P.snd = true; if (P.voice == null) P.voice = false; if (P.vc == null) P.vc = 'melodic'; }
+  const pref = () => { try { return P; } catch (e) { return window.P || {}; } };
+  if (pref() && typeof pref() === 'object' && pref() === (function () { try { return P; } catch (e) { return null; } })()) { if (P.snd == null) P.snd = true; if (P.voice == null) P.voice = false; if (P.vc == null) P.vc = 'melodic'; }
 
   /* ---------- device ---------- */
   function device() {
@@ -62,20 +62,31 @@
 
   /* ---------- read aloud ---------- */
   const SY = window.speechSynthesis;
-  function say(text) {
-    if (!SY || !text) return; SY.cancel();
+  function say(text, onend) {
+    if (!SY || !text) { if (onend) onend(); return; } SY.cancel();
     const u = new SpeechSynthesisUtterance(String(text).replace(/\s+/g, ' ').trim()), lang = H.lang || 'en';
     const vs = SY.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2)));
     const pick = vs.find(v => /natural|neural|google|samantha|daniel|serena/i.test(v.name)) || vs[0]; if (pick) u.voice = pick;
     u.lang = pick ? pick.lang : lang; const deep = pref().vc === 'deep'; u.pitch = deep ? 0.75 : 1.15; u.rate = deep ? 0.95 : 1.02;
+    if (onend) { let fired = false; const f = () => { if (!fired) { fired = true; onend(); } }; u.onend = f; u.onerror = f; }
     SY.speak(u);
   }
+  function mainText() { const m = $('.ls .ls-main'); return m ? m.innerText.replace(/\s+/g, ' ').trim() : ''; }
   function qSpeech() {
-    const q = $('.ls .qtext'); if (!q) return '';
+    const q = $('.ls .qtext'); if (!q || !$('.ls .ops')) return mainText();
     const ops = $$('.ls .op').map((o, i) => 'ABCD'[i] + '. ' + o.textContent.replace(/^[A-D]/, '').replace(/[1-4]$/, '').trim());
     return q.textContent + '. ' + ops.join('. ');
   }
   function fbSpeech() { const f = $('.ls .fb'); return f ? $$('.ls .fb h3, .ls .fb p').map(e => e.textContent).join('. ') : ''; }
+  /* Auto-play: narrate the step, then move on by itself, like a video. Muted: wait for a reading-time estimate instead. */
+  let AUTO = null, AUTOK = null;
+  function stopAuto() { if (AUTO) clearTimeout(AUTO); AUTO = null; AUTOK = null; }
+  function runAuto(key) {
+    stopAuto(); AUTOK = key; const txt = mainText(), go = () => { if (AUTOK !== key) return; const ls = $('.ls'); if (!ls || ls.dataset.key !== key || ls.dataset.auto !== '1') return; const n = $('.ls-foot .nx'); if (n && !n.disabled) n.click(); };
+    const words = txt.split(' ').length, est = Math.max(3200, words * 330);
+    if (pref().snd !== false && SY) { const t0 = Date.now(); AUTO = setTimeout(() => say(txt, () => { if (AUTOK === key) AUTO = setTimeout(go, Math.max(900, est - (Date.now() - t0))); }), 700); }
+    else AUTO = setTimeout(go, est + 700);
+  }
 
   /* ---------- confetti ---------- */
   function confetti(n, x, y, spread) {
@@ -121,8 +132,10 @@
     if (ls) {
       const k = ls.dataset.key, st = ls.dataset.st || '';
       if (k !== LAST.k) {
-        ls.classList.add('in'); const n = splitWords(ls.querySelector('.qtext')); ls.style.setProperty('--wd', Math.min(n, 24));
-        if (SY) SY.cancel(); if (pref().voice) setTimeout(() => say(qSpeech()), 250);
+        ls.classList.add('in');
+        ls.querySelectorAll('.stg').forEach(g => Array.from(g.children).forEach((e, i) => e.style.setProperty('--i', Math.min(i, 12)))); const n = splitWords(ls.querySelector('.qtext')); ls.style.setProperty('--wd', Math.min(n, 24));
+        if (SY) SY.cancel(); stopAuto();
+        if (ls.dataset.auto === '1') runAuto(k); else if (pref().voice) setTimeout(() => say(qSpeech()), 250);
         const cb = ls.querySelector('.combo'); if (cb && +cb.dataset.n > 1) cb.classList.add('hot');
       } else if (st !== LAST.st && (st === 'ok' || st === 'no')) {
         ls.classList.add('fx-' + st); splitSentences(ls);
@@ -132,8 +145,10 @@
         else { FX.no(); try { navigator.vibrate && navigator.vibrate([30, 40, 30]); } catch (e) {} }
         if (pref().voice) setTimeout(() => say(fbSpeech()), 380);
       }
+      else if (ls.dataset.auto === '1' && AUTOK !== k) runAuto(k);
+      else if (ls.dataset.auto !== '1' && AUTOK) { stopAuto(); if (SY) SY.cancel(); }
       LAST.k = k; LAST.st = st;
-    } else { LAST.k = null; LAST.st = null; }
+    } else { LAST.k = null; LAST.st = null; if (AUTOK) { stopAuto(); if (SY) SY.cancel(); } }
     const r = $('.res');
     if (r && r.dataset.key !== LAST.r) {
       r.classList.add('in'); FX.done(); const p = +r.dataset.p || 0;
@@ -167,7 +182,7 @@
     if (u) {
       const k = u.dataset.u;
       if (k === 'say') { if (SY && SY.speaking) SY.cancel(); else say($('.ls .fb') ? fbSpeech() : qSpeech()); }
-      else if (k === 'snd') { const p = pref(); p.snd = p.snd === false; try { window.svP && svP(); } catch (x) {} after(); if (p.snd) FX.pick(); }
+      else if (k === 'snd') { const p = pref(); p.snd = p.snd === false; try { svP(); } catch (x) {} after(); if (p.snd) FX.pick(); }
       return;
     }
     const b = e.target.closest('button,a,[role=button]'); if (!b) return;

@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#0b6b3a">
 <link rel="icon" href="../app/icon.svg" type="image/svg+xml">
 <script>try{var th=JSON.parse(localStorage.getItem("ace-prefs")||"{}").theme;if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f7f4;--card:#fff;--ink:#12201a;--mut:#58675f;--line:#dbe4de;--pri:#0b6b3a;--priInk:#fff;--soft:#e6f3ea;--bad:#a12b2b}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1612;--card:#15211a;--ink:#e9f3ed;--mut:#9fb3a7;--line:#26372d;--pri:#4cc784;--priInk:#06210f;--soft:#1a2c22;--bad:#ff9b9b}}
@@ -41,6 +42,26 @@ input,select{padding:11px 12px;border:1px solid var(--line);border-radius:10px;b
 .cols{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 @media(min-width:800px){.cols{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}}
 textarea{width:100%;min-height:70px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+
+/* Ace identity (2026-10): shared tokens with the student app and website */
+:root{--bg:#F3F4FF;--grid:#E2E5FF;--card:#FFFFFF;--ink:#17123A;--text:#17123A;--mut:#4A4570;--muted:#4A4570;--line:#D9DCF5;--border:#D9DCF5;--pri:#3D35F5;--pri2:#5B54FF;--primary:#3D35F5;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--soft:#ECEEFF;--tint:#ECEEFF;--ok:#0A8A5E;--bad:#D93A3F;--warn:#8A5A00;--gold:#B7791F;--bar:#C9C6FF;--ledge:#CDD1F2;--btn-ledge:#211AA6;--sh:0 3px 0 var(--ledge)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#110E2B;--grid:#1B1740;--card:#1C1842;--ink:#F1EFFF;--text:#F1EFFF;--mut:#BDB8E8;--muted:#BDB8E8;--line:#342E6E;--border:#342E6E;--pri:#7C75FF;--pri2:#9C96FF;--primary:#7C75FF;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--soft:#262158;--tint:#262158;--ok:#3DD9A0;--bad:#FF8085;--warn:#FFC72C;--bar:#3D3590;--ledge:#0B0922;--btn-ledge:#2E27A8;--sh:0 3px 0 var(--ledge);color-scheme:dark}}
+:root[data-theme=dark]{--bg:#110E2B;--grid:#1B1740;--card:#1C1842;--ink:#F1EFFF;--text:#F1EFFF;--mut:#BDB8E8;--muted:#BDB8E8;--line:#342E6E;--border:#342E6E;--pri:#7C75FF;--pri2:#9C96FF;--primary:#7C75FF;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--soft:#262158;--tint:#262158;--ok:#3DD9A0;--bad:#FF8085;--warn:#FFC72C;--bar:#3D3590;--ledge:#0B0922;--btn-ledge:#2E27A8;--sh:0 3px 0 var(--ledge);color-scheme:dark}
+body{font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
+h1,h2,h3,.logo,.brand,header b,.bar b{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;letter-spacing:-.015em}
+.btn,button.b,form button,.creator .btn{border-radius:14px!important;font-weight:700;box-shadow:0 4px 0 var(--btn-ledge);transition:transform .12s,box-shadow .12s}
+.btn.o,.btn.s,button.g{box-shadow:0 3px 0 var(--ledge);border-width:2px}
+.btn:active,button.b:active,form button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--btn-ledge)}
+.card,.pane,.cert,.lesson,.item,.creator,.certbox{border-width:2px!important;border-radius:20px!important;box-shadow:0 3px 0 var(--ledge)}
+header,header.top{background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px);border-bottom-width:2px}
+input,select,textarea{border-width:2px!important;border-radius:12px!important}
+.chip,.pill,.tag{border-radius:99px}
+.chip.on,.tabs button.on,nav button.on,.tpl.on{background:var(--pri,var(--primary))!important;color:#fff!important;border-color:transparent!important}
+.logo i,.brand i{background:#FFC72C!important;border-radius:4px 4px 50% 50%!important;box-shadow:inset 0 5px 0 #FF8FB1}
+.logo i:after,.brand i:after{display:none!important}
+.opt{border-width:2px!important;border-radius:16px!important;box-shadow:0 3px 0 var(--ledge)}
+.opt.sel{border-color:var(--pri)!important}
+@media print{body{background:#fff!important;background-image:none!important}.card,.cert,.certbox{box-shadow:none}}
 </style>
 </head>
 <body>
