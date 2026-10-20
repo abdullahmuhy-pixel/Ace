@@ -295,3 +295,6 @@ footer h4{font:800 .95rem var(--display);letter-spacing:0;text-transform:none;co
 .who-p{margin-top:.9rem;font-size:.92rem;color:var(--ink2)}
 .who-p a{color:var(--green);font-weight:700}
 @media (max-width:520px){.who{flex-direction:column}.who .btn{justify-content:center;width:100%}}
+
+/* keep header labels on one line */
+header .bar a,header .bar .btn,header .brand{white-space:nowrap}
