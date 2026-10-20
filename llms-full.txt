@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 18 countries, 31 exams, 41,352 practice questions, 8,085 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 18 countries, 31 exams, 41,637 practice questions, 8,142 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -155,9 +155,9 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france
 Exams: The baccalauréat général. Première students sit the épreuves anticipées (French, and from 2026 a written mathematics paper for every student); Terminale students sit philosophy, two specialty subjects and the Grand oral. Continuous assessment counts for 40% of the final mark.
 Grading: Marks are out of 20. The bac is passed with an average of 10/20; mentions start at 12 (assez bien), 14 (bien) and 16 (très bien).
 Levels: Seconde – Terminale
-Totals: 10 subjects, 203 topics, 1,015 questions.
-- Épreuves anticipées (Ministère de l'Éducation nationale): Mathématiques, Français
-- Baccalauréat (Ministère de l'Éducation nationale): Philosophie, Mathématiques, Physique-chimie, SVT, SES, HGGSP, HLP, NSI
+Totals: 14 subjects, 260 topics, 1,300 questions.
+- Épreuves anticipées (Ministère de l'Éducation nationale): Mathématiques (spécialité), Français, Mathématiques (sans spécialité)
+- Baccalauréat (Ministère de l'Éducation nationale): Philosophie, Mathématiques, Physique-chimie, SVT, SES, HGGSP, HLP, NSI, Grand oral, Sciences de l'ingénieur, Anglais (LLCER)
 
 ## FAQ
 **Which exams does Ace Education cover today?** More than twenty exams across eighteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
