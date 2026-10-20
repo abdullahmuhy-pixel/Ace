@@ -3,6 +3,7 @@
 truncate public.schools, auth.users, public.plans cascade;
 insert into auth.users(id) select ('e0000000-0000-0000-0000-00000000000'||g)::uuid from generate_series(1,7) g;
 insert into public.profiles(id,role,country_code,first_name,surname) select ('e0000000-0000-0000-0000-00000000000'||g)::uuid,'student','NG','U'||g,'S' from generate_series(1,7) g;
+delete from public.entitlements;   -- drop the automatic 7-day trials (0022) so access comes only from the plans below
 -- 1 owner, 2..5 candidates, 6 plain user with no plan, 7 owner of a single plan
 insert into public.plans(code,name,currency_code,amount_minor,period,seats) values
  ('solo','Solo','NGN',100000,'month',1),('group4','Group of 4','NGN',250000,'month',4);

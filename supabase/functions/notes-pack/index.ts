@@ -1,9 +1,8 @@
 // Lecture-note summariser: the student pastes their own lecture or class notes (up to 6000 characters) and gets a short
-// summary, key points, flashcards and practice questions. Same server-side AI cap as ai-tutor (public.consume_ai).
-// Secrets: ANTHROPIC_API_KEY, AI_MODEL, AI_REQUIRE_ACCESS (optional).
-import { handler, HttpError, caller, throttle, clean } from "../_shared/util.ts";
+// summary, key points, flashcards and practice questions.
+// Counts as a "pack" use (free accounts: 2 a week). Uses the fast model. Secrets: ANTHROPIC_API_KEY.
+import { handler, HttpError, caller, throttle, clean, askClaude, aiGate, withRefund } from "../_shared/util.ts";
 
-const MODEL = Deno.env.get("AI_MODEL") ?? "claude-haiku-4-5-20251001";
 
 function system(level: string, country: string, subject: string, lang: string) {
   return `You turn a student's own notes into study material for ${level === "university" ? "a university student" : "a secondary-school student"}.
@@ -47,28 +46,18 @@ handler(async (req, b, admin) => {
     photo = { media_type: mt, data };
   }
   if (!photo && text.length < 80) throw new HttpError(400, "Paste more of your notes (at least a few sentences).");
-  if (Deno.env.get("AI_REQUIRE_ACCESS") === "true") {
-    const { data } = await admin.rpc("user_has_access", { p_user: user.id });
-    if (data !== true) throw new HttpError(402, "Your free trial has ended. Choose a plan to keep using Ace.");
-  }
-  const { data: gate, error: gerr } = await admin.rpc("consume_ai", { p_user: user.id });
-  if (gerr) { console.error(gerr); throw new HttpError(500, "Ace is not available right now."); }
-  const g = Array.isArray(gate) ? gate[0] : gate;
-  if (!g?.allowed) throw new HttpError(429, g?.mode === "off" ? "Your school has turned off AI help." : "You have used all your AI help for this period. Try again later.");
-  const key = Deno.env.get("ANTHROPIC_API_KEY");
-  if (!key) throw new HttpError(500, "Ace is not set up yet.");
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({ model: MODEL, max_tokens: 2200, system: system(profile.level ?? "secondary", clean(b.country, 40), subject, (["es", "fr", "it", "pt", "de", "nl"].includes(profile.language) ? profile.language : (["es", "fr", "it", "pt", "de", "nl"].includes(b.lang) ? b.lang : "en"))),
-      messages: [{ role: "user", content: photo
+
+  const g = await aiGate(admin, user.id, "pack");
+  const result = await withRefund(admin, user.id, "pack", async () => {
+    const { text: raw } = await askClaude({ tier: "fast", maxTokens: 2200, failMsg: "Ace could not prepare this. Try again in a moment.",
+    system: system(profile.level ?? "secondary", clean(b.country, 40), subject, (["es", "fr", "it", "pt", "de", "nl"].includes(profile.language) ? profile.language : (["es", "fr", "it", "pt", "de", "nl"].includes(b.lang) ? b.lang : "en"))),
+    messages: [{ role: "user", content: photo
         ? [{ type: "image", source: { type: "base64", media_type: photo.media_type, data: photo.data } }, { type: "text", text: "These are photos of my notes. Read them carefully and build the study pack from what they say." + (text ? `\nExtra notes:\n"""${text}"""` : "") }]
-        : `Notes:\n"""${text}"""` }] }),
+        : `Notes:\n"""${text}"""` }] });
+    const r = parse(raw);
+    if (!r) throw new HttpError(502, "Ace could not prepare this. Try again in a moment.");
+    return r;
   });
-  if (!r.ok) { console.error("anthropic", r.status, await r.text()); throw new HttpError(502, "Ace could not prepare this. Try again in a moment."); }
-  const out = await r.json();
-  const result = parse((out.content ?? []).filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n"));
-  if (!result) throw new HttpError(502, "Ace could not prepare this. Try again in a moment.");
   const { data: ins, error } = await admin.from("class_notes").insert({
     user_id: user.id, subject, entered_text: (text || (photo ? "[photo of notes]" : "")).slice(0, 2000), topic: result.title || subject, summary: result, exam: clean(b.exam, 60) || null,
   }).select("id").single();

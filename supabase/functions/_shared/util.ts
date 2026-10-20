@@ -29,7 +29,7 @@ export function json(req: Request, body: unknown, status = 200) {
 }
 
 export class HttpError extends Error {
-  constructor(public status: number, message: string) { super(message); }
+  constructor(public status: number, message: string, public extra?: Record<string, unknown>) { super(message); }
 }
 
 /** Wrap a handler: CORS preflight, POST only, JSON body, uniform errors. */
@@ -43,7 +43,7 @@ export function handler(fn: (req: Request, body: any, admin: SupabaseClient) => 
       const out = await fn(req, body ?? {}, adminClient());
       return json(req, out);
     } catch (e) {
-      if (e instanceof HttpError) return json(req, { error: e.message }, e.status);
+      if (e instanceof HttpError) return json(req, { ...(e.extra ?? {}), error: e.message }, e.status);
       console.error(e);
       return json(req, { error: "Something went wrong. Try again." }, 500);
     }
@@ -114,4 +114,73 @@ export async function sendEmail(to: string, subject: string, html: string) {
     body: JSON.stringify({ from, to, subject, html }),
   });
   if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
+}
+
+// ---------------- AI: which model each job uses, and the free / paid limits ----------------
+// "fast" is the cheap everyday model (chat, hints, study packs). "smart" is the stronger model for jobs where accuracy
+// matters most: marking essays and answers, solving maths from a photo, and teacher worksheets and quizzes.
+// Secrets (optional): AI_MODEL_FAST, AI_MODEL_SMART. If a model is not available on the account, Ace falls back to
+// AI_MODEL_FALLBACK so students still get an answer.
+export type AiTier = "fast" | "smart";
+const AI_MODELS: Record<AiTier, string> = {
+  fast: Deno.env.get("AI_MODEL_FAST") ?? "claude-haiku-5-5",
+  smart: Deno.env.get("AI_MODEL_SMART") ?? "claude-sonnet-5-5",
+};
+const AI_FALLBACK = Deno.env.get("AI_MODEL_FALLBACK") ?? "claude-haiku-4-5-20251001";
+
+/** Calls Claude and returns the text of the answer. `maxTokens` is the room for the visible answer. */
+export async function askClaude(o: { tier: AiTier; system: string; messages: unknown[]; maxTokens: number; failMsg?: string }) {
+  const key = Deno.env.get("ANTHROPIC_API_KEY");
+  if (!key) throw new HttpError(500, "Ace is not set up yet.");
+  const call = (model: string) => {
+    const body: Record<string, unknown> = { model, system: o.system, messages: o.messages, max_tokens: o.maxTokens };
+    if (/^claude-(haiku|sonnet|opus)-5/.test(model)) {
+      // 5.x models think before answering and bill the thinking as output: keep it light and leave room for the answer
+      body.output_config = { effort: o.tier === "smart" ? "medium" : "low" };
+      body.max_tokens = o.maxTokens + (o.tier === "smart" ? 4000 : 1500);
+    }
+    return fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  };
+  let model = AI_MODELS[o.tier];
+  let r = await call(model);
+  if (!r.ok && (r.status === 400 || r.status === 404) && model !== AI_FALLBACK) {
+    console.error("anthropic", model, r.status, await r.text(), "-> retrying with", AI_FALLBACK);
+    model = AI_FALLBACK;
+    r = await call(model);
+  }
+  if (!r.ok) { console.error("anthropic", model, r.status, await r.text()); throw new HttpError(502, o.failMsg ?? "Ace could not answer. Try again in a moment."); }
+  const out = await r.json();
+  const text = (out.content ?? []).filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n").trim();
+  return { text, model };
+}
+
+export type AiKind = "chat" | "photo" | "essay" | "pack";
+/** Counts one AI use against the caller's free or paid limits (public.consume_ai_kind). Throws 403/429 with a code the app understands. */
+export async function aiGate(admin: SupabaseClient, userId: string, kind: AiKind) {
+  const { data, error } = await admin.rpc("consume_ai_kind", { p_user: userId, p_kind: kind });
+  if (error) { console.error(error); throw new HttpError(500, "Ace is not available right now."); }
+  const g = Array.isArray(data) ? data[0] : data;
+  if (g?.allowed) return g as { used: number; cap: number; mode: string; paid: boolean };
+  const extra = { code: g?.reason ?? "daily", kind, used: g?.used ?? 0, cap: g?.cap ?? 0, paid: !!g?.paid };
+  if (g?.reason === "off") throw new HttpError(403, "Your school has turned off AI help.", extra);
+  if (g?.reason === "school") throw new HttpError(429, `You have used all ${g.cap} AI questions your school allows for this period.`, extra);
+  if (g?.reason === "tool") {
+    const what = kind === "photo" ? "photo questions" : kind === "essay" ? "essay and answer markings" : "study packs";
+    throw new HttpError(429, g.paid
+      ? `You have used today's ${g.cap} ${what}. They reset tomorrow.`
+      : `Free accounts get ${g.cap} ${what} a ${kind === "photo" ? "day" : "week"}. Upgrade to get more.`, extra);
+  }
+  throw new HttpError(429, g?.paid
+    ? `You have used today's ${g?.cap} Ace messages. They reset tomorrow.`
+    : `You have used your ${g?.cap ?? 5} free Ace messages for today. Upgrade for up to 60 a day, or come back tomorrow.`, extra);
+}
+
+/** Runs the model call for a use that aiGate already counted; gives the use back if the call fails. */
+export async function withRefund<T>(admin: SupabaseClient, userId: string, kind: AiKind, fn: () => Promise<T>): Promise<T> {
+  try { return await fn(); }
+  catch (e) { await admin.rpc("refund_ai", { p_user: userId, p_kind: kind }).then(() => {}, () => {}); throw e; }
 }

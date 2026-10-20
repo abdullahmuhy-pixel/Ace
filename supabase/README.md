@@ -50,7 +50,7 @@ plans, payments, promo codes, AI usage, push subscriptions, content reports and 
 
 | Function | Purpose | Extra secrets |
 |---|---|---|
-| `ai-tutor` | AI tutor with a server-counted daily cap per student/school | `ANTHROPIC_API_KEY`, optional `AI_MODEL`, `AI_REQUIRE_ACCESS` |
+| `ai-tutor` | AI tutor with server-counted free / paid limits (`consume_ai_kind`) and a cheap or strong model per tool | `ANTHROPIC_API_KEY`, optional `AI_MODEL_FAST`, `AI_MODEL_SMART` |
 | `checkout-start` | Starts a Flutterwave payment for a plan stored in `plans` | `FLW_PUBLIC_KEY`, `SITE_URL` |
 | `payments-webhook` | Verifies the payment with Flutterwave, then grants access | `FLW_SECRET_KEY`, `FLW_SECRET_HASH` |
 | `send-parent-digest` | Emails a class digest to guardians who opted in and consented | `RESEND_API_KEY`, `MAIL_FROM` |

@@ -1,12 +1,10 @@
 // Ace, the AI study buddy. The browser never sees the Anthropic key and never decides its own limit:
-// this function checks the caller's JWT, asks the database whether the school/platform cap allows one more
-// question (public.consume_ai counts it atomically), then calls the model.
+// this function checks the caller's JWT, asks the database whether the free or paid limits allow one more use
+// (public.consume_ai_kind counts it atomically), then calls the model that suits the job (see askClaude in util.ts).
 //
-// Secrets: ANTHROPIC_API_KEY (required), AI_MODEL (default claude-haiku-4-5-20251001),
-//          AI_REQUIRE_ACCESS=true to also require an active plan or trial (default false during the pilot).
-import { handler, HttpError, caller, throttle, clean } from "../_shared/util.ts";
+// Secrets: ANTHROPIC_API_KEY (required); optional AI_MODEL_FAST, AI_MODEL_SMART, AI_MODEL_FALLBACK.
+import { handler, HttpError, caller, throttle, clean, askClaude, aiGate, withRefund, type AiTier, type AiKind } from "../_shared/util.ts";
 
-const MODEL = Deno.env.get("AI_MODEL") ?? "claude-haiku-4-5-20251001";
 const MAX_TURNS = 10;
 const MAX_CHARS = 2000;
 const MAX_CHARS_LONG = 5000;
@@ -18,7 +16,6 @@ const MODES: Record<string, string> = {
   qgen: "QUESTION GENERATOR: from the notes the student pastes, write 5 exam-style questions (a mix of multiple choice and short answer) and put the answers after a line that says Answers:.",
   solver: "SMART SOLVER: solve the Maths or Science problem step by step, state each formula and the units, and finish with a quick check of the answer.",
 };
-// A photo of a question is read with the same model (Claude Haiku 4.5 reads images).
 const LONG_MODES = new Set(["essay", "markscheme", "qgen"]);
 
 // Teacher and tutor tools (staff accounts only)
@@ -57,11 +54,8 @@ Stay on schoolwork. If the student seems distressed, be kind and suggest they ta
 ${c.mode && MODES[c.mode] ? MODES[c.mode] + "\n" : ""}Keep answers under ${c.mode && LONG_MODES.has(c.mode) ? 450 : 250} words unless the student asks for more.`;
 }
 
-async function hasAccess(admin: any, userId: string) {
-  const { data, error } = await admin.rpc("user_has_access", { p_user: userId });
-  if (error) { console.error(error); return false; }
-  return data === true;   // includes school licences and seats in a paid group plan
-}
+// Which model each job uses: the stronger one where a wrong mark or a wrong step would hurt the student.
+const SMART_MODES = new Set(["essay", "markscheme", "solver", "lessonplan", "worksheet", "quizjson"]);
 
 handler(async (req, b, admin) => {
   const { user, profile } = await caller(req, admin);
@@ -92,41 +86,25 @@ handler(async (req, b, admin) => {
     ? { role: "user", content: [{ type: "image", source: { type: "base64", media_type: photo.media_type, data: photo.data } }, { type: "text", text: m.content || "Help me with the question in this photo." }] }
     : m);
 
-  if (Deno.env.get("AI_REQUIRE_ACCESS") === "true" && !(await hasAccess(admin, user.id))) {
-    throw new HttpError(402, "Your free trial has ended. Ask your school or choose a plan to keep using Ace.");
-  }
+  // what this use counts as: a photo, the first marking of an essay or answer, or an ordinary message
+  const userTurns = messages.filter((m: any) => m.role === "user").length;
+  const kind: AiKind = photo ? "photo" : (["essay", "markscheme"].includes(mode) && userTurns === 1) ? "essay" : "chat";
+  const tier: AiTier = photo || SMART_MODES.has(mode) || SMART_MODES.has(tmode) ? "smart" : "fast";
+  const g = await aiGate(admin, user.id, kind);
 
-  const { data: gate, error: gerr } = await admin.rpc("consume_ai", { p_user: user.id });
-  if (gerr) { console.error(gerr); throw new HttpError(500, "Ace is not available right now."); }
-  const g = Array.isArray(gate) ? gate[0] : gate;
-  if (!g?.allowed) {
-    throw new HttpError(429, g?.mode === "off"
-      ? "Your school has turned off AI help."
-      : `You have used all ${g?.cap ?? ""} AI questions for this period. Try again later.`);
-  }
-
-  const key = Deno.env.get("ANTHROPIC_API_KEY");
-  if (!key) throw new HttpError(500, "Ace is not set up yet.");
   const ctx = b.context ?? {};
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: tmode ? 2400 : LONG_MODES.has(mode) ? 1100 : 700,
-      system: tmode ? teacherPrompt({
-        country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
-        topic: clean(ctx.topic, 160), mode: tmode, lang: pickLang(ctx.lang, profile.language),
-      }) : systemPrompt({
-        country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
-        topic: clean(ctx.topic, 120), mode, level: ["university", "academy"].includes(ctx.level) ? ctx.level : "secondary",
-        lang: pickLang(ctx.lang, profile.language),
-      }),
-      messages: apiMessages,
+  const { text: reply } = await withRefund(admin, user.id, kind, () => askClaude({
+    tier,
+    maxTokens: tmode ? 2400 : LONG_MODES.has(mode) ? 1100 : 700,
+    system: tmode ? teacherPrompt({
+      country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
+      topic: clean(ctx.topic, 160), mode: tmode, lang: pickLang(ctx.lang, profile.language),
+    }) : systemPrompt({
+      country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
+      topic: clean(ctx.topic, 120), mode, level: ["university", "academy"].includes(ctx.level) ? ctx.level : "secondary",
+      lang: pickLang(ctx.lang, profile.language),
     }),
-  });
-  if (!r.ok) { console.error("anthropic", r.status, await r.text()); throw new HttpError(502, "Ace could not answer. Try again in a moment."); }
-  const out = await r.json();
-  const reply = (out.content ?? []).filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n").trim();
-  return { reply: reply || "I could not come up with an answer. Try asking in a different way.", used: g.used, cap: g.cap, mode: g.mode, tool: tmode || null };
+    messages: apiMessages,
+  }));
+  return { reply: reply || "I could not come up with an answer. Try asking in a different way.", used: g.used, cap: g.cap, mode: g.mode, paid: g.paid, kind, tool: tmode || null };
 });

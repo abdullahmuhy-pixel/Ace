@@ -79,8 +79,8 @@
       if (ch.extra && msgs.length) msgs[0] = { role: 'user', content: L('Context: ', 'Contexto: ') + ch.extra + '\n\n' + msgs[0].content };
       const r = await fetch(ACE_CFG.aiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + tok }, body: JSON.stringify({ messages: msgs, image: att ? { media_type: att.media_type, data: att.data } : undefined, context: { country: C[S.c].n, exam: ch.ex, subject: ch.s || L('All subjects', 'Todas'), topic: ch.topic || MODES[ch.mode].n(), mode: ch.mode === 'buddy' ? '' : ch.mode, lang: C[S.c].l || 'en', level: PORTAL === 'campus' ? 'university' : 'secondary' } }) });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok) throw { msg: j.error || L('Ace could not answer. Try again.', 'Ace no pudo responder. Inténtalo de nuevo.') };
-      ch.turns.push({ role: 'assistant', content: j.reply, t: Date.now() }); H.cap = j.cap == null ? null : { used: j.used, cap: j.cap };
+      if (!r.ok) throw { msg: (window.AceTier && AceTier.fail(j)) || j.error || L('Ace could not answer. Try again.', 'Ace no pudo responder. Inténtalo de nuevo.') };
+      ch.turns.push({ role: 'assistant', content: j.reply, t: Date.now() }); H.cap = j.cap == null ? null : { used: j.used, cap: j.cap }; try { AceTier.used(j) } catch (e) { }
       try { window.AceUI && AceUI.fx && AceUI.fx('pop') } catch (e) { }
       if (P.chatVoice) try { AceUI.say(String(j.reply).replace(/```[\s\S]*?```/g, ' ').replace(/[*_#`•]/g, '').replace(/−/g, ' minus ')) } catch (e) { }
     } catch (e) { H.err = (e && e.msg) || L('Ace could not answer. Try again.', 'Ace no pudo responder.'); H.retry = text; if (att) { H.att = att; ch.turns.pop(); H.retry = null; H.draft = text } }

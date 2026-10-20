@@ -435,8 +435,8 @@ async function aiRemote(A,text){/* production path: the ai-tutor edge function h
  A.err='';A.turns.push({role:'user',content:text.trim()});A.busy=true;aiPaint();
  try{const tok=await ACE_CFG.getToken();if(!tok)throw {msg:'Sign in to use Ace.'};
   const r=await fetch(ACE_CFG.aiUrl,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({messages:A.turns.map(m=>({role:m.role,content:m.content})),context:{country:A.country,exam:A.ex,subject:A.s,topic:A.topic,mode:A.mode||'',lang:C[S.c].l||'en',level:CAMPUS?'university':'secondary'}})});
-  const j=await r.json().catch(()=>({}));if(!r.ok)throw {msg:j.error||'Could not reach Ace. Please try again.'};
-  A.turns.push({role:'assistant',content:j.reply});A.cap=j.cap==null?null:{used:j.used,cap:j.cap}}
+  const j=await r.json().catch(()=>({}));if(!r.ok)throw {msg:(window.AceTier&&AceTier.fail(j))||j.error||'Could not reach Ace. Please try again.'};
+  A.turns.push({role:'assistant',content:j.reply});A.cap=j.cap==null?null:{used:j.used,cap:j.cap};try{AceTier.used(j)}catch(e){}}
  catch(e){A.turns.pop();A.err=(e&&e.msg)||'Could not reach Ace. Please try again.'}
  A.busy=false;aiPaint()}
 async function aiSend(text){const A=S.ai;if(!A||A.busy||!text.trim())return;if(ACE_CFG.aiUrl&&ACE_CFG.getToken)return aiRemote(A,text);if(!SMP){A.err='Sign in to use Ace.';aiPaint();return}
@@ -548,7 +548,8 @@ function onb(c,t){const o=S.ob||(S.ob={i:0}),es=(c.l==='es'),L=(a,b)=>TX(a,b),N=
  return `<div class="ls ob" data-key="ob|${o.i}" data-st="">${`<div class="ls-top">${o.i?`<button class="ls-x" data-a="obb" aria-label="${L('Back','Atrás')}">‹</button>`:'<span class="ls-x" style="visibility:hidden"></span>'}${segs(N+1,o.i,null,Array(N+1).fill(1),true)}<button class="ls-ic ob-skip" data-a="obend" data-v="home">${L('Skip','Saltar')}</button></div>`}<div class="ls-body">${lsSide(L,mood,msg,false)}<div class="ls-main">${main}</div></div>${foot}</div>`}
 function qres(Q,t){const R=SYLX(Q.s),pc=Math.round(Q.sc/Q.mc*100),mock=Q.mode=='mock',used=mock?Math.round((Math.min(Q.t1,Q.deadline)-Q.t0)/1000):0;
  let h=resHead('qr|'+(Q.sid||0),Q.sc,Q.mc,[mock?`⏱ ${mmss(used)} / ${mmss(Q.dur)}`:'📝 Quiz',`+${Q.sc*10} XP`],false);
- if(mock)h+='<div class="sh">By module</div><div class="lst">'+Object.keys(Q.bd).sort((a,b)=>a-b).map(k=>{const[c,n]=Q.bd[k],p=Math.round(c/n*100);return `<div class="li" style="display:block"><b>${R.m[k][0]}</b><small style="float:right">${c}/${n}</small><div style="height:8px;background:var(--border);border-radius:6px;margin-top:6px"><i style="display:block;height:8px;border-radius:6px;width:${p}%;background:${p>=60?'var(--green)':'var(--red)'}"></i></div></div>`}).join('')+'</div>';
+ if(mock&&window.AceTier&&AceTier.free())h+=`<div class="sh">${TX('By module','Por módulo')}</div><div class="card" style="text-align:center"><p style="margin:0 0 8px">🔒 ${TX('See which topics cost you marks, module by module.','Mira qué temas te restan puntos, módulo a módulo.')}</p><button class="nx" data-a="upsell" data-v="breakdown">${TX('Unlock the breakdown','Desbloquear el desglose')}</button></div>`;
+ else if(mock)h+='<div class="sh">By module</div><div class="lst">'+Object.keys(Q.bd).sort((a,b)=>a-b).map(k=>{const[c,n]=Q.bd[k],p=Math.round(c/n*100);return `<div class="li" style="display:block"><b>${R.m[k][0]}</b><small style="float:right">${c}/${n}</small><div style="height:8px;background:var(--border);border-radius:6px;margin-top:6px"><i style="display:block;height:8px;border-radius:6px;width:${p}%;background:${p>=60?'var(--green)':'var(--red)'}"></i></div></div>`}).join('')+'</div>';
  const weak=Object.keys(Q.bt).filter(k=>Q.bt[k][0]/Q.bt[k][1]<0.6).sort((a,b)=>Q.bt[a][0]/Q.bt[a][1]-Q.bt[b][0]/Q.bt[b][1]).slice(0,6);
  if(weak.length)h+='<div class="sh">Topics to revise</div><div class="lst">'+weak.map(k=>{const mi=Q.bt[k][2],ti=R.m[mi][1].indexOf(k);return `<button class="li" data-a="qbp" data-v="${mi}:${ti}"><span class="m"><b>${k}</b><small>${Q.bt[k][0]}/${Q.bt[k][1]} correct</small></span><span class="v">Practise ›</span></button>`}).join('')+'</div>';
  const rev=Q.items.map((q,i)=>({q,i,ok:Q.ans[i]===q[5]})).filter(x=>!mock||!x.ok);
@@ -601,6 +602,7 @@ function tick(f){const c=C[S.c];if(S.tab=='qb'&&S.qb&&S.qb.mode=='mock'&&S.qb.it
 setInterval(()=>tick(false),1000);
 function toast(m){document.querySelectorAll('.toast').forEach(e=>e.remove());const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v,c=C[S.c];
+ if(a=='upsell'){try{AceTier.upsell(v)}catch(z){}return}
  if(a=='tab'){S.tab=v;if(v=='qb')S.qb=null;if(v=='subj')S.sub=null;if(v=='quiz')S.qz=null;if(v=='flash')S.fl=null;if(v=='daily')S.dg=null}
  else if(a=='flip'){if(S.fl)S.fl.side=S.fl.side?0:1}
  else if(a=='fcn'){const f=S.fl;if(!f)return;if(+v)f.known++;f.i++;f.side=0}
@@ -648,12 +650,12 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
   if(a=='qbm')items=all.filter(x=>x[0]==+v);else if(a=='qbt'){const[p,r]=v.split(':'),tp=SYLX(Q.s).m[+p][1][+r];items=all.filter(x=>x[0]==+p&&x[1]==tp).sort((m,n)=>m[2]-n[2])}
   else items=shuf(all.filter(x=>!x[2])).slice(0,10);
   Object.assign(Q,{items,i:0,sel:null,pick:null,res:[],cb:0,best:0,sid:Date.now(),sc:0,mc:0,tm:0,tt:0,done:false,rv:false,tk:[],ans:[],mode:'practice'})}
- else if(a=='qbagain'){const Q=S.qb;if(!Q)return;let items=Q.items;if(Q.mode=='quiz')items=quizItems(Q.s,Q.sp.mi,Q.sp.tp);else if(Q.mode=='mock'){items=mockItems(Q.s);Q.t0=Date.now();Q.deadline=Q.t0+Q.dur*1000}
+ else if(a=='qbagain'){const Q=S.qb;if(!Q)return;let items=Q.items;if(Q.mode=='quiz')items=quizItems(Q.s,Q.sp.mi,Q.sp.tp);else if(Q.mode=='mock'){if(window.AceTier&&!AceTier.canMock(Q.s))return;try{AceTier.noteMock(Q.s)}catch(z){}items=mockItems(Q.s);Q.t0=Date.now();Q.deadline=Q.t0+Q.dur*1000}
   Object.assign(Q,{items,i:0,sel:null,pick:null,res:[],cb:0,best:0,sid:Date.now(),sc:0,mc:0,tm:0,tt:0,done:false,rv:false,tk:[],ans:[]})}
  else if(a=='radarq'){const i=v.indexOf('|'),sj=v.slice(0,i),tp=v.slice(i+1),R=SYLX(sj);let mi=-1;if(R)R.m.forEach((m,k)=>{if(m[1].indexOf(tp)>=0)mi=k});const items=mi>=0?quizItems(sj,mi,tp):[];if(items.length)qStart({s:sj,items,mode:'quiz',ret:'quiz',sp:{mi,tp}});else toast(TX('No questions for this topic yet','Sin preguntas para este tema'))}
  else if(a=='qbp'||a=='tq'){const[mi,ti]=v.split(':').map(Number),sj=(a=='qbp'&&S.qb&&S.qb.s)||c.s[S.sub],R=realSub(c,sj,c.x[S.x%c.x.length]),tp=R.m[mi][1][ti];
   if(a=='qbp')qStart({s:sj,items:QB[sj].filter(x=>x[0]==mi&&x[1]==tp).sort((m,n)=>m[2]-n[2]),ret:(S.qb&&S.qb.ret)||'subj'});else qStart({s:sj,items:quizItems(sj,mi,tp),mode:'quiz',ret:'subj',sp:{mi,tp}})}
- else if(a=='mock'){const n=mockCfg(v),t0=Date.now();qStart({s:v,items:mockItems(v),mode:'mock',ret:S.tab=='quiz'?'quiz':'subj',dur:n.min*60,t0,deadline:t0+n.min*60000})}
+ else if(a=='mock'){if(window.AceTier&&!AceTier.canMock(v))return;try{AceTier.noteMock(v)}catch(z){}const n=mockCfg(v),t0=Date.now();qStart({s:v,items:mockItems(v),mode:'mock',ret:S.tab=='quiz'?'quiz':'subj',dur:n.min*60,t0,deadline:t0+n.min*60000})}
  else if(a=='qbr2'){qStart({s:v,items:shuf(QB[v].filter(x=>!x[2])).slice(0,10),ret:'subj'})}
  else if(a=='tcd'){const[mi,ti]=v.split(':').map(Number),sj=c.s[S.sub],R=realSub(c,sj,c.x[S.x%c.x.length]),tp=R.m[mi][1][ti],cards=shuf(QB[sj].filter(x=>x[0]==mi&&x[1]==tp&&!x[2])).map(q=>({q:q[3],o:q[4],a:'ABCD'[q[5]]+'. '+q[4][q[5]],e:q[6]}));
   if(S.tab=='subj')S.y=window.scrollY;S.fc={s:sj,topic:tp,cards,i:0,flip:false,got:[],again:[],done:false};S.tab='tfc'}
@@ -718,6 +720,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
 <script src="chat.js"></script>
 <script src="friends.js"></script>
 <script src="ui.js"></script>
+<script src="tiers.js"></script>
 <script>
 /* Ace cloud sync: optional. Runs only when ACE_CONFIG.supabaseUrl is set and a student is signed in; otherwise the app stays a local guest app. */
 (function(){
@@ -765,7 +768,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
   uid:function(){return uid},
   table:function(n){return init().then(function(ok){if(!ok)throw {msg:'Sign in first.'};return sb.from(n)})},
   rpc:function(n,a){return init().then(function(ok){if(!ok)throw {msg:'Sign in first.'};return sb.rpc(n,a||{})}).then(function(r){if(r.error)throw {msg:r.error.message};return r.data})},
-  fn:function(n,body){return init().then(function(ok){if(!ok)throw {msg:'Sign in first.'};return ACE_CFG.getToken()}).then(function(tok){return fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/functions/v1/'+n,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify(body)})}).then(function(r){return r.json().then(function(j){if(!r.ok)throw {msg:j.error||'Something went wrong.'};return j},function(){throw {msg:'Something went wrong.'}})})}
+  fn:function(n,body){return init().then(function(ok){if(!ok)throw {msg:'Sign in first.'};return ACE_CFG.getToken()}).then(function(tok){return fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/functions/v1/'+n,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify(body)})}).then(function(r){return r.json().then(function(j){if(!r.ok)throw {msg:(j.code&&window.AceTier&&AceTier.fail(j))||j.error||'Something went wrong.',code:j.code};try{if(j.cap!=null&&window.AceTier)AceTier.used(Object.assign({kind:n==='ai-tutor'?'chat':'pack'},j))}catch(e){}return j},function(){throw {msg:'Something went wrong.'}})})}
  };
  /* Report crashes from signed-in users to app_errors (max 5 per visit) so problems are visible to admins. */
  var errN=0;function logErr(m){if(!uid||!sb||errN>=5)return;errN++;try{sb.from('app_errors').insert({user_id:uid,page:(location.pathname+'#'+(S.tab||'')).slice(0,200),message:String(m||'').slice(0,600)}).then(function(){},function(){})}catch(e){}}

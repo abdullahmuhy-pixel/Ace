@@ -168,15 +168,21 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
   });
 
   /* ================= PLANS ================= */
-  const money = (minor, cur) => { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: cur }).format(minor / 100); } catch (e) { return (minor / 100).toFixed(2) + ' ' + cur; } };
+  const money = (minor, cur) => { try { return new Intl.NumberFormat(TX('en-GB', 'es-ES'), { style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol', minimumFractionDigits: minor % 100 ? 2 : 0, maximumFractionDigits: minor % 100 ? 2 : 0 }).format(minor / 100); } catch (e) { return (minor / 100).toFixed(2) + ' ' + cur; } };
   const per = p => ({ month: L('per month', 'al mes'), term: L('per term', 'por trimestre'), year: L('per year', 'al año') }[p] || p);
   function plansView() {
     const p = Lr.pl;
     let h = `<div class="pad">${back()}<h2 style="margin:0 0 4px">${L('Plans', 'Planes')}</h2>`;
     if (!signedIn()) return h + needSignIn() + '</div>';
     if (!p.list) return h + (Lr.err ? err() : '<p class="note">…</p>') + '</div>';
-    h += `<div class="card"><b>${p.access ? '✅ ' + L('You have access', 'Tienes acceso') : L('No active plan or trial', 'Sin plan ni prueba activos')}</b></div>`;
-    h += p.list.length ? p.list.map(x => `<div class="card" style="margin:10px 0"><b>${esc(x.name)}</b>${x.seats > 1 ? ` <span class="xtag">${L('Up to', 'Hasta')} ${x.seats} ${L('people', 'personas')}</span>` : ''}<div style="font-size:22px;font-weight:800;margin:6px 0">${esc(money(x.amount_minor, x.currency_code))} <small style="font-weight:400">${per(x.period)}</small></div>
+    const T = window.AceTier, st = T && T.status();
+    h += `<div class="card"><b>${st ? esc(st) : p.access ? '✅ ' + L('You have access', 'Tienes acceso') : L('Free plan', 'Plan gratis')}</b>${T && T.usage() ? `<div style="margin-top:8px">${T.usage()}</div>` : ''}</div>`;
+    if (!p.access) h += `<div class="sh">${L('Free', 'Gratis')}</div><p class="note" style="margin:0 0 6px">${L('All notes, lessons, quizzes, flashcards and the question bank. Daily challenge, streaks, league and study tools. 5 Ace messages a day, 1 photo question a day, 1 essay marking and 2 study packs a week, and the first mock exam in each subject.', 'Todos los apuntes, lecciones, tests, tarjetas y el banco de preguntas. Reto diario, rachas, liga y herramientas. 5 mensajes de Ace al día, 1 pregunta con foto al día, 1 corrección y 2 packs de estudio a la semana, y el primer simulacro de cada asignatura.')}</p>
+<div class="sh">${L('With a plan', 'Con un plan')}</div><p class="note" style="margin:0 0 6px">${L('Up to 60 Ace messages a day, 20 photo questions and 15 essay markings a day, unlimited mock exams with a topic-by-topic breakdown, and study packs whenever you need them.', 'Hasta 60 mensajes de Ace al día, 20 preguntas con foto y 15 correcciones al día, simulacros ilimitados con desglose por temas y packs de estudio cuando quieras.')}</p>`;
+    const mo = p.list.find(x => x.period === 'month' && x.seats === 1), months = { month: 1, term: 3, year: 12 };
+    const label = x => x.seats > 1 ? L('Group plan', 'Plan de grupo') : ({ month: L('Monthly', 'Mensual'), term: L('Termly (3 months)', 'Trimestral (3 meses)'), year: L('Yearly', 'Anual') }[x.period] || x.name);
+    const save = x => { if (!mo || x.seats > 1 || x.period === 'month') return ''; const pc = Math.round((1 - x.amount_minor / (months[x.period] * mo.amount_minor)) * 100); return pc > 0 ? ` <span class="xtag">${esc(TXF('Save {n}%', 'Ahorra {n}%', { n: pc }))}</span>` : ''; };
+    h += p.list.length ? p.list.map(x => `<div class="card" style="margin:10px 0"><b>${esc(label(x))}</b>${save(x)}${x.seats > 1 ? ` <span class="xtag">${L('Up to', 'Hasta')} ${x.seats} ${L('people', 'personas')}</span>` : ''}<div style="font-size:22px;font-weight:800;margin:6px 0">${esc(money(x.amount_minor, x.currency_code))} <small style="font-weight:400">${per(x.period)}</small></div>
 <button class="nx" data-l="buy" data-v="${esc(x.code)}" ${p.busy ? 'disabled' : ''}>${p.busy === x.code ? '…' : L('Choose this plan', 'Elegir este plan')}</button>${x.seats > 1 ? `<p class="note">${L('After paying, invite people from Share my plan.', 'Tras pagar, invita desde Compartir plan.')}</p>` : ''}</div>`).join('') : `<p class="note">${L('No plans are on sale in your country yet.', 'Aún no hay planes en tu país.')}</p>`;
     h += `<div class="sh">${L('Have a code?', '¿Tienes un código?')}</div><div class="card"><input class="xin" data-l-in="promo" maxlength="32" placeholder="CODE" value="${esc(p.promo)}"><button class="nx" data-l="redeem">${L('Apply code', 'Aplicar código')}</button></div>
 <p class="note">${L('Payments are processed by Flutterwave. Ace never sees your card details.', 'Los pagos los procesa Flutterwave. Ace no ve tu tarjeta.')}</p>${err()}</div>`;
@@ -209,7 +215,7 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
     unis: pub(() => getJSON('universities/' + uniCC() + '.json').then(d => { Lr.uni.data[uniCC()] = d; }).catch(e => { Lr.err = msg(e); })),
     groups: () => Promise.all([sync().rpc('my_groups'), sync().rpc('discover_groups')]).then(([m, f]) => { Lr.grp.mine = m || []; Lr.grp.find = f || []; Lr.grp.form.scope = (P.lvl || 'secondary') === 'university' ? 'institution' : Lr.grp.form.scope === 'institution' ? 'class' : Lr.grp.form.scope; }),
     group: () => sync().rpc('group_feed', { gid: Lr.grp.id }).then(r => { Lr.grp.feed = r || []; }),
-    plans: () => Promise.all([sync().table('plans').then(q => q.select('code,name,currency_code,amount_minor,period,seats,country_code').eq('active', true).order('amount_minor')), sync().rpc('has_access')]).then(([p, a]) => { Lr.pl.list = (p.data || []).filter(x => !x.country_code || x.country_code === S.c); Lr.pl.access = !!a; })
+    plans: () => Promise.all([sync().table('plans').then(q => q.select('code,name,currency_code,amount_minor,period,seats,country_code').eq('active', true).order('amount_minor')), sync().rpc('has_access')]).then(([p, a]) => { Lr.pl.list = (p.data || []).filter(x => CAMPUS ? /^campus_/.test(x.code) : !/^campus_/.test(x.code) && (!x.country_code || x.country_code === S.c)); try { AceTier.load(true); } catch (e) { } Lr.pl.access = !!a; })
   });
   X.loaders.lesson = null; delete X.loaders.lesson; X.loaders.cquiz = X.loaders.course;
 

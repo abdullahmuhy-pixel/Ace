@@ -1,9 +1,8 @@
 // "What my teacher taught today": the student types what was covered in class; Ace turns it into a short
 // summary, key terms, a worked example and practice questions, and stores it on the student's own note.
-// Uses the same server-side AI cap as ai-tutor (public.consume_ai). Secrets: ANTHROPIC_API_KEY, AI_MODEL.
-import { handler, HttpError, caller, throttle, clean } from "../_shared/util.ts";
+// Counts as a "pack" use (free accounts: 2 a week). Uses the fast model. Secrets: ANTHROPIC_API_KEY.
+import { handler, HttpError, caller, throttle, clean, askClaude, aiGate, withRefund } from "../_shared/util.ts";
 
-const MODEL = Deno.env.get("AI_MODEL") ?? "claude-haiku-4-5-20251001";
 
 function prompt(level: string, country: string, exam: string, subject: string, lang: string) {
   const who = level === "university" ? "a university student" : "a secondary-school student";
@@ -46,10 +45,7 @@ handler(async (req, b, admin) => {
   const subject = clean(b.subject, 80), text = clean(b.text, 2000);
   if (!subject) throw new HttpError(400, "Choose a subject.");
   if (text.length < 10) throw new HttpError(400, "Tell Ace a bit more about what was taught.");
-  if (Deno.env.get("AI_REQUIRE_ACCESS") === "true") {
-    const { data } = await admin.rpc("user_has_access", { p_user: user.id });
-    if (data !== true) throw new HttpError(402, "Your free trial has ended. Choose a plan to keep using Ace.");
-  }
+
 
   // the note belongs to the caller: create it, or reuse one they own
   let noteId: string | null = null;
@@ -59,27 +55,15 @@ handler(async (req, b, admin) => {
     noteId = n.id;
   }
 
-  const { data: gate, error: gerr } = await admin.rpc("consume_ai", { p_user: user.id });
-  if (gerr) { console.error(gerr); throw new HttpError(500, "Ace is not available right now."); }
-  const g = Array.isArray(gate) ? gate[0] : gate;
-  if (!g?.allowed) throw new HttpError(429, g?.mode === "off" ? "Your school has turned off AI help." : "You have used all your AI help for this period. Try again later.");
-
-  const key = Deno.env.get("ANTHROPIC_API_KEY");
-  if (!key) throw new HttpError(500, "Ace is not set up yet.");
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({
-      model: MODEL, max_tokens: 1400,
-      system: prompt(profile.level ?? "secondary", clean(b.country, 40), clean(b.exam, 60), subject, (["es", "fr", "it", "pt", "de", "nl"].includes(profile.language) ? profile.language : (["es", "fr", "it", "pt", "de", "nl"].includes(b.lang) ? b.lang : "en"))),
-      messages: [{ role: "user", content: `Subject: ${subject}\nWhat was taught:\n"""${text}"""` }],
-    }),
+  const g = await aiGate(admin, user.id, "pack");
+  const result = await withRefund(admin, user.id, "pack", async () => {
+    const { text: raw } = await askClaude({ tier: "fast", maxTokens: 1400, failMsg: "Ace could not prepare this. Try again in a moment.",
+    system: prompt(profile.level ?? "secondary", clean(b.country, 40), clean(b.exam, 60), subject, (["es", "fr", "it", "pt", "de", "nl"].includes(profile.language) ? profile.language : (["es", "fr", "it", "pt", "de", "nl"].includes(b.lang) ? b.lang : "en"))),
+    messages: [{ role: "user", content: `Subject: ${subject}\nWhat was taught:\n"""${text}"""` }] });
+    const r = parse(raw);
+    if (!r) throw new HttpError(502, "Ace could not prepare this. Try again in a moment.");
+    return r;
   });
-  if (!r.ok) { console.error("anthropic", r.status, await r.text()); throw new HttpError(502, "Ace could not prepare this. Try again in a moment."); }
-  const out = await r.json();
-  const raw = (out.content ?? []).filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n");
-  const result = parse(raw);
-  if (!result) throw new HttpError(502, "Ace could not prepare this. Try again in a moment.");
 
   if (noteId) {
     await admin.from("class_notes").update({ summary: result, topic: result.topic, entered_text: text, subject }).eq("id", noteId).eq("user_id", user.id);
