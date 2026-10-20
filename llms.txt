@@ -26,7 +26,7 @@
 - [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 28 subjects, 2,975 practice questions
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 28 subjects, 3,020 practice questions
 - [Liberia: WASSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 9 subjects, 1,222 practice questions
-- [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 25 subjects, 2,897 practice questions
+- [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 28 subjects, 3,200 practice questions
 - [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 10 subjects, 1,220 practice questions
 
 ## Guides

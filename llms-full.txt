@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 16 countries, 28 exams, 39,364 practice questions, 7,689 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 16 countries, 28 exams, 39,667 practice questions, 7,748 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -129,9 +129,9 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta
 Exams: The Secondary Education Certificate (SEC) at the end of Year 11, and the Matriculation Certificate after two years of sixth form, both set by MATSEC at the University of Malta.
 Grading: SEC: Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest. Matriculation: grades A to E; AM gives 30 to 6 points and IM 10 to 2 points.
 Levels: Year 9 – Sixth Form
-Totals: 25 subjects, 537 topics, 2,897 questions.
+Totals: 28 subjects, 596 topics, 3,200 questions.
 - SEC (MATSEC (University of Malta)): Mathematics, English Language, Physics, Chemistry, Biology, Computing, Business Studies, Economics, Accounting, Geography, History, Maltese
-- Matriculation (MATSEC (University of Malta)): Pure Mathematics, Applied Mathematics, Physics, Chemistry, Biology, Computing, English, Accounting, Economics, Geography, History, Psychology, Systems of Knowledge
+- Matriculation (MATSEC (University of Malta)): Pure Mathematics, Applied Mathematics, Physics, Chemistry, Biology, Computing, English, Maltese, Accounting, Economics, Geography, History, Psychology, Philosophy, Sociology, Systems of Knowledge
 
 ## Zimbabwe
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe
