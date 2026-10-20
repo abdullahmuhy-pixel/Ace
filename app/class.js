@@ -10,7 +10,7 @@
   const hasSchool = () => !!((Cl.prof && Cl.prof.school_id) || (Cl.cls && Cl.cls.length));
   const noSchool = () => `<div class="card"><b>${L('You are not in a class yet.', 'Aún no estás en ninguna clase.')}</b><p class="note">${L('If a teacher or tutor gave you a class code, join their class first. Studying on your own needs no class.', 'Si un profesor te dio un código, únete primero a su clase.')}</p><button class="nx" data-a="tab" data-v="classes">${L('Join a class with a code', 'Unirme con un código')}</button></div>`;
   const rerun = p => p.then(() => render()).catch(e => { Cl.err = msg(e); render(); });
-  const loadProf = () => Promise.all([sync().table('profiles').then(q => q.select('id,class_id,school_id,first_name').eq('id', sync().uid()).maybeSingle()), sync().rpc('my_classes').catch(() => ({ data: [] }))]).then(([r, k]) => { Cl.prof = r.data || {}; Cl.cls = (k && k.data) || []; });
+  const loadProf = () => Promise.all([sync().table('profiles').then(q => q.select('id,class_id,school_id,first_name').eq('id', sync().uid()).maybeSingle()), sync().rpc('my_classes').catch(() => [])]).then(([r, k]) => { Cl.prof = r.data || {}; Cl.cls = Array.isArray(k) ? k : []; });
 
   function inboxView() {
     let h = `<div class="pad">${back()}<h2 style="margin:0 0 6px">${L('From my teachers', 'De mis profesores')}</h2>`;

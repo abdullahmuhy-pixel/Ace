@@ -196,15 +196,37 @@
 
   /* ================= my classes (join with a code) ================= */
   const CL = window.AceCls = { list: null, code: '', err: '', ok: '', busy: false };
-  const loadClasses = () => sync().rpc('my_classes').then(r => { if (r.error) throw r.error; CL.list = r.data || []; }).catch(e => { CL.err = (e && e.message) || L('Could not load your classes.', 'No se pudieron cargar tus clases.'); });
+  const loadClasses = () => sync().rpc('my_classes').then(r => { CL.list = r || []; }).catch(e => { CL.err = (e && (e.msg || e.message)) || L('Could not load your classes.', 'No se pudieron cargar tus clases.'); });
   function classesView() {
     let h = `<div class="pad">${back('tools')}<div class="pg-h"><h1>${L('My classes', 'Mis clases')}</h1><p>${L('Join a class from a teacher or tutor with their code. You keep your own account and progress.', 'Únete a la clase de un profesor con su código. Conservas tu cuenta y tu progreso.')}</p></div>`;
     if (!signedIn()) return h + needSignIn() + '</div>';
     h += `<div class="card"><label class="xl">${L('Class code', 'Código de clase')}<input class="xin code" maxlength="8" data-l-in="ccode" value="${esc(CL.code)}" placeholder="ABC123" autocapitalize="characters"></label><button class="nx" data-l="cjoin" ${CL.busy ? 'disabled' : ''}>${CL.busy ? '…' : L('Join class', 'Unirme')}</button>${CL.err ? err(CL.err) : ''}${CL.ok ? `<p class="note" style="color:var(--green)">${esc(CL.ok)}</p>` : ''}</div>`;
     if (!CL.list) return h + `<div class="emp2">…</div></div>`;
-    h += CL.list.length ? `<div class="sh">${L('Your classes', 'Tus clases')}</div><div class="lst">${CL.list.map(k => `<div class="li"><span class="e">${k.kind === 'tutor' ? '🧑‍🏫' : '🏫'}</span><span class="m"><b>${esc(k.name)}</b><small>${esc([k.subject, k.teachers, k.school].filter(Boolean).join(' • '))}</small></span>${k.main ? `<span class="v">${L('School class', 'Clase del colegio')}</span>` : `<button class="bb" data-l="cleave" data-v="${k.class_id}">${L('Leave', 'Salir')}</button>`}</div>`).join('')}</div>
+    h += CL.list.length ? `<div class="sh">${L('Your classes', 'Tus clases')}</div><div class="lst">${CL.list.map(k => `<button class="li" data-l="copen" data-v="${k.class_id}"><span class="e">${k.kind === 'tutor' ? '🧑‍🏫' : '🏫'}</span><span class="m"><b>${esc(k.name)}</b><small>${esc([k.subject, k.teachers, k.school].filter(Boolean).join(' • '))}</small></span><span class="v">›</span></button>`).join('')}</div>
 <div class="row3" style="grid-template-columns:1fr 1fr 1fr;margin-top:12px"><button class="bt" data-a="tab" data-v="tasks">📝 ${L('Class work', 'Tareas')}</button><button class="bt" data-a="tab" data-v="inbox">💬 ${L('Messages', 'Mensajes')}</button><button class="bt" data-a="tab" data-v="livej">⚡ ${L('Live quiz', 'Quiz en vivo')}</button></div>` : `<div class="emp"><span class="ace" data-mood="wave" style="width:70px"></span><b>${L('No classes yet', 'Aún no tienes clases')}</b>${L('Studying on your own works perfectly. Join a class only if a teacher gives you a code.', 'Estudiar por tu cuenta funciona perfectamente.')}</div>`;
     return h + '</div>';
+  }
+
+
+  /* one class: live lesson link, resources, topics covered and the Q&A board */
+  const CK = window.AceCk = { id: '', c: null, res: [], qs: [], pace: 0, ask: '', err: '' };
+  const loadClass = id => Promise.all([
+    sync().table('classes').then(q => q.select('id,name,subject,exam,meet_url').eq('id', id).maybeSingle()),
+    sync().table('class_resources').then(q => q.select('title,kind,url,body,created_at').eq('class_id', id).order('created_at', { ascending: false }).limit(50)),
+    sync().table('class_questions').then(q => q.select('id,body,answer,author_id,created_at').eq('class_id', id).order('created_at', { ascending: false }).limit(60)),
+    sync().table('class_pacing').then(q => q.select('topic,taught_on').eq('class_id', id).not('taught_on', 'is', null))
+  ]).then(([c, r, q, p]) => { CK.c = c.data; CK.res = r.data || []; CK.qs = q.data || []; CK.pace = (p.data || []).length; CK.paceList = (p.data || []).map(x => x.topic); }).catch(e => { CK.err = (e && (e.msg || e.message)) || 'Error'; });
+  function classView() {
+    const k = (CL.list || []).find(x => x.class_id === CK.id) || {}, c = CK.c;
+    let h = `<div class="pad"><div class="bk"><button class="bb" data-a="tab" data-v="classes">‹ ${L('My classes', 'Mis clases')}</button></div><div class="pg-h"><h1>${esc(k.name || (c && c.name) || '')}</h1><p>${esc([k.subject, k.teachers].filter(Boolean).join(' • '))}</p></div>`;
+    if (!c) return h + (CK.err ? err(CK.err) : `<div class="emp2">…</div>`) + '</div>';
+    if (c.meet_url) h += `<a class="dly" style="text-decoration:none" href="${esc(c.meet_url)}" target="_blank" rel="noopener"><span class="di">🎥</span><span><b>${L('Join live lesson', 'Entrar a la clase en vivo')}</b><span>${L('Opens your teacher\'s meeting link', 'Abre el enlace de tu profesor')}</span></span><em>›</em></a>`;
+    h += `<div class="row3" style="grid-template-columns:1fr 1fr 1fr;margin-top:12px"><button class="bt" data-a="tab" data-v="tasks">📝 ${L('Class work', 'Tareas')}</button><button class="bt" data-a="tab" data-v="inbox">💬 ${L('Messages', 'Mensajes')}</button><button class="bt" data-a="tab" data-v="livej">⚡ ${L('Live quiz', 'Quiz en vivo')}</button></div>`;
+    if (CK.pace) h += `<div class="sh">${L('Topics covered in class', 'Temas vistos en clase')} <small style="margin-left:6px;color:var(--text3);font:700 13px var(--fb)">${CK.pace}</small></div><div class="chips">${CK.paceList.slice(0, 30).map(t => `<span>${esc(t)}</span>`).join('')}</div>`;
+    h += `<div class="sh">${L('Ask your teacher', 'Pregunta a tu profesor')}</div><div class="card"><textarea class="xin" rows="2" maxlength="1000" data-l-in="ask" placeholder="${L('Your question for the whole class', 'Tu pregunta para toda la clase')}">${esc(CK.ask)}</textarea><button class="nx" data-l="ask">${L('Ask', 'Preguntar')}</button><p class="note">${L('Answers are shared with the whole class.', 'Las respuestas se comparten con toda la clase.')}</p></div>`;
+    h += CK.qs.map(q => `<div class="mcard" style="margin-bottom:8px"><b style="font:700 15px var(--fd)">${esc(q.body)}</b>${q.answer ? `<p class="mx" style="background:var(--ok-bg);border-radius:12px;padding:10px;color:var(--text)">${esc(q.answer)}</p>` : `<p class="note">${L('Waiting for an answer', 'Esperando respuesta')}</p>`}</div>`).join('');
+    if (CK.res.length) h += `<div class="sh">${L('Library', 'Biblioteca')}</div><div class="lst">${CK.res.map(r => r.url ? `<a class="li" href="${esc(r.url)}" target="_blank" rel="noopener"><span class="e">${{ link: '🔗', video: '🎬', note: '📝', file: '📎' }[r.kind] || '🔗'}</span><span class="m"><b>${esc(r.title)}</b>${r.body ? `<small>${esc(r.body.slice(0, 120))}</small>` : ''}</span><span class="v">↗</span></a>` : `<details class="li" style="display:block"><summary><b>📝 ${esc(r.title)}</b></summary><p style="white-space:pre-wrap">${esc(r.body || '')}</p></details>`).join('')}</div>`;
+    return h + `<button class="lo" data-l="cleave" data-v="${CK.id}">${L('Leave this class', 'Salir de esta clase')}</button></div>`;
   }
 
   /* ================= assigned Ace work from a teacher ================= */
@@ -241,7 +263,7 @@
       S.taskRun = null;
     },
     homeCard(c) {
-      const p = PL(); let h = '';
+      const p = PL(); let h = CL.banner ? `<div class="card" style="margin-top:12px;border-color:var(--yellow);background:#FFF4D1;color:#5A3A00"><b>📢 ${esc(CL.banner)}</b></div>` : '';
       if (p && ACE_LOADED[S.c]) { const B = buildPlan(), d = B && B.days.find(x => x.d === todayKey()); if (d) { const left = d.items.filter(it => !isDone(it)).length; h += `<button class="plc" data-a="tab" data-v="plan"><span class="e">🗓️</span><span class="m"><b>${left ? L(`Today's plan: ${left} left`, `Plan de hoy: quedan ${left}`) : L("Today's plan is done", 'Plan de hoy completado')}</b><small>${esc(itemLabel(d.items.find(it => !isDone(it)) || d.items[0])[1])}</small></span><em>›</em></button>`; } }
       else h += `<button class="plc nw2" data-a="tab" data-v="plan"><span class="e">🗓️</span><span class="m"><b>${L('Make a study plan to exam day', 'Crea tu plan hasta el examen')}</b><small>${L('Two minutes to set up. Ace does the rest.', 'Dos minutos y Ace hace el resto.')}</small></span><em>›</em></button>`;
       const m = Mist.all().length;
@@ -249,15 +271,18 @@
     }
   };
 
-  Object.assign(V, { plan: planView, mist: mistView, ach: achView, league: leagueView, well: wellView, classes: classesView });
+  Object.assign(V, { plan: planView, mist: mistView, ach: achView, league: leagueView, well: wellView, classes: classesView, cls1: classView });
   Object.assign(AceX.loaders, {
-    league: () => { LG.err = ''; LG.rows = null; return signedIn() ? sync().rpc('weekly_league').then(r => { if (r.error) throw r.error; LG.rows = r.data || []; }).catch(e => { LG.err = (e && e.message) || 'Error'; }) : null; },
-    classes: () => { CL.err = ''; return signedIn() ? loadClasses() : null; }
+    league: () => { LG.err = ''; LG.rows = null; return signedIn() ? sync().rpc('weekly_league').then(r => { LG.rows = r || []; }).catch(e => { LG.err = (e && (e.msg || e.message)) || 'Error'; }) : null; },
+    classes: () => { CL.err = ''; return signedIn() ? loadClasses() : null; },
+    cls1: () => { CK.c = null; CK.err = ''; return signedIn() && CK.id ? Promise.all([CL.list ? null : loadClasses(), loadClass(CK.id)]) : null; }
   });
 
+  try { const sy = sync(); if (sy && sy.ready) sy.ready().then(ok => ok ? sy.table('platform_config').then(q => q.select('banner').eq('id', 'global').maybeSingle()) : null).then(r => { if (r && r.data && r.data.banner) { CL.banner = r.data.banner; if (S.tab === 'home') render(); } }).catch(() => { }); } catch (e) { }
   document.addEventListener('input', e => {
     const t = e.target, k = t && t.dataset && t.dataset.lIn; if (!k) return;
     if (k === 'ccode') CL.code = t.value.toUpperCase();
+    else if (k === 'ask') CK.ask = t.value;
     else if (k === 'exam') { S.pdraft = S.pdraft || Object.assign({}, PL() || {}); S.pdraft.exam = t.value; }
     else if (k === 'sleep' || k === 'wnote') { const W = get('ace-well', {}), d = todayKey(); W[d] = W[d] || { m: 2 }; if (k === 'sleep') W[d].s = t.value === '' ? null : +t.value; else W[d].n = t.value.slice(0, 280); put('ace-well', W); }
   });
@@ -277,8 +302,10 @@
     else if (a === 'pgo') { const B = buildPlan(), it = B && B.days.flatMap(d => d.items).find(x => x.key === v); if (it) launch(it); }
     else if (a === 'mood') { const W = get('ace-well', {}), d = todayKey(); W[d] = Object.assign(W[d] || {}, { m: +v }); put('ace-well', W); }
     else if (a === 'lghide') { sync().table('profiles').then(q => q.update({ league_hidden: true }).eq('id', sync().uid())).then(() => { toast(L('You are hidden from the league', 'Ya no apareces en la liga')); AceX.loaders.league().then(() => render()); }); return; }
-    else if (a === 'cjoin') { const code = CL.code.trim(); if (code.length < 5) { CL.err = L('Enter the code your teacher gave you.', 'Introduce el código de tu profesor.'); return render(); } CL.busy = true; CL.err = ''; CL.ok = ''; render(); sync().rpc('join_class', { p_code: code }).then(r => { CL.busy = false; if (r.error) throw r.error; const d = r.data || {}; CL.ok = L(`You joined ${d.name}${d.teachers ? ' with ' + d.teachers : ''}.`, `Te uniste a ${d.name}.`); CL.code = ''; return loadClasses(); }).catch(er => { CL.busy = false; CL.err = (er && er.message) || 'Error'; }).then(() => render()); return; }
-    else if (a === 'cleave') { sync().rpc('leave_class', { p_class: v }).then(() => loadClasses()).then(() => render()); return; }
+    else if (a === 'cjoin') { const code = CL.code.trim(); if (code.length < 5) { CL.err = L('Enter the code your teacher gave you.', 'Introduce el código de tu profesor.'); return render(); } CL.busy = true; CL.err = ''; CL.ok = ''; render(); sync().rpc('join_class', { p_code: code }).then(r => { CL.busy = false; const d = r || {}; CL.ok = L(`You joined ${d.name}${d.teachers ? ' with ' + d.teachers : ''}.`, `Te uniste a ${d.name}.`); CL.code = ''; return loadClasses(); }).catch(er => { CL.busy = false; CL.err = (er && (er.msg || er.message)) || 'Error'; }).then(() => render()); return; }
+    else if (a === 'cleave') { if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = L('Tap again to leave', 'Toca otra vez para salir'); return; } sync().rpc('leave_class', { p_class: v }).then(() => loadClasses()).then(() => { S.tab = 'classes'; render(); }); return; }
+    else if (a === 'copen') { CK.id = v; S.tab = 'cls1'; }
+    else if (a === 'ask') { const body = CK.ask.trim(); if (body.length < 3) return; sync().table('class_questions').then(q => q.insert({ class_id: CK.id, author_id: sync().uid(), body })).then(r => { if (r.error) throw r.error; CK.ask = ''; toast(L('Question sent to your teacher', 'Pregunta enviada')); return loadClass(CK.id); }).catch(e => toast((e && (e.msg || e.message)) || 'Error')).then(() => render()); return; }
     else return;
     render();
   });
