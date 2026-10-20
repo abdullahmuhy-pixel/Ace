@@ -112,6 +112,17 @@ MT:{name:'Malta',flag:'🇲🇹',lang:'English and Maltese',levels:'Year 9 – S
  next:['Recorded listening practice','More Matriculation subjects (Maltese, Philosophy, Sociology)','Teacher review of the Malta content']}
 };
 
+const STUDENT_TOOLS = [
+  ['▶️','Narrated lessons','Every topic as a short animated lesson that talks you through it, with checkpoint questions on the way.'],
+  ['🗓️','A study plan to exam day','Tell Ace your exam date and how much time you have. It plans each week around the topics you find hardest.'],
+  ['📕','Mistakes notebook','Every question you get wrong is saved with its working, so you can redo it until you get it right.'],
+  ['🏆','Weekly league','Earn XP for practice and climb the weekly table of learners in your country.'],
+  ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows your subject, topic and exam, and explains step by step.'],
+  ['⏱️','Timed mock exams','Full mocks in exam conditions, scored by module, with the topics to revise next.'],
+  ['🔁','Spaced revision','Short reviews at 1, 3, 7, 21 and 45 days so what you learn stays learned.'],
+  ['🎯','Daily challenge and streaks','Ten questions a day from your own subjects. Keep your streak going.'],
+  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.']
+];
 const FEATURES = [
  // [icon, title, text, status, group]
  ['📘','Topic notes','An overview, key terms, a three-part explanation, formulas, a method, a worked example, common mistakes, a real-world link, exam strategy and a recap for every topic.','Live','Learn'],
@@ -119,7 +130,7 @@ const FEATURES = [
  ['🔍','Topic question bank','Open any topic and practise every question written for it, or draw a random ten for the subject.','Live','Practise'],
  ['🃏','Flashcards','Curated definition and formula cards for each subject, plus cards made from each topic\'s questions.','Live','Practise'],
  ['⏱️','Timed mock exams','A paper drawn evenly from every module, with a countdown, a score by module and the topics to revise.','Live','Exam prep'],
- ['🤖','Ask Ace','An AI study buddy that knows which subject, topic and exam the student is on and explains step by step.','Live','Learn'],
+ ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows which subject, topic and exam the student is on and explains step by step.','Live','Learn'],
  ['🔥','Daily challenge and streaks','Five questions a day, XP, and a streak that builds as the student keeps coming back.','Live','Habits'],
  ['🌍','Thirteen countries, one app','Switch country and the exams, subjects, currency and examples change with it. Spain also switches the interface to Spanish.','Live','Learn'],
  ['🎓','Choose your subjects','Students pick the subjects they actually take, and the app shows only those.','Live','Habits'],
@@ -238,10 +249,10 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 
 /* ---------- state ---------- */
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
-const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
+const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['teachers','Teachers'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
 
 const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta'};
-const PAGES = ['countries','features','syllabus','schools','guides','about','contact','quote','privacy','terms'];
+const PAGES = ['countries','features','syllabus','teachers','schools','guides','about','contact','quote','privacy','terms'];
 const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
 function parseRoute(r) {
   r = String(r || '').replace(/\.html$/, '').replace(/\/+$/, '');
@@ -312,6 +323,7 @@ function routeMeta(page, arg) {
       countries: ['Exam Prep by Country: 13 Countries, 23 Exams | Ace Education', `Compare the exams Ace Education covers in ${CCS.length} countries: ${CCS.map(cc => CM[cc].name).join(', ')}. Grading scales, subjects and question counts for each.`],
       features: ['Features: Topic Notes, Quizzes, Flashcards, Mock Exams and AI Tutor | Ace Education', 'Everything in the Ace Education study app: topic notes, quizzes, a question bank, flashcards, timed mock exams, daily challenge, weak-topic radar, an AI study buddy and university guides.'],
       syllabus: ['Syllabus Explorer: Topics and Sample Questions for Every Subject | Ace Education', 'Browse every subject, module and topic Ace Education covers for each exam in each country, with real sample questions.'],
+      teachers: ['Ace Education for Teachers and Tutors: Your Own Classes, Free to Start', 'Private tutors, after-school teachers and tutoring centres: create a class, share a join code, assign Ace quizzes and lessons, mark work and follow every student. Students keep their own accounts.'],
       schools: ['Ace Education for Schools: Class, Teacher and Admin Tools', 'Run exam preparation for a whole class or school: add students, assign topics and quizzes, read class results and control AI help. Built for schools and tutoring centres.'],
       quote: ['Get a School Quote | Ace Education', 'Tell us about your school, tutoring centre or organisation and we will send a plan that fits. Pricing is agreed per school or centre.'],
       guides: ['Study Guides: Revision, Mock Exams and Exam Stress | Ace Education', 'Plain-language guides on active recall, mock exams, six-week revision plans, maths habits, science practicals, comparing exam systems and managing exam stress.'],
@@ -397,9 +409,14 @@ function pHome() {
   return `<section class="hero"><div><div class="eyebrow mono">Exam prep in ${CCS.length} countries</div>
   <h1>Practise on questions written for the exam you will sit.</h1>
   <p class="lead">Ace Education is an exam prep and study app for secondary school and university students. It gives topic notes, quizzes, flashcards, timed mock exams and an AI study buddy for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU.</p>
-  <div class="cta">${appBtn()}${btnGo('countries', 'See your country', '')}</div>
+  <div class="who" role="group" aria-label="Choose how you will use Ace"><a class="btn primary who-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">I'm a student</a>${btnGo('teachers', 'I teach or tutor', 'who-t')}${btnGo('schools', 'I represent a school', 'who-t')}</div>
+  <p class="who-p">Parent or guardian? <a href="family/">Open the family view</a> with the code your child shares.</p>
   <div class="facts"><div><b>${CCS.length}</b><span>countries open</span></div><div><b>${TOT.exams}</b><span>exams</span></div><div><b>${nf(TOT.q)}</b><span>practice questions</span></div><div><b>${nf(TOT.t)}</b><span>topic notes</span></div></div></div>
   <div><div class="chips" role="tablist" aria-label="Pick a country">${CCS.map(cc => `<button class="chip ${S.hero === cc ? 'on' : ''}" data-act="hero" data-cc="${cc}">${CM[cc].flag} ${cc}</button>`).join('')}</div>${qSheet(S.hero, 'hero')}</div></section>
+
+  <section class="blk"><div class="wrap">${head('For students', 'Everything you need to get ready on your own.', 'Most Ace learners study independently. You do not need a school or a teacher to use any of this.')}
+  <div class="grid g3">${STUDENT_TOOLS.map(f => `<div class="card"><span class="ic">${f[0]}</span><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('')}</div>
+  <div class="cta">${appBtn('Start studying free')}${btnGo('features', 'See every feature')}</div></div></section>
 
   <section class="blk"><div class="wrap">${head('Countries', 'Built country by country, not translated from one.', 'Each country has its own exam bodies, subject list, currency, tax rate and examples. Pick a country to see what is open and what is coming.')}
   <div class="grid g3">${CCS.map(countryCard).join('')}</div></div></section>
@@ -471,6 +488,21 @@ function pSyllabus() {
   <div class="cta">${appBtn('Practise this in the app')}</div></div></section>`;
 }
 
+
+function pTeachers() {
+  const T2 = [['🔑','A class in a minute','Name a class, get a six-letter join code and share it on WhatsApp or the board. Students join from their own accounts.'],['📝','Set Ace work','Assign a topic quiz, a narrated lesson or a full timed mock from the Ace question bank. It is marked for you and the score lands in your gradebook.'],['✍️','Your own tasks too','Written homework, reading, video or links, with due dates, submissions, rubrics and feedback.'],['📊','See who is stuck','Each student\'s activity, scores by topic, streaks and the topics the class finds hardest.'],['📅','Register and gradebook','Take attendance, record tests with weights, and use the continuous-assessment markbook for your country.'],['🗺️','Curriculum pacing','Every module and topic of the syllabus your students sit, ticked off as you teach it.'],['⚡','Live quiz','Run a live class quiz on any screen; students answer on their phones.'],['💬','Messages and notices','Message a student, or post a notice to the whole class.'],['✨','AI lesson planner','A lesson plan, worksheet or practice paper for any topic in seconds, ready to edit.'],['📄','Reports for parents','Progress reports and report cards you can print, plus a family view parents open with a code.']];
+  return `<section class="blk"><div class="wrap"><div class="hero" style="padding-top:0"><div><div class="eyebrow mono">Private tutors, after-school classes and tutoring centres</div><h1>Run your classes on Ace.</h1>
+  <p class="lead">Create a class, share a code and your students join from their own Ace accounts. You set work from the full Ace syllabus for your country, it is marked for you, and you see exactly who needs help.</p>
+  <div class="cta"><a class="btn primary" href="${esc(SITE_CONFIG.loginUrl)}?role=tutor" target="_blank" rel="noopener">Create a teacher account</a>${btnGo('schools', 'Signing up a whole school?')}</div>
+  <div class="facts"><div><b>Free</b><span>to start a class</span></div><div><b>${CCS.length}</b><span>countries and their exams</span></div><div><b>${nf(TOT.q)}</b><span>questions to assign</span></div></div></div>
+  <div><ol class="steps">${['Sign up as a teacher with your email or Google.', 'Create a class and choose the exam it prepares for.', 'Share the join code. Students who already use Ace keep their streaks and progress.', 'Assign quizzes, lessons, mocks or your own tasks.', 'Follow results in your dashboard and message students or parents.'].map(x => `<li><span>${x}</span></li>`).join('')}</ol></div></div>
+  ${head('What you get', 'The tools of a school, sized for your classes.')}
+  <div class="grid g3">${T2.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p></div>`).join('')}</div>
+  <div style="margin-top:3rem" class="split"><div>${head('Students stay in charge of their learning', 'Joining a class never takes anything away.')}
+  <ul class="ticks"><li><span>Students keep one account for their own study and every class they join.</span></li><li><span>You see a student's work only while they are in your class. They can leave at any time.</span></li><li><span>Parents get a read-only view only when the student shares it.</span></li></ul></div>
+  <div class="card"><h3>Running a centre with several teachers?</h3><p>Add teachers to your workspace and give each one their classes. Centres with many students can <a data-go="quote">ask for a quote</a>.</p></div></div>
+  <div class="cta"><a class="btn primary" href="${esc(SITE_CONFIG.loginUrl)}?role=tutor" target="_blank" rel="noopener">Create a teacher account</a>${btnGo('contact', 'Ask a question')}</div></div></section>`;
+}
 function pSchools() {
   return `<section class="blk"><div class="wrap">${head('For schools and centres', 'A class, a school or a tutoring centre on one platform.', 'Teachers and administrators get their own tools, and students sign in with a username the school gives them. The database and server layer is built; the dashboards are being built on top of it.')}
   <div class="grid g3">${SCHOOL.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p><ul class="ticks">${r[3].map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>
@@ -577,7 +609,7 @@ function footer() {
 }
 function render() {
   const P = S.page;
-  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
+  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'teachers' ? pTeachers() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
   const keep = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.act === 'exq';
   $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer() + `<div class="mbar"><a class="btn primary" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Open the app</a><a class="btn" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>`;
   anchorize();

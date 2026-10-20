@@ -110,6 +110,17 @@ MT:{name:'Malta',flag:'🇲🇹',lang:'English and Maltese',levels:'Year 9 – S
  next:['Recorded listening practice','More Matriculation subjects (Maltese, Philosophy, Sociology)','Teacher review of the Malta content']}
 };
 
+const STUDENT_TOOLS = [
+  ['▶️','Narrated lessons','Every topic as a short animated lesson that talks you through it, with checkpoint questions on the way.'],
+  ['🗓️','A study plan to exam day','Tell Ace your exam date and how much time you have. It plans each week around the topics you find hardest.'],
+  ['📕','Mistakes notebook','Every question you get wrong is saved with its working, so you can redo it until you get it right.'],
+  ['🏆','Weekly league','Earn XP for practice and climb the weekly table of learners in your country.'],
+  ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows your subject, topic and exam, and explains step by step.'],
+  ['⏱️','Timed mock exams','Full mocks in exam conditions, scored by module, with the topics to revise next.'],
+  ['🔁','Spaced revision','Short reviews at 1, 3, 7, 21 and 45 days so what you learn stays learned.'],
+  ['🎯','Daily challenge and streaks','Ten questions a day from your own subjects. Keep your streak going.'],
+  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.']
+];
 const FEATURES = [
  // [icon, title, text, status, group]
  ['📘','Topic notes','An overview, key terms, a three-part explanation, formulas, a method, a worked example, common mistakes, a real-world link, exam strategy and a recap for every topic.','Live','Learn'],
@@ -117,7 +128,7 @@ const FEATURES = [
  ['🔍','Topic question bank','Open any topic and practise every question written for it, or draw a random ten for the subject.','Live','Practise'],
  ['🃏','Flashcards','Curated definition and formula cards for each subject, plus cards made from each topic\'s questions.','Live','Practise'],
  ['⏱️','Timed mock exams','A paper drawn evenly from every module, with a countdown, a score by module and the topics to revise.','Live','Exam prep'],
- ['🤖','Ask Ace','An AI study buddy that knows which subject, topic and exam the student is on and explains step by step.','Live','Learn'],
+ ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows which subject, topic and exam the student is on and explains step by step.','Live','Learn'],
  ['🔥','Daily challenge and streaks','Five questions a day, XP, and a streak that builds as the student keeps coming back.','Live','Habits'],
  ['🌍','Thirteen countries, one app','Switch country and the exams, subjects, currency and examples change with it. Spain also switches the interface to Spanish.','Live','Learn'],
  ['🎓','Choose your subjects','Students pick the subjects they actually take, and the app shows only those.','Live','Habits'],

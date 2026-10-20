@@ -204,5 +204,7 @@
   });
 
   window.AceUI = { say, FX, confetti, after, device, svg: () => SVG };
+  /* views that load data re-render without going through render(): keep Ace drawn */
+  try { new MutationObserver(() => fillAce()).observe(document.getElementById('v'), { childList: true, subtree: true }); } catch (e) { }
   sidebar(); after();
 })();
