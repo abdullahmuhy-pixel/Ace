@@ -15,7 +15,7 @@ const TOT = CCS.reduce((a, cc) => ({exams: a.exams + T[cc].exams, subs: a.subs +
 const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 
 /* ---------- state ---------- */
-const S = {page: 'home', arg: null, hero: 'NG', picked: null, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
+const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
 const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
 
 const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta'};
@@ -105,19 +105,54 @@ function routeMeta(page, arg) {
   return out;
 }
 
+/* ---------- Ace the pencil, sound and confetti (same character as the student app) ---------- */
+const ACE_SVG = `<svg viewBox="0 0 100 140" aria-hidden="true"><g class="a-all" stroke="#17123A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<path class="a-arm-l" d="M27 70 L13 84" fill="none"/><circle class="a-arm-l" cx="12" cy="85" r="3.5" fill="#FFC72C"/>
+<path class="a-arm-r" d="M73 70 L87 84" fill="none"/><circle class="a-arm-r" cx="88" cy="85" r="3.5" fill="#FFC72C"/>
+<rect x="29" y="7" width="42" height="19" rx="9" fill="#FF8FB1"/>
+<rect x="27" y="24" width="46" height="13" rx="2" fill="#CBD0EC"/><path d="M27 30.5h46" fill="none" stroke-width="2"/>
+<path d="M27 37h46v61H27z" fill="#FFC72C"/><path d="M27 37h11v61H27z" fill="#F2AE12" stroke="none"/><path d="M62 37h11v61H62z" fill="#FFDB6E" stroke="none"/><path d="M27 37h46v61H27z" fill="none"/>
+<path d="M27 98h46L50 133z" fill="#F7D9AE"/><path d="M42.6 121.6h14.8L50 133z" fill="#3B3358"/>
+<g class="a-eyes"><ellipse cx="41" cy="60" rx="6" ry="7" fill="#fff"/><ellipse cx="59" cy="60" rx="6" ry="7" fill="#fff"/>
+<g class="a-pupils" stroke="none" fill="#17123A"><circle cx="42" cy="61" r="3.3"/><circle cx="60" cy="61" r="3.3"/><circle cx="43.2" cy="59.6" r="1.1" fill="#fff"/><circle cx="61.2" cy="59.6" r="1.1" fill="#fff"/></g></g>
+<g stroke="none" fill="#FF8FB1" opacity=".75"><ellipse cx="34" cy="73" rx="4" ry="2.6"/><ellipse cx="66" cy="73" rx="4" ry="2.6"/></g>
+<path class="mo m-smile" d="M43 73 Q50 80 57 73" fill="none"/>
+<path class="mo m-open" d="M42.5 71.5 Q50 86 57.5 71.5 Z" fill="#17123A"/>
+<path class="mo m-oops" d="M44 77 Q50 71.5 56 77" fill="none"/>
+<path class="mo m-think" d="M45 76 L56 73.5" fill="none"/>
+<path class="brow" d="M35 50 L45 48.5 M55 48.5 L65 50" fill="none" stroke-width="2.5"/>
+<g class="a-spark" fill="#FFC72C" stroke-width="2"><path d="M12 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path d="M86 12l2.4 5.6 5.6 2.4-5.6 2.4L86 28l-2.4-5.6L78 20l5.6-2.4z"/></g>
+<path class="a-drop" d="M80 40 Q84 47 80 50 Q76 47 80 40z" fill="#8FD3FF" stroke-width="2"/>
+</g></svg>`;
+const PENCIL = '<svg class="pc" viewBox="0 0 100 140" aria-hidden="true"><g stroke="#17123A" stroke-width="5" stroke-linejoin="round"><rect x="29" y="7" width="42" height="19" rx="9" fill="#FF8FB1"/><rect x="27" y="24" width="46" height="13" rx="2" fill="#CBD0EC"/><path d="M27 37h46v61H27z" fill="#FFC72C"/><path d="M27 98h46L50 133z" fill="#F7D9AE"/><path d="M42.6 121.6h14.8L50 133z" fill="#3B3358"/></g><circle cx="42" cy="61" r="5" fill="#17123A"/><circle cx="60" cy="61" r="5" fill="#17123A"/></svg>';
+const ace = mood => `<span class="ace" data-mood="${mood}">${ACE_SVG}</span>`;
+let AC = null;
+function tone(f, t0, d, v, type, to) { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); const o = AC.createOscillator(), g = AC.createGain(), st = AC.currentTime + t0; o.type = type || 'sine'; o.frequency.setValueAtTime(f, st); if (to) o.frequency.exponentialRampToValueAtTime(to, st + d); g.gain.setValueAtTime(0.0001, st); g.gain.exponentialRampToValueAtTime(v || 0.1, st + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, st + d); o.connect(g); g.connect(AC.destination); o.start(st); o.stop(st + d + 0.05); } catch (e) {} }
+const SFX = {pick: () => S.snd && tone(620, 0, 0.09, 0.07, 'triangle', 880), ok: () => S.snd && [784, 988, 1319].forEach((f, i) => tone(f, i * 0.075, 0.32, 0.1)), no: () => S.snd && tone(220, 0, 0.22, 0.1, 'sawtooth', 130)};
+function confetti(x, y) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; let c = document.getElementById('fxc'); if (!c) { c = document.createElement('canvas'); c.id = 'fxc'; document.body.appendChild(c); }
+  const d = devicePixelRatio || 1, W = c.width = innerWidth * d, H = c.height = innerHeight * d, g = c.getContext('2d'), col = ['#3D35F5', '#FFC72C', '#12B886', '#FF5A5F', '#FF8FB1'];
+  const P = Array.from({length: 60}, () => ({x: x * d, y: y * d, vx: (Math.random() - 0.5) * 13 * d, vy: (-Math.random() * 10 - 4) * d, r: (Math.random() * 5 + 4) * d, a: Math.random() * 6, c: col[Math.floor(Math.random() * 5)]})), t0 = performance.now();
+  (function f(t) { const k = (t - t0) / 1000; g.clearRect(0, 0, W, H); P.forEach(p => { p.vy += 0.5 * d; p.x += p.vx; p.y += p.vy; p.a += 0.2; g.save(); g.translate(p.x, p.y); g.rotate(p.a); g.globalAlpha = Math.max(0, 1 - k / 1.6); g.fillStyle = p.c; g.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); g.restore(); }); if (k < 1.6) requestAnimationFrame(f); else g.clearRect(0, 0, W, H); })(t0);
+}
+const words = t => esc(t).split(/(\s+)/).map((w, i) => /^\s+$/.test(w) || !w ? w : `<span class="w" style="--d:${Math.min(i >> 1, 40)}">${w}</span>`).join('');
+
 /* ---------- shared pieces ---------- */
 const btnGo = (page, label, cls = '', arg = '') => `<button class="btn ${cls}" data-go="${page}" data-arg="${arg}">${label}</button>`;
-const appBtn = (label = 'Open the student app', cls = 'primary') => `<a class="btn ${cls}" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">${label} →</a>`;
+const appBtn = (label = 'Open the student app', cls = 'primary') => `<a class="btn ${cls}" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">${label}</a>`;
 const head = (eyebrow, title, lede, c) => `<div class="hd ${c ? 'c' : ''}"><div class="eyebrow mono">${esc(eyebrow)}</div><h2>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`;
 const pill = s => `<span class="pill ${s === 'Live' ? 'live' : s === 'Backend ready' ? 'back' : s === 'Planned' ? 'plan' : ''}">${esc(s)}</span>`;
 const cMeta = cc => `${CM[cc].flag} ${CM[cc].name}`;
 
 function qSheet(cc, key) {
   const smp = D[cc].sample; if (!smp) return '';
-  const picked = S.picked && S.picked.key === key ? S.picked.i : null, good = picked !== null;
-  return `<div class="sheet"><div class="tag"><span class="mono">${esc(smp.ex)} · ${esc(smp.s)}</span><span class="mono">Real question from the bank</span></div>
-  <p class="q">${esc(smp.q)}</p><div class="opts">${smp.o.map((o, i) => `<button class="opt ${good ? (i === smp.a ? 'good' : i === picked ? 'bad' : '') : ''}" data-act="pick" data-key="${key}" data-i="${i}" ${good ? 'disabled' : ''}><span class="b">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
-  ${good ? `<div class="why"><b>${picked === smp.a ? 'Correct.' : 'Not this one.'} Topic: ${esc(smp.t)}</b>${esc(smp.e)}</div>` : `<p class="mono" style="margin-top:.9rem">Choose an answer to see the working.</p>`}</div>`;
+  const P = S.picked && S.picked.key === key ? S.picked : null, pick = P ? P.i : null, done = !!(P && P.done), ok = done && pick === smp.a;
+  const mood = done ? (ok ? 'cheer' : 'oops') : 'think', anim = S.anim && !P;
+  const msg = done ? (ok ? 'Yes! That\'s it.' : 'Not quite. Here\'s why.') : 'Have a go. I won\'t give you the answer, but I\'ll explain it after.';
+  return `<div class="sheet ${anim ? 'in' : ''}"><div class="lsn-top"><span class="mono" style="flex:1">${esc(smp.ex)}, ${esc(smp.s)}. A real question from the app</span><button class="lsn-ic" data-act="snd" aria-label="${S.snd ? 'Mute sound' : 'Turn sound on'}">${S.snd ? '🔊' : '🔈'}</button></div>
+  <div class="coach">${ace(mood)}<div class="say" aria-live="polite">${msg}</div></div>
+  <p class="q">${anim ? words(smp.q) : esc(smp.q)}</p><div class="opts">${smp.o.map((o, i) => `<button class="opt ${done ? (i === smp.a ? 'good' : i === pick ? 'bad' : 'dim') : i === pick ? 'pk' : ''}" style="--i:${i}" data-act="pick" data-key="${key}" data-i="${i}" ${done ? 'disabled' : ''}><span class="b">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
+  ${done ? `<div class="why ${ok ? 'good' : 'bad'}"><b>${ok ? '✓ Correct' : '✗ Not this one'}</b>${ok ? '' : `<p style="margin-bottom:.3rem"><strong>Answer: ${'ABCD'[smp.a]}. ${esc(smp.o[smp.a])}</strong></p>`}${esc(smp.e)}<p class="mono" style="margin-top:.5rem">Topic: ${esc(smp.t)}</p></div>` : `<button class="btn primary chk" data-act="check" data-key="${key}" ${pick === null ? 'disabled' : ''}>Check</button>`}</div>`;
 }
 function workedBlock(cc) {
   const w = D[cc].we; if (!w) return '';
@@ -137,14 +172,14 @@ function countryCard(cc) {
 
 /* ---------- pages ---------- */
 function pHome() {
-  return `<section class="hero"><div><div class="eyebrow mono">Exam prep and study app · ${CCS.length} countries</div>
+  return `<section class="hero"><div><div class="eyebrow mono">Exam prep in ${CCS.length} countries</div>
   <h1>Practise on questions written for the exam you will sit.</h1>
   <p class="lead">Ace Education is an exam prep and study app for secondary school and university students. It gives topic notes, quizzes, flashcards, timed mock exams and an AI study buddy for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU.</p>
   <div class="cta">${appBtn()}${btnGo('countries', 'See your country', '')}</div>
   <div class="facts"><div><b>${CCS.length}</b><span>countries open</span></div><div><b>${TOT.exams}</b><span>exams</span></div><div><b>${nf(TOT.q)}</b><span>practice questions</span></div><div><b>${nf(TOT.t)}</b><span>topic notes</span></div></div></div>
   <div><div class="chips" role="tablist" aria-label="Pick a country">${CCS.map(cc => `<button class="chip ${S.hero === cc ? 'on' : ''}" data-act="hero" data-cc="${cc}">${CM[cc].flag} ${cc}</button>`).join('')}</div>${qSheet(S.hero, 'hero')}</div></section>
 
-  <section class="blk"><div class="wrap">${head('Countries · ' + CCS.length, 'Built country by country, not translated from one.', 'Each country has its own exam bodies, subject list, currency, tax rate and examples. Pick a country to see what is open and what is coming.')}
+  <section class="blk"><div class="wrap">${head('Countries', 'Built country by country, not translated from one.', 'Each country has its own exam bodies, subject list, currency, tax rate and examples. Pick a country to see what is open and what is coming.')}
   <div class="grid g3">${CCS.map(countryCard).join('')}</div></div></section>
 
   <section class="band"><div class="wrap"><section class="blk">${head('The student app', 'Learn a topic, test it, then sit a mock.', 'Every subject is split into modules and topics that follow the exam syllabus. Each topic works the same way, so students always know what to do next.')}
@@ -166,7 +201,7 @@ function pHome() {
 }
 
 function pCountries() {
-  return `<section class="blk"><div class="wrap">${head('Countries · ' + CCS.length, 'Thirteen countries, twenty-three exams.', 'Pick a country for its exams, subjects, grading scale and a real question. More countries are added by adding a syllabus file, so the list grows without rebuilding the app.')}
+  return `<section class="blk"><div class="wrap">${head('Countries', `${CCS.length} countries, ${TOT.exams} exams.`, 'Pick a country for its exams, subjects, grading scale and a real question. More countries are added by adding a syllabus file, so the list grows without rebuilding the app.')}
   <div class="grid g3">${CCS.map(countryCard).join('')}</div>
   <div style="margin-top:3rem">${head('Exam systems side by side', 'How the exams compare.')}
   <div class="tw"><table class="tbl"><thead><tr><th>Country</th><th>Exams in Ace</th><th>Body</th><th>Grading</th><th>Levels</th><th>Language</th></tr></thead><tbody>${CCS.map(cc => `<tr><td><button class="lnk" data-go="country" data-arg="${cc}">${cMeta(cc)}</button></td><td>${esc(D[cc].ex.map(e => e.k).join(', '))}</td><td>${esc([...new Set(D[cc].ex.map(e => e.b))].join('; '))}</td><td>${esc(CM[cc].scale)}</td><td>${esc(CM[cc].levels)}</td><td>${esc(CM[cc].lang)}</td></tr>`).join('')}</tbody></table></div></div>
@@ -306,13 +341,13 @@ function pTerms() {
 
 /* ---------- shell ---------- */
 function header() {
-  return `<header><div class="bar"><button class="brand" data-go="home" aria-label="Ace Education home"><i></i>Ace Education</button>
+  return `<header><div class="bar"><button class="brand" data-go="home" aria-label="Ace Education home">${PENCIL}Ace Education</button>
   <nav class="main" id="nav">${NAV.map(n => `<a data-go="${n[0]}" class="${S.page === n[0] || (S.page === 'country' && n[0] === 'countries') || (S.page === 'guide' && n[0] === 'guides') ? 'on' : ''}">${n[1]}</a>`).join('')}<a data-go="quote" class="${S.page === 'quote' ? 'on' : ''}">Get a quote</a></nav>
   <a class="btn sm hide-s" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a><a class="btn sm primary hide-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a>
   <button class="icon" id="theme" aria-label="Toggle theme">🌓</button><button class="icon menu" id="menu" aria-label="Menu">☰</button></div></header>`;
 }
 function footer() {
-  return `<footer><div class="fgrid"><div><button class="brand" data-go="home" style="margin-bottom:.7rem"><i></i>Ace Education</button><p style="color:var(--ink2);font-size:.9rem;max-width:34ch">Exam preparation for secondary schools in ${CCS.length} countries, built around each country's own exams.</p></div>
+  return `<footer><div class="fgrid"><div><button class="brand" data-go="home" style="margin-bottom:.7rem">${PENCIL}Ace Education</button><p style="color:var(--ink2);font-size:.9rem;max-width:34ch">Exam preparation for secondary schools in ${CCS.length} countries, built around each country's own exams.</p></div>
   <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
   <div><h4>Countries</h4>${CCS.map(cc => `<a data-go="country" data-arg="${cc}">${cMeta(cc)}</a>`).join('')}</div>
   <div><h4>Company</h4><a data-go="about">About</a><a data-go="guides">Guides</a><a data-go="quote">Get a quote</a><a data-go="contact">Contact</a><a data-go="privacy">Privacy</a><a data-go="terms">Terms</a></div></div>
@@ -322,8 +357,9 @@ function render() {
   const P = S.page;
   const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
   const keep = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.act === 'exq';
-  $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer();
+  $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer() + `<div class="mbar"><a class="btn primary" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Open the app</a><a class="btn" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>`;
   anchorize();
+  S.anim = false;
   if (keep) { const i = $('input[data-act="exq"]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
 }
 
@@ -345,8 +381,10 @@ document.addEventListener('click', e => {
   if (g) { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; e.preventDefault(); go(g.dataset.go, g.dataset.arg); return; }
   const a = e.target.closest('[data-act]'); if (a) {
     const k = a.dataset.act;
-    if (k === 'hero') { S.hero = a.dataset.cc; S.picked = null; render(); }
-    else if (k === 'pick') { S.picked = {key: a.dataset.key, i: +a.dataset.i}; render(); }
+    if (k === 'hero') { S.hero = a.dataset.cc; S.picked = null; S.anim = true; render(); }
+    else if (k === 'snd') { S.snd = !S.snd; render(); }
+    else if (k === 'check') { const P = S.picked; if (!P || P.key !== a.dataset.key) return; P.done = true; const smp = D[S.page === 'country' ? S.arg : S.hero].sample, ok = P.i === smp.a; render(); if (ok) { SFX.ok(); const g = document.querySelector('.opt.good'); if (g) { const r = g.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + r.height / 2); } } else SFX.no(); }
+    else if (k === 'pick') { if (S.picked && S.picked.done) return; S.picked = {key: a.dataset.key, i: +a.dataset.i}; SFX.pick(); render(); }
     else if (k === 'ffilter') { S.ffilter = a.dataset.v; render(); }
     else if (k === 'gfilter') { S.gfilter = a.dataset.v; render(); }
     else if (k === 'explore') { S.ex = {cc: a.dataset.cc, ex: +a.dataset.ei, sub: +a.dataset.si, q: ''}; go('syllabus'); }
