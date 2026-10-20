@@ -19,6 +19,7 @@
     markscheme: { i: '✅', n: () => L('Mark my answer', 'Corrige mi respuesta'), ph: () => L('Paste the question, your answer and the mark scheme', 'Pega la pregunta y tu respuesta'), st: () => [], long: 1 },
     qgen: { i: '📄', n: () => L('Make questions', 'Crear preguntas'), ph: () => L('Paste your notes and Ace writes practice questions', 'Pega tus apuntes'), st: () => [], long: 1 }
   };
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const H = window.AceChat = { list: [], cur: null, q: '', busy: false, err: '', pane: 'list', menu: null, edit: null, draft: '', loaded: false };
 
   /* ---------- storage ---------- */
@@ -81,6 +82,7 @@
       if (!r.ok) throw { msg: j.error || L('Ace could not answer. Try again.', 'Ace no pudo responder. Inténtalo de nuevo.') };
       ch.turns.push({ role: 'assistant', content: j.reply, t: Date.now() }); H.cap = j.cap == null ? null : { used: j.used, cap: j.cap };
       try { window.AceUI && AceUI.fx && AceUI.fx('pop') } catch (e) { }
+      if (P.chatVoice) try { AceUI.say(String(j.reply).replace(/```[\s\S]*?```/g, ' ').replace(/[*_#`•]/g, '').replace(/−/g, ' minus ')) } catch (e) { }
     } catch (e) { H.err = (e && e.msg) || L('Ace could not answer. Try again.', 'Ace no pudo responder.'); H.retry = text; if (att) { H.att = att; ch.turns.pop(); H.retry = null; H.draft = text } }
     H.busy = false; ch.updated = new Date().toISOString(); saveLocal(); push(ch); paint(true);
   }
@@ -138,11 +140,11 @@ ${st.length ? `<div class="ch-starts">${st.map((s, i) => `<button data-h="start"
   }
   function convHTML(ch) {
     const c = C[S.c], m = MODES[ch.mode], subs = c.s || [];
-    return `<div class="ch-top"><button class="ch-back" data-h="list" aria-label="${L('All chats', 'Todos los chats')}">‹</button><div class="ch-tt2"><b>${esc(ch.title)}</b><small>${m.i} ${m.n()}${ch.s ? ' • ' + esc(ch.s) : ''}</small></div><button class="ch-new2" data-h="new" aria-label="${L('New chat', 'Chat nuevo')}">＋</button></div>
+    return `<div class="ch-top"><button class="ch-back" data-h="list" aria-label="${L('All chats', 'Todos los chats')}">‹</button><div class="ch-tt2"><b>${esc(ch.title)}</b><small>${m.i} ${m.n()}${ch.s ? ' • ' + esc(ch.s) : ''}</small></div><button class="ch-new2 ch-spk${P.chatVoice ? ' on' : ''}" data-h="spk" aria-pressed="${!!P.chatVoice}" title="${L('Read Ace’s replies aloud', 'Leer las respuestas en voz alta')}" aria-label="${L('Read Ace’s replies aloud', 'Leer las respuestas en voz alta')}">${P.chatVoice ? '🔊' : '🔈'}</button><button class="ch-new2" data-h="new" aria-label="${L('New chat', 'Chat nuevo')}">＋</button></div>
 ${ch.turns.length ? '' : `<div class="ch-cfg"><div class="ch-modes" role="radiogroup" aria-label="${L('Mode', 'Modo')}">${Object.keys(MODES).map(k => `<button role="radio" aria-checked="${ch.mode === k}" class="${ch.mode === k ? 'on' : ''}" data-h="mode" data-v="${k}">${MODES[k].i} ${MODES[k].n()}</button>`).join('')}</div>
 <select class="ch-sub" data-h-in="sub" aria-label="${L('Subject', 'Asignatura')}"><option value="">${L('All subjects', 'Todas las asignaturas')}</option>${subs.map(s => `<option ${ch.s === s ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select></div>`}
 <div class="ch-msgs" id="ch-msgs" aria-live="polite">${msgsHTML(ch)}</div>
-${H.att ? `<div class="ch-att"><img src="${H.att.thumb}" alt=""><span>${L('Photo ready. Add a question or just send it.', 'Foto lista. Añade una pregunta o envíala.')}</span><button data-h="unatt" aria-label="${L('Remove photo', 'Quitar foto')}">✕</button></div>` : ''}<div class="ch-comp"><label class="ch-cam" title="${L('Snap a question', 'Foto de una pregunta')}" aria-label="${L('Add a photo of a question', 'Añadir foto')}">📷<input type="file" accept="image/*" id="ch-file" hidden></label><textarea id="ch-in" data-h-in="draft" rows="1" maxlength="${m.long ? 5000 : 1500}" placeholder="${esc(m.ph())}" aria-label="${L('Message Ace', 'Escribe a Ace')}">${esc(H.draft)}</textarea><button class="ch-send" data-h="send" aria-label="${L('Send', 'Enviar')}" ${H.busy ? 'disabled' : ''}>➤</button></div>
+${H.att ? `<div class="ch-att"><img src="${H.att.thumb}" alt=""><span>${L('Photo ready. Add a question or just send it.', 'Foto lista. Añade una pregunta o envíala.')}</span><button data-h="unatt" aria-label="${L('Remove photo', 'Quitar foto')}">✕</button></div>` : ''}<div class="ch-comp"><label class="ch-cam" title="${L('Snap a question', 'Foto de una pregunta')}" aria-label="${L('Add a photo of a question', 'Añadir foto')}">📷<input type="file" accept="image/*" id="ch-file" hidden></label><textarea id="ch-in" data-h-in="draft" rows="1" maxlength="${m.long ? 5000 : 1500}" placeholder="${esc(m.ph())}" aria-label="${L('Message Ace', 'Escribe a Ace')}">${esc(H.draft)}</textarea>${SR ? `<button class="ch-mic${H.rec ? ' on' : ''}" data-h="mic" aria-pressed="${!!H.rec}" aria-label="${H.rec ? L('Stop listening', 'Dejar de escuchar') : L('Speak your question', 'Di tu pregunta')}">🎤</button>` : ''}<button class="ch-send" data-h="send" aria-label="${L('Send', 'Enviar')}" ${H.busy ? 'disabled' : ''}>➤</button></div>
 ${H.attBusy ? `<p class="ch-fine">${L('Preparing your photo…', 'Preparando la foto…')}</p>` : ''}<p class="ch-fine">${L('Ace can make mistakes. Check important answers with your notes or teacher.', 'Ace puede equivocarse. Comprueba las respuestas importantes.')}${H.cap ? ` • ${H.cap.used}/${H.cap.cap} ${L('today', 'hoy')}` : ''}</p>`;
   }
   function chatView() {
@@ -185,6 +187,16 @@ ${H.attBusy ? `<p class="ch-fine">${L('Preparing your photo…', 'Preparando la 
     else if (k === 'send') { const i = document.getElementById('ch-in'); send(i ? i.value : H.draft) }
     else if (k === 'retry' && ch) { const t = H.retry; H.retry = null; if (ch.turns.length && ch.turns[ch.turns.length - 1].role === 'user') ch.turns.pop(); send(t) }
     else if (k === 'again' && ch) { const last = ch.turns.length - 1; if (ch.turns[last] && ch.turns[last].role === 'assistant') { ch.turns.pop(); const u = ch.turns.pop(); if (u) send(u.content) } }
+    else if (k === 'spk') { P.chatVoice = !P.chatVoice; svP(); if (!P.chatVoice) try { speechSynthesis.cancel() } catch (z) { } toast(P.chatVoice ? L('Ace will read replies aloud', 'Ace leerá las respuestas') : L('Replies will not be read aloud', 'Respuestas sin voz')); render() }
+    else if (k === 'mic') {
+      if (H.rec) { try { H.rec.stop() } catch (z) { } return }
+      const r = new SR(), base = (document.getElementById('ch-in') || {}).value || '';
+      r.lang = es() ? 'es-ES' : (navigator.language && /^en/.test(navigator.language) ? navigator.language : 'en-GB'); r.interimResults = true; r.continuous = false;
+      r.onresult = ev => { let t = ''; for (let n = 0; n < ev.results.length; n++) t += ev.results[n][0].transcript; const i = document.getElementById('ch-in'); H.draft = (base ? base + ' ' : '') + t; if (i) { i.value = H.draft; grow() } };
+      r.onerror = ev => { H.err = ev.error === 'not-allowed' || ev.error === 'service-not-allowed' ? L('Allow the microphone to talk to Ace.', 'Permite el micrófono para hablar con Ace.') : ev.error === 'no-speech' ? '' : L('Ace could not hear that. Try again.', 'No se oyó bien. Inténtalo otra vez.') };
+      r.onend = () => { H.rec = null; render(); const i = document.getElementById('ch-in'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length) } };
+      H.rec = r; H.err = ''; try { r.start(); try { speechSynthesis.cancel() } catch (z) { } } catch (z) { H.rec = null } render();
+    }
     else if (k === 'snap') { const f = document.getElementById('ch-file'); if (f) f.click() }
     else if (k === 'unatt') { H.att = null; render() }
     else if (k === 'copy' && ch) { const t = (ch.turns[+v] || {}).content || ''; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(L('Copied', 'Copiado'))).catch(() => toast(L('Could not copy', 'No se pudo copiar'))) }

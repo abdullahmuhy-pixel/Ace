@@ -88,7 +88,7 @@ ${soon.length ? `<div class="sh">On the way for you</div><div class="lst">${soon
     const row = x => `<div class="li"><span class="e">${ic(x.name)}</span><span class="m"><b>${esc(x.name)}</b><small>${esc(x.track)}${x.faculties.length ? ' • ' + x.faculties.map(k => esc(A.facs[k] || k)).slice(0, 3).join(', ') : ''}</small></span><button class="bb cp-w" data-k="want" data-v="${esc(x.name)}">${st.want[x.name] ? '✓ Saved' : 'Notify me'}</button></div>`;
     return `<div class="pad"><div class="pg-h"><h1>Courses</h1><p>University courses, one at a time, written and checked by Ace</p></div>
 <div class="sg sg-all">${live.map((s, i) => selOK(c, s) ? stile(c, t, ex, s, i) : '').join('') || `<div class="emp2" style="grid-column:1/-1">${ACE_LOADED.UN ? 'No course selected.' : 'Loading courses…'}</div>`}</div>
-<p class="note">Each live course has narrated lessons, notes, practice for every topic, flashcards and a timed course final.</p>
+${typeof offBtn === 'function' ? offBtn() : ''}<p class="note">Each live course has narrated lessons, notes, practice for every topic, flashcards and a timed course final.</p>
 ${mine.length ? `<div class="sh">Coming next for ${esc(A.facs[f] || 'you')}</div><div class="lst">${mine.map(row).join('')}</div>` : ''}
 ${rest.length ? `<div class="sh">Also on the way</div><div class="lst">${rest.map(row).join('')}</div>` : ''}
 <p class="note">Tap "Notify me" and the course will be at the top of your list when it goes live.</p></div>`;

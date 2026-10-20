@@ -119,6 +119,8 @@ const STUDENT_TOOLS = [
   ['🏆','Weekly league','Earn XP for practice and climb the weekly table of learners in your country.'],
   ['<i class="aic"></i>','Chat with Ace','An AI tutor that knows your subject and exam. Start a new chat any time; old chats are saved so you can come back to them.'],
   ['🧠','Tutor mode and smart solver','Hints instead of answers when you want to work it out yourself, or every step shown when you need to see the method.'],
+  ['🎤','Talk to Ace','Ask your question out loud and have Ace read its answers back to you.'],
+  ['📥','Study offline','Save a subject to your phone and keep studying without data.'],
   ['📷','Snap a question','Take a photo of a homework or past-paper question and Ace explains it step by step.'],
   ['📝','Your notes into a study pack','Upload a PDF, lecture slides or a Word file, or take a photo of your notes, and get a summary, flashcards and practice questions.'],
   ['👯','Study friends','Add friends with a private code, keep a friend streak going together and send a friendly nudge.'],

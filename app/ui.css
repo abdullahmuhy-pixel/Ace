@@ -635,3 +635,21 @@ html[data-device="tablet"][data-chat] .app{padding-bottom:0}
 .fr-row .bb{flex:none;padding:7px 10px;font-size:13px}.fr-row .fr-x{margin-left:4px}
 .fr-st{display:block;color:var(--ink)!important;font-weight:700}
 button.fr-ban{cursor:pointer;margin-top:10px}
+.fc3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fc3 button{display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:800}.fc3 small{font:500 11.5px var(--fb);color:var(--text3)}
+.offb{display:flex;flex-direction:column;align-items:flex-start;gap:1px;width:100%;margin:0 0 12px;border:2px dashed var(--border);background:var(--surface);color:var(--ink);border-radius:16px;padding:10px 14px;font:800 14px var(--fd);text-align:left}
+.offb small{font:500 12px var(--fb);color:var(--text3)}.offb.ok{border-style:solid;border-color:var(--green)}
+/* mock exam question map (JAMB CBT style) */
+.cbt{margin-top:16px;border-top:2px dashed var(--border);padding-top:12px}
+.cbt-h{margin:0 0 8px;font:700 13px var(--fb);color:var(--text2)}
+.cbt-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px}
+.cbt-g button{height:36px;border:2px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:700 13px var(--fb)}
+.cbt-g button.done{background:color-mix(in srgb,var(--green) 18%,var(--surface));border-color:var(--green)}
+.cbt-g button.cur{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary)}
+.cbt-n{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.cbt-n .bb{flex:1;min-width:90px}.cbt-s{border-color:var(--red)!important;color:var(--red)}
+@media (hover:none){.cbt-k{display:none}}
+.ch-mic{flex:none;width:40px;height:40px;border:0;border-radius:12px;background:var(--tint);font-size:17px}
+.ch-mic.on{background:var(--red);color:#fff;animation:micp 1.2s infinite}
+@keyframes micp{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 45%,transparent)}50%{box-shadow:0 0 0 8px transparent}}
+@media (prefers-reduced-motion:reduce){.ch-mic.on{animation:none}}
+.ch-spk.on{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 12%,var(--surface))}
+@media (max-width:600px){.cbt-g{max-height:132px;overflow:auto;padding:2px}}
