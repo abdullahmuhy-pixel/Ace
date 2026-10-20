@@ -6,7 +6,7 @@
 <title>Ace Academy: Free Online Certificate Courses in IT, Finance, Health, Teaching and More</title>
 <meta name="description" content="Ace Academy offers online certificate courses for students and professionals: accounting, economics, banking, psychology, teaching, networking, health and more. Learn at your own pace and earn a verifiable certificate.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#3D35F5">
+<meta name="theme-color" content="#5B2A86">
 <meta property="og:type" content="website"><meta property="og:title" content="Ace Academy: online certificate courses"><meta property="og:description" content="Learn at your own pace and earn a verifiable certificate in finance, IT, health, teaching, humanities and more.">
 <link rel="icon" href="../app/icon.svg" type="image/svg+xml">
 <script>try{var th=JSON.parse(localStorage.getItem("ace-prefs")||"{}").theme;if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
@@ -105,15 +105,61 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
 .opt{border-width:2px!important;border-radius:16px!important;box-shadow:0 3px 0 var(--ledge)}
 .opt.sel{border-color:var(--pri)!important}
 @media print{body{background:#fff!important;background-image:none!important}.card,.cert,.certbox{box-shadow:none}}
+/* Ace Academy identity (portal): dot-grid paper, plum ink and a brass seal colour, so it reads as the certificate portal
+   next to the school app (indigo graph paper) and Ace Campus (green ruled pad). */
+:root{--bg:#F6F4FA;--grid:#DCD5EA;--card:#FFFFFF;--ink:#221433;--text:#221433;--mut:#5C4F70;--muted:#5C4F70;--line:#E2DCEC;--border:#E2DCEC;--pri:#5B2A86;--pri2:#7A43AD;--primary:#5B2A86;--priInk:#FFFFFF;--soft:#EFE8F7;--tint:#EFE8F7;--gold:#C98E1C;--ok:#1F7A4F;--btn-ledge:#3E1A5E;--ledge:#DCD3E8}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#150F1F;--grid:#2A2139;--card:#1E1630;--ink:#F3EEFA;--text:#F3EEFA;--mut:#C2B6D6;--muted:#C2B6D6;--line:#372B4C;--border:#372B4C;--pri:#B48AE6;--pri2:#CBA8F2;--primary:#B48AE6;--priInk:#1A0D29;--soft:#2B2140;--tint:#2B2140;--gold:#E6B54F;--ok:#5FD39A;--btn-ledge:#6E46A0;--ledge:#0B0712;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#150F1F;--grid:#2A2139;--card:#1E1630;--ink:#F3EEFA;--text:#F3EEFA;--mut:#C2B6D6;--muted:#C2B6D6;--line:#372B4C;--border:#372B4C;--pri:#B48AE6;--pri2:#CBA8F2;--primary:#B48AE6;--priInk:#1A0D29;--soft:#2B2140;--tint:#2B2140;--gold:#E6B54F;--ok:#5FD39A;--btn-ledge:#6E46A0;--ledge:#0B0712;color-scheme:dark}
+body{background-image:radial-gradient(var(--grid) 1.2px,transparent 1.3px)!important;background-size:22px 22px!important}
+.logo b{color:var(--pri)}.logo i{background:var(--gold)!important;border-radius:50%!important;box-shadow:inset 0 0 0 4px color-mix(in srgb,var(--gold) 60%,#fff)!important}
+nav.m a.on{background:var(--soft);color:var(--pri)}
+.tabbar{display:none}
+@media (max-width:860px){.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:2px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+ .tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font:600 11px/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;color:var(--mut);text-decoration:none;padding:6px 2px;border-radius:12px;min-width:0}
+ .tabbar a span{font-size:19px}.tabbar a.on{color:var(--pri);background:var(--soft)}
+ body{padding-bottom:76px}footer{padding-bottom:90px}}
+.dash{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start;padding:34px 0 8px}
+@media (max-width:860px){.dash{grid-template-columns:1fr;padding-top:22px}}
+.dash h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-.025em;margin:10px 0 14px;text-wrap:balance}
+.cont{display:flex;align-items:center;gap:14px;background:var(--pri);color:var(--priInk);text-decoration:none;border-radius:20px;padding:16px 18px;box-shadow:0 5px 0 var(--btn-ledge);max-width:560px}
+.cont .ce{font-size:30px;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
+.cont small{display:block;opacity:.8;font-weight:700}.cont b{display:block;font-size:19px;line-height:1.2}.cont em{font-style:normal;font-size:13px;opacity:.85}
+.cont .go{margin-left:auto;width:42px;height:42px;border-radius:50%;background:var(--gold);color:#201400;display:grid;place-items:center;flex:none}
+.goals{display:flex;flex-wrap:wrap;gap:8px}.goal{display:flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:700;box-shadow:0 3px 0 var(--ledge)}
+.goal span{font-size:20px}.goal:hover{border-color:var(--pri)}
+.dash-r{display:grid;gap:10px}.stat2{display:flex;align-items:center;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:0 3px 0 var(--ledge)}
+.stat2 b{display:block;font:800 20px/1.1 "Bricolage Grotesque",system-ui,sans-serif;font-variant-numeric:tabular-nums}.stat2 small{color:var(--mut)}
+.ring{width:52px;height:52px;flex:none;transform:rotate(-90deg)}.ring .rb{fill:none;stroke:var(--soft);stroke-width:8}.ring .rf{fill:none;stroke:var(--gold);stroke-width:8;stroke-linecap:round}
+.flame{width:52px;height:52px;display:grid;place-items:center;font-size:26px;border-radius:50%;background:var(--soft);filter:grayscale(1);opacity:.6;flex:none}.flame.on{filter:none;opacity:1}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}.pgrid.one{grid-template-columns:minmax(0,560px)}
+.pcard{display:flex;flex-direction:column;gap:6px;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;text-decoration:none;color:inherit;box-shadow:0 3px 0 var(--ledge);min-width:0}
+.pcard:hover{border-color:var(--pri)}.pcard.mine{border-color:var(--gold)}
+.pcard .pe{font-size:30px}.pcard b{font:800 19px/1.2 "Bricolage Grotesque",system-ui,sans-serif}.pcard small{color:var(--mut);font-size:14px}.pcard .pm{font-size:12.5px;font-weight:700;color:var(--pri);margin-top:auto}
+.pathhead{display:flex;gap:18px;align-items:flex-start;margin:6px 0 18px}.pathhead .pe{font-size:44px;width:76px;height:76px;border-radius:22px;background:var(--soft);display:grid;place-items:center;flex:none}
+.pathhead h1{font-size:clamp(28px,4.4vw,42px);margin:0 0 6px;letter-spacing:-.02em}
+ol.steps{list-style:none;padding:0;margin:0;display:grid;gap:10px;position:relative}
+ol.steps li{display:flex;align-items:center;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 14px}
+ol.steps li a:not(.btn){flex:1;min-width:0;color:inherit;text-decoration:none}ol.steps li small{display:block;color:var(--mut)}
+ol.steps .sn{width:36px;height:36px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:800;flex:none}
+ol.steps li.done .sn{background:var(--ok);color:#fff}ol.steps li.cur{border-color:var(--pri)}ol.steps li.cur .sn{background:var(--pri);color:var(--priInk)}
+.chk{border:2px solid var(--line);border-radius:18px;padding:14px;margin:20px 0;background:var(--card);box-shadow:0 3px 0 var(--ledge)}
+.chk small{display:block;font-weight:800;color:var(--pri);letter-spacing:.02em;margin-bottom:4px}.chk>b{display:block;font-size:17px;margin-bottom:10px}
+.co{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:11px 13px;margin:7px 0;font-size:16px}
+.co:hover:not([disabled]){border-color:var(--pri)}.co[disabled]{cursor:default}
+.co.r{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.co.w{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card))}.co.d{opacity:.55}
+.chk.ck-ok{border-color:var(--ok)}.chk.ck-no{border-color:var(--bad)}.ce2{margin:8px 0 0!important;font-size:15.5px!important}
+.note2{color:var(--mut);font-size:14px;margin:6px 0 0}
+
 </style>
 </head>
 <body>
 <header class="top hide-print"><div class="wrap bar">
-<a class="logo" href="#/"><i></i>Ace <small>Academy</small></a>
-<nav class="m"><a href="#/" class="hide">Courses</a><a href="#/certificates" class="hide">Certificates</a><a href="../" class="hide" id="siteLink">Ace Education</a><a href="#/me" id="meLink">My learning</a><button id="authBtn" type="button">Sign in</button></nav>
+<a class="logo" href="#/"><i></i>Ace <b>Academy</b></a>
+<nav class="m" aria-label="Academy"><a href="#/" data-nav="home" class="hide">Home</a><a href="#/paths" data-nav="paths" class="hide">Paths</a><a href="#/explore" data-nav="explore" class="hide">Explore</a><a href="#/me" data-nav="me" class="hide" id="meLink">My learning</a><a href="#/certificates" data-nav="certificates" class="hide">Certificates</a><button id="authBtn" type="button">Sign in</button></nav>
 </div></header>
+<nav class="tabbar hide-print" aria-label="Academy"><a href="#/" data-nav="home"><span>🏠</span>Home</a><a href="#/paths" data-nav="paths"><span>🧭</span>Paths</a><a href="#/explore" data-nav="explore"><span>🔎</span>Explore</a><a href="#/me" data-nav="me"><span>📈</span>My learning</a><a href="#/certificates" data-nav="certificates"><span>🎓</span>Certificates</a></nav>
 <main id="app" class="wrap" aria-live="polite"><p style="padding:40px 0">Loading…</p></main>
-<footer class="hide-print"><div class="wrap"><a href="#/">Courses</a><a href="#/certificates">Certificates</a><a href="../verify/">Verify a certificate</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><p>Ace Academy is part of Ace Education. Certificates show course completion and are not accredited qualifications. Courses are for learning and do not replace professional advice, training or licensing.</p></div></footer>
+<footer class="hide-print"><div class="wrap"><a href="#/explore">Courses</a><a href="#/certificates">Certificates</a><a href="../verify/">Verify a certificate</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><p>Ace Academy is part of Ace Education. Certificates show course completion and are not accredited qualifications. Courses are for learning and do not replace professional advice, training or licensing.</p></div></footer>
 <script src="../config.js"></script>
 <script>/* QR code encoder (c) 2009 Kazuhiko Arase, MIT licence, via qrcode-terminal */
 (function(){var __m={},__c={};function __r(n){n=n.replace('./','');if(__c[n])return __c[n].exports;var m=__c[n]={exports:{}};__m[n](m,m.exports,__r);return m.exports}
@@ -1035,7 +1081,7 @@ var FIELDS=[
 ];
 var FBY={};FIELDS.forEach(function(f){FBY[f.id]=f});
 var LEVEL={all:'All levels',secondary:'Secondary',university:'University'};
-var S={idx:null,course:null,sb:null,user:null,prog:{},certs:[],q:'',field:'all',level:'all',quiz:{ans:{},res:null,busy:false},err:'',tpl:0,busy:false};
+var S={chk:{},idx:null,course:null,sb:null,user:null,prog:{},certs:[],q:'',field:'all',level:'all',quiz:{ans:{},res:null,busy:false},err:'',tpl:0,busy:false};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 function jget(u){return fetch(u).then(function(r){if(!r.ok)throw new Error('Could not load '+u);return r.json()})}
@@ -1140,6 +1186,52 @@ function certData(slug){
 }
 function sampleData(){var base=location.origin+location.pathname.replace(/academy\/?(index\.html)?$/,'')+'verify/';return{name:'Your Name',course:'Accounting Fundamentals',score:92,hours:4,date:fmtDate(new Date()),code:'SAMPLE000012',verify:base,verifyShort:base.replace(/^https?:\/\//,'').slice(0,60),signer:CFG.certSigner||null}}
 
+/* ---------------- learning paths and daily activity ---------------- */
+var PATHS=[
+{id:'code',e:'💻',n:'Start coding',d:'From your first line of Python to building web pages and storing data.',c:['intro-python','python-next-steps','html-css-basics','javascript-basics','git-github-basics','sql-basics']},
+{id:'data',e:'📊',n:'Data and AI',d:'Read data, work in spreadsheets, think in statistics and use AI well.',c:['data-literacy','spreadsheet-skills','statistics-basics','ai-literacy','sql-basics']},
+{id:'think',e:'🧠',n:'Think sharper',d:'Reason clearly, weigh evidence and understand how people and economies work.',c:['critical-thinking','research-skills','philosophy-intro','psychology-intro','economics-basics']},
+{id:'biz',e:'💼',n:'Start a business',d:'Turn an idea into a plan, keep the books, find customers and keep them.',c:['entrepreneurship-basics','business-plan-basics','bookkeeping-basics','digital-marketing-basics','customer-service-skills','freelancing-basics']},
+{id:'money',e:'🏦',n:'Money skills',d:'Budget, save, bank safely and read the numbers behind a business.',c:['personal-finance','banking-basics','intro-accounting','bookkeeping-basics']},
+{id:'job',e:'🚀',n:'Get hired',d:'A strong CV, a confident interview and the habits employers look for.',c:['cv-interview','public-speaking','teamwork-leadership','project-management-basics','time-management','digital-literacy']},
+{id:'study',e:'📚',n:'Study smarter',d:'Learn faster, revise better and write like a university student.',c:['study-skills','time-management','exam-technique','research-skills','academic-writing','english-grammar-essentials']},
+{id:'safe',e:'🛡️',n:'Safe and smart online',d:'Use computers, networks and AI confidently, and keep your accounts safe.',c:['digital-literacy','online-safety-cybersecurity','computer-networks-basics','ai-literacy']}
+];
+var PBY={};PATHS.forEach(function(p){PBY[p.id]=p});
+var START=['ai-literacy','personal-finance','intro-python','critical-thinking','cv-interview','spreadsheet-skills'];
+function ld(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function today(){return ld(new Date())}
+function act(){try{return Object.assign({days:[],week:{},xp:0,last:null,goal:''},JSON.parse(ls('acad-act')||'{}'))}catch(e){return{days:[],week:{},xp:0,last:null,goal:''}}}
+function saveAct(a){ls('acad-act',JSON.stringify(a))}
+function wkey(){var d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return ld(d)}
+function touch(xp,slug,lid){var a=act(),t=today();if(a.days.indexOf(t)<0)a.days.push(t);a.days=a.days.slice(-60);a.xp+=xp||0;if(lid){var w=wkey();a.week={};a.week[w]=(act().week[w]||0)+1}if(slug)a.last={slug:slug,lid:lid||null,at:t};saveAct(a)}
+function streak(){var a=act(),n=0,d=new Date();if(a.days.indexOf(today())<0)d.setDate(d.getDate()-1);for(;;){var k=ld(d);if(a.days.indexOf(k)<0)break;n++;d.setDate(d.getDate()-1)}return n}
+function weekDone(){return act().week[wkey()]||0}
+function meta(slug){return (S.idx||[]).find(function(c){return c.slug===slug})}
+function pathProg(p){var t=0,d=0;p.c.forEach(function(sl){var m=meta(sl);if(!m)return;t+=+m.lessons||0;d+=Math.min(done(sl).length,+m.lessons||0)});return{t:t,d:d,pct:t?Math.round(100*d/t):0,certs:p.c.filter(function(sl){return S.certs.find(function(k){return k.course===sl})}).length}}
+function ring(p,label){var r=26,c=2*Math.PI*r;return '<svg class="ring" viewBox="0 0 64 64" aria-label="'+esc(label)+'"><circle cx="32" cy="32" r="'+r+'" class="rb"/><circle cx="32" cy="32" r="'+r+'" class="rf" stroke-dasharray="'+(c*Math.min(1,p)).toFixed(1)+' '+c.toFixed(1)+'"/></svg>'}
+function pathCard(p){var g=pathProg(p),mine=act().goal===p.id;return '<a class="pcard'+(mine?' mine':'')+'" href="#/path/'+p.id+'"><span class="pe">'+p.e+'</span><b>'+esc(p.n)+'</b><small>'+esc(p.d)+'</small><span class="pm">'+p.c.length+' courses'+(g.d?' • '+g.pct+'% done':'')+(mine?' • your goal':'')+'</span><span class="bar2"><i style="width:'+g.pct+'%"></i></span></a>'}
+function viewDash(){
+  title('Ace Academy: learn practical skills and earn certificates');
+  var a=act(),st=streak(),wk=weekDone(),goal=3,name=(S.user&&S.user.user_metadata&&(S.user.user_metadata.full_name||S.user.user_metadata.name)||'').split(' ')[0];
+  var last=a.last&&meta(a.last.slug),h='<section class="dash"><div class="dash-l"><div class="eyebrow">Ace Academy</div><h1>'+(name?'Welcome back, '+esc(name)+'.':(a.days.length?'Welcome back.':'Learn a skill you can use this week.'))+'</h1>';
+  if(last){var dn=done(a.last.slug).length;h+='<a class="cont" href="#/c/'+esc(a.last.slug)+'"><span class="ce">'+(FBY[last.field]||FBY.life).e+'</span><span><small>Continue</small><b>'+esc(last.title)+'</b><em>'+Math.min(dn,last.lessons)+' of '+last.lessons+' lessons</em></span><span class="go">▶</span></a>'}
+  else h+='<p class="lede">Short courses with interactive lessons, quick checks as you read, and a certificate anyone can verify. Pick what you want to get better at:</p><div class="goals">'+PATHS.map(function(p){return '<button class="goal" data-act="goal" data-v="'+p.id+'"><span>'+p.e+'</span>'+esc(p.n)+'</button>'}).join('')+'</div>';
+  h+='</div><div class="dash-r"><div class="stat2">'+ring(wk/goal,'Weekly goal')+'<div><b>'+wk+' / '+goal+'</b><small>lessons this week</small></div></div><div class="stat2"><span class="flame'+(st?' on':'')+'">🔥</span><div><b>'+st+' day'+(st===1?'':'s')+'</b><small>learning streak</small></div></div><div class="stat2"><span class="flame on">⭐</span><div><b>'+a.xp+' XP</b><small>from lessons and checks</small></div></div></div></section>';
+  var g=a.goal&&PBY[a.goal];
+  h+='<h2 class="sec">'+(g?'Your path':'Learning paths')+'</h2>'+(g?'<div class="pgrid one">'+pathCard(g)+'</div><h2 class="sec">More paths</h2>':'<p class="lede">Each path is a set of courses in a sensible order. Every course ends with its own certificate.</p>');
+  h+='<div class="pgrid">'+PATHS.filter(function(p){return p!==g}).map(pathCard).join('')+'</div>';
+  h+='<h2 class="sec">Good places to start</h2><div class="grid">'+START.map(meta).filter(Boolean).map(courseCard).join('')+'</div>';
+  h+='<p style="margin:22px 0"><a class="btn" href="#/explore">Explore all '+(S.idx||[]).length+' courses</a> <a class="btn o" href="#/certificates">See the certificates</a></p>';
+  return h;
+}
+function viewPaths(){title('Learning paths | Ace Academy');return '<section class="hero" style="padding-bottom:14px"><div class="eyebrow">Learning paths</div><h1>Pick a direction. We will set the order.</h1><p>Paths group courses so each one builds on the last. Your progress and certificates count in every path a course belongs to.</p></section><div class="pgrid">'+PATHS.map(pathCard).join('')+'</div>'}
+function viewPath(id){var p=PBY[id];if(!p)return viewPaths();var g=pathProg(p),mine=act().goal===p.id;title(p.n+' | Ace Academy path');
+  var h='<div class="crumbs"><a href="#/paths">Paths</a> / '+esc(p.n)+'</div><section class="pathhead"><span class="pe">'+p.e+'</span><div><h1>'+esc(p.n)+'</h1><p class="lede" style="margin:0">'+esc(p.d)+'</p><div class="meta" style="margin-top:10px"><span><b>'+p.c.length+'</b> courses</span><span><b>'+g.pct+'%</b> of lessons done</span><span><b>'+g.certs+'</b> certificates earned</span></div><div class="row"><button class="btn'+(mine?' o':'')+'" data-act="goal" data-v="'+p.id+'">'+(mine?'✓ This is my goal':'Make this my goal')+'</button></div></div></section><ol class="steps">';
+  p.c.forEach(function(sl,i){var m=meta(sl);if(!m)return;var dn=Math.min(done(sl).length,m.lessons),cert=S.certs.find(function(k){return k.course===sl}),cur=!cert&&dn<m.lessons&&p.c.slice(0,i).every(function(x){var mm=meta(x);return !mm||done(x).length>=mm.lessons});
+    h+='<li class="'+(cert||dn>=m.lessons?'done':cur?'cur':'')+'"><span class="sn">'+(cert?'🎓':dn>=m.lessons?'✓':i+1)+'</span><a href="#/c/'+esc(sl)+'"><b>'+esc(m.title)+'</b><small>'+m.lessons+' lessons • '+m.hours+' h'+(dn&&dn<m.lessons?' • '+dn+' done':'')+(cert?' • certificate earned':'')+'</small></a>'+(cur?'<a class="btn s" href="#/c/'+esc(sl)+'">'+(dn?'Continue':'Start')+'</a>':'')+'</li>'});
+  return h+'</ol>'}
+
 /* ---------------- views ---------------- */
 function fieldCounts(){var m={};(S.idx||[]).forEach(function(c){m[c.field]=(m[c.field]||0)+1});return m}
 function courseCard(c){
@@ -1154,10 +1246,10 @@ function filtered(){
     if(q&&(c.title+' '+c.summary+' '+(FBY[c.field]||{}).n+' '+c.audience).toLowerCase().indexOf(q)<0)return false;
     return true});
 }
-function viewHome(){
+function viewExplore(){
   var cnt=fieldCounts(),n=(S.idx||[]).length,hrs=(S.idx||[]).reduce(function(a,c){return a+(+c.hours||0)},0),qs=(S.idx||[]).reduce(function(a,c){return a+(+c.questions||0)},0),planned=FIELDS.reduce(function(a,f){return a+f.rm.length},0);
-  title('Ace Academy: Online Certificate Courses in IT, Finance, Health, Teaching and More');
-  var h='<section class="hero"><div class="eyebrow">Ace Academy · Certificate courses</div><h1>Learn a skill. Earn a certificate anyone can verify.</h1><p>Short professional courses in finance, IT, health, teaching, psychology, humanities and more. Read the lessons, pass the quiz, and get a certificate with its own verification code.</p>'+
+  title('Explore courses | Ace Academy');
+  var h='<section class="hero"><div class="eyebrow">Explore</div><h1>Every course, in every field.</h1><p>Short professional courses in finance, IT, health, teaching, psychology, humanities and more. Each has interactive lessons, a final quiz and a certificate with its own verification code.</p>'+
   '<form class="search" id="sf" role="search"><input id="q" type="search" placeholder="Search courses, e.g. accounting, networking, psychology" value="'+esc(S.q)+'" aria-label="Search courses"><button class="btn" type="submit">Search</button></form>'+
   '<div class="stats"><div><b>'+n+'</b>courses ready</div><div><b>'+FIELDS.length+'</b>fields</div><div><b>'+Math.round(hrs)+'</b>study hours</div><div><b>'+qs+'</b>quiz questions</div></div></section>';
   h+='<div class="chips" role="tablist"><button class="chip '+(S.field==='all'?'on':'')+'" data-act="field" data-v="all">All <small>'+n+'</small></button>'+FIELDS.map(function(f){return '<button class="chip '+(S.field===f.id?'on':'')+'" data-act="field" data-v="'+f.id+'">'+f.e+' '+esc(f.n)+' <small>'+(cnt[f.id]||0)+'</small></button>'}).join('')+'</div>';
@@ -1171,13 +1263,13 @@ function viewHome(){
 }
 function viewCourse(slug){
   var meta=(S.idx||[]).find(function(c){return c.slug===slug});
-  if(!meta)return '<div class="crumbs"><a href="#/">Courses</a></div><div class="pane"><h2>Course not found</h2><p>It may have moved. <a href="#/">See all courses</a>.</p></div>';
+  if(!meta)return '<div class="crumbs"><a href="#/explore">Courses</a></div><div class="pane"><h2>Course not found</h2><p>It may have moved. <a href="#/">See all courses</a>.</p></div>';
   var c=S.course&&S.course.slug===slug?S.course:null;
-  if(!c)return '<div class="crumbs"><a href="#/">Courses</a> / '+esc(meta.title)+'</div><p>Loading course…</p>';
+  if(!c)return '<div class="crumbs"><a href="#/explore">Courses</a> / '+esc(meta.title)+'</div><p>Loading course…</p>';
   var f=FBY[meta.field]||FBY.life,dn=done(slug),all=dn.length>=c.lessons.length,pct=Math.round(100*Math.min(dn.length,c.lessons.length)/c.lessons.length),cert=S.certs.find(function(k){return k.course===slug});
   title(c.title+' | Ace Academy certificate course');
   var first=c.lessons.find(function(l){return dn.indexOf(l.id)<0})||c.lessons[0];
-  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/" data-act="field" data-v="'+f.id+'">'+esc(f.n)+'</a></div>';
+  var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/" data-act="field" data-v="'+f.id+'">'+esc(f.n)+'</a></div>';
   h+='<div class="two"><div><div class="pane"><span class="pill">'+f.e+' '+esc(f.n)+'</span><h1 style="font-size:clamp(26px,4.4vw,38px);letter-spacing:-.02em;margin:10px 0 8px;text-wrap:balance">'+esc(c.title)+'</h1><p style="color:var(--mut);font-size:17.5px;margin:0 0 12px">'+esc(c.summary)+'</p><div class="meta"><span><b>'+c.lessons.length+'</b> lessons</span><span><b>'+esc(c.hours)+'</b> hours</span><span><b>'+c.quiz.length+'</b> quiz questions</span><span>Pass mark <b>'+c.pass_mark+'%</b></span><span>'+esc(LEVEL[c.level]||'')+'</span></div><p style="margin:12px 0 0;font-size:14.5px;color:var(--mut)"><b style="color:var(--ink)">Who it is for:</b> '+esc(c.audience)+'</p></div>';
   h+='<h2 class="sec">What you will study</h2><ul class="syl">'+c.lessons.map(function(l,i){var d=dn.indexOf(l.id)>=0;return '<li class="'+(d?'done':'')+'"><a href="#/c/'+esc(slug)+'/l/'+esc(l.id)+'" style="display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none;width:100%"><span class="n">'+(d?'✓':(i+1))+'</span><span><b>'+esc(l.title)+'</b><small>'+l.minutes+' min</small></span></a></li>'}).join('')+'</ul></div>';
   h+='<aside class="pane" style="position:sticky;top:76px"><b>Your progress</b><div class="bar2"><i style="width:'+pct+'%"></i></div><small style="color:var(--mut)">'+Math.min(dn.length,c.lessons.length)+' of '+c.lessons.length+' lessons complete</small>';
@@ -1193,21 +1285,24 @@ function block(b){
   if(b.p!=null)return '<p>'+esc(b.p)+'</p>';if(b.h!=null)return '<h3>'+esc(b.h)+'</h3>';
   if(b.list)return '<ul>'+b.list.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>';
   if(b.steps)return '<ol>'+b.steps.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>';
-  if(b.tip!=null)return '<div class="tip">💡 '+esc(b.tip)+'</div>';if(b.code!=null)return '<pre><code>'+esc(b.code)+'</code></pre>';return '';
+  if(b.tip!=null)return '<div class="tip">💡 '+esc(b.tip)+'</div>';if(b.code!=null)return '<pre><code>'+esc(b.code)+'</code></pre>';
+  if(b.check){var c=b.check,k=b._k,ck=S.chk[k]||{},ans=ck.sel!=null;return '<div class="chk'+(ans?(ck.sel===c.a?' ck-ok':' ck-no'):'')+'"><small>Quick check</small><b>'+esc(c.q)+'</b>'+c.o.map(function(o,i){var cl=ans?(i===c.a?'r':i===ck.sel?'w':'d'):'';return '<button class="co '+cl+'" data-act="chk" data-k="'+esc(k)+'" data-v="'+i+'" data-a="'+c.a+'" '+(ans?'disabled':'')+'>'+esc(o)+'</button>'}).join('')+(ans?'<p class="ce2">'+(ck.sel===c.a?'✓ Right. ':'✗ Not quite. ')+esc(c.e)+'</p>':'')+'</div>'}
+  return '';
 }
 function viewLesson(slug,lid){
   var c=S.course;if(!c||c.slug!==slug)return '<p>Loading…</p>';
   var i=c.lessons.findIndex(function(l){return l.id===lid}),l=c.lessons[i];if(!l)return '<div class="pane"><a href="#/c/'+esc(slug)+'">Back to the course</a></div>';
-  var d=done(slug).indexOf(lid)>=0,nx=c.lessons[i+1],pv=c.lessons[i-1];
+  var d=done(slug).indexOf(lid)>=0,nx=c.lessons[i+1],pv=c.lessons[i-1],nck=l.body.filter(function(b){return b.check}).length,left=l.body.filter(function(b,bi){return b.check&&(S.chk[slug+'|'+lid+'|'+bi]||{}).sel==null}).length;
+  var al=act();if(!al.last||al.last.slug!==slug||al.last.lid!==lid){al.last={slug:slug,lid:lid,at:today()};saveAct(al)}
   title(l.title+' | '+c.title);
-  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a></div><article class="lesson"><small style="color:var(--mut)">Lesson '+(i+1)+' of '+c.lessons.length+' · '+l.minutes+' min</small><div class="bar2"><i style="width:'+Math.round(100*(i+1)/c.lessons.length)+'%"></i></div><h1>'+esc(l.title)+'</h1>'+l.body.map(block).join('')+(S.err?'<div class="err">'+esc(S.err)+'</div>':'');
-  h+='<div class="row">'+(pv?'<a class="btn o" href="#/c/'+esc(slug)+'/l/'+esc(pv.id)+'">← Previous</a>':'')+'<button class="btn" data-act="complete" data-v="'+esc(lid)+'" '+(S.busy?'disabled':'')+'>'+(d?'Completed. ':'Mark complete and ')+(nx?'continue →':'go to quiz →')+'</button></div></article>';
+  var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a></div><article class="lesson"><small style="color:var(--mut)">Lesson '+(i+1)+' of '+c.lessons.length+' · '+l.minutes+' min</small><div class="bar2"><i style="width:'+Math.round(100*(i+1)/c.lessons.length)+'%"></i></div><h1>'+esc(l.title)+'</h1>'+l.body.map(function(b,bi){if(b.check)b._k=slug+'|'+lid+'|'+bi;return block(b)}).join('')+(S.err?'<div class="err">'+esc(S.err)+'</div>':'');
+  h+='<div class="row">'+(pv?'<a class="btn o" href="#/c/'+esc(slug)+'/l/'+esc(pv.id)+'">← Previous</a>':'')+(left&&!d?'<p class="note2">Answer the '+(left===1?'quick check':left+' quick checks')+' above to finish this lesson.</p>':'')+'<button class="btn" data-act="complete" data-v="'+esc(lid)+'" '+(S.busy||(left&&!d)?'disabled':'')+'>'+(d?'Completed. ':'Mark complete and ')+(nx?'continue →':'go to quiz →')+'</button></div></article>';
   return h;
 }
 function viewQuiz(slug){
   var c=S.course;if(!c||c.slug!==slug)return '<p>Loading…</p>';
   title('Final quiz | '+c.title);var q=S.quiz;
-  var h='<div class="crumbs"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a> / Quiz</div><div class="lesson">';
+  var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a> / Quiz</div><div class="lesson">';
   if(!signedIn())return h+'<div class="pane"><h2 style="margin-top:0">Sign in to take the quiz</h2><p>Quizzes are marked securely on our server so certificates are genuine. Reading the lessons is free without an account, but you need a free account for the quiz and the certificate.</p><a class="btn" href="../login/?next=academy">Create account or sign in</a></div></div>';
   if(q.res){
     var r=q.res;h+='<div class="pane" style="text-align:center"><div style="font-size:48px">'+(r.passed?'🎓':'📚')+'</div><h2 style="margin:6px 0">'+r.score+'% ('+r.correct+' of '+r.total+')</h2><p>'+(r.passed?'You passed. Your certificate is ready.':'The pass mark is '+r.pass_mark+'%. Review the lessons and try again.')+'</p>'+(r.passed?'<a class="btn" href="#/cert/'+esc(slug)+'">Choose a design and download</a>':'<a class="btn" href="#/c/'+esc(slug)+'">Back to the lessons</a>')+'</div><h3 style="margin-top:24px">Review</h3>';
@@ -1225,9 +1320,9 @@ function tplPicker(slug,d){
 }
 function viewCert(slug){
   var d=certData(slug),meta=(S.idx||[]).find(function(c){return c.slug===slug});
-  if(!d){return '<div class="crumbs"><a href="#/">Courses</a></div><div class="pane"><h2 style="margin-top:0">No certificate yet</h2><p>Complete the course and pass the final quiz to earn this certificate.</p><a class="btn" href="#/c/'+esc(slug)+'">Go to the course</a></div>'}
+  if(!d){return '<div class="crumbs"><a href="#/explore">Courses</a></div><div class="pane"><h2 style="margin-top:0">No certificate yet</h2><p>Complete the course and pass the final quiz to earn this certificate.</p><a class="btn" href="#/c/'+esc(slug)+'">Go to the course</a></div>'}
   title('Your certificate | '+d.course);
-  var h='<div class="crumbs hide-print"><a href="#/">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(d.course)+'</a> / Certificate</div><h1 class="hide-print" style="font-size:30px;letter-spacing:-.02em;margin:6px 0">Congratulations, '+esc(d.name.split(' ')[0])+'.</h1><p class="lede hide-print">Choose a design, then download or print your certificate. The name on it comes from your Ace profile.</p>';
+  var h='<div class="crumbs hide-print"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(d.course)+'</a> / Certificate</div><h1 class="hide-print" style="font-size:30px;letter-spacing:-.02em;margin:6px 0">Congratulations, '+esc(d.name.split(' ')[0])+'.</h1><p class="lede hide-print">Choose a design, then download or print your certificate. The name on it comes from your Ace profile.</p>';
   h+=tplPicker(slug,d)+'<div class="certbox" id="certbox">'+certSVG(S.tpl,d)+'</div>';
   var ln='https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name='+encodeURIComponent(d.course)+'&organizationName='+encodeURIComponent('Ace Academy')+'&certId='+encodeURIComponent(d.code)+'&certUrl='+encodeURIComponent(d.verify);
   h+='<div class="row hide-print"><button class="btn" data-act="png">Download image (PNG)</button><button class="btn o" data-act="print">Print or save as PDF</button><button class="btn o" data-act="copy" data-v="'+esc(d.verify)+'">Copy verification link</button><a class="btn o" href="'+esc(ln)+'" target="_blank" rel="noopener">Add to LinkedIn</a></div><p class="hide-print" style="color:var(--mut);font-size:14px">Anyone can check this certificate at <a href="'+esc(d.verify)+'" target="_blank" rel="noopener">the verification page</a> using code <b>'+esc(d.code)+'</b>.</p>';
@@ -1267,11 +1362,15 @@ function render(){
   else if(p[0]==='cert'&&p[1])out=viewCert(p[1]);
   else if(p[0]==='certificates')out=viewCertificates();
   else if(p[0]==='me')out=viewMe();
-  else out=viewHome();
+  else if(p[0]==='explore')out=viewExplore();
+  else if(p[0]==='paths')out=viewPaths();
+  else if(p[0]==='path'&&p[1])out=viewPath(p[1]);
+  else out=viewDash();
+  document.querySelectorAll('[data-nav]').forEach(function(a){var k=a.dataset.nav,on=k===(p[0]==='c'||p[0]==='explore'?'explore':p[0]==='path'?'paths':p[0]==='cert'?'certificates':(p[0]||'home'));a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   app.innerHTML=out;
 }
 window.addEventListener('hashchange',route);
-document.addEventListener('submit',function(e){if(e.target.id==='sf'){e.preventDefault();S.q=$('#q').value;S.field='all';render();var g=$('#grid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'})}});
+document.addEventListener('submit',function(e){if(e.target.id==='sf'){e.preventDefault();S.q=$('#q').value;S.field='all';if(location.hash.indexOf('#/explore')!==0){location.hash='#/explore';return}render();var g=$('#grid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'})}});
 document.addEventListener('input',function(e){if(e.target.id==='q'&&!e.target.form.dataset.busy){S.q=e.target.value;var g=$('#grid');if(g){var l=filtered();g.innerHTML=l.length?l.map(courseCard).join(''):'<p class="lede">No course matches yet. Try another word.</p>'}}});
 function saveGuest(slug,id){var g=guestProg();g[slug]=g[slug]||[];if(g[slug].indexOf(id)<0)g[slug].push(id);ls('acad-prog',JSON.stringify(g))}
 function toPNG(){
@@ -1284,7 +1383,9 @@ function toPNG(){
 document.addEventListener('click',function(e){
   var t=e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,v=t.dataset.v;
   var h=location.hash.replace(/^#\/?/,''),p=h.split('/'),slug=p[1];
-  if(a==='field'){S.field=v;if(p[0]!==''&&p[0]!==undefined&&h!==''){location.hash='#/'}else render();return}
+  if(a==='field'){S.field=v;if(p[0]!=='explore'){location.hash='#/explore'}else render();return}
+  if(a==='goal'){var A=act();A.goal=A.goal===v?'':v;saveAct(A);if(p[0]==='path')render();else location.hash='#/path/'+v;return}
+  if(a==='chk'){var k=t.dataset.k,ck=S.chk[k]||(S.chk[k]={});if(ck.sel!=null)return;ck.sel=+v;var ok=ck.sel===+t.dataset.a;if(ok)touch(5,slug);var sc=window.scrollY;render();window.scrollTo(0,sc);return}
   if(a==='tpl'){S.tpl=+v;ls('acad-tpl',v);render();return}
   if(a==='png'){toPNG();return}
   if(a==='print'){window.print();return}
@@ -1293,7 +1394,7 @@ document.addEventListener('click',function(e){
     var lid=v,c=S.course,i=c.lessons.findIndex(function(l){return l.id===lid}),nx=c.lessons[i+1];
     S.busy=true;S.err='';render();
     var next=function(){S.busy=false;location.hash=nx?'#/c/'+slug+'/l/'+nx.id:'#/c/'+slug+(done(slug).length>=c.lessons.length?'/quiz':'')};
-    saveGuest(slug,lid);
+    if(done(slug).indexOf(lid)<0)touch(20,slug,lid);saveGuest(slug,lid);
     if(S.sb&&S.user)S.sb.rpc('mark_lesson',{p_course:slug,p_lesson:lid}).then(function(r){if(r.error)throw r.error;S.prog[slug]=Array.from(new Set((S.prog[slug]||[]).concat([lid])));next()}).catch(function(er){S.busy=false;S.err=/unknown lesson/i.test(msg(er))?'Your progress is saved on this device. This course is not switched on for certificates yet.':msg(er);next()});
     else next();
     return}
