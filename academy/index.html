@@ -147,7 +147,7 @@ ol.steps li.done .sn{background:var(--ok);color:#fff}ol.steps li.cur{border-colo
 .co{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:11px 13px;margin:7px 0;font-size:16px}
 .co:hover:not([disabled]){border-color:var(--pri)}.co[disabled]{cursor:default}
 .co.r{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.co.w{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card))}.co.d{opacity:.55}
-.chk.ck-ok{border-color:var(--ok)}.chk.ck-no{border-color:var(--bad)}.ce2{margin:8px 0 0!important;font-size:15.5px!important}
+.chk.ck-ok{border-color:var(--ok)}.chk.ck-no{border-color:var(--bad)}.ce2{margin:8px 0 0!important;font-size:15.5px!important}.chk pre.ckc{margin:0 0 10px;font-size:14px}
 .note2{color:var(--mut);font-size:14px;margin:6px 0 0}
 
 </style>
@@ -1286,7 +1286,7 @@ function block(b){
   if(b.list)return '<ul>'+b.list.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>';
   if(b.steps)return '<ol>'+b.steps.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ol>';
   if(b.tip!=null)return '<div class="tip">💡 '+esc(b.tip)+'</div>';if(b.code!=null)return '<pre><code>'+esc(b.code)+'</code></pre>';
-  if(b.check){var c=b.check,k=b._k,ck=S.chk[k]||{},ans=ck.sel!=null;return '<div class="chk'+(ans?(ck.sel===c.a?' ck-ok':' ck-no'):'')+'"><small>Quick check</small><b>'+esc(c.q)+'</b>'+c.o.map(function(o,i){var cl=ans?(i===c.a?'r':i===ck.sel?'w':'d'):'';return '<button class="co '+cl+'" data-act="chk" data-k="'+esc(k)+'" data-v="'+i+'" data-a="'+c.a+'" '+(ans?'disabled':'')+'>'+esc(o)+'</button>'}).join('')+(ans?'<p class="ce2">'+(ck.sel===c.a?'✓ Right. ':'✗ Not quite. ')+esc(c.e)+'</p>':'')+'</div>'}
+  if(b.check){var c=b.check,k=b._k,ck=S.chk[k]||{},ans=ck.sel!=null;return '<div class="chk'+(ans?(ck.sel===c.a?' ck-ok':' ck-no'):'')+'"><small>Quick check</small><b>'+esc(c.q)+'</b>'+(c.code?'<pre class="ckc"><code>'+esc(c.code)+'</code></pre>':'')+c.o.map(function(o,i){var cl=ans?(i===c.a?'r':i===ck.sel?'w':'d'):'';return '<button class="co '+cl+'" data-act="chk" data-k="'+esc(k)+'" data-v="'+i+'" data-a="'+c.a+'" '+(ans?'disabled':'')+'>'+esc(o)+'</button>'}).join('')+(ans?'<p class="ce2">'+(ck.sel===c.a?'✓ Right. ':'✗ Not quite. ')+esc(c.e)+'</p>':'')+'</div>'}
   return '';
 }
 function viewLesson(slug,lid){
