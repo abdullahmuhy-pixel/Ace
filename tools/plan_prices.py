@@ -51,13 +51,14 @@ rows += [('campus_month', 'Ace Campus Monthly', None, cur, minor(m), 'month', 1)
          ('campus_year', 'Ace Campus Yearly', None, cur, minor(y), 'year', 1)]
 assert len({r[0] for r in rows}) == len(rows) == 18 * 4 + 2
 q = lambda s: 'null' if s is None else "'" + s.replace("'", "''") + "'"
-import sys
-school = '--school' in sys.argv
-aud = 'school' if school else 'student'
-print('insert into public.plans (code, name, country_code, currency_code, amount_minor, period, audience, seats, active) values')
-print(',\n'.join(f" ({q(c)}, {q(n)}, {q(cc)}, {q(cu)}, {a}, {q(p)}, '{aud}', {s}, true)" for c, n, cc, cu, a, p, s in (school_rows if school else rows)))
-print("on conflict (code) do update set name = excluded.name, country_code = excluded.country_code, currency_code = excluded.currency_code,\n"
-      "  amount_minor = excluded.amount_minor, period = excluded.period, seats = excluded.seats, active = excluded.active;")
+if __name__ == '__main__':
+    import sys
+    school = '--school' in sys.argv
+    aud = 'school' if school else 'student'
+    print('insert into public.plans (code, name, country_code, currency_code, amount_minor, period, audience, seats, active) values')
+    print(',\n'.join(f" ({q(c)}, {q(n)}, {q(cc)}, {q(cu)}, {a}, {q(p)}, '{aud}', {s}, true)" for c, n, cc, cu, a, p, s in (school_rows if school else rows)))
+    print("on conflict (code) do update set name = excluded.name, country_code = excluded.country_code, currency_code = excluded.currency_code,\n"
+          "  amount_minor = excluded.amount_minor, period = excluded.period, seats = excluded.seats, active = excluded.active;")
 
 def js_month_map():
     """Monthly price per country for the upgrade sheet in app/tiers.js (keep in step: tools/check_all.py compares them)."""
@@ -65,3 +66,12 @@ def js_month_map():
     m = {cc: [cur, minor(mo)] for k, (cc, cur, mo, t, y, g) in P.items()}
     m['CAMPUS'] = [CAMPUS[0], minor(CAMPUS[1])]
     return json.dumps(m, separators=(',', ':'))
+
+
+def site_prices():
+    """Everything the website pricing page shows (website/build.py injects it as PRICES)."""
+    out = {}
+    for k, (cc, cur, m, t, y, g) in P.items():
+        out[cc] = {'cur': cur, 'month': minor(m), 'term': minor(t), 'year': minor(y), 'group': minor(g), 'school': minor(SCHOOL[k])}
+    out['CAMPUS'] = {'cur': CAMPUS[0], 'month': minor(CAMPUS[1]), 'year': minor(CAMPUS[2])}
+    return out

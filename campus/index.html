@@ -3,6 +3,7 @@
 <html lang="en" data-country="UN" class="campus">
 <head>
 <base href="../app/">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location.href}catch(e){document.documentElement.style.display="none"}}</script>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -261,6 +262,7 @@ BW:{n:'Botswana',f:'🇧🇼',b:'BEC',x:['BGCSE'],s:['Mathematics', 'English Lan
 FR:{n:'France',f:'🇫🇷',b:'Éducation nationale',l:'fr',x:['Épreuves anticipées','Baccalauréat'],s:['Mathématiques (spécialité)','Français','Mathématiques (sans spécialité)'],t:'fr',d:'2027-06-14',u:'Invité',p:'RGPD'}};
 /* Portal mode: /campus/ sets ACE_MODE='campus' and loads campus.js (university courses on this same engine). */
 const CAMPUS=window.ACE_MODE==='campus'&&!!window.AceCampus;if(CAMPUS)AceCampus.setup();
+const LOGIN=()=>'../login/'+(CAMPUS?'?next=campus':'');
 const HOMECC=()=>CAMPUS?AceCampus.home():S.c;
 const G=['#1D5FBF,#0F3D73','#0E8AA3,#0A5C74','#15803D,#0B5A2A','#6366F1,#4338CA','#B45309,#7C3A06','#0F6BC0,#0B4A8A','#9333EA,#6B21A8','#C2410C,#7C2D12','#0D9488,#115E59','#BE185D,#831843'];
 const ICN=[[/math|matem|function/i,'📐'],[/english|lengua|inglés|irish|kiswahili|maltese|malti/i,'📖'],[/phys|fís/i,'⚛️'],[/chem|quím/i,'🧪'],[/bio/i,'🧬'],[/econ/i,'📈'],[/comput|\bict\b|informát/i,'💻'],[/psych/i,'🧠'],[/systems of knowledge/i,'🧭'],[/science/i,'🔬'],[/histor/i,'🏛️'],[/geog/i,'🌍'],[/commerce|business/i,'💼'],[/govern/i,'⚖️'],[/account/i,'🧾'],[/civic/i,'🤝'],[/agri/i,'🌾']];
@@ -303,10 +305,10 @@ function home(c,t,ex){const nm=c.u.split(' '),es=(c.l==='es'),L=(a,b)=>TX(a,b),s
  const hi=es?(hr<12?'Buenos días':hr<20?'Buenas tardes':'Buenas noches'):TRL(hr<12?'Good morning':hr<18?'Good afternoon':'Good evening');
  const bub=S.playedToday?L('Challenge done! Fancy a weak topic next?','¡Reto hecho! ¿Un tema débil ahora?'):L("Your 10 questions for today are ready.",'Tus 10 preguntas de hoy están listas.');
  const tiles=c.s.map((s,i)=>selOK(c,s)?stile(c,t,ex,s,i):'').filter(Boolean).slice(0,6).join('');
- return `<section class="hh"><div class="hh-txt"><p class="hh-hi">${hi},</p><h1>${nm[0]}</h1><button class="tg" data-a="exam">🎓 ${ex} ▾</button></div>
+ return `<section class="hh"><div class="hh-txt"><p class="hh-hi">${hi},</p><h1>${esc(nm[0])}</h1><button class="tg" data-a="exam">🎓 ${ex} ▾</button></div>
 <div class="hh-cd"><b id="cd0">000</b><span>${L('days to','días para')} ${ex}</span><small>${L('Approximate date','Fecha aproximada')}: ${dd}</small></div>
 <div class="hh-ace"><div class="say">${bub}</div><span class="ace" data-mood="wave"></span></div></section>
-<div class="pad hm"><div class="hm-main">${(window.AceSync&&AceSync.signedIn())?'':`<a class="ban lt" style="text-decoration:none;margin-top:4px" href="../login/"><span class="ic">🔐</span><span><b>${L('Sign in to save your progress','Inicia sesión para guardar tu progreso')}</b><span>${L('Continue with Google or email. It follows you across devices.','Continúa con Google o correo. Te sigue en todos tus dispositivos.')}</span></span><em>›</em></a>`}
+<div class="pad hm"><div class="hm-main">${(window.AceSync&&AceSync.signedIn())?'':`<a class="ban lt" style="text-decoration:none;margin-top:4px" href="${LOGIN()}"><span class="ic">🔐</span><span><b>${L('Sign in to save your progress','Inicia sesión para guardar tu progreso')}</b><span>${L('Continue with Google or email. It follows you across devices.','Continúa con Google o correo. Te sigue en todos tus dispositivos.')}</span></span><em>›</em></a>`}
 <button class="dly ${S.playedToday?'done':''}" data-a="tab" data-v="daily"><span class="di">${S.playedToday?'✅':'🎯'}</span><span><b>${t.dc}</b><span>${S.playedToday?L('Done for today. A new set unlocks tomorrow.','Hecho por hoy. Mañana hay uno nuevo.'):t.dcs}</span><span class="dots">${'<i></i>'.repeat(10)}</span></span><em>›</em></button>${window.AceF?AceF.banner():''}${window.AceL?AceL.homeCard(c):''}
 <div class="stats">${[st.q,avgPct(),badgeN(),'🔥'+S.streak].map((v,i)=>`<div><b>${v}</b><small>${(es?['Respondidas','Nota media','Insignias','Racha']:TRL(['Answered','Avg score','Badges','Streak']))[i]}</small></div>`).join('')}</div>
 <div class="qa"><button class="bt full" data-a="aigen" data-v="buddy"><i class="aic"></i> ${L('Ask Ace anything','Pregunta a Ace')}</button><button class="bt" data-a="tab" data-v="quiz">⏱ ${L('Mock exams','Simulacros')}</button><button class="bt" data-a="tab" data-v="flash">🃏 ${L('Flashcards','Tarjetas')}</button><button class="bt" data-a="tab" data-v="radar">🎯 ${L('Weak topics','Puntos débiles')}</button></div>
@@ -412,13 +414,13 @@ function prof(c,t,ex){const es=(c.l==='es'),L=(x,y)=>TX(x,y),ini=c.u.split(' ').
  const lnk=(e,l,h)=>`<a class="li" href="${h}" target="_blank" rel="noopener"><span class="e">${e}</span><span class="m"><b>${l}</b></span><span class="v">›</span></a>`;
  const trow=(e,l,k,sub)=>`<div class="li"><span class="e">${e}</span><span class="m"><b>${l}</b>${sub?`<small>${sub}</small>`:''}</span>${sw(k,!!P[k],l)}</div>`;
  const nsel=(P.s[S.c]||c.s).length;
- return `<div class="pf"><div class="av">${ini}</div><b style="font-size:17px">${c.u}</b><div style="color:var(--text3);font-size:12px">${gradeOf(c)} • ${ex} • ${c.n}</div>
+ return `<div class="pf"><div class="av">${esc(ini)}</div><b style="font-size:17px">${esc(c.u)}</b><div style="color:var(--text3);font-size:12px">${gradeOf(c)} • ${ex} • ${c.n}</div>
 <div class="ps"><div><b>${S.streak}</b><small>${L('Day streak','Racha')}</small></div><div><b>${S.xp}</b><small>XP</small></div><div><b>${P.goal}</b><small>${L('Daily goal','Meta diaria')}</small></div><div><b>${nsel}</b><small>${L('Subjects','Asignaturas')}</small></div></div></div>
 <div class="pad"><button class="li card" style="border-radius:14px" data-a="tab" data-v="flash"><span class="e">🃏</span><span class="m"><b>${t.fchdr}</b><small>${L('Revise key terms by subject','Repasa términos clave por materia')}</small></span><span class="v">›</span></button>
 <div class="sh">${L('Personalisation','Personalización')}</div><div class="lst">
-${row('🎓',L('Level','Curso'),gradeOf(c),'sheet','grade')}${row('✏️',L('Display name','Nombre'),c.u,'sheet','name')}${row('📚',L('Selected subjects','Asignaturas elegidas'),nsel+' / '+c.s.length,'sheet','subs')}${row('🎯',L('Daily goal','Meta diaria'),P.goal+' '+t.q,'sheet','goal')}
+${row('🎓',L('Level','Curso'),gradeOf(c),'sheet','grade')}${row('✏️',L('Display name','Nombre'),esc(c.u),'sheet','name')}${row('📚',L('Selected subjects','Asignaturas elegidas'),nsel+' / '+c.s.length,'sheet','subs')}${row('🎯',L('Daily goal','Meta diaria'),P.goal+' '+t.q,'sheet','goal')}
 <div class="li"><span class="e">🌙</span><span class="m"><b>${t.dark}</b></span>${sw('dark',S.dark,t.dark).replace('data-a="nt" data-v="dark"','data-a="dark"')}</div>
-${row('🎓',t.tar,ex,'exam')}${S.locked?row('🔒',L('Change password','Cambiar contraseña'),'','sheet','pw'):''}${row('✉️','Email',P.email||L('Not set','Sin definir'),'sheet','email')}
+${row('🎓',t.tar,ex,'exam')}${S.locked?row('🔒',L('Change password','Cambiar contraseña'),'','sheet','pw'):''}${row('✉️','Email',esc(P.email||L('Not set','Sin definir')),'sheet','email')}
 <div class="li"><span class="e">🌐</span><span class="m"><b>${t.lang}</b><small>${t.ln}</small></span><span class="v">${TX('English','Español')}</span></div></div>
 <div class="sh">${L('Sound and voice','Sonido y voz')}</div><div class="lst">${trow('🔊',L('Sound effects','Efectos de sonido'),'snd',L('Taps, chimes and celebrations','Toques, campanitas y celebraciones'))}${trow('🗣️',L('Read questions aloud','Leer preguntas en voz alta'),'voice',L('Ace reads each question, then the explanation','Ace lee cada pregunta y luego la explicación'))}<button class="li" data-a="vc"><span class="e">🎙️</span><span class="m"><b>${L('How Ace sounds','Cómo suena Ace')}</b><small>${L('Tap to switch and hear a sample','Toca para cambiar y escuchar')}</small></span><span class="v">${P.vc=='deep'?L('Deep','Grave'):L('Melodic','Melódica')} ›</span></button></div>
 <div class="sh">${L('Notifications','Notificaciones')}</div><div class="lst"><button class="li" data-x="pushon"><span class="e">🔔</span><span class="m"><b>${L('Daily revision reminders','Recordatorios de repaso')}</b><small>${L('A reminder on this device when reviews are due. Needs sign-in.','Un aviso en este dispositivo cuando tengas repasos. Requiere iniciar sesión.')}</small></span><span class="v">${L('Turn on','Activar')} ›</span></button></div>
@@ -427,7 +429,7 @@ ${row('🎓',t.tar,ex,'exam')}${S.locked?row('🔒',L('Change password','Cambiar
 <div class="sh">${t.dp}${c.p?` (${c.p})`:''}</div><div class="lst">${lnk('🔐',L('Privacy policy','Política de privacidad'),'../privacy')}${lnk('📋',L('Terms of service','Términos de servicio'),'../terms')}${row('🗑️',t.dt,'','sheet','del')}</div>
 <div class="sh">${L('About','Acerca de')}</div><div class="lst"><div class="li"><span class="e">📱</span><span class="m"><b>Ace Education</b></span><span class="v">v1.0</span></div>${row('📤',L('Share Ace Education','Compartir Ace Education'),'','share')}</div>
 <p class="note" style="margin-top:14px">${L('Your preferences are saved on this device. Your progress is saved to your account when you are signed in.','Tus preferencias se guardan en este dispositivo. Tu progreso se guarda en tu cuenta cuando has iniciado sesión.')}</p>
-${S.locked?`<button class="lo" data-a="logout">🚪 ${L('Log out','Cerrar sesión')}</button>`:`<a class="lo" style="text-decoration:none;color:var(--text)" href="../login/">🔐 ${L('Sign in or create an account','Inicia sesión o crea una cuenta')}</a>`}</div>`}
+${S.locked?`<button class="lo" data-a="logout">🚪 ${L('Log out','Cerrar sesión')}</button>`:`<a class="lo" style="text-decoration:none;color:var(--text)" href="${LOGIN()}">🔐 ${L('Sign in or create an account','Inicia sesión o crea una cuenta')}</a>`}</div>`}
 let SMP=null;try{if(window.claude&&claude.use)claude.use('sample').then(f=>{SMP=f}).catch(()=>{})}catch(e){}
 const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const QP=['Explain this simply','Give me a worked example','Common mistakes to avoid','Quiz me with one question'];
@@ -645,7 +647,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  else if(a=='listen'){const[mi,ti]=v.split(':').map(Number),sj=c.s[S.sub],R=realSub(c,sj,c.x[S.x%c.x.length]),tp=R&&R.m[mi][1][ti],T=tp&&(TC[sj]||{})[tp];if(!T)return;const SYN=window.speechSynthesis;if(SYN&&SYN.speaking&&S.listening===v){SYN.cancel();S.listening=null;toast(TX('Stopped','Audio detenido'));return}
   S.listening=v;const txt=[tp+'.',T.ov,(TX('Remember these. ','Ideas clave. '))+(T.rc||[]).join('. '),T.es?(TX('Exam tip. ','Consejo de examen. '))+T.es:''].join(' ');try{AceUI.say(txt.replace(/[*_#•]/g,'').replace(/→/g,' gives ').replace(/−/g,' minus '),()=>{S.listening=null})}catch(z){}toast(TX('Playing a short summary. Tap 🎧 again to stop.','Reproduciendo el resumen. Toca 🎧 otra vez para parar.'));return}
  else if(a=='aigen'){openAI(v);if(window.AceChat)AceChat.adopt()}
- else if(a=='logout'){if(window.AceSync&&AceSync.signedIn()){AceSync.signOut();return}location.href='../login/';return}
+ else if(a=='logout'){if(window.AceSync&&AceSync.signedIn()){AceSync.signOut();return}location.href=LOGIN();return}
  else if(a=='savepw'){const pw=($('#sh-in')||{}).value||'';if(pw.length<8){toast(TX('At least 8 characters','Mínimo 8 caracteres'));return}if(!(window.AceSync&&AceSync.signedIn())){toast(TX('Sign in first','Inicia sesión primero'));return}AceSync.setPassword(pw).then(()=>{S.sh=null;toast(TX('Password updated','Contraseña actualizada'));render()}).catch(e=>toast((e&&e.msg)||'Could not update'));return}
  else if(a=='asksend'){const i=document.getElementById('ai-in');const t2=i?i.value:'';if(i)i.value='';aiSend(t2);return}
  else if(a=='tpo'){S.tpo=S.tpo==v?null:v}
@@ -766,7 +768,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
   xp:function(){run(function(){sb.from('user_stats').upsert({user_id:uid,xp:S.xp,streak:S.streak,last_day:S.lastDay||null,updated_at:new Date().toISOString()}).then(function(){},function(){})})},
   stats:function(g){run(function(){sb.from('user_stats').upsert({user_id:uid,xp:S.xp,streak:S.streak,last_day:S.lastDay,updated_at:new Date().toISOString()}).then(function(){},function(){});
    sb.from('quiz_attempts').insert({user_id:uid,exam:exk(ex()),subject:'daily',kind:'daily',total:Math.max(1,(dailySet()||[]).length),correct:Math.min(g.sc,(dailySet()||[]).length||g.sc)}).then(function(){},function(){})})},
-  signOut:function(){return init().then(function(){return sb?sb.auth.signOut():0}).catch(function(){}).then(function(){try{localStorage.removeItem('ace-name')}catch(e){}location.href='../login/'})},
+  signOut:function(){return init().then(function(){return sb?sb.auth.signOut():0}).catch(function(){}).then(function(){try{localStorage.removeItem('ace-name')}catch(e){}location.href=(typeof LOGIN==='function'?LOGIN():'../login/')})},
   setPassword:function(pw){return init().then(function(ok){if(!ok||!sb)throw {msg:'Sign in first.'};return sb.auth.updateUser({password:pw})}).then(function(r){if(r.error)throw {msg:r.error.message};return true})},
   start:init,
   ready:function(){return init()},

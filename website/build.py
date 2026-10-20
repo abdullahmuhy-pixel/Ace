@@ -27,7 +27,9 @@ J = json.dumps(D, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/
 css = open('style.css', encoding='utf-8').read(); meta = open('meta.js', encoding='utf-8').read(); app = open('app.js', encoding='utf-8').read()
 fonts = open('_fonts.txt', encoding='utf-8').read().strip()
 open(f'{OUT}/site.css', 'w', encoding='utf-8').write(css)
-open(f'{OUT}/site.js', 'w', encoding='utf-8').write(f'const SITE_URL={json.dumps(SITE_URL)};\nconst SITE_DATA={J};\n{meta}\n{app}\n')
+sys.path.insert(0, os.path.join(HERE, '..', 'tools')); import plan_prices          # prices live in one place
+PRICES = json.dumps(plan_prices.site_prices(), separators=(',', ':'))
+open(f'{OUT}/site.js', 'w', encoding='utf-8').write(f'const SITE_URL={json.dumps(SITE_URL)};\nconst SITE_DATA={J};\nconst PRICES={PRICES};\n{meta}\n{app}\n')
 render_shell = f'<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="site.css"></head><body><div id="root"></div><script src="site.js"></script></body></html>'
 open(f'{OUT}/_render.html', 'w', encoding='utf-8').write(render_shell)
 

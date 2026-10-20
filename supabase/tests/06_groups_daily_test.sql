@@ -55,10 +55,10 @@ select pg_temp.check('cannot insert invite directly', $q$insert into public.plan
 select pg_temp.check('cannot insert seat directly', $q$insert into public.plan_seats(entitlement_id,member_id) values ('f0000000-0000-0000-0000-000000000001',auth.uid())$q$, false);
 
 -- joining
-select pg_temp.check('bad code', $q$select public.join_plan('NOPE1234')$q$, false);
+select pg_temp.cnt('bad code', $q$select 1 where public.join_plan('NOPE1234') like 'error:%'$q$, 1);
 select pg_temp.check('member 2 joins (lowercase code ok)', $q$select public.join_plan((select lower(c) from codes where k=1))$q$, true);
 select pg_temp.val('member has access', $q$select public.has_access()::text$q$, 'true');
-select pg_temp.check('same code cannot be reused', $q$select public.join_plan((select c from codes where k=1))$q$, false);
+select pg_temp.cnt('same code cannot be reused', $q$select 1 where public.join_plan((select c from codes where k=1)) like 'error:%'$q$, 1);
 select pg_temp.check('already seated: cannot take a second seat', $q$select public.join_plan((select c from codes where k=2))$q$, false);
 select pg_temp.as_user('e0000000-0000-0000-0000-000000000001');
 select pg_temp.check('owner cannot use own invite', $q$select public.join_plan((select c from codes where k=2))$q$, false);

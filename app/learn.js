@@ -291,7 +291,7 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
           callback: () => { toast(L('Payment received. Your access updates in a moment.', 'Pago recibido. Tu acceso se actualiza en breve.')); setTimeout(() => { X.loaded = ''; render(); }, 5000); }, onclose: () => { } });
       })).catch(er => { p.busy = ''; Lr.err = msg(er); render(); });
     }
-    else if (a === 'redeem') rerun(sync().rpc('redeem_promo', { p_code: Lr.pl.promo }).then(() => { toast(L('Code applied.', 'Código aplicado.')); Lr.pl.promo = ''; X.loaded = ''; }));
+    else if (a === 'redeem') rerun(sync().rpc('redeem_promo', { p_code: Lr.pl.promo }).then(r => { if (r && r.ok === false) throw { msg: TRL(r.error || 'This code is not valid.') }; toast(L('Code applied.', 'Código aplicado.')); Lr.pl.promo = ''; X.loaded = ''; }));
   });
 
   /* ================= small styles ================= */

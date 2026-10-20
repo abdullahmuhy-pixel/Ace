@@ -16,10 +16,10 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 
 /* ---------- state ---------- */
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
-const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['teachers','Teachers'],['schools','Schools'],['guides','Guides']];
+const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['pricing','Pricing'],['teachers','Teachers'],['schools','Schools'],['guides','Guides']];
 
 const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta',ZW:'zimbabwe',BW:'botswana',FR:'france'};
-const PAGES = ['countries','features','syllabus','teachers','schools','guides','about','contact','quote','privacy','terms'];
+const PAGES = ['countries','features','syllabus','pricing','teachers','schools','guides','about','contact','quote','privacy','terms'];
 const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
 function parseRoute(r) {
   r = String(r || '').replace(/\.html$/, '').replace(/\/+$/, '');
@@ -92,7 +92,8 @@ function routeMeta(page, arg) {
       syllabus: ['Syllabus Explorer: Topics and Sample Questions for Every Subject | Ace Education', 'Browse every subject, module and topic Ace Education covers for each exam in each country, with real sample questions.'],
       teachers: ['Ace Education for Teachers and Tutors: Your Own Classes, Free to Start', 'Private tutors, after-school teachers and tutoring centres: create a class, share a join code, assign Ace quizzes and lessons, mark work and follow every student. Students keep their own accounts.'],
       schools: ['Ace Education for Schools: Class, Teacher and Admin Tools', 'Run exam preparation for a whole class or school: add students, assign topics and quizzes, read class results and control AI help. Built for schools and tutoring centres.'],
-      quote: ['Get a School Quote | Ace Education', 'Tell us about your school, tutoring centre or organisation and we will send a plan that fits. Pricing is agreed per school or centre.'],
+      pricing: ['Pricing: Free to Start, Plans in Your Currency | Ace Education', 'What is free on Ace Education and what a plan adds, with prices for every country in local currency: monthly, termly, yearly, a group plan for four, and school licences per student.'],
+      quote: ['Get a School Quote | Ace Education', 'School licences are priced per student per year. Tell us about your school, tutoring centre or organisation for a quote on large or custom rollouts.'],
       guides: ['Study Guides: Revision, Mock Exams and Exam Stress | Ace Education', 'Plain-language guides on active recall, mock exams, six-week revision plans, maths habits, science practicals, comparing exam systems and managing exam stress.'],
       about: ['About Ace Education: Exam Prep Built for Each Country', 'Why we build exam preparation separately for each country, how content is written and checked, and where we are going next.'],
       contact: ['Contact Ace Education', 'Ask about the app, a school plan, a missing subject or a mistake you found. We reply within one business day.'],
@@ -300,11 +301,58 @@ function formHtml(kind) {
   <div><button class="btn primary" type="submit">${q ? 'Request my quote' : 'Send message'}</button></div></form>`;
 }
 function pQuote() {
-  return `<section class="blk"><div class="wrap"><div class="split" style="align-items:start"><div>${head('Get a quote', 'Every school is different, so is the quote.', 'We do not publish a one-size-fits-all price list. Tell us about your school or centre and we will come back with a plan that fits, usually within one business day.')}
+  return `<section class="blk"><div class="wrap"><div class="split" style="align-items:start"><div>${head('Get a quote', 'Every school is different, so is the quote.', 'Most schools buy straight from Ace Teach at the price per student shown on our pricing page. For large or custom rollouts, tell us about your school or centre and we will come back with a plan, usually within one business day.')}
   <ul class="ticks"><li><span>The full student app for every learner</span></li><li><span>Teacher, subject-teacher and admin tools as they are released</span></li><li><span>Mixed grades and groups for tutoring centres</span></li><li><span>Onboarding and support</span></li></ul>
-  <div class="note" style="margin-top:1.2rem">Pricing is agreed per school or centre, based on learners and rollout. No price is shown here because none has been set yet.</div></div>
+  <div class="note" style="margin-top:1.2rem">Licences are priced per student per year in your currency: see ${btnGo('pricing', 'Pricing')}. Ask for a quote for more than 1,000 learners, several sites or a custom rollout.</div></div>
   <div class="card" style="gap:1rem"><h3>Request a quote</h3>${S.formDone && S.formDone.kind === 'quote' ? formDone() : formHtml('quote')}</div></div>
   <div style="margin-top:3rem">${head('Questions', 'Pricing and rollout.')}${faqList()}</div></div></section>`;
+}
+/* ---------- pricing (numbers come from tools/plan_prices.py via build.py) ---------- */
+function money(minor, cur) {
+  try { return new Intl.NumberFormat('en-GB', {style: 'currency', currency: cur, currencyDisplay: 'narrowSymbol', minimumFractionDigits: minor % 100 ? 2 : 0, maximumFractionDigits: minor % 100 ? 2 : 0}).format(minor / 100); }
+  catch (e) { return (minor / 100) + ' ' + cur; }
+}
+function pPricing() {
+  const cc = S.pcc && PRICES[S.pcc] ? S.pcc : (PRICES[S.hero] ? S.hero : 'NG'), p = PRICES[cc], m = x => money(x, p.cur);
+  const save = (x, months) => Math.round((1 - x / (months * p.month)) * 100);
+  const plans = [
+    ['Monthly', m(p.month), 'per month', 'Cancel any time.'],
+    ['Termly', m(p.term), 'for 3 months', `Save ${save(p.term, 3)}% on paying monthly.`],
+    ['Yearly', m(p.year), 'per year', `Save ${save(p.year, 12)}% on paying monthly.`],
+    ['Group of 4', m(p.group), 'per year, up to 4 people', 'Share one plan with family or friends. Each person keeps their own account.'],
+  ];
+  const rows = [
+    ['Notes, lessons, quizzes, flashcards and the question bank', 'All', 'All'],
+    ['Daily challenge, streaks, league, badges and study friends', 'Yes', 'Yes'],
+    ['Mistakes notebook, weak-topic radar and revision plan', 'Yes', 'Yes'],
+    ['Study tools: focus timer, GPA and grade calculators, citations, road map', 'Yes', 'Yes'],
+    ['Join a teacher\'s class, homework and live quizzes', 'Yes', 'Yes'],
+    ['Ace, the AI study buddy', '5 messages a day', 'Up to 60 a day'],
+    ['Ask about a photo of a question', '1 a day', '20 a day'],
+    ['Essay and answer marking', '1 a week', '15 a day'],
+    ['Study packs from your own notes', '2 a week', '15 a day'],
+    ['Timed mock exams', 'The first one in each subject', 'Unlimited'],
+    ['Mock results broken down module by module', '–', 'Yes'],
+    ['Verified certificates for Academy courses', '–', 'Yes'],
+  ];
+  return `<section class="blk"><div class="wrap">${head('Pricing', 'Free to start. A plan when you want more.', 'Every note, lesson and practice question is free. A plan adds more AI help, unlimited mock exams and verified certificates. New accounts get 7 days of everything free, with no card needed.')}
+  <label class="pcc">Prices for <select data-act="pcc" aria-label="Country">${CCS.filter(k => PRICES[k]).map(k => `<option value="${k}" ${k === cc ? 'selected' : ''}>${CM[k].flag} ${esc(CM[k].name)}</option>`).join('')}</select></label>
+  <div class="grid g4 plans">${plans.map((x, i) => `<div class="card${i === 2 ? ' best' : ''}"><h3>${x[0]}</h3><div class="amt">${x[1]}</div><small>${x[2]}</small><p>${x[3]}</p></div>`).join('')}</div>
+  <p class="note">Prices are in ${esc(p.cur)} and include everything in the plan. Payments are processed by Flutterwave by card, bank transfer or mobile money where available. Ace never sees your card details.</p>
+  <div style="margin-top:3rem">${head('Free or plan', 'What each one includes.')}
+  <div class="tw"><table class="tbl cmp"><thead><tr><th></th><th>Free</th><th>With a plan</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('')}</tbody></table></div></div>
+  <div style="margin-top:3rem" class="grid g2">
+   <div class="card"><h3>Schools and tutors</h3><div class="amt">${m(p.school)}</div><small>per student per year</small><p>One licence covers every student in your school or your classes: the plan features above for each of them, plus the class, homework, register and report tools in Ace Teach. From 30 students for a school and 10 for a tutor. New schools get 30 days free. Without a licence, a teacher can run one class of up to 40 students for free.</p><div class="cta" style="margin:0">${btnGo('quote', 'Get a school quote', 'primary')}</div></div>
+   <div class="card"><h3>Ace Campus</h3><div class="amt">${money(PRICES.CAMPUS.month, PRICES.CAMPUS.cur)}</div><small>per month, or ${money(PRICES.CAMPUS.year, PRICES.CAMPUS.cur)} per year</small><p>For university students: the same AI limits and unlimited course finals for your university courses, wherever you study.</p></div>
+  </div>
+  <div style="margin-top:3rem">${head('Questions', 'About plans and payment.')}<div class="faq">${[
+    ['Do I need to pay to use Ace?', 'No. The notes, lessons, quizzes, flashcards, question bank and study tools are free for everyone, with no time limit. A plan only adds more AI help, unlimited mocks and verified certificates.'],
+    ['What happens after the 7-day trial?', 'Your account moves to the free plan. You keep all your progress, streaks and notes. Nothing is charged unless you choose a plan.'],
+    ['What is a term?', 'A termly plan runs for about three months, which covers a school term.'],
+    ['How does the group plan work?', 'One person pays and invites up to three others from Share my plan. Everyone keeps their own account and progress.'],
+    ['My school has a licence. Do I need a plan?', 'No. If your school or your tutor has a licence, you get the plan features through it.'],
+  ].map(q => `<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('')}</div></div>
+  <div class="cta">${appBtn('Start free')}${btnGo('contact', 'Ask a question')}</div></div></section>`;
 }
 function formDone() {
   const f = S.formDone, mail = SITE_CONFIG.email;
@@ -377,14 +425,14 @@ function header() {
 }
 function footer() {
   return `<footer><div class="fgrid"><div><button class="brand" data-go="home" style="margin-bottom:.7rem">${PENCIL}Ace Education</button><p style="color:var(--ink2);font-size:.9rem;max-width:34ch">Exam preparation for secondary schools in ${CCS.length} countries, built around each country's own exams.</p></div>
-  <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Ace for school</a><a href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">Ace Campus (university)</a><a href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">Ace Academy (certificates)</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
+  <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="pricing">Pricing</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Ace for school</a><a href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">Ace Campus (university)</a><a href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">Ace Academy (certificates)</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
   <div><h4>Countries</h4>${CCS.map(cc => `<a data-go="country" data-arg="${cc}">${cMeta(cc)}</a>`).join('')}</div>
   <div><h4>Company</h4><a data-go="about">About</a><a data-go="guides">Guides</a><a data-go="quote">Get a quote</a><a data-go="contact">Contact</a><a data-go="privacy">Privacy</a><a data-go="terms">Terms</a></div></div>
   <div class="fine">© Ace Education. Content carries a "needs review" label until a subject teacher signs it off. Exam names belong to their exam bodies; Ace Education is not affiliated with them.</div></footer>`;
 }
 function render() {
   const P = S.page;
-  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'teachers' ? pTeachers() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
+  const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'teachers' ? pTeachers() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'pricing' ? pPricing() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
   const keep = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.act === 'exq';
   $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer() + `<div class="mbar"><a class="btn primary" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Open the app</a><a class="btn" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>`;
   anchorize();
@@ -424,6 +472,7 @@ document.addEventListener('click', e => {
   if (e.target.closest('#menu')) { $('#nav').classList.toggle('open'); return; }
 });
 document.addEventListener('change', e => {
+  if (e.target.dataset && e.target.dataset.act === 'pcc') { S.pcc = e.target.value; render(); return; }
   const k = e.target.dataset && e.target.dataset.act; if (!k) return;
   if (k === 'exc') { S.ex = {cc: e.target.value, ex: 0, sub: 0, q: S.ex.q}; render(); }
   else if (k === 'exe') { S.ex.ex = +e.target.value; S.ex.sub = 0; render(); }

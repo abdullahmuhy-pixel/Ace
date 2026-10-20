@@ -10,7 +10,7 @@ handler(async (req, b, admin) => {
     if (!["school_admin", "platform_admin"].includes(profile.role)) throw new HttpError(403, "You do not have permission to do that.");
     const { data: t } = await admin.from("profiles").select("id,school_id,role").eq("id", clean(b.user_id, 40)).maybeSingle();
     if (!t) throw new HttpError(404, "Account not found.");
-    if (profile.role === "school_admin" && (t.school_id !== profile.school_id || t.role === "platform_admin"))
+    if (profile.role === "school_admin" && (!profile.school_id || t.school_id !== profile.school_id || t.role === "platform_admin"))
       throw new HttpError(403, "You do not have permission to do that.");
     target = t.id;
   }

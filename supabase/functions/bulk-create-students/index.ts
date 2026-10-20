@@ -1,9 +1,10 @@
 // Teacher / school admin: create many student accounts at once. Returns the temporary
 // passwords ONCE, to print and hand out. Students are asked to change them at first login.
-import { handler, HttpError, caller, clean, randomPassword, studentEmail, audit } from "../_shared/util.ts";
+import { handler, HttpError, caller, clean, randomPassword, studentEmail, audit, throttle } from "../_shared/util.ts";
 
 handler(async (req, b, admin) => {
   const { user, profile } = await caller(req, admin, ["teacher", "subject_teacher", "school_admin", "platform_admin"]);
+  await throttle(admin, user.id, "bulk", 15, 60);   // up to 3,000 accounts an hour per teacher
   const list: any[] = Array.isArray(b.students) ? b.students : [];
   if (!list.length || list.length > 200) throw new HttpError(400, "Send between 1 and 200 students.");
 

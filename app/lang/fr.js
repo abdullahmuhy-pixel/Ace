@@ -2,6 +2,11 @@
 window.ACE_LANG=window.ACE_LANG||{};
 window.ACE_LANG.fr={
 "tr": {
+"No class with that code. Check it with your teacher.": "Aucune classe avec ce code. Vérifie-le auprès de ton professeur.",
+"Too many wrong codes. Wait an hour and try again.": "Trop de codes erronés. Attends une heure et réessaie.",
+"No one has that friend code. Check it and try again.": "Personne n'a ce code ami. Vérifie-le et réessaie.",
+"This code is not valid.": "Ce code n'est pas valide.",
+"This invite is not valid.": "Cette invitation n'est pas valide.",
 "You passed! Your verified certificate comes with a plan.": "Réussi ! Ton certificat vérifié est inclus dans un abonnement.",
 "Your pass is saved. Claim the certificate whenever you have a plan, a trial or a school licence.": "Ta réussite est enregistrée. Récupère le certificat dès que tu as un abonnement, un essai ou une licence de ton établissement.",
 "Claim my certificate": "Récupérer mon certificat",
