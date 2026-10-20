@@ -158,18 +158,18 @@ const FEATURES = [
   ];
 
 const SCHOOL = [
- ['👩‍🏫','Class teacher','Manage a class: add students, choose the subjects it studies, set targets and read who is falling behind.',
-  ['Add students one by one or by bulk import','Choose the subjects each class sees','Set class targets for each subject','See which topics the class finds hard','Assign a topic or quiz and track completion']],
+ ['👩‍🏫','Class teacher','Run a class day to day and see who is falling behind.',
+  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Written work with rubrics and feedback','Curriculum pacing from the syllabus','Printable report cards']],
  ['📚','Subject teacher','One subject across several classes, without the class-admin work.',
-  ['See quiz and mock results for your subject only','Teach several classes with one login','Read-only student lists','Assign topics from the syllabus']],
+  ['Results for your subject only','Hardest topics for each class','Live class quiz from the question bank','AI lesson plans and worksheets','Q&A board and class library']],
  ['🏫','School admin','The whole school in one view, with the controls a head teacher needs.',
-  ['Create the school and invite staff','Cap the number of student slots','Control how much AI help students get','School-wide progress and attendance views','Renew or change the school\'s plan']]
+  ['Create classes and invite staff','Bulk student accounts and class moves at year end','Timetables and fees records','School report by class','Control how much AI help students get']]
 ];
 const SCHOOL_STATUS = [
- ['Done','Database design with school, class, student, staff and subject tables, and row-level security so each school only sees its own data.'],
- ['Done','Server functions for creating a school, inviting staff, joining with a school code, bulk-creating student accounts, username sign-in, password reset and deleting an account.'],
- ['Done','Staff sign-in and dashboards for school admins, teachers and subject teachers, built on that backend.'],
- ['Next','Continuous-assessment markbook, attendance, report cards and exports.']
+ ['Done','School, class, student and staff accounts, with row-level security so each school only sees its own data.'],
+ ['Done','Ace Teach: dashboards for school admins, teachers, subject teachers and private tutors.'],
+ ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables, fees records and exports.'],
+ ['Next','Online payments for school plans, once the payment providers are connected.']
 ];
 
 const FAQ = [

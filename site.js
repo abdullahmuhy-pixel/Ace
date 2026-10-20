@@ -160,18 +160,18 @@ const FEATURES = [
   ];
 
 const SCHOOL = [
- ['👩‍🏫','Class teacher','Manage a class: add students, choose the subjects it studies, set targets and read who is falling behind.',
-  ['Add students one by one or by bulk import','Choose the subjects each class sees','Set class targets for each subject','See which topics the class finds hard','Assign a topic or quiz and track completion']],
+ ['👩‍🏫','Class teacher','Run a class day to day and see who is falling behind.',
+  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Written work with rubrics and feedback','Curriculum pacing from the syllabus','Printable report cards']],
  ['📚','Subject teacher','One subject across several classes, without the class-admin work.',
-  ['See quiz and mock results for your subject only','Teach several classes with one login','Read-only student lists','Assign topics from the syllabus']],
+  ['Results for your subject only','Hardest topics for each class','Live class quiz from the question bank','AI lesson plans and worksheets','Q&A board and class library']],
  ['🏫','School admin','The whole school in one view, with the controls a head teacher needs.',
-  ['Create the school and invite staff','Cap the number of student slots','Control how much AI help students get','School-wide progress and attendance views','Renew or change the school\'s plan']]
+  ['Create classes and invite staff','Bulk student accounts and class moves at year end','Timetables and fees records','School report by class','Control how much AI help students get']]
 ];
 const SCHOOL_STATUS = [
- ['Done','Database design with school, class, student, staff and subject tables, and row-level security so each school only sees its own data.'],
- ['Done','Server functions for creating a school, inviting staff, joining with a school code, bulk-creating student accounts, username sign-in, password reset and deleting an account.'],
- ['Done','Staff sign-in and dashboards for school admins, teachers and subject teachers, built on that backend.'],
- ['Next','Continuous-assessment markbook, attendance, report cards and exports.']
+ ['Done','School, class, student and staff accounts, with row-level security so each school only sees its own data.'],
+ ['Done','Ace Teach: dashboards for school admins, teachers, subject teachers and private tutors.'],
+ ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables, fees records and exports.'],
+ ['Next','Online payments for school plans, once the payment providers are connected.']
 ];
 
 const FAQ = [
@@ -504,7 +504,7 @@ function pTeachers() {
   <div class="cta"><a class="btn primary" href="${esc(SITE_CONFIG.loginUrl)}?role=tutor" target="_blank" rel="noopener">Create a teacher account</a>${btnGo('contact', 'Ask a question')}</div></div></section>`;
 }
 function pSchools() {
-  return `<section class="blk"><div class="wrap">${head('For schools and centres', 'A class, a school or a tutoring centre on one platform.', 'Teachers and administrators get their own tools, and students sign in with a username the school gives them. The database and server layer is built; the dashboards are being built on top of it.')}
+  return `<section class="blk"><div class="wrap">${head('For schools and centres', 'A class, a school or a tutoring centre on one platform.', 'Teachers and administrators get Ace Teach, their own dashboard. Students sign in with a username the school gives them, or join a class with a code from their own account.')}
   <div class="grid g3">${SCHOOL.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p><ul class="ticks">${r[3].map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>
   <div style="margin-top:3rem" class="split" ><div>${head('Status', 'What is done and what is next.')}<div class="time">${SCHOOL_STATUS.map(s => `<div><span class="pill ${s[0] === 'Done' ? 'live' : s[0] === 'In build' ? 'back' : 'plan'}">${esc(s[0])}</span><p style="margin-top:.4rem;color:var(--ink2)">${esc(s[1])}</p></div>`).join('')}</div></div>
   <div>${head('Getting a school started', 'Five steps.')}<ol class="steps">${['Request a quote and tell us the exams and number of learners.', 'We create your school and give you a school code.', 'Invite teachers, or let them join with the code.', 'Add students one by one or by bulk import. Each gets a username, so no email is needed.', 'Choose the subjects each class sees and start practising.'].map(x => `<li><span>${x}</span></li>`).join('')}</ol></div></div>
