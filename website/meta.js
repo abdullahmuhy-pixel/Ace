@@ -122,10 +122,10 @@ BW:{name:'Botswana',flag:'🇧🇼',lang:'English and Setswana',levels:'Form 1 �
  next:["Science Double Award, Setswana, Geography and History", "Accounting, Commerce, Agriculture and Development Studies", "Teacher review of the Botswana content"]},
 FR:{name:'France',flag:'🇫🇷',lang:'Français',levels:'Seconde – Terminale',law:'RGPD',
  sys:"The baccalauréat général. Première students sit the épreuves anticipées (French, and from 2026 a written mathematics paper for every student); Terminale students sit philosophy, two specialty subjects and the Grand oral. Continuous assessment counts for 40% of the final mark.",
- intro:"France's content is written in French, and so is the app's interface for this country. Ace starts with the épreuve anticipée de mathématiques (Première, specialty-maths version): automatismes, sequences, quadratics, derivatives, the exponential function, trigonometry, the scalar product and probability.",
- ex:{"Épreuves anticipées": "Written papers taken at the end of Première: French (written and oral) and, from the 2026 session, a two-hour mathematics paper without a calculator, with 6 points of automatismes and 14 points of exercises."},
+ intro:"France's content is written in French, and so is the app's interface for this country. Ace starts with the two épreuves anticipées of Première: mathématiques (specialty-maths version) and français, with the twelve set works and parcours for the 2027 session, essay and commentary method, and the grammar asked at the oral. For Terminale, philosophy covers the seventeen notions of the programme and the repères, with dissertation and text-commentary method.",
+ ex:{"Épreuves anticipées": "Written papers taken at the end of Première: French (written and oral) and, from the 2026 session, a two-hour mathematics paper without a calculator, with 6 points of automatismes and 14 points of exercises.","Baccalauréat":"The final bac exams in Terminale: philosophy (4 hours, coefficient 8), two specialty subjects and the Grand oral."},
  scale:"Marks are out of 20. The bac is passed with an average of 10/20; mentions start at 12 (assez bien), 14 (bien) and 16 (très bien).",
- next:["Français (épreuve anticipée)", "Philosophie", "Spécialités de Terminale: mathématiques, physique-chimie, SVT, SES"]}
+ next:["Spécialités de Terminale: mathématiques, physique-chimie, SVT, SES", "Histoire-géographie and languages", "Teacher review of the French content"]}
 };
 
 const STUDENT_TOOLS = [
