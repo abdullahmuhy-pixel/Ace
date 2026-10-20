@@ -30,10 +30,14 @@ const TEACHER_MODES: Record<string, string> = {
   comment: "REPORT COMMENT: from the student details given, write a 2-3 sentence report-card comment in a warm, professional tone: one specific strength, one area to improve, and one clear target. No grades unless given.",
 };
 
+const LANGS: Record<string, string> = { en: "English", es: "Spanish", fr: "French", it: "Italian", pt: "Portuguese", de: "German", nl: "Dutch", mt: "English" };
+function langName(l: string) { return LANGS[l] || "English"; }
+function pickLang(a: unknown, b: unknown) { if (typeof a === "string" && LANGS[a] && a !== "en") return a; if (typeof b === "string" && LANGS[b]) return b; return "en"; }
+
 function teacherPrompt(c: { country: string; exam: string; subject: string; topic: string; lang: string; mode: string }) {
   return `You are Ace, an assistant for a teacher or tutor preparing students for exams.
 Country: ${c.country || "not given"}. Exam: ${c.exam || "not given"}. Subject: ${c.subject || "not given"}. Topic: ${c.topic || "not given"}.
-Write in ${c.lang === "es" ? "Spanish" : "English"}. Follow the syllabus and conventions of this exam and country: currency, units, spelling and examples. Check all arithmetic.
+Write in ${langName(c.lang)}. Follow the syllabus and conventions of this exam and country: currency, units, spelling and examples. Check all arithmetic.
 ${TEACHER_MODES[c.mode]}`;
 }
 
@@ -47,7 +51,7 @@ function systemPrompt(c: { country: string; exam: string; subject: string; topic
   const lv = LEARNER[c.level || "secondary"] || LEARNER.secondary;
   return `You are Ace, a friendly, encouraging ${lv[0]}.
 Country: ${c.country || "not given"}. ${lv[1]}: ${c.exam || "not given"}. Subject: ${c.subject || "not given"}. Topic: ${c.topic || "not given"}.
-Reply in ${c.lang === "es" ? "Spanish" : "English"}, ${lv[2]}. Use the currency, units, spellings and examples that fit the student's country.
+Reply in ${langName(c.lang)}, ${lv[2]}. Use the currency, units, spellings and examples that fit the student's country.
 Explain step by step and show working. Check your arithmetic before you state a number. If the student asks for an answer to a question, guide them through it and let them do the last step.
 Stay on schoolwork. If the student seems distressed, be kind and suggest they talk to a teacher, parent or another trusted adult. Do not ask for or repeat personal details such as full names, addresses or phone numbers.
 ${c.mode && MODES[c.mode] ? MODES[c.mode] + "\n" : ""}Keep answers under ${c.mode && LONG_MODES.has(c.mode) ? 450 : 250} words unless the student asks for more.`;
@@ -112,11 +116,11 @@ handler(async (req, b, admin) => {
       max_tokens: tmode ? 2400 : LONG_MODES.has(mode) ? 1100 : 700,
       system: tmode ? teacherPrompt({
         country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
-        topic: clean(ctx.topic, 160), mode: tmode, lang: ctx.lang === "es" || profile.language === "es" ? "es" : "en",
+        topic: clean(ctx.topic, 160), mode: tmode, lang: pickLang(ctx.lang, profile.language),
       }) : systemPrompt({
         country: clean(ctx.country, 40), exam: clean(ctx.exam, 60), subject: clean(ctx.subject, 60),
         topic: clean(ctx.topic, 120), mode, level: ["university", "academy"].includes(ctx.level) ? ctx.level : "secondary",
-        lang: ctx.lang === "es" || profile.language === "es" ? "es" : "en",
+        lang: pickLang(ctx.lang, profile.language),
       }),
       messages: apiMessages,
     }),

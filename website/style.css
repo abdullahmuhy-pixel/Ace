@@ -295,3 +295,11 @@ footer h4{font:800 .95rem var(--display);letter-spacing:0;text-transform:none;co
 .who-p{margin-top:.9rem;font-size:.92rem;color:var(--ink2)}
 .who-p a{color:var(--green);font-weight:700}
 @media (max-width:520px){.who{flex-direction:column}.who .btn{justify-content:center;width:100%}}
+
+/* keep header labels on one line */
+header .bar a,header .bar .btn,header .brand{white-space:nowrap}
+/* how it works: a real four-step sequence */
+.steps4{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.steps4 li{counter-increment:s;position:relative;padding:18px 18px 16px 62px;border:2px solid var(--line,#D9DCF5);border-radius:20px;background:var(--sheet,#fff)}
+.steps4 li::before{content:counter(s);position:absolute;left:16px;top:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--primary,#3D35F5);color:#fff;font-weight:800}
+.steps4 b{display:block;font-size:1.05rem;margin-bottom:4px}.steps4 p{margin:0;color:var(--ink2,#4A4570);font-size:.95rem}

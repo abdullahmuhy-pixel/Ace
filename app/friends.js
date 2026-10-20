@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
-  const es = () => !!(C[S.c] && C[S.c].l), L = (a, b) => es() ? b : a;
+  const es = () => UIL() === 'es', L = (a, b) => TX(a, b);
   const signed = () => !!(window.AceSync && AceSync.signedIn && AceSync.signedIn());
   const F = window.AceF = { list: null, code: '', add: '', busy: false, err: '', ok: '', nudges: null, confirm: null };
   const rpc = (n, a) => AceSync.rpc(n, a);

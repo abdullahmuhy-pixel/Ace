@@ -8,7 +8,7 @@
   'use strict';
   const KEY = 'ace-chats', MAX = 120, PORTAL = window.ACE_MODE === 'campus' ? 'campus' : 'school';
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
-  const es = () => !!(C[S.c] && C[S.c].l), L = (a, b) => es() ? b : a;
+  const es = () => UIL() === 'es', L = (a, b) => TX(a, b);
   const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16) }));
   const signed = () => !!(window.AceSync && AceSync.signedIn && AceSync.signedIn());
   const MODES = {
@@ -191,7 +191,7 @@ ${H.attBusy ? `<p class="ch-fine">${L('Preparing your photo…', 'Preparando la 
     else if (k === 'mic') {
       if (H.rec) { try { H.rec.stop() } catch (z) { } return }
       const r = new SR(), base = (document.getElementById('ch-in') || {}).value || '';
-      r.lang = es() ? 'es-ES' : (navigator.language && /^en/.test(navigator.language) ? navigator.language : 'en-GB'); r.interimResults = true; r.continuous = false;
+      r.lang = ({ es: 'es-ES', fr: 'fr-FR', it: 'it-IT', pt: 'pt-PT', de: 'de-DE', nl: 'nl-NL' })[UIL()] || (navigator.language && /^en/.test(navigator.language) ? navigator.language : 'en-GB'); r.interimResults = true; r.continuous = false;
       r.onresult = ev => { let t = ''; for (let n = 0; n < ev.results.length; n++) t += ev.results[n][0].transcript; const i = document.getElementById('ch-in'); H.draft = (base ? base + ' ' : '') + t; if (i) { i.value = H.draft; grow() } };
       r.onerror = ev => { H.err = ev.error === 'not-allowed' || ev.error === 'service-not-allowed' ? L('Allow the microphone to talk to Ace.', 'Permite el micrófono para hablar con Ace.') : ev.error === 'no-speech' ? '' : L('Ace could not hear that. Try again.', 'No se oyó bien. Inténtalo otra vez.') };
       r.onend = () => { H.rec = null; render(); const i = document.getElementById('ch-in'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length) } };

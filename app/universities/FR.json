@@ -1,0 +1,435 @@
+{
+ "country": "FR",
+ "updated": "2026-10-20",
+ "admissions_overview": {
+  "summary": "En France, l'entrée en première année d'études supérieures passe par Parcoursup. Le site ouvre en décembre ; tu t'inscris et formules tes vœux de mi-janvier à mi-mars, puis tu les confirmes avant début avril, avec un projet de formation motivé pour chacun. Les formations examinent ton dossier (notes de Première et de Terminale, résultats des épreuves anticipées, appréciations) et les réponses arrivent à partir de juin. Une phase complémentaire est ouverte ensuite pour les places restantes.",
+  "official_url": "https://www.parcoursup.gouv.fr",
+  "notes": "Les intitulés sont les mentions nationales de licence (diplôme en 3 ans) et les grands domaines des composantes, pas la liste complète des parcours de chaque université. Le calendrier Parcoursup change chaque année : vérifie toujours sur parcoursup.gouv.fr et sur le site de chaque université."
+ },
+ "universities": [
+  {
+   "id": "sorbonne",
+   "name": "Sorbonne Université",
+   "short": "SU",
+   "type": "public",
+   "city": "Paris",
+   "url": "https://www.sorbonne-universite.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté des Lettres",
+     "courses": [
+      {
+       "name": "Licence Lettres",
+       "years": 3
+      },
+      {
+       "name": "Licence Histoire",
+       "years": 3
+      },
+      {
+       "name": "Licence Philosophie",
+       "years": 3
+      },
+      {
+       "name": "Licence Géographie et aménagement",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté des Sciences et Ingénierie",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Sciences de la vie",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté de Santé",
+     "courses": [
+      {
+       "name": "Médecine, maïeutique, odontologie, pharmacie (MMOP)",
+       "note": "Accès en deuxième année par le PASS ou une L.AS"
+      },
+      {
+       "name": "Licence Accès Santé (L.AS)",
+       "years": 3,
+       "note": "Une licence disciplinaire avec une option santé"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "paris-cite",
+   "name": "Université Paris Cité",
+   "short": "UPCité",
+   "type": "public",
+   "city": "Paris",
+   "url": "https://u-paris.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté des Sciences",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Sciences de la vie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté Sociétés et Humanités",
+     "courses": [
+      {
+       "name": "Licence Histoire",
+       "years": 3
+      },
+      {
+       "name": "Licence Géographie et aménagement",
+       "years": 3
+      },
+      {
+       "name": "Licence Psychologie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté de Droit, d'Économie et de Gestion",
+     "courses": [
+      {
+       "name": "Licence Droit",
+       "years": 3
+      },
+      {
+       "name": "Licence Économie et gestion",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "paris-saclay",
+   "name": "Université Paris-Saclay",
+   "short": "UPSaclay",
+   "type": "public",
+   "city": "Orsay",
+   "url": "https://www.universite-paris-saclay.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté des Sciences d'Orsay",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      },
+      {
+       "name": "Licence Sciences de la vie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté Jean Monnet (droit, économie, gestion)",
+     "courses": [
+      {
+       "name": "Licence Droit",
+       "years": 3
+      },
+      {
+       "name": "Licence Économie",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "amu",
+   "name": "Aix-Marseille Université",
+   "short": "AMU",
+   "type": "public",
+   "city": "Marseille et Aix-en-Provence",
+   "url": "https://www.univ-amu.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté de Droit et de Science politique",
+     "courses": [
+      {
+       "name": "Licence Droit",
+       "years": 3
+      },
+      {
+       "name": "Licence Science politique",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté d'Économie et de Gestion",
+     "courses": [
+      {
+       "name": "Licence Économie et gestion",
+       "years": 3
+      },
+      {
+       "name": "Licence Gestion",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté des Sciences",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bordeaux",
+   "name": "Université de Bordeaux",
+   "short": "UB",
+   "type": "public",
+   "city": "Bordeaux",
+   "url": "https://www.u-bordeaux.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Collège Droit, science politique, économie et gestion",
+     "courses": [
+      {
+       "name": "Licence Droit",
+       "years": 3
+      },
+      {
+       "name": "Licence Économie et gestion",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Collège Sciences et technologies",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Collège Sciences de la santé",
+     "courses": [
+      {
+       "name": "Médecine, maïeutique, odontologie, pharmacie (MMOP)",
+       "note": "Accès en deuxième année par le PASS ou une L.AS"
+      },
+      {
+       "name": "Licence Accès Santé (L.AS)",
+       "years": 3,
+       "note": "Une licence disciplinaire avec une option santé"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lyon1",
+   "name": "Université Claude Bernard Lyon 1",
+   "short": "Lyon 1",
+   "type": "public",
+   "city": "Lyon",
+   "url": "https://www.univ-lyon1.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté des Sciences",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Physique",
+       "years": 3
+      },
+      {
+       "name": "Licence Chimie",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      },
+      {
+       "name": "Licence Sciences de la vie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "UFR STAPS",
+     "courses": [
+      {
+       "name": "Licence STAPS, parcours Entraînement sportif",
+       "years": 3
+      },
+      {
+       "name": "Licence STAPS, parcours Activité physique adaptée et santé",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Santé",
+     "courses": [
+      {
+       "name": "Médecine, maïeutique, odontologie, pharmacie (MMOP)",
+       "note": "Accès en deuxième année par le PASS ou une L.AS"
+      },
+      {
+       "name": "Licence Accès Santé (L.AS)",
+       "years": 3,
+       "note": "Une licence disciplinaire avec une option santé"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unistra",
+   "name": "Université de Strasbourg",
+   "short": "Unistra",
+   "type": "public",
+   "city": "Strasbourg",
+   "url": "https://www.unistra.fr",
+   "admissions_url": "https://www.parcoursup.gouv.fr",
+   "verified_on": "2026-10-20",
+   "faculties": [
+    {
+     "name": "Faculté de Droit, de Science politique et de Gestion",
+     "courses": [
+      {
+       "name": "Licence Droit",
+       "years": 3
+      },
+      {
+       "name": "Licence Gestion",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "UFR de Mathématique et d'Informatique",
+     "courses": [
+      {
+       "name": "Licence Mathématiques",
+       "years": 3
+      },
+      {
+       "name": "Licence Informatique",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculté de Médecine, Maïeutique et Sciences de la santé",
+     "courses": [
+      {
+       "name": "Médecine, maïeutique, odontologie, pharmacie (MMOP)",
+       "note": "Accès en deuxième année par le PASS ou une L.AS"
+      },
+      {
+       "name": "Licence Accès Santé (L.AS)",
+       "years": 3,
+       "note": "Une licence disciplinaire avec une option santé"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

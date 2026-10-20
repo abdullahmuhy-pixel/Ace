@@ -16,9 +16,9 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 
 /* ---------- state ---------- */
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
-const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['teachers','Teachers'],['schools','Schools'],['guides','Guides'],['about','About'],['contact','Contact']];
+const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['syllabus','Syllabus'],['teachers','Teachers'],['schools','Schools'],['guides','Guides']];
 
-const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta'};
+const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta',ZW:'zimbabwe',BW:'botswana',FR:'france'};
 const PAGES = ['countries','features','syllabus','teachers','schools','guides','about','contact','quote','privacy','terms'];
 const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
 function parseRoute(r) {
@@ -140,6 +140,7 @@ const words = t => esc(t).split(/(\s+)/).map((w, i) => /^\s+$/.test(w) || !w ? w
 
 /* ---------- shared pieces ---------- */
 const btnGo = (page, label, cls = '', arg = '') => `<button class="btn ${cls}" data-go="${page}" data-arg="${arg}">${label}</button>`;
+const PORTAL = k => String(SITE_CONFIG.appUrl || 'app/').replace(/app\/?(index\.html)?$/, k + '/');
 const appBtn = (label = 'Open the student app', cls = 'primary') => `<a class="btn ${cls}" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">${label}</a>`;
 const head = (eyebrow, title, lede, c) => `<div class="hd ${c ? 'c' : ''}"><div class="eyebrow mono">${esc(eyebrow)}</div><h2>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`;
 const pill = s => `<span class="pill ${s === 'Live' ? 'live' : s === 'Backend ready' ? 'back' : s === 'Planned' ? 'plan' : ''}">${esc(s)}</span>`;
@@ -174,14 +175,21 @@ function countryCard(cc) {
 /* ---------- pages ---------- */
 function pHome() {
   return `<section class="hero"><div><div class="eyebrow mono">Exam prep in ${CCS.length} countries</div>
-  <h1>Practise on questions written for the exam you will sit.</h1>
-  <p class="lead">Ace Education is an exam prep and study app for secondary school and university students. It gives topic notes, quizzes, flashcards, timed mock exams and an AI study buddy for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU.</p>
-  <div class="who" role="group" aria-label="Choose how you will use Ace"><a class="btn primary who-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">I'm a student</a>${btnGo('teachers', 'I teach or tutor', 'who-t')}${btnGo('schools', 'I represent a school', 'who-t')}</div>
+  <h1>Your own tutor for the exam you will sit.</h1>
+  <p class="lead">Ace is built for students who study on their own. You get short lessons, topic notes, quizzes, flashcards, timed mock exams and an AI tutor you can chat with any time, for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU. No school or teacher needed.</p>
+  <div class="who" role="group" aria-label="Choose how you will use Ace"><a class="btn primary who-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">I'm in secondary school</a><a class="btn primary who-s" href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">I'm at university</a><a class="btn who-t" href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">I want a certificate course</a>${btnGo('teachers', 'I teach or tutor', 'who-t')}${btnGo('schools', 'I represent a school', 'who-t')}</div>
   <p class="who-p">Parent or guardian? <a href="family/">Open the family view</a> with the code your child shares.</p>
   <div class="facts"><div><b>${CCS.length}</b><span>countries open</span></div><div><b>${TOT.exams}</b><span>exams</span></div><div><b>${nf(TOT.q)}</b><span>practice questions</span></div><div><b>${nf(TOT.t)}</b><span>topic notes</span></div></div></div>
   <div><div class="chips" role="tablist" aria-label="Pick a country">${CCS.map(cc => `<button class="chip ${S.hero === cc ? 'on' : ''}" data-act="hero" data-cc="${cc}">${CM[cc].flag} ${cc}</button>`).join('')}</div>${qSheet(S.hero, 'hero')}</div></section>
 
-  <section class="blk"><div class="wrap">${head('For students', 'Everything you need to get ready on your own.', 'Most Ace learners study independently. You do not need a school or a teacher to use any of this.')}
+  <section class="blk"><div class="wrap">${head('How it works', 'A study routine that runs itself.', 'Ace does the planning, the marking and the reminding, so your time goes on learning.')}
+  <ol class="steps4">${[['Tell Ace your exam and its date', 'Pick your country, exam and subjects. Ace builds a plan from today to exam day around the topics you find hardest.'], ['Learn a topic in a few minutes', 'Each topic is a short narrated lesson with questions along the way, then full notes when you want more depth.'], ['Practise, and let Ace keep score', 'Quizzes, flashcards and timed mocks. Every wrong answer goes into your mistakes notebook to redo later.'], ['Ask Ace when you are stuck', 'Chat with Ace about any question, step by step. Your chats are saved, so you can pick up where you left off.']].map((x, i) => `<li><b>${esc(x[0])}</b><p>${esc(x[1])}</p></li>`).join('')}</ol>
+  <div class="cta">${appBtn('Start studying free')}</div></div></section>
+
+  <section class="blk"><div class="wrap">${head('Three ways in', 'One account, three places to learn.', 'Pick the portal that matches where you are. One free account signs you in to all three.')}
+  <div class="grid g3">${[['🏫', 'Ace for school', 'Exam prep for secondary school: notes, quizzes and mock exams for WASSCE, KCSE, GCSE, NSC and more.', SITE_CONFIG.appUrl, 'Open Ace'], ['🏛️', 'Ace Campus', 'University courses with interactive lessons, practice for every topic and course finals, plus a semester planner and CGPA calculator.', PORTAL('campus'), 'Open Ace Campus'], ['🎓', 'Ace Academy', 'Short courses in coding, data and AI, money, business and careers, with learning paths and a certificate anyone can verify.', PORTAL('academy'), 'Open Ace Academy']].map(f => `<div class="card"><span class="ic">${f[0]}</span><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p><p><a class="btn sm" href="${esc(f[3])}" target="_blank" rel="noopener">${esc(f[4])}</a></p></div>`).join('')}</div></div></section>
+
+  <section class="blk"><div class="wrap">${head('Everything included', 'Every tool a self-taught student needs.', 'Most Ace learners study independently, at home and on their phones. All of this works without a school or a teacher.')}
   <div class="grid g3">${STUDENT_TOOLS.map(f => `<div class="card"><span class="ic">${f[0]}</span><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('')}</div>
   <div class="cta">${appBtn('Start studying free')}${btnGo('features', 'See every feature')}</div></div></section>
 
@@ -363,13 +371,13 @@ function pTerms() {
 /* ---------- shell ---------- */
 function header() {
   return `<header><div class="bar"><button class="brand" data-go="home" aria-label="Ace Education home">${PENCIL}Ace Education</button>
-  <nav class="main" id="nav">${NAV.map(n => `<a data-go="${n[0]}" class="${S.page === n[0] || (S.page === 'country' && n[0] === 'countries') || (S.page === 'guide' && n[0] === 'guides') ? 'on' : ''}">${n[1]}</a>`).join('')}<a data-go="quote" class="${S.page === 'quote' ? 'on' : ''}">Get a quote</a></nav>
+  <nav class="main" id="nav">${NAV.map(n => `<a data-go="${n[0]}" class="${S.page === n[0] || (S.page === 'country' && n[0] === 'countries') || (S.page === 'guide' && n[0] === 'guides') ? 'on' : ''}">${n[1]}</a>`).join('')}<a href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">Campus</a><a href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">Academy</a><a data-go="quote" class="${S.page === 'quote' ? 'on' : ''}">Get a quote</a></nav>
   <a class="btn sm hide-s" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a><a class="btn sm primary hide-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a>
   <button class="icon" id="theme" aria-label="Toggle theme">🌓</button><button class="icon menu" id="menu" aria-label="Menu">☰</button></div></header>`;
 }
 function footer() {
   return `<footer><div class="fgrid"><div><button class="brand" data-go="home" style="margin-bottom:.7rem">${PENCIL}Ace Education</button><p style="color:var(--ink2);font-size:.9rem;max-width:34ch">Exam preparation for secondary schools in ${CCS.length} countries, built around each country's own exams.</p></div>
-  <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
+  <div><h4>Product</h4><a data-go="features">Features</a><a data-go="syllabus">Syllabus explorer</a><a data-go="schools">For schools</a><a href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Ace for school</a><a href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">Ace Campus (university)</a><a href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">Ace Academy (certificates)</a><a href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>
   <div><h4>Countries</h4>${CCS.map(cc => `<a data-go="country" data-arg="${cc}">${cMeta(cc)}</a>`).join('')}</div>
   <div><h4>Company</h4><a data-go="about">About</a><a data-go="guides">Guides</a><a data-go="quote">Get a quote</a><a data-go="contact">Contact</a><a data-go="privacy">Privacy</a><a data-go="terms">Terms</a></div></div>
   <div class="fine">© Ace Education. Content carries a "needs review" label until a subject teacher signs it off. Exam names belong to their exam bodies; Ace Education is not affiliated with them.</div></footer>`;

@@ -74,7 +74,7 @@ ${c.quiz.map((x, i) => `<div class="card" style="margin-bottom:10px"><b>${i + 1}
   }
 
   /* ================= UNIVERSITIES ================= */
-  const CCS = ['NG', 'GH', 'SL', 'GM', 'KE', 'ZM', 'GB', 'CA', 'ES', 'IE', 'ZA', 'UG', 'TZ', 'LR', 'MT', 'ZW', 'BW'];
+  const CCS = ['NG', 'GH', 'SL', 'GM', 'KE', 'ZM', 'GB', 'CA', 'ES', 'IE', 'ZA', 'UG', 'TZ', 'LR', 'MT', 'ZW', 'BW', 'FR'];
   const uniCC = () => Lr.uni.cc || (typeof HOMECC === 'function' ? HOMECC() : S.c);
   function uniResults() {
     const d = Lr.uni.data[uniCC()], q = Lr.uni.q.trim().toLowerCase(); if (!d) return '';
@@ -266,7 +266,7 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
     else if (a === 'ngo') {
       const n = Lr.nt; if (!n.subject.trim()) { n.err = L('Add a subject or course name.', 'Añade una asignatura.'); return render(); } if (!n.img && n.text.trim().length < 80) { n.err = L('Upload a file, add a photo or paste more of your notes.', 'Sube un archivo, añade una foto o pega más apuntes.'); return render(); }
       n.busy = true; n.err = ''; render();
-      sync().fn('notes-pack', { subject: n.subject, notes: n.text, image: n.img ? { media_type: n.img.media_type, data: n.img.data } : undefined, exam: AceX.h.ex(), country: cname() }).then(r => { n.res = r; n.busy = false; n.ans = {}; n.flip = {}; n.saved = false; render(); window.scrollTo(0, 0); }).catch(er => { n.busy = false; n.err = msg(er); render(); });
+      sync().fn('notes-pack', { subject: n.subject, notes: n.text, image: n.img ? { media_type: n.img.media_type, data: n.img.data } : undefined, exam: AceX.h.ex(), country: cname(), lang: UIL() }).then(r => { n.res = r; n.busy = false; n.ans = {}; n.flip = {}; n.saved = false; render(); window.scrollTo(0, 0); }).catch(er => { n.busy = false; n.err = msg(er); render(); });
     }
     else if (a === 'nflip') { Lr.nt.flip[v] = !Lr.nt.flip[v]; render(); }
     else if (a === 'nans') { const [q, o] = v.split(':').map(Number); Lr.nt.ans[q] = o; render(); }

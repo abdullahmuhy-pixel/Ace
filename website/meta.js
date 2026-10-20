@@ -104,10 +104,28 @@ LR:{name:'Liberia',flag:'🇱🇷',lang:'English',levels:'Grade 10 – 12',law:'
  next:['Government, Commerce and Financial Accounting','More electives','LJHSCE (Grade 9) subjects']},
 MT:{name:'Malta',flag:'🇲🇹',lang:'English and Maltese',levels:'Year 9 – Sixth Form',law:'GDPR',
  sys:'The Secondary Education Certificate (SEC) at the end of Year 11, and the Matriculation Certificate after two years of sixth form, both set by MATSEC at the University of Malta.',
- intro:'Malta follows the MATSEC syllabuses: twelve SEC subjects, including Maltese, Accounting, Economics, Geography and History written for Malta, and thirteen Matriculation subjects, including Accounting, Economics, History and Systems of Knowledge. Money questions use euros (€) and 18% VAT, and Computing, Business and Economics use Maltese and EU law and institutions.',
+ intro:'Malta follows the MATSEC syllabuses: twelve SEC subjects, including Maltese, Accounting, Economics, Geography and History written for Malta, and sixteen Matriculation subjects, including Maltese, Philosophy, Sociology, Accounting, Economics, History and Systems of Knowledge. Money questions use euros (€) and 18% VAT, and Computing, Business and Economics use Maltese and EU law and institutions.',
  ex:{SEC:'The Secondary Education Certificate, taken at the end of Year 11. Paper I is school-based assessment (30%) and Paper II is set and marked by MATSEC (70%).',Matriculation:'The Matriculation Certificate: two Advanced (AM) and four Intermediate (IM) subjects, one of them Systems of Knowledge, with at least 44 grade points.'},
  scale:'SEC: Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest. Matriculation: grades A to E; AM gives 30 to 6 points and IM 10 to 2 points.',
- next:['Recorded listening practice','More Matriculation subjects (Maltese, Philosophy, Sociology)','Teacher review of the Malta content']}
+ next:['Recorded listening practice for the language orals','SEC options such as Italian, Religious Knowledge and Social Studies','Teacher review of the Malta content']},
+ZW:{name:'Zimbabwe',flag:'🇿🇼',lang:'English',levels:'Form 1 – Upper 6',law:'Cyber and Data Protection Act',
+ sys:'O Level at the end of Form 4 and A Level at the end of Upper 6, both set by ZIMSEC, the Zimbabwe School Examinations Council.',
+ intro:'Zimbabwe follows the ZIMSEC syllabuses. Ace starts with the core O Level subjects (Mathematics, English Language, Biology, Chemistry, Physics and Computer Science) and A Level Mathematics, Physics, Chemistry and Biology, with US dollars in the money questions and Zimbabwean places and examples throughout.',
+ ex:{'O Level':'The ZIMSEC Ordinary Level certificate, taken at the end of Form 4. Most further study needs five passes including English Language.','A Level':'The ZIMSEC Advanced Level certificate, taken at the end of Upper 6. Universities select on A Level points.'},
+ scale:'O Level: grades A to E, and C or better is a pass. A Level: grades A to E, worth 5 points (A) down to 1 point (E).',
+ next:['Combined Science, Geography and History written for Zimbabwe','Accounting, Commerce and Heritage Studies','Teacher review of the Zimbabwe content']},
+BW:{name:'Botswana',flag:'🇧🇼',lang:'English and Setswana',levels:'Form 1 – Form 5',law:'Data Protection Act',
+ sys:"The Botswana General Certificate of Secondary Education (BGCSE) at the end of Form 5, set by the Botswana Examinations Council (BEC). The Junior Certificate (JCE) comes at the end of Form 3.",
+ intro:"Botswana follows the BEC BGCSE syllabuses. Ace starts with Mathematics, English Language, Biology, Chemistry, Physics and Computer Studies, with pula in the money questions and Botswana places and examples throughout.",
+ ex:{"BGCSE": "The Botswana General Certificate of Secondary Education, taken at the end of Form 5. Universities admit on points from six subjects."},
+ scale:"BGCSE grades run from A* (highest) to G; U means ungraded.",
+ next:["Science Double Award, Setswana, Geography and History", "Accounting, Commerce, Agriculture and Development Studies", "Teacher review of the Botswana content"]},
+FR:{name:'France',flag:'🇫🇷',lang:'Français',levels:'Seconde – Terminale',law:'RGPD',
+ sys:"The baccalauréat général. Première students sit the épreuves anticipées (French, and from 2026 a written mathematics paper for every student); Terminale students sit philosophy, two specialty subjects and the Grand oral. Continuous assessment counts for 40% of the final mark.",
+ intro:"France's content is written in French, and so is the app's interface for this country. Ace starts with the épreuve anticipée de mathématiques (Première, specialty-maths version): automatismes, sequences, quadratics, derivatives, the exponential function, trigonometry, the scalar product and probability.",
+ ex:{"Épreuves anticipées": "Written papers taken at the end of Première: French (written and oral) and, from the 2026 session, a two-hour mathematics paper without a calculator, with 6 points of automatismes and 14 points of exercises."},
+ scale:"Marks are out of 20. The bac is passed with an average of 10/20; mentions start at 12 (assez bien), 14 (bien) and 16 (très bien).",
+ next:["Français (épreuve anticipée)", "Philosophie", "Spécialités de Terminale: mathématiques, physique-chimie, SVT, SES"]}
 };
 
 const STUDENT_TOOLS = [
@@ -115,11 +133,19 @@ const STUDENT_TOOLS = [
   ['🗓️','A study plan to exam day','Tell Ace your exam date and how much time you have. It plans each week around the topics you find hardest.'],
   ['📕','Mistakes notebook','Every question you get wrong is saved with its working, so you can redo it until you get it right.'],
   ['🏆','Weekly league','Earn XP for practice and climb the weekly table of learners in your country.'],
-  ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows your subject, topic and exam, and explains step by step.'],
+  ['<i class="aic"></i>','Chat with Ace','An AI tutor that knows your subject and exam. Start a new chat any time; old chats are saved so you can come back to them.'],
+  ['🧠','Tutor mode and smart solver','Hints instead of answers when you want to work it out yourself, or every step shown when you need to see the method.'],
+  ['🎤','Talk to Ace','Ask your question out loud and have Ace read its answers back to you.'],
+  ['📥','Study offline','Save a subject to your phone and keep studying without data.'],
+  ['📷','Snap a question','Take a photo of a homework or past-paper question and Ace explains it step by step.'],
+  ['📝','Your notes into a study pack','Upload a PDF, lecture slides or a Word file, or take a photo of your notes, and get a summary, flashcards and practice questions.'],
+  ['👯','Study friends','Add friends with a private code, keep a friend streak going together and send a friendly nudge.'],
   ['⏱️','Timed mock exams','Full mocks in exam conditions, scored by module, with the topics to revise next.'],
   ['🔁','Spaced revision','Short reviews at 1, 3, 7, 21 and 45 days so what you learn stays learned.'],
-  ['🎯','Daily challenge and streaks','Ten questions a day from your own subjects. Keep your streak going.'],
-  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.']
+  ['🎯','Daily challenge and streaks','Ten questions a day from your own subjects. Every 7 days in a row earns a streak freeze that saves your streak if you miss a day.'],
+  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.'],
+  ['🏛️','University courses','Ace Campus has first-year university courses, a semester planner and a CGPA calculator.'],
+  ['🎓','Certificate courses','Ace Academy has short courses in coding, data, money, business and careers, with a certificate anyone can verify.']
 ];
 const FEATURES = [
  // [icon, title, text, status, group]
@@ -173,7 +199,7 @@ const SCHOOL_STATUS = [
 ];
 
 const FAQ = [
- ['Which exams does Ace Education cover today?','More than twenty exams across fifteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; and the SEC in Malta. The Countries page shows exactly which subjects each one has.'],
+ ['Which exams does Ace Education cover today?','More than twenty exams across eighteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; and the SEC in Malta. The Countries page shows exactly which subjects each one has.'],
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
@@ -196,7 +222,7 @@ const GUIDES = [
  ['science-practicals','Subject guides','Physics, Chemistry and Biology: from definitions to application','Science papers test whether you can apply an idea to a situation you have not seen.',
   ['Learn each definition word for word, then practise using it in a sentence about a real situation.','For calculations, write the formula, substitute with units, then answer with units.','In Chemistry, balance every equation and check the state symbols.','In Biology, learn process descriptions in order, and practise explaining why, not only what.'],'6 min'],
  ['exam-systems','Exam systems','How the exam systems compare','The countries in Ace Education test students in very different ways. Here is the quick difference.',
-  ['West Africa (Nigeria, Ghana, Sierra Leone, The Gambia, Liberia): WASSCE grades run A1 to F9, and a credit is C6 or better.','Kenya: KCSE gives a mean grade A to E, with 12 points for A.','Zambia: ECZ grades run from 1 (best) to 9.','UK: GCSE uses 9 to 1 and A-Level uses A* to E.','Canada: marks in Ontario are percentages.','Spain: the EBAU is marked 0 to 14 including the voluntary phase.','Ireland: Leaving Certificate grades H1 to H8 and O1 to O8 turn into CAO points.','South Africa: the NSC reports achievement levels 1 to 7, where level 7 is 80 to 100%.','Uganda: UCE grades run 1 (best) to 9, and UACE gives principal passes A to F.','Tanzania: CSEE uses divisions I to IV and 0, and ACSEE grades run A to F.','Malta: SEC Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest.'],'4 min'],
+  ['West Africa (Nigeria, Ghana, Sierra Leone, The Gambia, Liberia): WASSCE grades run A1 to F9, and a credit is C6 or better.','Kenya: KCSE gives a mean grade A to E, with 12 points for A.','Zambia: ECZ grades run from 1 (best) to 9.','UK: GCSE uses 9 to 1 and A-Level uses A* to E.','Canada: marks in Ontario are percentages.','Spain: the EBAU is marked 0 to 14 including the voluntary phase.','Ireland: Leaving Certificate grades H1 to H8 and O1 to O8 turn into CAO points.','South Africa: the NSC reports achievement levels 1 to 7, where level 7 is 80 to 100%.','Uganda: UCE grades run 1 (best) to 9, and UACE gives principal passes A to F.','Tanzania: CSEE uses divisions I to IV and 0, and ACSEE grades run A to F.','Malta: SEC Paper II is sat at Levels 1–2 or 2–3, and grade 1 is the highest.','Zimbabwe: ZIMSEC O Level grades run A to E with C or better a pass, and A Level grades A to E give 5 to 1 points.','France: marks out of 20; the bac needs a 10/20 average, with mentions from 12, 14 and 16.','Botswana: BGCSE grades run A* to G, with U for ungraded.'],'4 min'],
  ['exam-stress','Wellbeing','Managing exam stress','A little stress sharpens attention. Too much makes it hard to start. These habits help most students.',
   ['Sleep is part of revision. Memory is stored overnight, so cutting sleep to study usually backfires.','Break the work into small tasks that fit in 25 minutes. Starting is the hardest part.','Move for ten minutes between sessions. Walking is enough.','Talk to someone you trust. If worry is affecting your sleep or daily life for weeks, speak to a teacher, parent or a health professional.'],'5 min'],
  ['using-ace','Using Ace','Getting the most from Ace Education','Ace Education is built around a simple loop: learn a topic, test it, then sit a mock.',

@@ -44,14 +44,14 @@
   const X = window.AceX = { calc, tt: { subject: '', text: '', busy: false, err: '', res: null, ans: {}, saved: false }, notes: null, due: null, plan: null,
     members: null, invite: null, err: '', gp: { scale: 'ng5', rows: [{ course: '', credits: '3', grade: 'A' }], mode: 'gpa', cur: '', done: '', target: '', rem: '' },
     ci: { style: 'apa', type: 'book', author: '', year: '', title: '', publisher: '', url: '', journal: '', volume: '', issue: '', pages: '' }, ft: { mode: 'focus', end: 0, left: 1500 }, loaded: '', goal: { course: '', uni: '', result: '', year: '' } };
-  const C_ = () => C[S.c], es = () => !!C_().l, L = (a, b) => es() ? b : a;
+  const C_ = () => C[S.c], es = () => UIL() === 'es', L = (a, b) => TX(a, b);
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
   const lvl = () => P.lvl || 'secondary';
   const back = (to, label) => `<div class="bk"><button class="bb" data-a="tab" data-v="${to || 'today'}">‹ ${label || L('Back', 'Atrás')}</button></div>`;
   const sync = () => window.AceSync;
   const signedIn = () => !!(sync() && sync().signedIn && sync().signedIn());
   const needSignIn = () => `<div class="card"><b>${L('Sign in to use this', 'Inicia sesión para usar esto')}</b><p class="note">${L('This part is saved to your account. Open the sign-in page, then come back here.', 'Esta parte se guarda en tu cuenta. Abre la página de acceso y vuelve aquí.')}</p><a class="btn" style="display:inline-block;text-decoration:none" href="../login/">${L('Sign in', 'Entrar')}</a></div>`;
-  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia', MT: 'Malta', ZW: 'Zimbabwe', BW: 'Botswana' };
+  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia', MT: 'Malta', ZW: 'Zimbabwe', BW: 'Botswana', FR: 'France' };
   const hc = () => (typeof HOMECC === 'function' ? HOMECC() : S.c), cname = () => NAMES[hc()] || hc();
   const ex = () => C_().x[S.x % C_().x.length];
   const fail = e => { X.err = (e && (e.msg || e.message)) || L('Something went wrong. Try again.', 'Algo salió mal. Inténtalo de nuevo.'); };
@@ -76,7 +76,8 @@
     LR: 'Apply to each university directly. Most ask for your WASSCE result and set their own entrance exam; the University of Liberia entrance exam tests English and Mathematics.',
     MT: 'Most degree courses at the University of Malta need the Matriculation Certificate (taken after two years of sixth form) plus SEC passes in English, Maltese and Mathematics or the subjects your course names. MCAST courses accept SEC results directly. Check the entry requirements of your course.',
     ZW: 'Apply directly to each university (for example UZ, NUST and MSU) through its own online portal. Your A Level points decide entry, and most degrees also need five O Level passes at grade C or better, including English Language and usually Mathematics.',
-    BW: 'Apply directly to each institution (for example the University of Botswana, BIUST or BAC) after your BGCSE results. Entry depends on points from six BGCSE subjects, and government sponsorship is handled by the Department of Tertiary Education Financing (DTEF).'
+    BW: 'Apply directly to each institution (for example the University of Botswana, BIUST or BAC) after your BGCSE results. Entry depends on points from six BGCSE subjects, and government sponsorship is handled by the Department of Tertiary Education Financing (DTEF).',
+    FR: 'Après le bac, tu formules tes vœux sur Parcoursup (inscription de janvier à mars, réponses à partir de juin). Chaque formation examine ton dossier : notes de Première et de Terminale, résultats des épreuves anticipées, projet de formation motivé. Vérifie le calendrier sur parcoursup.gouv.fr.'
   };
   function stages() {
     const c = C_(), exams = c.x.join(', ');
@@ -318,7 +319,7 @@ ${out ? `<div class="card" style="margin-top:10px;font-size:14px;line-height:1.5
     else if (a === 'ttgo') {
       const f = X.tt; if (!f.subject) { f.err = L('Choose a subject.', 'Elige una asignatura.'); return render(); } if (f.text.trim().length < 10) { f.err = L('Tell Ace a little more.', 'Cuenta un poco más.'); return render(); }
       f.busy = true; f.err = ''; render();
-      sync().fn('taught-today', { subject: f.subject, text: f.text, exam: ex(), country: cname() }).then(r => { f.res = r; f.ans = {}; f.saved = false; f.busy = false; f.noteId = r.note_id; X.notes = null; X.loaded = ''; render(); }).catch(err => { f.busy = false; f.err = (err && err.msg) || L('Try again.', 'Inténtalo de nuevo.'); render(); });
+      sync().fn('taught-today', { subject: f.subject, text: f.text, exam: ex(), country: cname(), lang: UIL() }).then(r => { f.res = r; f.ans = {}; f.saved = false; f.busy = false; f.noteId = r.note_id; X.notes = null; X.loaded = ''; render(); }).catch(err => { f.busy = false; f.err = (err && err.msg) || L('Try again.', 'Inténtalo de nuevo.'); render(); });
     }
     else if (a === 'ttnew') { Object.assign(X.tt, { text: '', res: null, ans: {}, saved: false, err: '' }); X.loaded = ''; render(); }
     else if (a === 'opennote') { const n = (X.notes || []).find(x => x.id === v); if (n && n.summary) { Object.assign(X.tt, { res: n.summary, subject: n.subject, text: n.entered_text, ans: {}, saved: false, noteId: n.id }); render(); } else toast(L('No study pack for this note yet.', 'Esta nota aún no tiene paquete.')); }
