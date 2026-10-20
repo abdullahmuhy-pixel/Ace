@@ -563,7 +563,7 @@ function fmtMath(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TE
 function render(){const c=C[S.c],t=T[c.tl||c.l||'en'],r=document.documentElement,ex=c.x[S.x%c.x.length];aceEx(S.c);
  r.dataset.country=S.c;r.lang=c.l||'en';r.dataset.theme=S.dark?'dark':'light';$('#cty').value=HOMECC();{const lk=!!S.locked,hc=HOMECC();$('#cty').hidden=lk;const cb=$('#ctyb');cb.hidden=!lk;cb.textContent=C[hc].f+' '+hc;cb.title=C[hc].n}
  $('meta[name=theme-color]').content=getComputedStyle(r).getPropertyValue('--surface').trim()||'#fff';
- $('#streak').textContent='🔥 '+S.streak;$('#fab').hidden=!(S.tab=='subj')||!!S.ai;{const me=$('#me');if(me){me.textContent=(c.u||'G').split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase();me.toggleAttribute('aria-current',S.tab=='prof')}}
+ $('#streak').textContent='🔥 '+S.streak;$('#fab').hidden=['chat','onb','play','qb','daily','tfc'].includes(S.tab)||!!S.ai;{const me=$('#me');if(me){me.textContent=(c.u||'G').split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase();me.toggleAttribute('aria-current',S.tab=='prof')}}
  $('#nv').innerHTML=TABS.map((k,i)=>`<button data-a="tab" data-v="${k}" ${k==S.tab?'aria-current="page"':''}><svg viewBox="0 0 24 24"><path d="${IC[k]}"/></svg>${t.nav[i]}</button>`).join('');
  $('#v').innerHTML=V[S.tab](c,t,ex)+`<p class="note" style="padding:0 16px 10px">${t.dn}</p>`+sheet(c,t);fmtMath($('#v'));r.style.filter=P.hc?'contrast(1.2)':'';document.body.style.fontFamily=P.dy?'"Trebuchet MS","Comic Sans MS",Verdana,sans-serif':'';tick(true)}
 function tick(f){const c=C[S.c];if(S.tab=='qb'&&S.qb&&S.qb.mode=='mock'&&S.qb.items&&!S.qb.done&&S.qb.deadline){const rem=Math.round((S.qb.deadline-Date.now())/1000);if(rem<=0){qfinish(S.qb);render()}else{const e=$('#mk');if(e)e.textContent=mmss(rem)}}if(S.tab=='home'){let ms=Math.max(0,new Date(c.d+'T09:00:00')-Date.now()),v=[Math.floor(ms/864e5),Math.floor(ms/36e5)%24,Math.floor(ms/6e4)%60,Math.floor(ms/1e3)%60];v.forEach((n,i)=>{const e=$('#cd'+i);if(e)e.textContent=String(n).padStart(i?2:3,'0')})}
@@ -599,11 +599,11 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  else if(a=='share'){const d={title:'Ace Education',text:'Exam prep for WAEC, JAMB, NECO and more.'};if(navigator.share)navigator.share(d).catch(()=>{});else toast(c.l?'Compartir no está disponible aquí':'Sharing isn\'t available here');return}
  else if(a=='delok'&&window.AceSync&&AceSync.signedIn()){AceSync.fn('delete-account',{confirm:'DELETE'}).then(()=>{try{Object.keys(localStorage).filter(k=>k.indexOf('ace-')==0).forEach(k=>localStorage.removeItem(k))}catch(z){}return AceSync.signOut()}).catch(e=>toast((e&&e.msg)||'Could not delete your account. Try again.'));return}
  else if(a=='delok'){try{Object.keys(localStorage).filter(k=>k.indexOf('ace-')==0).forEach(k=>localStorage.removeItem(k))}catch(z){}P={done:{},g:{},s:{},goal:20,rem:true,str:true,wk:false,hc:false,dy:false,email:'',vr:false};S.streak=0;S.xp=0;S.lastDay='';S.playedToday=false;S.sh=null;for(const k in C)if(C[k].u0)C[k].u=C[k].u0;toast(c.l?'Datos eliminados':'Data deleted')}
- else if(a=='ask'){const[mi,ti]=v.split(':').map(Number),sj=c.s[S.sub],ex2=c.x[S.x%c.x.length],R=realSub(c,sj,ex2),m=R.m[mi];S.ai={country:c.n,s:sj,ex:ex2,mod:m[0],topic:m[1][ti],extra:m[2]?`Module overview the student has already read: ${m[2]}`:'',turns:[],busy:false,err:''}}
- else if(a=='askqb'){const Q=S.qb,q=Q.items[Q.i];S.ai={country:c.n,s:Q.s,ex:c.x[S.x%c.x.length],mod:'',topic:q[1],extra:`The student is practising this exam question: "${q[3]}"`+(q[2]?` Marking points: ${q[8].join('; ')}.`:` Options: ${q[4].map((o,i)=>'ABCD'[i]+') '+o).join('; ')}. Correct answer: ${'ABCD'[q[5]]}. Explanation on file: ${q[6]}`),turns:[],busy:false,err:''};setTimeout(()=>aiSend(q[2]?'Explain how to answer this question and why each marking point earns marks.':'Explain why that answer is correct and why the other options are wrong.'),0)}
+ else if(a=='ask'){const[mi,ti]=v.split(':').map(Number),sj=c.s[S.sub],ex2=c.x[S.x%c.x.length],R=realSub(c,sj,ex2),m=R.m[mi];S.ai={country:c.n,s:sj,ex:ex2,mod:m[0],topic:m[1][ti],extra:m[2]?`Module overview the student has already read: ${m[2]}`:'',turns:[],busy:false,err:''};if(window.AceChat)AceChat.adopt()}
+ else if(a=='askqb'){const Q=S.qb,q=Q.items[Q.i];S.ai={country:c.n,s:Q.s,ex:c.x[S.x%c.x.length],mod:'',topic:q[1],extra:`The student is practising this exam question: "${q[3]}"`+(q[2]?` Marking points: ${q[8].join('; ')}.`:` Options: ${q[4].map((o,i)=>'ABCD'[i]+') '+o).join('; ')}. Correct answer: ${'ABCD'[q[5]]}. Explanation on file: ${q[6]}`),turns:[],busy:false,err:''};const fq=q[2]?'Explain how to answer this question and why each marking point earns marks.':'Explain why that answer is correct and why the other options are wrong.';if(window.AceChat){S.ai.topic=q[1];AceChat.adopt(fq)}else setTimeout(()=>aiSend(fq),0)}
  else if(a=='askx'){S.ai=null}
  else if(a=='askq'){const L2=(S.ai&&S.ai.qp)||QP,q=L2[+v];if(S.ai&&S.ai.mode&&!S.ai.turns.length){const i=$('#ai-in');if(i){i.value=q+': ';i.focus();i.setSelectionRange(i.value.length,i.value.length)}toast(c.l?'Añade el tema y pulsa Enviar':'Add your topic, then tap Send');return}setTimeout(()=>aiSend(q),0);return}
- else if(a=='aigen'){openAI(v)}
+ else if(a=='aigen'){openAI(v);if(window.AceChat)AceChat.adopt()}
  else if(a=='logout'){if(window.AceSync&&AceSync.signedIn()){AceSync.signOut();return}location.href='../login/';return}
  else if(a=='savepw'){const pw=($('#sh-in')||{}).value||'';if(pw.length<8){toast(c.l?'Mínimo 8 caracteres':'At least 8 characters');return}if(!(window.AceSync&&AceSync.signedIn())){toast(c.l?'Inicia sesión primero':'Sign in first');return}AceSync.setPassword(pw).then(()=>{S.sh=null;toast(c.l?'Contraseña actualizada':'Password updated');render()}).catch(e=>toast((e&&e.msg)||'Could not update'));return}
  else if(a=='asksend'){const i=document.getElementById('ai-in');const t2=i?i.value:'';if(i)i.value='';aiSend(t2);return}
@@ -660,7 +660,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  const y0=window.scrollY;render();window.scrollTo(0,RESTORE!=null?RESTORE:(['tab','sub','back','tp','exam','qn','qbs','qbm','qbt','qbr','qbagain','qbp','tq','tcd','mock','qbr2','fcgot','fcmiss','fcagain','play','plnx','plbk','obn','obb','obend','obc','obr'].includes(a)?0:y0));RESTORE=null;if(GOTO){const g=document.querySelector(GOTO);GOTO=null;if(g)g.scrollIntoView({block:'center'})}});
 for(const k in C)C[k].u0=C[k].u;try{const n=localStorage.getItem('ace-name');if(n)for(const k in C)C[k].u=n}catch(e){}
 $('#cty').onchange=e=>{if(CAMPUS){AceCampus.setHome(e.target.value);return}S.c=e.target.value;S.x=0;S.sub=null;S.open=null;S.qz=null;try{localStorage.setItem('ace-country',S.c)}catch(x){}useCountry(S.c);render()};
-$('#fab').onclick=()=>{openAI('buddy');render()};
+$('#fab').onclick=()=>{openAI('buddy');if(window.AceChat)AceChat.adopt();render()};
 try{if(!CAMPUS&&!P.onb&&!localStorage.getItem('ace-country')&&!ST().q)S.tab='onb'}catch(e){}
 if(CAMPUS)AceCampus.boot();useCountry(S.c);render();
 /* offline app shell + syllabus cache (only on a real http(s) host; sw.js sits next to this file) */
@@ -674,6 +674,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
 <script src="learn.js"></script>
 <script src="class.js"></script>
 <script src="learner.js"></script>
+<script src="chat.js"></script>
 <script src="ui.js"></script>
 <script>
 /* Ace cloud sync: optional. Runs only when ACE_CONFIG.supabaseUrl is set and a student is signed in; otherwise the app stays a local guest app. */

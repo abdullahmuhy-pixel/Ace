@@ -117,11 +117,15 @@ const STUDENT_TOOLS = [
   ['🗓️','A study plan to exam day','Tell Ace your exam date and how much time you have. It plans each week around the topics you find hardest.'],
   ['📕','Mistakes notebook','Every question you get wrong is saved with its working, so you can redo it until you get it right.'],
   ['🏆','Weekly league','Earn XP for practice and climb the weekly table of learners in your country.'],
-  ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows your subject, topic and exam, and explains step by step.'],
+  ['<i class="aic"></i>','Chat with Ace','An AI tutor that knows your subject and exam. Start a new chat any time; old chats are saved so you can come back to them.'],
+  ['🧠','Tutor mode and smart solver','Hints instead of answers when you want to work it out yourself, or every step shown when you need to see the method.'],
+  ['📝','Your notes into a study pack','Paste your class or lecture notes and get a summary, flashcards and practice questions from them.'],
   ['⏱️','Timed mock exams','Full mocks in exam conditions, scored by module, with the topics to revise next.'],
   ['🔁','Spaced revision','Short reviews at 1, 3, 7, 21 and 45 days so what you learn stays learned.'],
   ['🎯','Daily challenge and streaks','Ten questions a day from your own subjects. Keep your streak going.'],
-  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.']
+  ['💚','Wellbeing check-in','A private daily check-in, with breathing and focus tips when exams feel heavy.'],
+  ['🏛️','University courses','Ace Campus has first-year university courses, a semester planner and a CGPA calculator.'],
+  ['🎓','Certificate courses','Ace Academy has short courses in coding, data, money, business and careers, with a certificate anyone can verify.']
 ];
 const FEATURES = [
  // [icon, title, text, status, group]
@@ -408,17 +412,21 @@ function countryCard(cc) {
 /* ---------- pages ---------- */
 function pHome() {
   return `<section class="hero"><div><div class="eyebrow mono">Exam prep in ${CCS.length} countries</div>
-  <h1>Practise on questions written for the exam you will sit.</h1>
-  <p class="lead">Ace Education is an exam prep and study app for secondary school and university students. It gives topic notes, quizzes, flashcards, timed mock exams and an AI study buddy for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU.</p>
+  <h1>Your own tutor for the exam you will sit.</h1>
+  <p class="lead">Ace is built for students who study on their own. You get short lessons, topic notes, quizzes, flashcards, timed mock exams and an AI tutor you can chat with any time, for ${TOT.exams} exams in ${CCS.length} countries, including WASSCE, NECO, JAMB, BECE, KCSE, ECZ, UCE, CSEE, NSC, GCSE, A-Level, OSSD, the Leaving Cert and EBAU. No school or teacher needed.</p>
   <div class="who" role="group" aria-label="Choose how you will use Ace"><a class="btn primary who-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">I'm in secondary school</a><a class="btn primary who-s" href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">I'm at university</a><a class="btn who-t" href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">I want a certificate course</a>${btnGo('teachers', 'I teach or tutor', 'who-t')}${btnGo('schools', 'I represent a school', 'who-t')}</div>
   <p class="who-p">Parent or guardian? <a href="family/">Open the family view</a> with the code your child shares.</p>
   <div class="facts"><div><b>${CCS.length}</b><span>countries open</span></div><div><b>${TOT.exams}</b><span>exams</span></div><div><b>${nf(TOT.q)}</b><span>practice questions</span></div><div><b>${nf(TOT.t)}</b><span>topic notes</span></div></div></div>
   <div><div class="chips" role="tablist" aria-label="Pick a country">${CCS.map(cc => `<button class="chip ${S.hero === cc ? 'on' : ''}" data-act="hero" data-cc="${cc}">${CM[cc].flag} ${cc}</button>`).join('')}</div>${qSheet(S.hero, 'hero')}</div></section>
 
-  <section class="blk"><div class="wrap">${head('Three ways in', 'One account, three places to learn.', 'Pick the portal that matches where you are. Your streak, XP and sign-in carry across all three.')}
+  <section class="blk"><div class="wrap">${head('How it works', 'A study routine that runs itself.', 'Ace does the planning, the marking and the reminding, so your time goes on learning.')}
+  <ol class="steps4">${[['Tell Ace your exam and its date', 'Pick your country, exam and subjects. Ace builds a plan from today to exam day around the topics you find hardest.'], ['Learn a topic in a few minutes', 'Each topic is a short narrated lesson with questions along the way, then full notes when you want more depth.'], ['Practise, and let Ace keep score', 'Quizzes, flashcards and timed mocks. Every wrong answer goes into your mistakes notebook to redo later.'], ['Ask Ace when you are stuck', 'Chat with Ace about any question, step by step. Your chats are saved, so you can pick up where you left off.']].map((x, i) => `<li><b>${esc(x[0])}</b><p>${esc(x[1])}</p></li>`).join('')}</ol>
+  <div class="cta">${appBtn('Start studying free')}</div></div></section>
+
+  <section class="blk"><div class="wrap">${head('Three ways in', 'One account, three places to learn.', 'Pick the portal that matches where you are. One free account signs you in to all three.')}
   <div class="grid g3">${[['🏫', 'Ace for school', 'Exam prep for secondary school: notes, quizzes and mock exams for WASSCE, KCSE, GCSE, NSC and more.', SITE_CONFIG.appUrl, 'Open Ace'], ['🏛️', 'Ace Campus', 'University courses with interactive lessons, practice for every topic and course finals, plus a semester planner and CGPA calculator.', PORTAL('campus'), 'Open Ace Campus'], ['🎓', 'Ace Academy', 'Short courses in coding, data and AI, money, business and careers, with learning paths and a certificate anyone can verify.', PORTAL('academy'), 'Open Ace Academy']].map(f => `<div class="card"><span class="ic">${f[0]}</span><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p><p><a class="btn sm" href="${esc(f[3])}" target="_blank" rel="noopener">${esc(f[4])}</a></p></div>`).join('')}</div></div></section>
 
-  <section class="blk"><div class="wrap">${head('For students', 'Everything you need to get ready on your own.', 'Most Ace learners study independently. You do not need a school or a teacher to use any of this.')}
+  <section class="blk"><div class="wrap">${head('Everything included', 'Every tool a self-taught student needs.', 'Most Ace learners study independently, at home and on their phones. All of this works without a school or a teacher.')}
   <div class="grid g3">${STUDENT_TOOLS.map(f => `<div class="card"><span class="ic">${f[0]}</span><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('')}</div>
   <div class="cta">${appBtn('Start studying free')}${btnGo('features', 'See every feature')}</div></div></section>
 
