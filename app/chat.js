@@ -28,7 +28,7 @@
     const keep = H.list.slice(0, MAX);
     for (let n = keep.length; n > 0; n--) { try { localStorage.setItem(KEY, JSON.stringify(keep.slice(0, n))); return } catch (e) { /* quota: drop the oldest and retry */ } }
   }
-  const row = c => ({ id: c.id, title: c.title.slice(0, 120), portal: c.portal, mode: c.mode, subject: (c.s || '').slice(0, 80) || null, exam: (c.ex || '').slice(0, 80) || null, topic: (c.topic || '').slice(0, 200) || null, extra: (c.extra || '').slice(0, 2000) || null, turns: c.turns.slice(-400).map(t => ({ role: t.role, content: t.content, t: t.t })), pinned: !!c.pinned, updated_at: c.updated });
+  const row = c => ({ id: c.id, title: c.title.slice(0, 120), portal: c.portal, mode: c.mode, subject: (c.s || '').slice(0, 80) || null, exam: (c.ex || '').slice(0, 80) || null, topic: (c.topic || '').slice(0, 200) || null, extra: (c.extra || '').slice(0, 2000) || null, turns: c.turns.slice(-400).map((t, i, all) => Object.assign({ role: t.role, content: t.content, t: t.t }, t.img && all.slice(i).filter(x => x.img).length <= 12 ? { img: t.img } : {})), pinned: !!c.pinned, updated_at: c.updated });
   function push(c) { if (!signed()) return; AceSync.table('ai_chats').then(q => q.upsert(row(c))).then(r => { if (r && r.error) console.warn(r.error.message) }).catch(() => { }) }
   function drop(id) { if (!signed()) return; AceSync.table('ai_chats').then(q => q.delete().eq('id', id)).catch(() => { }) }
   function pull() {
@@ -64,9 +64,10 @@
   function titleFrom(t) { const s = t.replace(/\s+/g, ' ').trim(); return s.length > 48 ? s.slice(0, 46).replace(/\s\S*$/, '') + '…' : s }
 
   async function send(text) {
-    const ch = cur(); text = String(text || '').trim(); if (!ch || !text || H.busy) return;
-    H.err = ''; const first = !ch.turns.length;
-    ch.turns.push({ role: 'user', content: text, t: Date.now() });
+    const ch = cur(), att = H.att; text = String(text || '').trim(); if (!ch || (!text && !att) || H.busy) return;
+    if (!text) text = L('Help me with the question in this photo.', 'Ayúdame con la pregunta de esta foto.');
+    H.err = ''; H.att = null; const first = !ch.turns.length;
+    ch.turns.push(Object.assign({ role: 'user', content: text, t: Date.now() }, att ? { img: att.thumb } : {}));
     if (first && (ch.title === 'New chat' || ch.title === 'Chat nuevo')) ch.title = titleFrom(text);
     ch.updated = new Date().toISOString(); saveLocal(); H.busy = true; H.draft = ''; paint(true);
     try {
@@ -75,12 +76,12 @@
       const msgs = ch.turns.slice(-20).map(m => ({ role: m.role, content: m.content }));
       while (msgs.length && msgs[0].role !== 'user') msgs.shift();
       if (ch.extra && msgs.length) msgs[0] = { role: 'user', content: L('Context: ', 'Contexto: ') + ch.extra + '\n\n' + msgs[0].content };
-      const r = await fetch(ACE_CFG.aiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + tok }, body: JSON.stringify({ messages: msgs, context: { country: C[S.c].n, exam: ch.ex, subject: ch.s || L('All subjects', 'Todas'), topic: ch.topic || MODES[ch.mode].n(), mode: ch.mode === 'buddy' ? '' : ch.mode, lang: C[S.c].l || 'en', level: PORTAL === 'campus' ? 'university' : 'secondary' } }) });
+      const r = await fetch(ACE_CFG.aiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + tok }, body: JSON.stringify({ messages: msgs, image: att ? { media_type: att.media_type, data: att.data } : undefined, context: { country: C[S.c].n, exam: ch.ex, subject: ch.s || L('All subjects', 'Todas'), topic: ch.topic || MODES[ch.mode].n(), mode: ch.mode === 'buddy' ? '' : ch.mode, lang: C[S.c].l || 'en', level: PORTAL === 'campus' ? 'university' : 'secondary' } }) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) throw { msg: j.error || L('Ace could not answer. Try again.', 'Ace no pudo responder. Inténtalo de nuevo.') };
       ch.turns.push({ role: 'assistant', content: j.reply, t: Date.now() }); H.cap = j.cap == null ? null : { used: j.used, cap: j.cap };
       try { window.AceUI && AceUI.fx && AceUI.fx('pop') } catch (e) { }
-    } catch (e) { H.err = (e && e.msg) || L('Ace could not answer. Try again.', 'Ace no pudo responder.'); H.retry = text }
+    } catch (e) { H.err = (e && e.msg) || L('Ace could not answer. Try again.', 'Ace no pudo responder.'); H.retry = text; if (att) { H.att = att; ch.turns.pop(); H.retry = null; H.draft = text } }
     H.busy = false; ch.updated = new Date().toISOString(); saveLocal(); push(ch); paint(true);
   }
 
@@ -127,9 +128,10 @@ ${open ? `<div class="ch-menu" role="menu"><button data-h="rename" data-v="${c.i
     if (!ch.turns.length && !H.busy) {
       const m = MODES[ch.mode], st = m.st();
       return `<div class="ch-empty"><span class="ace" data-mood="wave"></span><h2>${ch.topic ? esc(ch.topic) : L('What shall we work on?', '¿En qué trabajamos?')}</h2><p>${ch.extra ? L('Ask anything about this question.', 'Pregunta lo que quieras sobre esta pregunta.') : m.ph()}</p>
+<button class="ch-snap" data-h="snap">📷 ${L('Snap a question', 'Haz una foto a una pregunta')}<small>${L('Take a photo of homework or a past paper and Ace explains it', 'Haz una foto a los deberes y Ace te lo explica')}</small></button>
 ${st.length ? `<div class="ch-starts">${st.map((s, i) => `<button data-h="start" data-v="${i}">${esc(s.replace(/[: ]+$/, ''))}${/[: ]$/.test(s) ? '…' : ''}</button>`).join('')}</div>` : ''}</div>`;
     }
-    return ch.turns.map((t, i) => t.role === 'user' ? `<div class="cm me"><div class="cm-b">${esc(t.content).replace(/\n/g, '<br>')}</div></div>`
+    return ch.turns.map((t, i) => t.role === 'user' ? `<div class="cm me"><div class="cm-b">${t.img ? `<img class="cm-img" src="${t.img}" alt="${L('Photo of a question', 'Foto de una pregunta')}">` : ''}${esc(t.content).replace(/\n/g, '<br>')}</div></div>`
       : `<div class="cm ai"><span class="cm-av"><i class="aic"></i></span><div class="cm-w"><div class="cm-b">${md(t.content)}</div><div class="cm-act"><button data-h="copy" data-v="${i}">${L('Copy', 'Copiar')}</button><button data-h="read" data-v="${i}">🔊 ${L('Read aloud', 'Leer')}</button>${i === ch.turns.length - 1 ? `<button data-h="again" data-v="${i}">↻ ${L('Try again', 'Otra vez')}</button>` : ''}</div></div></div>`).join('')
       + (H.busy ? `<div class="cm ai"><span class="cm-av"><i class="aic"></i></span><div class="cm-w"><div class="cm-b cm-dots" aria-label="${L('Ace is thinking', 'Ace está pensando')}"><i></i><i></i><i></i></div></div></div>` : '')
       + (H.err ? `<div class="cm-err" role="alert">${esc(H.err)}${H.retry ? ` <button data-h="retry">${L('Try again', 'Reintentar')}</button>` : ''}${/Sign in|Inicia/.test(H.err) ? ` <a href="../login/${PORTAL === 'campus' ? '?next=campus' : ''}">${L('Sign in', 'Iniciar sesión')}</a>` : ''}</div>` : '');
@@ -140,8 +142,8 @@ ${st.length ? `<div class="ch-starts">${st.map((s, i) => `<button data-h="start"
 ${ch.turns.length ? '' : `<div class="ch-cfg"><div class="ch-modes" role="radiogroup" aria-label="${L('Mode', 'Modo')}">${Object.keys(MODES).map(k => `<button role="radio" aria-checked="${ch.mode === k}" class="${ch.mode === k ? 'on' : ''}" data-h="mode" data-v="${k}">${MODES[k].i} ${MODES[k].n()}</button>`).join('')}</div>
 <select class="ch-sub" data-h-in="sub" aria-label="${L('Subject', 'Asignatura')}"><option value="">${L('All subjects', 'Todas las asignaturas')}</option>${subs.map(s => `<option ${ch.s === s ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select></div>`}
 <div class="ch-msgs" id="ch-msgs" aria-live="polite">${msgsHTML(ch)}</div>
-<div class="ch-comp"><textarea id="ch-in" data-h-in="draft" rows="1" maxlength="${m.long ? 5000 : 1500}" placeholder="${esc(m.ph())}" aria-label="${L('Message Ace', 'Escribe a Ace')}">${esc(H.draft)}</textarea><button class="ch-send" data-h="send" aria-label="${L('Send', 'Enviar')}" ${H.busy ? 'disabled' : ''}>➤</button></div>
-<p class="ch-fine">${L('Ace can make mistakes. Check important answers with your notes or teacher.', 'Ace puede equivocarse. Comprueba las respuestas importantes.')}${H.cap ? ` • ${H.cap.used}/${H.cap.cap} ${L('today', 'hoy')}` : ''}</p>`;
+${H.att ? `<div class="ch-att"><img src="${H.att.thumb}" alt=""><span>${L('Photo ready. Add a question or just send it.', 'Foto lista. Añade una pregunta o envíala.')}</span><button data-h="unatt" aria-label="${L('Remove photo', 'Quitar foto')}">✕</button></div>` : ''}<div class="ch-comp"><label class="ch-cam" title="${L('Snap a question', 'Foto de una pregunta')}" aria-label="${L('Add a photo of a question', 'Añadir foto')}">📷<input type="file" accept="image/*" id="ch-file" hidden></label><textarea id="ch-in" data-h-in="draft" rows="1" maxlength="${m.long ? 5000 : 1500}" placeholder="${esc(m.ph())}" aria-label="${L('Message Ace', 'Escribe a Ace')}">${esc(H.draft)}</textarea><button class="ch-send" data-h="send" aria-label="${L('Send', 'Enviar')}" ${H.busy ? 'disabled' : ''}>➤</button></div>
+${H.attBusy ? `<p class="ch-fine">${L('Preparing your photo…', 'Preparando la foto…')}</p>` : ''}<p class="ch-fine">${L('Ace can make mistakes. Check important answers with your notes or teacher.', 'Ace puede equivocarse. Comprueba las respuestas importantes.')}${H.cap ? ` • ${H.cap.used}/${H.cap.cap} ${L('today', 'hoy')}` : ''}</p>`;
   }
   function chatView() {
     if (!H.loaded) { H.loaded = true; loadLocal(); pull() }
@@ -158,6 +160,7 @@ ${ch.turns.length ? '' : `<div class="ch-cfg"><div class="ch-modes" role="radiog
     const tt = document.querySelector('.ch-tt2 b'); if (tt) tt.textContent = ch.title;
     const cfg = document.querySelector('.ch-cfg'); if (cfg && ch.turns.length) cfg.remove();
     const b = document.querySelector('.ch-send'); if (b) b.disabled = H.busy;
+    const at = document.querySelector('.ch-att'); if (at && !H.att) at.remove();
     const i = document.getElementById('ch-in'); if (i && !H.draft) { i.value = ''; grow() }
     if (scroll) m.scrollTop = m.scrollHeight;
   }
@@ -182,6 +185,8 @@ ${ch.turns.length ? '' : `<div class="ch-cfg"><div class="ch-modes" role="radiog
     else if (k === 'send') { const i = document.getElementById('ch-in'); send(i ? i.value : H.draft) }
     else if (k === 'retry' && ch) { const t = H.retry; H.retry = null; if (ch.turns.length && ch.turns[ch.turns.length - 1].role === 'user') ch.turns.pop(); send(t) }
     else if (k === 'again' && ch) { const last = ch.turns.length - 1; if (ch.turns[last] && ch.turns[last].role === 'assistant') { ch.turns.pop(); const u = ch.turns.pop(); if (u) send(u.content) } }
+    else if (k === 'snap') { const f = document.getElementById('ch-file'); if (f) f.click() }
+    else if (k === 'unatt') { H.att = null; render() }
     else if (k === 'copy' && ch) { const t = (ch.turns[+v] || {}).content || ''; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(L('Copied', 'Copiado'))).catch(() => toast(L('Could not copy', 'No se pudo copiar'))) }
     else if (k === 'read' && ch) { try { AceUI.say(((ch.turns[+v] || {}).content || '').replace(/[*#`•]/g, '')) } catch (z) { } }
     else return;
@@ -192,6 +197,12 @@ ${ch.turns.length ? '' : `<div class="ch-cfg"><div class="ch-modes" role="radiog
     if (k === 'draft') { H.draft = el.value; grow() }
     else if (k === 'q') { H.q = el.value; const l = document.querySelector('.ch-list'); if (l) { const pos = el.selectionStart; document.querySelector('.ch-side').innerHTML = sideHTML(); const n = document.querySelector('.ch-q'); n.focus(); try { n.setSelectionRange(pos, pos) } catch (z) { } } }
     else if (k === 'sub' && ch) { ch.s = el.value; saveLocal() }
+  });
+  document.addEventListener('change', e => {
+    if (e.target.id !== 'ch-file' || !e.target.files || !e.target.files[0]) return; const f = e.target.files[0]; e.target.value = '';
+    if (!window.AceFiles) return; H.attBusy = true; H.err = ''; render();
+    AceFiles.image(f).then(a => { H.att = a; H.attBusy = false; render(); const i = document.getElementById('ch-in'); if (i) i.focus() })
+      .catch(er => { H.attBusy = false; H.err = (er && er.msg) || L('Ace could not open that photo.', 'No se pudo abrir la foto.'); render() });
   });
   document.addEventListener('keydown', e => {
     const el = e.target;

@@ -140,9 +140,12 @@ ${open ? `<p class="note"><a href="${esc(u.url)}" target="_blank" rel="noopener"
     let h = `<div class="pad">${back()}<h2 style="margin:0 0 4px">${L('Lecture notes to study pack', 'Apuntes a paquete de estudio')}</h2>`;
     if (!signedIn()) return h + needSignIn() + '</div>';
     if (!n.res) {
-      return h + `<p class="note" style="margin:0 0 8px">${L('Paste your own notes. Ace makes a summary, flashcards and practice questions from them.', 'Pega tus apuntes. Ace crea resumen, tarjetas y preguntas.')}</p>
+      return h + `<p class="note" style="margin:0 0 8px">${L('Upload a PDF, lecture slides or a Word file, take a photo of your notes, or paste them. Ace makes a summary, flashcards and practice questions from them.', 'Sube un PDF, diapositivas o un Word, haz una foto o pega tus apuntes. Ace crea resumen, tarjetas y preguntas.')}</p>
+<div class="nup"><label class="bt nup-b">📄 ${L('Upload PDF, slides or Word', 'Subir PDF, diapositivas o Word')}<input type="file" id="nfile" accept=".pdf,.pptx,.docx,.txt,.md,application/pdf" hidden></label><label class="bt nup-b">📷 ${L('Photo of my notes', 'Foto de mis apuntes')}<input type="file" id="nphoto" accept="image/*" hidden></label></div>
+${n.reading ? `<p class="note">⏳ ${L('Reading your file…', 'Leyendo tu archivo…')}</p>` : ''}${n.file ? `<p class="note">✅ ${esc(L('Read', 'Leído'))} ${esc(n.file.name)}${n.file.pages ? ' • ' + n.file.pages + ' ' + L(n.file.name.toLowerCase().endsWith('.pptx') ? 'slides' : 'pages', n.file.name.toLowerCase().endsWith('.pptx') ? 'diapositivas' : 'páginas') : ''}${n.file.cut ? ' • ' + L('Ace uses the first 16,000 characters', 'Ace usa los primeros 16.000 caracteres') : ''}. ${L('You can edit the text below.', 'Puedes editar el texto.')}</p>` : ''}
+${n.img ? `<div class="ch-att" style="width:100%;margin:8px 0"><img src="${n.img.thumb}" alt=""><span>${L('Photo of your notes added.', 'Foto añadida.')}</span><button data-l="nunimg" aria-label="${L('Remove photo', 'Quitar foto')}">✕</button></div>` : ''}
 <label class="xl">${L('Subject or course', 'Asignatura o curso')}<input class="xin" list="nsubs" data-l-in="nsubject" maxlength="80" value="${esc(n.subject)}"></label><datalist id="nsubs">${subs.map(s => `<option value="${esc(s)}">`).join('')}</datalist>
-<label class="xl">${L('Your notes', 'Tus apuntes')} <span id="ncount" style="float:right;font-weight:400">${n.text.length}/6000</span><textarea class="xin" rows="9" maxlength="6000" data-l-in="ntext">${esc(n.text)}</textarea></label>
+<label class="xl">${L('Your notes', 'Tus apuntes')} <span id="ncount" style="float:right;font-weight:400">${n.text.length}/16000</span><textarea class="xin" rows="9" maxlength="16000" data-l-in="ntext">${esc(n.text)}</textarea></label>
 <button class="nx" data-l="ngo" ${n.busy ? 'disabled' : ''}>${n.busy ? L('Ace is working…', 'Ace está trabajando…') : L('Make my study pack', 'Crear paquete')}</button>${n.err ? `<p class="note" style="color:var(--red)">${esc(n.err)}</p>` : ''}
 <p class="note">${L('Ace only uses what you paste, and can make mistakes. Check it against your lecturer’s material.', 'Ace solo usa lo que pegas y puede equivocarse. Comprueba con tu material.')}</p></div>`;
     }
@@ -154,6 +157,15 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
 <button class="nx" data-l="nrev" ${n.saved ? 'disabled' : ''}>${n.saved ? L('Added to revision', 'Añadido al repaso') : L('Add to my revision schedule', 'Añadir a mi repaso')}</button>
 <button class="nx" style="background:var(--tint);color:var(--text);margin-top:8px" data-l="nnew">${L('New notes', 'Nuevos apuntes')}</button>${n.err ? `<p class="note" style="color:var(--red)">${esc(n.err)}</p>` : ''}</div>`;
   }
+
+  document.addEventListener('change', e => {
+    const id = e.target.id; if ((id !== 'nfile' && id !== 'nphoto') || !e.target.files || !e.target.files[0] || !window.AceFiles) return;
+    const f = e.target.files[0], n = Lr.nt; e.target.value = ''; n.err = ''; n.reading = true; render();
+    (id === 'nfile' ? AceFiles.text(f).then(r => { n.file = { name: r.name, pages: r.pages, cut: r.text.length > 16000 }; n.text = r.text.slice(0, 16000); if (!n.subject) n.subject = r.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').slice(0, 80); })
+      : AceFiles.image(f).then(r => { n.img = r; }))
+      .catch(er => { n.err = (er && er.msg) || L('Ace could not open that file.', 'No se pudo abrir el archivo.'); })
+      .then(() => { n.reading = false; render(); });
+  });
 
   /* ================= PLANS ================= */
   const money = (minor, cur) => { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: cur }).format(minor / 100); } catch (e) { return (minor / 100).toFixed(2) + ' ' + cur; } };
@@ -207,7 +219,7 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
     const t = e.target, k = t && t.dataset && t.dataset.lIn; if (!k) return;
     if (k === 'cq') { Lr.cq.q = t.value; const r = document.getElementById('cres'); if (r) r.innerHTML = courseList(); }
     else if (k === 'uq') { Lr.uni.q = t.value; const r = document.getElementById('ures'); if (r) r.innerHTML = uniResults(); }
-    else if (k === 'ntext') { Lr.nt.text = t.value; const c = document.getElementById('ncount'); if (c) c.textContent = t.value.length + '/6000'; }
+    else if (k === 'ntext') { Lr.nt.text = t.value; const c = document.getElementById('ncount'); if (c) c.textContent = t.value.length + '/16000'; }
     else if (k === 'nsubject') Lr.nt.subject = t.value;
     else if (k === 'gname') Lr.grp.form.name = t.value; else if (k === 'gdesc') Lr.grp.form.desc = t.value; else if (k === 'gscope') Lr.grp.form.scope = t.value;
     else if (k === 'gdraft') Lr.grp.draft = t.value; else if (k === 'promo') Lr.pl.promo = t.value.toUpperCase();
@@ -252,13 +264,14 @@ ${r.questions.length ? `<div class="sh">${L('Practice', 'Práctica')}</div>${r.q
     else if (a === 'garchive') rerun(sync().rpc('archive_group', { gid: Lr.grp.id }).then(() => { S.tab = 'groups'; X.loaded = ''; }));
     // notes
     else if (a === 'ngo') {
-      const n = Lr.nt; if (!n.subject.trim()) { n.err = L('Add a subject or course name.', 'Añade una asignatura.'); return render(); } if (n.text.trim().length < 80) { n.err = L('Paste more of your notes.', 'Pega más apuntes.'); return render(); }
+      const n = Lr.nt; if (!n.subject.trim()) { n.err = L('Add a subject or course name.', 'Añade una asignatura.'); return render(); } if (!n.img && n.text.trim().length < 80) { n.err = L('Upload a file, add a photo or paste more of your notes.', 'Sube un archivo, añade una foto o pega más apuntes.'); return render(); }
       n.busy = true; n.err = ''; render();
-      sync().fn('notes-pack', { subject: n.subject, notes: n.text, exam: AceX.h.ex(), country: cname() }).then(r => { n.res = r; n.busy = false; n.ans = {}; n.flip = {}; n.saved = false; render(); window.scrollTo(0, 0); }).catch(er => { n.busy = false; n.err = msg(er); render(); });
+      sync().fn('notes-pack', { subject: n.subject, notes: n.text, image: n.img ? { media_type: n.img.media_type, data: n.img.data } : undefined, exam: AceX.h.ex(), country: cname() }).then(r => { n.res = r; n.busy = false; n.ans = {}; n.flip = {}; n.saved = false; render(); window.scrollTo(0, 0); }).catch(er => { n.busy = false; n.err = msg(er); render(); });
     }
     else if (a === 'nflip') { Lr.nt.flip[v] = !Lr.nt.flip[v]; render(); }
     else if (a === 'nans') { const [q, o] = v.split(':').map(Number); Lr.nt.ans[q] = o; render(); }
-    else if (a === 'nnew') { Object.assign(Lr.nt, { text: '', res: null, ans: {}, flip: {}, saved: false, err: '' }); render(); }
+    else if (a === 'nnew') { Object.assign(Lr.nt, { text: '', res: null, ans: {}, flip: {}, saved: false, err: '', file: null, img: null }); render(); }
+    else if (a === 'nunimg') { Lr.nt.img = null; render(); }
     else if (a === 'nrev') { const n = Lr.nt; sync().rpc('add_revision', { p_exam: AceX.h.ex(), p_subject: n.subject, p_topic: n.res.title || n.subject, p_note: n.res.note_id || null }).then(() => { n.saved = true; toast(L('Added. First review is tomorrow.', 'Añadido. Primer repaso mañana.')); render(); }).catch(er => { n.err = msg(er); render(); }); }
     // plans
     else if (a === 'buy') {
