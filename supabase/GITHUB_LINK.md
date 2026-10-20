@@ -17,6 +17,9 @@ Supabase dashboard → Project Settings → Integrations → GitHub → Connect.
 ## Step 3: check it worked
 Push any small change under `supabase/` and open Integrations → GitHub. The latest run should be green.
 
+## Status
+Linked on 2026-10-20. Migrations 0001 to 0019 are recorded as applied.
+
 ## Rules from now on
 - Number new migrations 0020, 0021 and so on. Never edit a migration that has already run; add a new one instead.
 - Secrets stay in Edge Functions → Secrets. Never put them in this folder: the repository is public.
