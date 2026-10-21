@@ -8,7 +8,11 @@ const SERVICE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 export const STUDENT_DOMAIN = Deno.env.get("STUDENT_EMAIL_DOMAIN") ?? "students.aceeducation.app";
 export const SITE_URL = Deno.env.get("SITE_URL") ?? "http://localhost:3000";
 
-const ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ?? "*").split(",").map((s) => s.trim());
+// Which websites may call these functions from a browser. Set ALLOWED_ORIGINS (comma-separated) to your own
+// addresses. Without it, only the live site and the address in SITE_URL are allowed (never "any site").
+const originOf = (u: string) => { try { return new URL(u).origin; } catch { return ""; } };
+const ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ?? ["https://abdullahmuhy-pixel.github.io", originOf(SITE_URL)].filter(Boolean).join(","))
+  .split(",").map((s) => s.trim()).filter(Boolean);
 
 export function cors(req: Request) {
   const o = req.headers.get("origin") ?? "";
