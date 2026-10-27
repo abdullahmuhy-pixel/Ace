@@ -36,7 +36,11 @@
     document.documentElement.classList.add('campus');
     if (!P.s.UN) P.s.UN = null;
   };
-  A.pre = function (d) { d.currency = CUR[home()] || '$'; A.cat = d.catalogue || []; A.facs = d.faculties || {}; return d };
+  A.pre = function (d) {
+    d.currency = CUR[home()] || '$'; A.cat = d.catalogue || []; A.facs = d.faculties || {};
+    /* a course the student asked to be told about has gone live: put it in their list */
+    try { const live = A.cat.filter(x => x.status === 'live').map(x => x.name); if (P.s && P.s.UN) { let ch = false; live.forEach(n => { if (st.want[n]) { if (!P.s.UN.includes(n)) P.s.UN.push(n); delete st.want[n]; ch = true } }); if (ch) { save(); svP() } } } catch (e) { }
+    return d };
   A.setHome = function (cc, quiet) {
     if (!C[cc] || cc === 'UN') return;
     try { localStorage.setItem('ace-country', cc) } catch (e) { }
@@ -45,7 +49,7 @@
     if (S.c === 'UN') useCountry('UN'); if (!quiet) render();
   };
   A.boot = function () {
-    ICN.unshift([/calculus|algebra|probab|statist|differential|discrete/i, '📐'], [/python|programming|algorithm|machine learning|data analysis/i, '💻'], [/accounting/i, '🧾']);
+    ICN.unshift([/probab|statist/i, '📊'], [/calculus|algebra|differential|discrete/i, '📐'], [/python|programming|algorithm|machine learning|data analysis/i, '💻'], [/accounting/i, '🧾']);
     const subj0 = V.subj;
     Object.assign(V, { home: homeView, onb: onbView, sem: semView, subj: (c, t, ex) => S.sub != null ? subj0(c, t, ex) : coursesView(c, t, ex), tools: toolsView });
     setTimeout(() => { if (window.AceX && AceX.gp) { const s = SCALE[home()] || ['gpa', 'us4']; AceX.gp.mode = s[0]; AceX.gp.scale = s[1] } }, 0);
@@ -84,11 +88,12 @@ ${soon.length ? `<div class="sh">On the way for you</div><div class="lst">${soon
 
   /* ---------- courses catalogue ---------- */
   function coursesView(c, t, ex) {
-    const live = c.s, f = st.fac, soon = A.cat.filter(x => x.status === 'soon'), mine = soon.filter(x => f && x.faculties.includes(f)), rest = soon.filter(x => !mine.includes(x));
+    const live = c.s, off = live.filter(s => !selOK(c, s)), f = st.fac, soon = A.cat.filter(x => x.status === 'soon'), mine = soon.filter(x => f && x.faculties.includes(f)), rest = soon.filter(x => !mine.includes(x));
     const row = x => `<div class="li"><span class="e">${ic(x.name)}</span><span class="m"><b>${esc(x.name)}</b><small>${esc(x.track)}${x.faculties.length ? ' • ' + x.faculties.map(k => esc(A.facs[k] || k)).slice(0, 3).join(', ') : ''}</small></span><button class="bb cp-w" data-k="want" data-v="${esc(x.name)}">${st.want[x.name] ? '✓ Saved' : 'Notify me'}</button></div>`;
     return `<div class="pad"><div class="pg-h"><h1>Courses</h1><p>University courses, one at a time, written and checked by Ace</p></div>
 <div class="sg sg-all">${live.map((s, i) => selOK(c, s) ? stile(c, t, ex, s, i) : '').join('') || `<div class="emp2" style="grid-column:1/-1">${ACE_LOADED.UN ? 'No course selected.' : 'Loading courses…'}</div>`}</div>
 ${typeof offBtn === 'function' ? offBtn() : ''}<p class="note">Each live course has narrated lessons, notes, practice for every topic, flashcards and a timed course final.</p>
+${off.length ? `<div class="sh">More live courses</div><div class="lst">${off.map(n => `<div class="li"><span class="e">${ic(n)}</span><span class="m"><b>${esc(n)}</b><small>Live now • lessons, audio, practice and a course final</small></span><button class="bb cp-w" data-k="ocs" data-v="${esc(n)}">+ Add</button></div>`).join('')}</div>` : ''}
 ${mine.length ? `<div class="sh">Coming next for ${esc(A.facs[f] || 'you')}</div><div class="lst">${mine.map(row).join('')}</div>` : ''}
 ${rest.length ? `<div class="sh">Also on the way</div><div class="lst">${rest.map(row).join('')}</div>` : ''}
 <p class="note">Tap "Notify me" and the course will be at the top of your list when it goes live.</p></div>`;
