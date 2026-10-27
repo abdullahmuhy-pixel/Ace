@@ -13,6 +13,7 @@ import micro_m1, micro_m2, micro_m3, micro_m4, micro_m5
 import macro_m1, macro_m2, macro_m3, macro_m4, macro_m5
 import acc_m1, acc_m2, acc_m3, acc_m4, acc_m5
 import py_m1, py_m2, py_m3, py_m4, py_m5
+import chem_m1, chem_m2, chem_m3, chem_m4, chem_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -84,6 +85,12 @@ PY, nq8 = course('Programming with Python', [py_m1, py_m2, py_m3, py_m4, py_m5],
     'faculties': ['comp', 'eng', 'sci', 'biz'],
 })
 
+CHEM, nq9 = course('General Chemistry', [chem_m1, chem_m2, chem_m3, chem_m4, chem_m5], {
+    'source': 'Written by Ace for first-year university General Chemistry. Matches the common core of courses such as CHM 101/102 (Nigeria), CHEM 111 (Ghana), CEM1000 (South Africa), CH1001/General Chemistry (UK and Ireland) and General Chemistry I in North America. Every numerical answer was checked in code using standard atomic weights.',
+    'paper_info': 'First-year core • usually 3 to 4 credits • atoms and moles, bonding, gases, thermochemistry, equilibrium, acids, redox and organic basics',
+    'faculties': ['sci', 'eng', 'health'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -93,7 +100,7 @@ CATALOGUE = [
     {'name': 'Principles of Microeconomics', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz', 'soc']},
     {'name': 'Principles of Macroeconomics', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz', 'soc']},
     {'name': 'Financial Accounting I', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz']},
-    {'name': 'General Chemistry', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng', 'health']},
+    {'name': 'General Chemistry', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'health']},
     {'name': 'Physics I: Mechanics', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng']},
     {'name': 'Cell Biology', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'health']},
     {'name': 'Academic Writing and Research Methods', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu']},
@@ -114,7 +121,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM}}},
 }
 
 if problems:
@@ -143,12 +150,13 @@ page = f'''<!DOCTYPE html>
 <h2>Principles of Microeconomics ({nq5} questions)</h2><ul>{rows(MICRO)}</ul>
 <h2>Principles of Macroeconomics ({nq6} questions)</h2><ul>{rows(MACRO)}</ul>
 <h2>Financial Accounting I ({nq7} questions)</h2><ul>{rows(ACC)}</ul>
-<h2>Programming with Python ({nq8} questions)</h2><ul>{rows(PY)}</ul></div>
+<h2>Programming with Python ({nq8} questions)</h2><ul>{rows(PY)}</ul>
+<h2>General Chemistry ({nq9} questions)</h2><ul>{rows(CHEM)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
