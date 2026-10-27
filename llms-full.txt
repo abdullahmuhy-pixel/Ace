@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 19 countries, 33 exams, 45,392 practice questions, 8,893 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 19 countries, 33 exams, 45,462 practice questions, 8,907 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -165,8 +165,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy
 Exams: The Esame di Maturità (renamed from Esame di Stato by the 2025 reform) at the end of the fifth year of upper secondary school: a common Italian paper (prima prova), a second written paper in the subject that defines each school track (seconda prova), and an oral (colloquio) on four subjects set by the Ministry. The credito scolastico from the last three years counts for up to 40 of the 100 points.
 Grading: The Maturità is marked out of 100, and 60 is a pass. Students who reach 90 can receive up to 3 bonus points, and 100 can come with lode.
 Levels: Terzo – Quinto anno
-Totals: 15 subjects, 247 topics, 1,235 questions.
-- Esame di Maturità (Ministero dell'Istruzione e del Merito): Italiano (prima prova), Matematica (liceo scientifico), Latino (liceo classico), Greco (liceo classico), Scienze umane, Economia aziendale (AFM), Storia, Filosofia, Lingua e cultura inglese, Fisica (liceo scientifico), Sistemi e reti (Informatica), Discipline turistiche e aziendali (Turismo), Progettazione, costruzioni e impianti (CAT), Diritto ed economia politica, Scienze naturali
+Totals: 16 subjects, 261 topics, 1,305 questions.
+- Esame di Maturità (Ministero dell'Istruzione e del Merito): Italiano (prima prova), Matematica (liceo scientifico), Latino (liceo classico), Greco (liceo classico), Scienze umane, Economia aziendale (AFM), Storia, Filosofia, Lingua e cultura inglese, Fisica (liceo scientifico), Sistemi e reti (Informatica), Discipline turistiche e aziendali (Turismo), Progettazione, costruzioni e impianti (CAT), Diritto ed economia politica, Scienze naturali, Storia dell'arte
 
 ## FAQ
 **Which exams does Ace Education cover today?** More than twenty exams across nineteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
