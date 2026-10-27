@@ -131,10 +131,10 @@ FR:{name:'France',flag:'🇫🇷',lang:'Français',levels:'Seconde – Terminale
  next:["Arts du cirque specialty", "Teacher review of the French content"]},
 IT:{name:'Italia',flag:'🇮🇹',lang:'Italiano',levels:'Terzo – Quinto anno',law:'GDPR',
  sys:"The Esame di Maturità (renamed from Esame di Stato by the 2025 reform) at the end of the fifth year of upper secondary school: a common Italian paper (prima prova), a second written paper in the subject that defines each school track (seconda prova), and an oral (colloquio) on four subjects set by the Ministry. The credito scolastico from the last three years counts for up to 40 of the 100 points.",
- intro:"Italy's content is written in Italian, and so is the app's interface for this country. Ace starts with the prima prova di italiano: the three tipologie (A analisi del testo, B testo argomentativo, C riflessione critica), the history of Italian literature from Dante to the twentieth century, and method for each part of the exam.",
+ intro:"Italy's content is written in Italian, and so is the app's interface for this country (the foreign-language subjects are written in English, French, Spanish and German). Ace covers the prima prova di italiano, the seconda prova of the main tracks (matematica and fisica for the scientifico, latino and greco for the classico, scienze umane, economia aziendale, turismo, CAT, sistemi e reti, and the four foreign languages of the linguistico), and the other colloquio subjects: storia, filosofia, scienze naturali, storia dell'arte, diritto ed economia.",
  ex:{"Esame di Maturità": "Taken at the end of the quinto anno. Prima prova (Italian, 6 hours, common to all tracks), seconda prova (the subject of the track, for example Latin at the liceo classico or mathematics at the liceo scientifico) and a colloquio on four subjects. Each written paper is marked out of 20, the colloquio out of 20 and the credito scolastico out of 40."},
  scale:"The Maturità is marked out of 100, and 60 is a pass. Students who reach 90 can receive up to 3 bonus points, and 100 can come with lode.",
- next:["Seconda prova: matematica, latino, greco, scienze umane, economia aziendale", "Other tracks of the liceo and the istituti tecnici", "Teacher review of the Italian content"]}
+ next:["Seconda prova of the artistico, musicale and agrario tracks", "Esame di terza media (end of lower secondary)", "Teacher review of the Italian content"]}
 };
 
 const STUDENT_TOOLS = [
