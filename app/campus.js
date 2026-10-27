@@ -49,7 +49,7 @@
     if (S.c === 'UN') useCountry('UN'); if (!quiet) render();
   };
   A.boot = function () {
-    ICN.unshift([/probab|statist/i, '📊'], [/calculus|algebra|differential|discrete/i, '📐'], [/python|programming|algorithm|machine learning|data analysis/i, '💻'], [/accounting/i, '🧾']);
+    ICN.unshift([/probab|statist/i, '📊'], [/calculus|algebra|differential|discrete/i, '📐'], [/python|programming|algorithm|machine learning|data analysis/i, '💻'], [/accounting/i, '🧾'], [/writing|research methods/i, '✍️']);
     const subj0 = V.subj;
     Object.assign(V, { home: homeView, onb: onbView, sem: semView, subj: (c, t, ex) => S.sub != null ? subj0(c, t, ex) : coursesView(c, t, ex), tools: toolsView });
     setTimeout(() => { if (window.AceX && AceX.gp) { const s = SCALE[home()] || ['gpa', 'us4']; AceX.gp.mode = s[0]; AceX.gp.scale = s[1] } }, 0);

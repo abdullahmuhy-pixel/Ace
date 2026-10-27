@@ -17,6 +17,7 @@ import chem_m1, chem_m2, chem_m3, chem_m4, chem_m5
 import phys_m1, phys_m2, phys_m3, phys_m4, phys_m5
 import bio_m1, bio_m2, bio_m3, bio_m4, bio_m5
 import psy_m1, psy_m2, psy_m3, psy_m4, psy_m5
+import aw_m1, aw_m2, aw_m3, aw_m4, aw_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -112,6 +113,12 @@ PSY, nq12 = course('Introduction to Psychology', [psy_m1, psy_m2, psy_m3, psy_m4
     'faculties': ['soc', 'health', 'edu'],
 })
 
+AW, nq13 = course('Academic Writing and Research Methods', [aw_m1, aw_m2, aw_m3, aw_m4, aw_m5], {
+    'source': 'Written by Ace for first-year university Academic Writing, Communication Skills and Research Methods. Matches the common core of courses such as GST 111 Use of English and Communication Skills (Nigeria), Communication Skills and Academic Writing (Ghana, Kenya and Uganda), academic literacy modules in South Africa, and first-year academic skills and research methods courses in the UK, Ireland and North America. Referencing examples follow APA 7th edition; calculations were checked in code.',
+    'paper_info': 'First-year core • usually 2 to 3 credits • critical reading, essay writing, referencing and integrity, research design, data collection and reporting',
+    'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -124,7 +131,7 @@ CATALOGUE = [
     {'name': 'General Chemistry', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'health']},
     {'name': 'Physics I: Mechanics', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng']},
     {'name': 'Cell Biology', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'health']},
-    {'name': 'Academic Writing and Research Methods', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu']},
+    {'name': 'Academic Writing and Research Methods', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu']},
     {'name': 'Introduction to Psychology', 'track': 'First-year core', 'status': 'live', 'faculties': ['soc', 'health', 'edu']},
     {'name': 'Calculus II', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp']},
     {'name': 'Differential Equations', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'eng']},
@@ -142,7 +149,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW}}},
 }
 
 if problems:
@@ -175,12 +182,13 @@ page = f'''<!DOCTYPE html>
 <h2>General Chemistry ({nq9} questions)</h2><ul>{rows(CHEM)}</ul>
 <h2>Physics I: Mechanics ({nq10} questions)</h2><ul>{rows(PHYS)}</ul>
 <h2>Cell Biology ({nq11} questions)</h2><ul>{rows(BIO)}</ul>
-<h2>Introduction to Psychology ({nq12} questions)</h2><ul>{rows(PSY)}</ul></div>
+<h2>Introduction to Psychology ({nq12} questions)</h2><ul>{rows(PSY)}</ul>
+<h2>Academic Writing and Research Methods ({nq13} questions)</h2><ul>{rows(AW)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
