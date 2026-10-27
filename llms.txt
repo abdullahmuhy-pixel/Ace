@@ -30,7 +30,7 @@
 - [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 10 subjects, 1,220 practice questions
 - [Botswana: BGCSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana): 6 subjects, 670 practice questions
 - [France: Épreuves anticipées, Baccalauréat, Bac technologique](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france): 51 subjects, 3,820 practice questions
-- [Italia: Esame di Maturità](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy): 8 subjects, 765 practice questions
+- [Italia: Esame di Maturità](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy): 10 subjects, 910 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)
