@@ -15,6 +15,7 @@ const MODES: Record<string, string> = {
   markscheme: "MARK SCHEME CHECKER: the student pastes a question, their answer and, if they have it, the mark scheme. Mark point by point, say which marks are earned and what is missing. If no scheme is pasted, say you are using typical marking points that may differ from the official scheme.",
   qgen: "QUESTION GENERATOR: from the notes the student pastes, write 5 exam-style questions (a mix of multiple choice and short answer) and put the answers after a line that says Answers:.",
   solver: "SMART SOLVER: solve the Maths or Science problem step by step, state each formula and the units, and finish with a quick check of the answer.",
+  teach: "SPOKEN TEACHER: your reply is read aloud by a text-to-speech voice during an audio lesson. Explain the passage further the way a warm, experienced teacher talks to one student: plain spoken sentences, no markdown, lists, headings, emoji or symbols that are hard to say. Give one concrete real-life example from the student's country, and end with one short question for the student to think about. 100 to 160 words.",
 };
 const LONG_MODES = new Set(["essay", "markscheme", "qgen"]);
 
@@ -63,7 +64,7 @@ handler(async (req, b, admin) => {
 
   const isStaff = ["teacher", "subject_teacher", "school_admin", "platform_admin"].includes(profile.role);
   const tmode = isStaff && typeof b?.context?.mode === "string" && TEACHER_MODES[b.context.mode] ? b.context.mode : "";
-  const mode = typeof b?.context?.mode === "string" && ["tutor", "essay", "markscheme", "qgen", "solver"].includes(b.context.mode) ? b.context.mode : "";
+  const mode = typeof b?.context?.mode === "string" && ["tutor", "essay", "markscheme", "qgen", "solver", "teach"].includes(b.context.mode) ? b.context.mode : "";
   const lim = LONG_MODES.has(mode) || tmode ? MAX_CHARS_LONG : MAX_CHARS;
   const raw = Array.isArray(b.messages) ? b.messages.slice(-MAX_TURNS) : [];
   const messages = raw

@@ -64,10 +64,12 @@
   const SY = window.speechSynthesis;
   function say(text, onend) {
     if (!SY || !text) { if (onend) onend(); return; } SY.cancel();
-    const u = new SpeechSynthesisUtterance(String(text).replace(/\s+/g, ' ').trim()), lang = H.lang || 'en';
-    const vs = SY.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2)));
-    const pick = vs.find(v => /natural|neural|google|samantha|daniel|serena/i.test(v.name)) || vs[0]; if (pick) u.voice = pick;
-    u.lang = pick ? pick.lang : lang; const deep = pref().vc === 'deep'; u.pitch = deep ? 0.75 : 1.15; u.rate = deep ? 0.95 : 1.02;
+    const AT = window.AceTeacher; if (AT) AT.pause();
+    const lang = H.lang || 'en', u = new SpeechSynthesisUtterance(AT ? AT.spoken(text, lang) : String(text).replace(/\s+/g, ' ').trim());
+    let pick = AT && AT.voiceFor(lang, H.dataset.country);
+    if (!pick) { const vs = SY.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2))); pick = vs.find(v => /natural|neural|google|samantha|daniel|serena/i.test(v.name)) || vs[0]; }
+    if (pick) u.voice = pick;
+    u.lang = pick ? pick.lang : lang; const deep = pref().vc === 'deep'; u.pitch = deep ? 0.8 : 1.05; u.rate = (deep ? 0.95 : 1) * (AT ? AT.rate() : 1);
     if (onend) { let fired = false; const f = () => { if (!fired) { fired = true; onend(); } }; u.onend = f; u.onerror = f; }
     SY.speak(u);
   }
@@ -134,7 +136,7 @@
       if (k !== LAST.k) {
         ls.classList.add('in');
         ls.querySelectorAll('.stg').forEach(g => Array.from(g.children).forEach((e, i) => e.style.setProperty('--i', Math.min(i, 12)))); const n = splitWords(ls.querySelector('.qtext')); ls.style.setProperty('--wd', Math.min(n, 24));
-        if (SY) SY.cancel(); stopAuto();
+        if (window.AceTeacher) AceTeacher.pause(); if (SY) SY.cancel(); stopAuto();
         if (ls.dataset.auto === '1') runAuto(k); else if (pref().voice) setTimeout(() => say(qSpeech()), 250);
         const cb = ls.querySelector('.combo'); if (cb && +cb.dataset.n > 1) cb.classList.add('hot');
       } else if (st !== LAST.st && (st === 'ok' || st === 'no')) {
@@ -156,6 +158,7 @@
       countUp(r.querySelector('.sring b span'), p, 1100);
     }
     LAST.r = r ? r.dataset.key : null;
+    try { if (window.AceMotion && !ls) { const v = document.getElementById('v'); AceMotion.view(v, [S.tab, S.sub, S.aus, S.qb && S.qb.s, S.qb && !!S.qb.items, S.fl && S.fl.subj, S.fc && S.fc.topic].join('|')); } } catch (e) { }
     const sp = $('[data-u="snd"]'); if (sp) { sp.setAttribute('aria-pressed', String(pref().snd !== false)); sp.textContent = pref().snd !== false ? '🔊' : '🔈'; }
   }
 

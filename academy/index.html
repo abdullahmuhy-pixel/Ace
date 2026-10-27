@@ -96,6 +96,7 @@ details.rm ul{columns:2;margin:10px 0 0;padding-left:18px;color:var(--mut)}@medi
 body{font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
 h1,h2,h3,.logo,.brand,header b,.bar b{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;letter-spacing:-.015em}
 .btn,button.b,form button,.creator .btn{border-radius:14px!important;font-weight:700;box-shadow:0 4px 0 var(--btn-ledge);transition:transform .12s,box-shadow .12s}
+.atrow{margin:4px 0 18px;gap:8px}.atb.at-on{background:var(--pri);color:var(--priInk);border-color:var(--pri)}
 .btn.o,.btn.s,button.g{box-shadow:0 3px 0 var(--ledge);border-width:2px}
 .btn:active,button.b:active,form button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--btn-ledge)}
 .card,.pane,.cert,.lesson,.item,.creator,.certbox{border-width:2px!important;border-radius:20px!important;box-shadow:0 3px 0 var(--ledge)}
@@ -164,6 +165,8 @@ ol.steps li.done .sn{background:var(--ok);color:#fff}ol.steps li.cur{border-colo
 <main id="app" class="wrap" aria-live="polite"><p style="padding:40px 0">Loading…</p></main>
 <footer class="hide-print"><div class="wrap"><a href="#/explore">Courses</a><a href="#/certificates">Certificates</a><a href="../verify/">Verify a certificate</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><p>Ace Academy is part of Ace Education. Certificates show course completion and are not accredited qualifications. Courses are for learning and do not replace professional advice, training or licensing.</p></div></footer>
 <script src="../config.js"></script>
+<script src="../app/teacher.js"></script>
+<script src="../app/motion.js"></script>
 <script>/* QR code encoder (c) 2009 Kazuhiko Arase, MIT licence, via qrcode-terminal */
 (function(){var __m={},__c={};function __r(n){n=n.replace('./','');if(__c[n])return __c[n].exports;var m=__c[n]={exports:{}};__m[n](m,m.exports,__r);return m.exports}
 __m['QRMode']=function(module,exports,require){
@@ -1277,6 +1280,7 @@ function viewCourse(slug){
   h+='<h2 class="sec">What you will study</h2><ul class="syl">'+c.lessons.map(function(l,i){var d=dn.indexOf(l.id)>=0;return '<li class="'+(d?'done':'')+'"><a href="#/c/'+esc(slug)+'/l/'+esc(l.id)+'" style="display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none;width:100%"><span class="n">'+(d?'✓':(i+1))+'</span><span><b>'+esc(l.title)+'</b><small>'+l.minutes+' min</small></span></a></li>'}).join('')+'</ul></div>';
   h+='<aside class="pane" style="position:sticky;top:76px"><b>Your progress</b><div class="bar2"><i style="width:'+pct+'%"></i></div><small style="color:var(--mut)">'+Math.min(dn.length,c.lessons.length)+' of '+c.lessons.length+' lessons complete</small>';
   h+='<div class="row"><a class="btn" href="#/c/'+esc(slug)+'/l/'+esc(first.id)+'">'+(dn.length?'Continue':'Start course')+'</a></div>';
+  if(window.AceTeacher)h+='<div class="row" style="margin-top:8px"><button class="btn o atb" data-act="listenc" data-v="'+esc(slug)+'" data-at-key="ac|c|'+esc(slug)+'">🎧 Listen to the whole course</button></div><small style="color:var(--mut)">A teacher reads you every lesson, with pauses to think and the quick checks as questions.</small>';
   h+='<div class="row" style="margin-top:0"><a class="btn o" '+(all?'href="#/c/'+esc(slug)+'/quiz"':'aria-disabled="true" style="opacity:.55;pointer-events:none"')+'>Take the final quiz</a></div>';
   if(!all)h+='<small style="color:var(--mut)">Finish every lesson to unlock the quiz.</small>';
   if(cert)h+='<div class="notice">🎓 You earned this certificate.<div class="row"><a class="btn s" href="#/cert/'+esc(slug)+'">View and download</a></div></div>';
@@ -1298,7 +1302,7 @@ function viewLesson(slug,lid){
   var d=done(slug).indexOf(lid)>=0,nx=c.lessons[i+1],pv=c.lessons[i-1],nck=l.body.filter(function(b){return b.check}).length,left=l.body.filter(function(b,bi){return b.check&&(S.chk[slug+'|'+lid+'|'+bi]||{}).sel==null}).length;
   var al=act();if(!al.last||al.last.slug!==slug||al.last.lid!==lid){al.last={slug:slug,lid:lid,at:today()};saveAct(al)}
   title(l.title+' | '+c.title);
-  var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a></div><article class="lesson"><small style="color:var(--mut)">Lesson '+(i+1)+' of '+c.lessons.length+' · '+l.minutes+' min</small><div class="bar2"><i style="width:'+Math.round(100*(i+1)/c.lessons.length)+'%"></i></div><h1>'+esc(l.title)+'</h1>'+l.body.map(function(b,bi){if(b.check)b._k=slug+'|'+lid+'|'+bi;return block(b)}).join('')+(S.err?'<div class="err">'+esc(S.err)+'</div>':'');
+  var h='<div class="crumbs"><a href="#/explore">Courses</a> / <a href="#/c/'+esc(slug)+'">'+esc(c.title)+'</a></div><article class="lesson"><small style="color:var(--mut)">Lesson '+(i+1)+' of '+c.lessons.length+' · '+l.minutes+' min</small><div class="bar2"><i style="width:'+Math.round(100*(i+1)/c.lessons.length)+'%"></i></div><h1>'+esc(l.title)+'</h1>'+(window.AceTeacher?'<div class="row atrow"><button class="btn o atb" data-act="listen" data-v="'+esc(lid)+'" data-at-key="ac|l|'+esc(slug)+'|'+esc(lid)+'">🎧 Listen to this lesson</button><button class="btn o atb" data-act="listenc" data-v="'+esc(slug)+'" data-from="'+i+'" data-at-key="ac|c|'+esc(slug)+'|'+i+'">Listen from here to the end</button></div>':'')+l.body.map(function(b,bi){if(b.check)b._k=slug+'|'+lid+'|'+bi;return block(b)}).join('')+(S.err?'<div class="err">'+esc(S.err)+'</div>':'');
   h+='<div class="row">'+(pv?'<a class="btn o" href="#/c/'+esc(slug)+'/l/'+esc(pv.id)+'">← Previous</a>':'')+(left&&!d?'<p class="note2">Answer the '+(left===1?'quick check':left+' quick checks')+' above to finish this lesson.</p>':'')+'<button class="btn" data-act="complete" data-v="'+esc(lid)+'" '+(S.busy||(left&&!d)?'disabled':'')+'>'+(d?'Completed. ':'Mark complete and ')+(nx?'continue →':'go to quiz →')+'</button></div></article>';
   return h;
 }
@@ -1348,6 +1352,12 @@ function viewMe(){
 }
 
 /* ---------------- router and events ---------------- */
+function acExplain(c){if(!CFG.supabaseUrl)return null;return function(passage,m){
+  if(!S.sb||!S.user)return Promise.reject({msg:'Sign in to ask Ace for more.'});
+  return S.sb.auth.getSession().then(function(r){var tok=r&&r.data&&r.data.session&&r.data.session.access_token;if(!tok)throw{msg:'Sign in to ask Ace for more.'};
+    var ask='Explain this part of the lesson further, as a teacher speaking aloud to one adult learner. Your reply will be read out by a text-to-speech voice, so use plain spoken sentences only: no markdown, lists, headings, emoji or symbols that are hard to say. Give one concrete real-life example from everyday work or life. End with one short question for the learner to think about. 100 to 160 words.\n\nCourse: '+c.title+'\nLesson part: '+m.part+'\nWhat I just said: "'+passage+'"';
+    return fetch(CFG.supabaseUrl.replace(/\/$/,'')+'/functions/v1/ai-tutor',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:JSON.stringify({messages:[{role:'user',content:ask}],context:{country:'',exam:c.title,subject:c.title,topic:m.part,mode:'teach',lang:'en',level:'academy'}})})
+      .then(function(res){return res.json().catch(function(){return{}}).then(function(j){if(!res.ok)throw{msg:j.error||'Could not reach Ace. Please try again.'};return String(j.reply||'')})})})}}
 function route(){
   var h=location.hash.replace(/^#\/?/,''),p=h.split('/'),app=$('#app'),out='';
   window.scrollTo(0,0);
@@ -1371,6 +1381,7 @@ function render(){
   else out=viewDash();
   document.querySelectorAll('[data-nav]').forEach(function(a){var k=a.dataset.nav,on=k===(p[0]==='c'||p[0]==='explore'?'explore':p[0]==='path'?'paths':p[0]==='cert'?'certificates':(p[0]||'home'));a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   app.innerHTML=out;
+  try{if(window.AceMotion)AceMotion.view(app,p.slice(0,4).join('/'))}catch(e){}
 }
 window.addEventListener('hashchange',route);
 document.addEventListener('submit',function(e){if(e.target.id==='sf'){e.preventDefault();S.q=$('#q').value;S.field='all';if(location.hash.indexOf('#/explore')!==0){location.hash='#/explore';return}render();var g=$('#grid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'})}});
@@ -1390,6 +1401,10 @@ document.addEventListener('click',function(e){
   if(a==='goal'){var A=act();A.goal=A.goal===v?'':v;saveAct(A);if(p[0]==='path')render();else location.hash='#/path/'+v;return}
   if(a==='chk'){var k=t.dataset.k,ck=S.chk[k]||(S.chk[k]={});if(ck.sel!=null)return;ck.sel=+v;var ok=ck.sel===+t.dataset.a;if(ok)touch(5,slug);var sc=window.scrollY;render();window.scrollTo(0,sc);return}
   if(a==='tpl'){S.tpl=+v;ls('acad-tpl',v);render();return}
+  if((a==='listen'||a==='listenc')&&window.AceTeacher&&S.course){var cc=S.course,ctx={lang:'en',subject:cc.title,explain:acExplain(cc)};
+    if(a==='listen'){var ll=cc.lessons.find(function(x){return x.id===v});if(ll)AceTeacher.toggle(t.dataset.atKey,function(){return AceTeacher.lesson(ll,ctx)})}
+    else{var fr=+(t.dataset.from||0);AceTeacher.toggle(t.dataset.atKey,function(){return AceTeacher.course(cc,fr,ctx)})}
+    return}
   if(a==='png'){toPNG();return}
   if(a==='print'){window.print();return}
   if(a==='copy'){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(function(){t.textContent='Copied'}).catch(function(){window.prompt&&0;t.textContent=v});return}
