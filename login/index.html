@@ -116,7 +116,7 @@ LR:{n:'Liberia',f:'🇱🇷',x:['WASSCE'],tg:'WASSCE Exam Prep • Grade 10–12
 MT:{n:'Malta',f:'🇲🇹',x:['SEC','Matriculation'],tg:'SEC • Matriculation Exam Prep • Year 9 – Sixth Form',gr:[...G(9,11,'Year '),'Sixth Form 1','Sixth Form 2'],cl:'Year 10A',u:'Valletta',p:'GDPR'},
 ZW:{n:'Zimbabwe',f:'🇿🇼',x:['O Level', 'A Level'],tg:'O Level and A Level Exam Prep • Form 1 – Upper 6',gr:[...G(1,4,'Form '),'Lower 6','Upper 6'],cl:'Form 4A',u:'Harare',p:'CDPA 2021'},
 BW:{n:'Botswana',f:'🇧🇼',x:['BGCSE'],tg:'BGCSE Exam Prep • Form 1–5',gr:G(1,5,'Form '),cl:'Form 5A',u:'Gaborone',p:'Data Protection Act'},
-FR:{n:'France',f:'🇫🇷',l:'fr',x:['Épreuves anticipées','Baccalauréat'],tg:'Seconde • Première • Terminale • Bac',gr:['Seconde','Première','Terminale'],cl:'Première 2',u:'Paris',p:'RGPD'}};
+FR:{n:'France',f:'🇫🇷',l:'fr',x:['Épreuves anticipées','Baccalauréat','Bac technologique'],tg:'Seconde • Première • Terminale • Bac',gr:['Seconde','Première','Terminale'],cl:'Première 2',u:'Paris',p:'RGPD'}};
 const exFor=(c,g)=>{if(!g)return c.x;const jr=/^(JHS|JSS)|^Grade [789]$/.test(g);let r=c.x;
  if(g=='Primary 6')r=c.x.filter(k=>k=='NPSE');else if(jr&&c.x.some(k=>/^(BECE|GABECE)$/.test(k)))r=c.x.filter(k=>/^(BECE|GABECE)$/.test(k));
  else if(c.x.some(k=>/^(BECE|GABECE|NPSE)$/.test(k)))r=c.x.filter(k=>!/^(BECE|GABECE|NPSE)$/.test(k));return r.length?r:c.x};
