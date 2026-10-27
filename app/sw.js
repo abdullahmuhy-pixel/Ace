@@ -4,7 +4,7 @@
 //   instantly and refreshed in the background. Students can study that country offline afterwards.
 // - Supabase and edge-function calls are never cached or intercepted (auth, answers and AI must be live).
 // - Bump VERSION only to force a full cache reset.
-const VERSION = 'v25';
+const VERSION = 'v26';
 const SHELL = 'ace-shell-' + VERSION;
 const DATA = 'ace-syllabus-' + VERSION;
 const PRECACHE = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'today.js', 'learn.js', 'class.js', 'learner.js', 'ui.js', 'tiers.js', 'ui.css', 'campus.js', 'campus.css', 'chat.js', 'files.js', 'friends.js', 'lang/fr.js'];
