@@ -17,6 +17,8 @@ LOC = {'e': sp.E, 'pi': sp.pi, 'x': x, 'y': y, 't': t, 'h': h, 'n': n, 'a': a, '
 def to_sym(s):
     """Parse a displayed answer such as '3x² − 2', 'e^(2x)', '√(x + 1)', '−1/2', '∞' into SymPy."""
     s = re.sub(r'^[a-zA-Z](\([a-z]\))? = ', '', str(s).strip())
+    s = re.sub(r'\s*%$', '', s)
+    s = re.sub(r'\s+(years?|per unit|units?|billion|million|hours?|marks?)$', '', s)
     if s in ('∞', '+∞'): return sp.oo
     if s == '−∞': return -sp.oo
     s = s.replace('−', '-').replace('×', '*').replace('÷', '/').replace('·', '*').replace('π', 'pi').replace('∞', 'oo')
