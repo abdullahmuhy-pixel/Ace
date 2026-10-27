@@ -9,6 +9,7 @@ import calc1_m1, calc1_m2, calc1_m3, calc1_m4, calc1_m5
 import la_m1, la_m2, la_m3, la_m4, la_m5
 import stat_m1, stat_m2, stat_m3, stat_m4, stat_m5
 import calc2_m1, calc2_m2, calc2_m3, calc2_m4, calc2_m5
+import micro_m1, micro_m2, micro_m3, micro_m4, micro_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -56,13 +57,19 @@ CALC2, nq4 = course('Calculus II', [calc2_m1, calc2_m2, calc2_m3, calc2_m4, calc
     'faculties': ['sci', 'eng', 'comp'],
 })
 
+MICRO, nq5 = course('Principles of Microeconomics', [micro_m1, micro_m2, micro_m3, micro_m4, micro_m5], {
+    'source': 'Written by Ace for first-year university Principles of Microeconomics. Matches the common core of courses such as ECO 101 (Nigeria), ECON 101 (Ghana), ECO1010 (South Africa), EC1001/Principles of Economics (UK and Ireland) and Microeconomics 101 in North America. Every numerical answer was checked in code.',
+    'paper_info': 'First-year core • usually 3 credits • demand and supply, elasticity, costs, market structures and market failure',
+    'faculties': ['biz', 'soc'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
     {'name': 'Linear Algebra', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp']},
     {'name': 'Probability and Statistics', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc']},
     {'name': 'Programming with Python', 'track': 'First-year core', 'status': 'soon', 'faculties': ['comp', 'eng', 'sci', 'biz']},
-    {'name': 'Principles of Microeconomics', 'track': 'First-year core', 'status': 'soon', 'faculties': ['biz', 'soc']},
+    {'name': 'Principles of Microeconomics', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz', 'soc']},
     {'name': 'Principles of Macroeconomics', 'track': 'First-year core', 'status': 'soon', 'faculties': ['biz', 'soc']},
     {'name': 'Financial Accounting I', 'track': 'First-year core', 'status': 'soon', 'faculties': ['biz']},
     {'name': 'General Chemistry', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng', 'health']},
@@ -86,7 +93,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO}}},
 }
 
 if problems:
@@ -107,16 +114,17 @@ page = f'''<!DOCTYPE html>
 </head>
 <body>
 <div class="w"><h1>Ace Campus course data</h1>
-<p>This file feeds the Ace Campus portal. {len(live)} courses live, {len(CATALOGUE) - len(live)} on the plan. Every maths answer was checked with SymPy when this file was built.</p>
+<p>This file feeds the Ace Campus portal. {len(live)} courses live, {len(CATALOGUE) - len(live)} on the plan. Every numerical answer was checked in code (SymPy) when this file was built.</p>
 <h2>Calculus I ({nq} questions)</h2><ul>{rows(CALC1)}</ul>
 <h2>Linear Algebra ({nq2} questions)</h2><ul>{rows(LA)}</ul>
 <h2>Probability and Statistics ({nq3} questions)</h2><ul>{rows(STAT)}</ul>
-<h2>Calculus II ({nq4} questions)</h2><ul>{rows(CALC2)}</ul></div>
+<h2>Calculus II ({nq4} questions)</h2><ul>{rows(CALC2)}</ul>
+<h2>Principles of Microeconomics ({nq5} questions)</h2><ul>{rows(MICRO)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
