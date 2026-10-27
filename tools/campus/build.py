@@ -12,6 +12,7 @@ import calc2_m1, calc2_m2, calc2_m3, calc2_m4, calc2_m5
 import micro_m1, micro_m2, micro_m3, micro_m4, micro_m5
 import macro_m1, macro_m2, macro_m3, macro_m4, macro_m5
 import acc_m1, acc_m2, acc_m3, acc_m4, acc_m5
+import py_m1, py_m2, py_m3, py_m4, py_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -77,12 +78,18 @@ ACC, nq7 = course('Financial Accounting I', [acc_m1, acc_m2, acc_m3, acc_m4, acc
     'faculties': ['biz'],
 })
 
+PY, nq8 = course('Programming with Python', [py_m1, py_m2, py_m3, py_m4, py_m5], {
+    'source': 'Written by Ace for first-year university Introduction to Programming in Python. Matches the common core of courses such as CSC 101/102 and CPE 101 (Nigeria), DCIT 101 (Ghana), CSC1015F (South Africa), CS1 programming modules (UK and Ireland) and CS1 in North America. Every "what does this print?" answer was checked by running the code.',
+    'paper_info': 'First-year core • usually 3 to 4 credits • Python basics, data structures, functions, files, objects, algorithms and data processing',
+    'faculties': ['comp', 'eng', 'sci', 'biz'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
     {'name': 'Linear Algebra', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp']},
     {'name': 'Probability and Statistics', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc']},
-    {'name': 'Programming with Python', 'track': 'First-year core', 'status': 'soon', 'faculties': ['comp', 'eng', 'sci', 'biz']},
+    {'name': 'Programming with Python', 'track': 'First-year core', 'status': 'live', 'faculties': ['comp', 'eng', 'sci', 'biz']},
     {'name': 'Principles of Microeconomics', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz', 'soc']},
     {'name': 'Principles of Macroeconomics', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz', 'soc']},
     {'name': 'Financial Accounting I', 'track': 'First-year core', 'status': 'live', 'faculties': ['biz']},
@@ -107,7 +114,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY}}},
 }
 
 if problems:
@@ -135,12 +142,13 @@ page = f'''<!DOCTYPE html>
 <h2>Calculus II ({nq4} questions)</h2><ul>{rows(CALC2)}</ul>
 <h2>Principles of Microeconomics ({nq5} questions)</h2><ul>{rows(MICRO)}</ul>
 <h2>Principles of Macroeconomics ({nq6} questions)</h2><ul>{rows(MACRO)}</ul>
-<h2>Financial Accounting I ({nq7} questions)</h2><ul>{rows(ACC)}</ul></div>
+<h2>Financial Accounting I ({nq7} questions)</h2><ul>{rows(ACC)}</ul>
+<h2>Programming with Python ({nq8} questions)</h2><ul>{rows(PY)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
