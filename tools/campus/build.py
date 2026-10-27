@@ -18,6 +18,7 @@ import phys_m1, phys_m2, phys_m3, phys_m4, phys_m5
 import bio_m1, bio_m2, bio_m3, bio_m4, bio_m5
 import psy_m1, psy_m2, psy_m3, psy_m4, psy_m5
 import aw_m1, aw_m2, aw_m3, aw_m4, aw_m5
+import de_m1, de_m2, de_m3, de_m4, de_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -119,6 +120,12 @@ AW, nq13 = course('Academic Writing and Research Methods', [aw_m1, aw_m2, aw_m3,
     'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu'],
 })
 
+DE, nq14 = course('Differential Equations', [de_m1, de_m2, de_m3, de_m4, de_m5], {
+    'source': 'Written by Ace for second-year university Differential Equations (Ordinary Differential Equations). Matches the common core of courses such as MTH 201/202 (Nigeria), MATH 223 (Ghana), SMA 2xx (Kenya), MAM2000-level ODEs (South Africa), second-year ODEs in the UK and Ireland, and Differential Equations (MATH 2xx) in North America. Every solution was checked in code with SymPy.',
+    'paper_info': 'Second year • usually 3 to 4 credits • first-order methods and models, second-order linear equations, Laplace transforms, systems and stability, series and Fourier series',
+    'faculties': ['sci', 'eng'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -134,7 +141,7 @@ CATALOGUE = [
     {'name': 'Academic Writing and Research Methods', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu']},
     {'name': 'Introduction to Psychology', 'track': 'First-year core', 'status': 'live', 'faculties': ['soc', 'health', 'edu']},
     {'name': 'Calculus II', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp']},
-    {'name': 'Differential Equations', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'eng']},
+    {'name': 'Differential Equations', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'eng']},
     {'name': 'Data Structures and Algorithms', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'eng']},
     {'name': 'Discrete Mathematics and Logic', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'sci']},
     {'name': 'Organic Chemistry', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'health']},
@@ -149,7 +156,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE}}},
 }
 
 if problems:
@@ -183,12 +190,13 @@ page = f'''<!DOCTYPE html>
 <h2>Physics I: Mechanics ({nq10} questions)</h2><ul>{rows(PHYS)}</ul>
 <h2>Cell Biology ({nq11} questions)</h2><ul>{rows(BIO)}</ul>
 <h2>Introduction to Psychology ({nq12} questions)</h2><ul>{rows(PSY)}</ul>
-<h2>Academic Writing and Research Methods ({nq13} questions)</h2><ul>{rows(AW)}</ul></div>
+<h2>Academic Writing and Research Methods ({nq13} questions)</h2><ul>{rows(AW)}</ul>
+<h2>Differential Equations ({nq14} questions)</h2><ul>{rows(DE)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
