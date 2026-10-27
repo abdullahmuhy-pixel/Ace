@@ -51,7 +51,7 @@
   const sync = () => window.AceSync;
   const signedIn = () => !!(sync() && sync().signedIn && sync().signedIn());
   const needSignIn = () => `<div class="card"><b>${L('Sign in to use this', 'Inicia sesión para usar esto')}</b><p class="note">${L('This part is saved to your account. Open the sign-in page, then come back here.', 'Esta parte se guarda en tu cuenta. Abre la página de acceso y vuelve aquí.')}</p><a class="btn" style="display:inline-block;text-decoration:none" href="${LOGIN()}">${L('Sign in', 'Entrar')}</a></div>`;
-  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia', MT: 'Malta', ZW: 'Zimbabwe', BW: 'Botswana', FR: 'France' };
+  const NAMES = { NG: 'Nigeria', GH: 'Ghana', SL: 'Sierra Leone', GM: 'The Gambia', KE: 'Kenya', ZM: 'Zambia', GB: 'United Kingdom', CA: 'Canada', ES: 'Spain', IE: 'Ireland', ZA: 'South Africa', UG: 'Uganda', TZ: 'Tanzania', LR: 'Liberia', MT: 'Malta', ZW: 'Zimbabwe', BW: 'Botswana', FR: 'France', IT: 'Italia' };
   const hc = () => (typeof HOMECC === 'function' ? HOMECC() : S.c), cname = () => NAMES[hc()] || hc();
   const ex = () => C_().x[S.x % C_().x.length];
   const fail = e => { X.err = (e && (e.msg || e.message)) || L('Something went wrong. Try again.', 'Algo salió mal. Inténtalo de nuevo.'); };
@@ -77,7 +77,8 @@
     MT: 'Most degree courses at the University of Malta need the Matriculation Certificate (taken after two years of sixth form) plus SEC passes in English, Maltese and Mathematics or the subjects your course names. MCAST courses accept SEC results directly. Check the entry requirements of your course.',
     ZW: 'Apply directly to each university (for example UZ, NUST and MSU) through its own online portal. Your A Level points decide entry, and most degrees also need five O Level passes at grade C or better, including English Language and usually Mathematics.',
     BW: 'Apply directly to each institution (for example the University of Botswana, BIUST or BAC) after your BGCSE results. Entry depends on points from six BGCSE subjects, and government sponsorship is handled by the Department of Tertiary Education Financing (DTEF).',
-    FR: 'Après le bac, tu formules tes vœux sur Parcoursup (inscription de janvier à mars, réponses à partir de juin). Chaque formation examine ton dossier : notes de Première et de Terminale, résultats des épreuves anticipées, projet de formation motivé. Vérifie le calendrier sur parcoursup.gouv.fr.'
+    FR: 'Après le bac, tu formules tes vœux sur Parcoursup (inscription de janvier à mars, réponses à partir de juin). Chaque formation examine ton dossier : notes de Première et de Terminale, résultats des épreuves anticipées, projet de formation motivé. Vérifie le calendrier sur parcoursup.gouv.fr.',
+    IT: "Dopo la Maturità ti iscrivi direttamente all'università che scegli. Molti corsi sono ad accesso libero; quelli a numero programmato richiedono un test (per esempio i TOLC del CISIA), mentre per Medicina il primo semestre è ad accesso libero e la graduatoria si basa sugli esami di quel semestre. Puoi consultare i corsi su Universitaly e verificare sempre scadenze e requisiti sul sito di ogni ateneo."
   };
   function stages() {
     const c = C_(), exams = c.x.join(', ');

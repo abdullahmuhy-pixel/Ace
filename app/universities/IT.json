@@ -1,0 +1,575 @@
+{
+ "country": "IT",
+ "updated": "2026-10-27",
+ "admissions_overview": {
+  "summary": "In Italia ti iscrivi direttamente all'università che scegli, dopo il diploma di Maturità. Molti corsi di laurea sono ad accesso libero; quelli a numero programmato richiedono una prova di ammissione (spesso un TOLC del CISIA, che si può sostenere anche durante il quinto anno). Per Medicina e chirurgia, Odontoiatria e Veterinaria il primo semestre è ad accesso libero e l'accesso al secondo semestre dipende dagli esami sostenuti. Le lauree triennali durano 3 anni, le magistrali 2 anni e quelle a ciclo unico 5 o 6 anni.",
+  "official_url": "https://www.universitaly.it",
+  "notes": "I nomi indicati sono corsi di laurea e grandi aree degli atenei, non l'offerta completa. Modalità di accesso, scadenze e tasse cambiano ogni anno: verifica sempre su universitaly.it e sul sito di ogni ateneo."
+ },
+ "universities": [
+  {
+   "id": "unibo",
+   "name": "Alma Mater Studiorum – Università di Bologna",
+   "short": "UNIBO",
+   "type": "public",
+   "city": "Bologna",
+   "url": "https://www.unibo.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Area Economia e Management",
+     "courses": [
+      {
+       "name": "Economia e commercio",
+       "years": 3
+      },
+      {
+       "name": "Economia aziendale",
+       "years": 3
+      },
+      {
+       "name": "Business and Economics",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Area Ingegneria e Architettura",
+     "courses": [
+      {
+       "name": "Ingegneria informatica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria meccanica",
+       "years": 3
+      },
+      {
+       "name": "Architettura",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Area Medicina",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      },
+      {
+       "name": "Odontoiatria e protesi dentaria",
+       "years": 6
+      }
+     ]
+    },
+    {
+     "name": "Area Giurisprudenza e Lettere",
+     "courses": [
+      {
+       "name": "Giurisprudenza",
+       "years": 5
+      },
+      {
+       "name": "Lettere",
+       "years": 3
+      },
+      {
+       "name": "Filosofia",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sapienza",
+   "name": "Sapienza Università di Roma",
+   "short": "Sapienza",
+   "type": "public",
+   "city": "Roma",
+   "url": "https://www.uniroma1.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Facoltà di Ingegneria",
+     "courses": [
+      {
+       "name": "Ingegneria informatica e automatica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria aerospaziale",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria civile",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Facoltà di Medicina e Odontoiatria",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Odontoiatria e protesi dentaria",
+       "years": 6
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Facoltà di Lettere e Filosofia",
+     "courses": [
+      {
+       "name": "Lettere moderne",
+       "years": 3
+      },
+      {
+       "name": "Storia",
+       "years": 3
+      },
+      {
+       "name": "Filosofia",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Facoltà di Giurisprudenza",
+     "courses": [
+      {
+       "name": "Giurisprudenza",
+       "years": 5
+      },
+      {
+       "name": "Scienze giuridiche",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "polimi",
+   "name": "Politecnico di Milano",
+   "short": "PoliMi",
+   "type": "public",
+   "city": "Milano",
+   "url": "https://www.polimi.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Scuola di Ingegneria Industriale e dell'Informazione",
+     "courses": [
+      {
+       "name": "Ingegneria informatica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria gestionale",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria meccanica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria biomedica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Architettura Urbanistica Ingegneria delle Costruzioni",
+     "courses": [
+      {
+       "name": "Architettura",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria civile",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola del Design",
+     "courses": [
+      {
+       "name": "Design del prodotto industriale",
+       "years": 3
+      },
+      {
+       "name": "Design della comunicazione",
+       "years": 3
+      },
+      {
+       "name": "Design della moda",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unimi",
+   "name": "Università degli Studi di Milano",
+   "short": "UNIMI",
+   "type": "public",
+   "city": "Milano",
+   "url": "https://www.unimi.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Medicina e chirurgia",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      },
+      {
+       "name": "Fisioterapia",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scienze e tecnologie",
+     "courses": [
+      {
+       "name": "Matematica",
+       "years": 3
+      },
+      {
+       "name": "Fisica",
+       "years": 3
+      },
+      {
+       "name": "Informatica",
+       "years": 3
+      },
+      {
+       "name": "Scienze biologiche",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Studi umanistici",
+     "courses": [
+      {
+       "name": "Lettere",
+       "years": 3
+      },
+      {
+       "name": "Filosofia",
+       "years": 3
+      },
+      {
+       "name": "Storia",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Giurisprudenza",
+     "courses": [
+      {
+       "name": "Giurisprudenza",
+       "years": 5
+      },
+      {
+       "name": "Scienze dei servizi giuridici",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unipd",
+   "name": "Università degli Studi di Padova",
+   "short": "UNIPD",
+   "type": "public",
+   "city": "Padova",
+   "url": "https://www.unipd.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Scuola di Ingegneria",
+     "courses": [
+      {
+       "name": "Ingegneria dell'informazione",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria meccanica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria civile",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Medicina e Chirurgia",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Psicologia",
+     "courses": [
+      {
+       "name": "Scienze psicologiche cognitive e psicobiologiche",
+       "years": 3
+      },
+      {
+       "name": "Scienze psicologiche dello sviluppo, della personalità e delle relazioni interpersonali",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Scienze",
+     "courses": [
+      {
+       "name": "Matematica",
+       "years": 3
+      },
+      {
+       "name": "Fisica",
+       "years": 3
+      },
+      {
+       "name": "Astronomia",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "federico-ii",
+   "name": "Università degli Studi di Napoli Federico II",
+   "short": "UNINA",
+   "type": "public",
+   "city": "Napoli",
+   "url": "https://www.unina.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Scuola Politecnica e delle Scienze di Base",
+     "courses": [
+      {
+       "name": "Ingegneria informatica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria aerospaziale",
+       "years": 3
+      },
+      {
+       "name": "Matematica",
+       "years": 3
+      },
+      {
+       "name": "Fisica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Medicina e Chirurgia",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Farmacia",
+       "years": 5
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola delle Scienze Umane e Sociali",
+     "courses": [
+      {
+       "name": "Giurisprudenza",
+       "years": 5
+      },
+      {
+       "name": "Lettere moderne",
+       "years": 3
+      },
+      {
+       "name": "Economia e commercio",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unito",
+   "name": "Università degli Studi di Torino",
+   "short": "UNITO",
+   "type": "public",
+   "city": "Torino",
+   "url": "https://www.unito.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Scuola di Medicina",
+     "courses": [
+      {
+       "name": "Medicina e chirurgia",
+       "years": 6
+      },
+      {
+       "name": "Infermieristica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Scienze della Natura",
+     "courses": [
+      {
+       "name": "Matematica",
+       "years": 3
+      },
+      {
+       "name": "Fisica",
+       "years": 3
+      },
+      {
+       "name": "Informatica",
+       "years": 3
+      },
+      {
+       "name": "Scienze biologiche",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Scuola di Scienze Umanistiche",
+     "courses": [
+      {
+       "name": "Lettere",
+       "years": 3
+      },
+      {
+       "name": "Filosofia",
+       "years": 3
+      },
+      {
+       "name": "Lingue e culture moderne",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Giurisprudenza e Management",
+     "courses": [
+      {
+       "name": "Giurisprudenza",
+       "years": 5
+      },
+      {
+       "name": "Economia aziendale",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "polito",
+   "name": "Politecnico di Torino",
+   "short": "PoliTo",
+   "type": "public",
+   "city": "Torino",
+   "url": "https://www.polito.it",
+   "admissions_url": "https://www.universitaly.it",
+   "verified_on": "2026-10-27",
+   "faculties": [
+    {
+     "name": "Ingegneria",
+     "courses": [
+      {
+       "name": "Ingegneria informatica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria aerospaziale",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria meccanica",
+       "years": 3
+      },
+      {
+       "name": "Ingegneria dell'autoveicolo",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Architettura e Design",
+     "courses": [
+      {
+       "name": "Architettura",
+       "years": 3
+      },
+      {
+       "name": "Design e comunicazione",
+       "years": 3
+      },
+      {
+       "name": "Pianificazione territoriale, urbanistica e paesaggistico-ambientale",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

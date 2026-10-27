@@ -10,8 +10,8 @@ const CFG = window.ACE_CONFIG || {}, $ = s => document.querySelector(s), $$ = s 
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 const today = () => new Date().toISOString().slice(0, 10);
 const STAFF = ['teacher', 'subject_teacher', 'school_admin', 'platform_admin'];
-const FILES = { NG: 'nigeria-syllabus.html', GH: 'ghana-syllabus.html', SL: 'sierra-leone-syllabus.html', GM: 'gambia-syllabus.html', KE: 'kenya-syllabus.html', ZM: 'zambia-syllabus.html', GB: 'uk-syllabus.html', CA: 'canada-syllabus.html', ES: 'spain-syllabus.html', IE: 'ireland-syllabus.html', ZA: 'south-africa-syllabus.html', UG: 'uganda-syllabus.html', TZ: 'tanzania-syllabus.html', LR: 'liberia-syllabus.html', MT: 'malta-syllabus.html', ZW: 'zimbabwe-syllabus.html', BW: 'botswana-syllabus.html', FR: 'france-syllabus.html' };
-const CN = { NG: '🇳🇬 Nigeria', GH: '🇬🇭 Ghana', SL: '🇸🇱 Sierra Leone', GM: '🇬🇲 The Gambia', KE: '🇰🇪 Kenya', ZM: '🇿🇲 Zambia', GB: '🇬🇧 United Kingdom', CA: '🇨🇦 Canada', ES: '🇪🇸 España', IE: '🇮🇪 Ireland', ZA: '🇿🇦 South Africa', UG: '🇺🇬 Uganda', TZ: '🇹🇿 Tanzania', LR: '🇱🇷 Liberia', MT: '🇲🇹 Malta', ZW: '🇿🇼 Zimbabwe', BW: '🇧🇼 Botswana', FR: '🇫🇷 France' };
+const FILES = { NG: 'nigeria-syllabus.html', GH: 'ghana-syllabus.html', SL: 'sierra-leone-syllabus.html', GM: 'gambia-syllabus.html', KE: 'kenya-syllabus.html', ZM: 'zambia-syllabus.html', GB: 'uk-syllabus.html', CA: 'canada-syllabus.html', ES: 'spain-syllabus.html', IE: 'ireland-syllabus.html', ZA: 'south-africa-syllabus.html', UG: 'uganda-syllabus.html', TZ: 'tanzania-syllabus.html', LR: 'liberia-syllabus.html', MT: 'malta-syllabus.html', ZW: 'zimbabwe-syllabus.html', BW: 'botswana-syllabus.html', FR: 'france-syllabus.html', IT: 'italy-syllabus.html' };
+const CN = { NG: '🇳🇬 Nigeria', GH: '🇬🇭 Ghana', SL: '🇸🇱 Sierra Leone', GM: '🇬🇲 The Gambia', KE: '🇰🇪 Kenya', ZM: '🇿🇲 Zambia', GB: '🇬🇧 United Kingdom', CA: '🇨🇦 Canada', ES: '🇪🇸 España', IE: '🇮🇪 Ireland', ZA: '🇿🇦 South Africa', UG: '🇺🇬 Uganda', TZ: '🇹🇿 Tanzania', LR: '🇱🇷 Liberia', MT: '🇲🇹 Malta', ZW: '🇿🇼 Zimbabwe', BW: '🇧🇼 Botswana', FR: '🇫🇷 France', IT: '🇮🇹 Italia' };
 // How each country names marks earned during the year. Numbers are only given where they are a fixed national rule.
 const CA = {
   NG: ['Continuous assessment (CA)', 'Tests, assignments and projects recorded through the term.', 'CA'],
@@ -31,7 +31,8 @@ const CA = {
   MT: ['Coursework', 'School-assessed work in the SEC subjects that have it.', 'Coursework'],
   ZW: ['School-based projects (SBP)', 'Projects done at school under the heritage-based curriculum, which replaced CALA.', 'SBP'],
   BW: ["Coursework", "School-based assessment in the BGCSE subjects that have it.", "CW"],
-  FR: ["Contrôle continu", "School-assessed marks from Première and Terminale count for 40% of the bac.", "CC"]
+  FR: ["Contrôle continu", "School-assessed marks from Première and Terminale count for 40% of the bac.", "CC"],
+  IT: ["Credito scolastico", "Marks from the last three years (terzo, quarto and quinto anno) give up to 40 of the 100 points of the Maturità.", "CS"]
 };
 let sb, me, school, St = { view: '', cls: '', classes: [], day: today(), month: today().slice(0, 7), q: '' };
 const SYL = {};

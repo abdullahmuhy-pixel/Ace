@@ -18,7 +18,7 @@ const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
 const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['pricing','Pricing'],['teachers','Teachers'],['schools','Schools'],['guides','Guides']];
 
-const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta',ZW:'zimbabwe',BW:'botswana',FR:'france'};
+const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta',ZW:'zimbabwe',BW:'botswana',FR:'france',IT:'italy'};
 const PAGES = ['countries','features','syllabus','pricing','teachers','schools','guides','about','contact','quote','privacy','terms'];
 const pathFor = (page, arg) => page === 'home' ? './' : page === 'country' ? 'exam-prep-' + SLUG[arg] : page === 'guide' ? 'guide-' + arg : page;
 function parseRoute(r) {

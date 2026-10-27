@@ -2,7 +2,7 @@
 """Validate app/universities/<CC>.json. Exits 1 on problems. Run: python3 tools/check_unis.py [folder]"""
 import json, glob, os, re, sys
 folder = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'app', 'universities')
-CC = {'NG','GH','SL','GM','KE','ZM','GB','CA','ES','IE','ZA','UG','TZ','LR','MT','ZW','BW','FR'}
+CC = {'NG','GH','SL','GM','KE','ZM','GB','CA','ES','IE','ZA','UG','TZ','LR','MT','ZW','BW','FR','IT'}
 problems = []; n = 0; nu = 0; nc = 0
 url = lambda s: isinstance(s, str) and re.fullmatch(r'https://[a-z0-9.-]+\.[a-z]{2,}(/\S*)?', s) is not None
 for p in sorted(glob.glob(os.path.join(folder, '??.json'))):

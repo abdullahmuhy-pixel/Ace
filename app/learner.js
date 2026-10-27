@@ -92,7 +92,7 @@
   const itemRow = (it, today) => { const [e, b, sm] = itemLabel(it), dn = isDone(it); return `<div class="pli ${dn ? 'dn' : ''}"><span class="e">${dn ? '✅' : e}</span><span class="m"><b>${esc(b)}</b><small>${esc(sm)}</small></span>${today && !dn ? `<button class="play" data-l="pgo" data-v="${esc(it.key)}">${L('Start', 'Empezar')}</button>` : `<button class="pchk" data-l="ptick" data-v="${esc(it.key)}" aria-label="${L('Mark done', 'Marcar hecho')}">${dn ? '✓' : '○'}</button>`}</div>`; };
   function planSetup() {
     const c = C_(), p = PL() || {}, subs = p.subs || c.s.filter(s => selOK(c, s) && QB[s]).slice(0, 6), days = p.days || [1, 2, 3, 4, 5, 6];
-    const DN = ({ es: ['D', 'L', 'M', 'X', 'J', 'V', 'S'], fr: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'] })[c.l] || ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const DN = ({ es: ['D', 'L', 'M', 'X', 'J', 'V', 'S'], fr: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'], it: ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa'] })[c.l] || ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     return `<div class="card plset"><label class="xl">${L('Exam date', 'Fecha del examen')}<input class="xin" type="date" data-l-in="exam" value="${esc(p.exam || c.d)}"></label>
 <p class="xl">${L('Days I can study', 'Días que puedo estudiar')}</p><div class="xchips">${[1, 2, 3, 4, 5, 6, 0].map(d => `<button class="xchip ${days.includes(d) ? 'on' : ''}" data-l="pday" data-v="${d}">${DN[d]}</button>`).join('')}</div>
 <p class="xl">${L('Time per study day', 'Tiempo por día')}</p><div class="xchips">${[15, 30, 45, 60, 90].map(m => `<button class="xchip ${(p.min || 30) === m ? 'on' : ''}" data-l="pmin" data-v="${m}">${m} min</button>`).join('')}</div>

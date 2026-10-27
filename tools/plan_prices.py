@@ -9,6 +9,7 @@ P = {
  'mt': ('MT', 'EUR', '4.99', '12.99', '39.99', '99'),
  'es': ('ES', 'EUR', '4.99', '12.99', '39.99', '99'),
  'fr': ('FR', 'EUR', '4.99', '12.99', '39.99', '99'),
+ 'it': ('IT', 'EUR', '4.99', '12.99', '39.99', '99'),
  'ca': ('CA', 'CAD', '7.99', '19.99', '59.99', '149'),
  'za': ('ZA', 'ZAR', '59', '149', '449', '1099'),
  'bw': ('BW', 'BWP', '40', '100', '300', '750'),
@@ -26,7 +27,7 @@ P = {
 CAMPUS = ('USD', '4.99', '39.99')   # Ace Campus, any country
 # School / tutor licence: price per student per year, about 30% of one student's yearly plan (minimum 30 students
 # for a school, 10 for a tutor; the minimum is enforced in the checkout-start function)
-SCHOOL = {'gb': '12', 'ie': '12', 'mt': '12', 'es': '12', 'fr': '12', 'ca': '18', 'za': '135', 'bw': '90', 'ng': '3600',
+SCHOOL = {'gb': '12', 'ie': '12', 'mt': '12', 'es': '12', 'fr': '12', 'it': '12', 'ca': '18', 'za': '135', 'bw': '90', 'ng': '3600',
           'gh': '45', 'ke': '450', 'ug': '15000', 'tz': '10500', 'zm': '90', 'sl': '90', 'gm': '300', 'zw': '4.50', 'lr': '4.50'}
 rows = []
 def minor(x): v = D(x) * 100; assert v == v.to_integral_value(), x; return int(v)
@@ -49,7 +50,7 @@ assert set(SCHOOL) == set(P)
 cur, m, y = CAMPUS
 rows += [('campus_month', 'Ace Campus Monthly', None, cur, minor(m), 'month', 1),
          ('campus_year', 'Ace Campus Yearly', None, cur, minor(y), 'year', 1)]
-assert len({r[0] for r in rows}) == len(rows) == 18 * 4 + 2
+assert len({r[0] for r in rows}) == len(rows) == 19 * 4 + 2
 q = lambda s: 'null' if s is None else "'" + s.replace("'", "''") + "'"
 if __name__ == '__main__':
     import sys

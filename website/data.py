@@ -1,7 +1,7 @@
 import json,re
 import os
 W=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','app')+os.sep
-FILES={'NG':'nigeria','GH':'ghana','SL':'sierra-leone','GM':'gambia','KE':'kenya','ZM':'zambia','GB':'uk','CA':'canada','ES':'spain','IE':'ireland','ZA':'south-africa','UG':'uganda','TZ':'tanzania','LR':'liberia','MT':'malta','ZW':'zimbabwe','BW':'botswana','FR':'france'}
+FILES={'NG':'nigeria','GH':'ghana','SL':'sierra-leone','GM':'gambia','KE':'kenya','ZM':'zambia','GB':'uk','CA':'canada','ES':'spain','IE':'ireland','ZA':'south-africa','UG':'uganda','TZ':'tanzania','LR':'liberia','MT':'malta','ZW':'zimbabwe','BW':'botswana','FR':'france','IT':'italy'}
 def load(cc):
     h=open(W+FILES[cc]+'-syllabus.html',encoding='utf-8').read()
     a=h.index('>',h.index('id="syllabus-data"'))+1;b=h.index('</script>',a)
