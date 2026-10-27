@@ -211,7 +211,7 @@ function aceBuild(d){const CUR=d.currency||'',cu=x=>x==null?x:String(x).split('{
    const L=[];(s.modules||[]).forEach((m,mi)=>(m.questions||[]).forEach(q=>L.push(q.type=='mcq'?[mi,q.topic,0,cu(q.q),q.o.map(cu),q.a,cu(q.e),0,[]]:[mi,q.topic,1,cu(q.q),[],0,'',q.marks,q.ms.map(cu)])));
    if(L.length){E.QB[sk]=L;E.NGQ[sk]=L.length}
    if(s.topic_notes&&Object.keys(s.topic_notes).length){E.TC[sk]={};for(const t of Object.keys(s.topic_notes)){const n=s.topic_notes[t],w=n.worked_example||{};
-    E.TC[sk][t]={ov:n.overview,kt:n.key_terms,ex:n.explanation,fl:n.formulas_label&&n.formulas_label!='Formulas & definitions'?n.formulas_label:undefined,fm:n.formulas,st:n.steps,we:{p:w.problem,s:w.steps,a:w.answer,v:w.check},cm:n.mistakes,rw:n.real_world,es:n.exam_strategy,rc:n.recap}}}
+    const ca=v=>Array.isArray(v)?v.map(cu):cu(v);E.TC[sk][t]={ov:cu(n.overview),kt:n.key_terms,ex:ca(n.explanation),fl:n.formulas_label&&n.formulas_label!='Formulas & definitions'?n.formulas_label:undefined,fm:ca(n.formulas),st:ca(n.steps),we:{p:cu(w.problem),s:ca(w.steps),a:cu(w.answer),v:cu(w.check)},cm:ca(n.mistakes),rw:cu(n.real_world),es:cu(n.exam_strategy),rc:ca(n.recap)}}}
    if(s.flashcards)E.FLASH[sk]=s.flashcards;if(s.mock_exam)E.MOCK[sk]=s.mock_exam}}
  const W0=R.EX.WASSCE||{QB:{},TC:{},NGQ:{},FLASH:{},MOCK:{}};R.QB=W0.QB;R.TC=W0.TC;R.NGQ=W0.NGQ;R.FLASH=W0.FLASH;R.MOCK=W0.MOCK;
  return R}

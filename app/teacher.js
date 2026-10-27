@@ -408,7 +408,7 @@
     s = s.replace(/(^|[\s(:;,])>\s*(?=\d)/g, '$1' + W.gt + ' ').replace(/(^|[\s(:;,])<\s*(?=\d)/g, '$1' + W.lt + ' ');
     s = s.replace(/\s*±\s*/g, ' ' + W.pm + ' ').replace(/\s*[×✕]\s*/g, ' ' + W.tm + ' ').replace(/\s*÷\s*/g, ' ' + W.dv + ' ');
     s = s.replace(/\s*−\s*/g, ' ' + W.mi + ' ').replace(/(\d|\))\s+-\s+(?=[\d(a-z])/gi, '$1 ' + W.mi + ' ');
-    s = s.replace(/([\w)\]])\s*=\s*(?=[\w(−\-√.,'"])/g, '$1 ' + W.eq + ' ');
+    s = s.replace(/([\w)\]′'])\s*=\s*(?=[\w(−\-√.,'"])/g, '$1 ' + W.eq + ' ');
     s = s.replace(/π/g, ' ' + W.pi + ' ').replace(/Δ(?=[A-Za-z])/g, W.delta + ' ').replace(/Δ/g, ' delta ').replace(/°\s*C\b/g, ' ' + W.dg + ' Celsius').replace(/°/g, ' ' + W.dg);
     s = s.replace(/([\w)])\s+\/\s+(?=[\w(])/g, '$1 ' + W.dv + ' ');
     s = s.replace(/…/g, '...').replace(/\s*;\s*/g, '; ').replace(/\s+([,.;:!?])/g, '$1').replace(/\s+/g, ' ').trim();

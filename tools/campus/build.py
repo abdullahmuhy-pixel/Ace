@@ -8,6 +8,7 @@ import verify
 import calc1_m1, calc1_m2, calc1_m3, calc1_m4, calc1_m5
 import la_m1, la_m2, la_m3, la_m4, la_m5
 import stat_m1, stat_m2, stat_m3, stat_m4, stat_m5
+import calc2_m1, calc2_m2, calc2_m3, calc2_m4, calc2_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -49,6 +50,12 @@ STAT, nq3 = course('Probability and Statistics', [stat_m1, stat_m2, stat_m3, sta
     'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc'],
 })
 
+CALC2, nq4 = course('Calculus II', [calc2_m1, calc2_m2, calc2_m3, calc2_m4, calc2_m5], {
+    'source': 'Written by Ace for university Calculus II. Matches the common core of courses such as MTH 201/MAT 201 (Nigeria), MATH 223 (Ghana), MAM1000 second semester (South Africa), MA1002/MATH1002 (UK and Ireland) and Calculus II in North America. Every answer was checked with SymPy.',
+    'paper_info': 'First or second year • usually 3 to 4 credits • integration techniques, applications, series, differential equations, parametric and polar curves',
+    'faculties': ['sci', 'eng', 'comp'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -63,7 +70,7 @@ CATALOGUE = [
     {'name': 'Cell Biology', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'health']},
     {'name': 'Academic Writing and Research Methods', 'track': 'First-year core', 'status': 'soon', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health', 'soc', 'law', 'arts', 'edu']},
     {'name': 'Introduction to Psychology', 'track': 'First-year core', 'status': 'soon', 'faculties': ['soc', 'health', 'edu']},
-    {'name': 'Calculus II', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'eng', 'comp']},
+    {'name': 'Calculus II', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp']},
     {'name': 'Differential Equations', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'eng']},
     {'name': 'Data Structures and Algorithms', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'eng']},
     {'name': 'Discrete Mathematics and Logic', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'sci']},
@@ -79,7 +86,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2}}},
 }
 
 if problems:
@@ -103,12 +110,13 @@ page = f'''<!DOCTYPE html>
 <p>This file feeds the Ace Campus portal. {len(live)} courses live, {len(CATALOGUE) - len(live)} on the plan. Every maths answer was checked with SymPy when this file was built.</p>
 <h2>Calculus I ({nq} questions)</h2><ul>{rows(CALC1)}</ul>
 <h2>Linear Algebra ({nq2} questions)</h2><ul>{rows(LA)}</ul>
-<h2>Probability and Statistics ({nq3} questions)</h2><ul>{rows(STAT)}</ul></div>
+<h2>Probability and Statistics ({nq3} questions)</h2><ul>{rows(STAT)}</ul>
+<h2>Calculus II ({nq4} questions)</h2><ul>{rows(CALC2)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
