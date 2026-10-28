@@ -1076,7 +1076,7 @@ var FIELDS=[
 {id:'biz',n:'Business and Management',e:'📈',rm:[]},
 {id:'fin',n:'Finance, Accounting and Banking',e:'🏦',rm:[]},
 {id:'health',n:'Health and Medicine',e:'⚕️',rm:[]},
-{id:'edu',n:'Teaching and Education',e:'🎓',rm:['Early Childhood Education','Inclusive and Special Needs Education','Curriculum Design','Educational Technology','Classroom Assessment Methods','Online Tutoring','Educational Leadership']},
+{id:'edu',n:'Teaching and Education',e:'🎓',rm:[]},
 {id:'hum',n:'Literature, Language and Philosophy',e:'📚',rm:['History Skills','World Religions and Ethics','Creative Writing','Translation Basics','Introduction to Linguistics','African Literature','Journalism Basics','Beginner French, Spanish, Arabic and Swahili']},
 {id:'soc',n:'Psychology and Social Sciences',e:'🧠',rm:['Sociology Basics','Political Science Introduction','Human Geography','Development Economics','Anthropology Introduction','International Relations','Social Work Basics','Research Methods']},
 {id:'sci',n:'Science and Mathematics',e:'🔬',rm:['Physics for Beginners','Chemistry Foundations','Cells and Genetics','Environmental Science','Astronomy','Algebra','Introduction to Calculus','Climate Science']},
@@ -1261,8 +1261,8 @@ function viewExplore(){
   h+='<div class="chips" role="tablist"><button class="chip '+(S.field==='all'?'on':'')+'" data-act="field" data-v="all">All <small>'+n+'</small></button>'+FIELDS.map(function(f){return '<button class="chip '+(S.field===f.id?'on':'')+'" data-act="field" data-v="'+f.id+'">'+f.e+' '+esc(f.n)+' <small>'+(cnt[f.id]||0)+'</small></button>'}).join('')+'</div>';
   var list=filtered();
   h+='<div class="grid" id="grid">'+(list.length?list.map(courseCard).join(''):'<p class="lede">No course matches yet. Try another word, or see the planned courses below.</p>')+'</div>';
-  h+='<h2 class="sec">Planned courses</h2><p class="lede">We are adding courses in every field. These are planned and not yet available. Each one will have lessons, a quiz and a certificate.</p>';
-  h+=FIELDS.map(function(f){return '<details class="rm"><summary>'+f.e+' '+esc(f.n)+' <span class="pill plan">'+f.rm.length+' planned</span></summary><ul>'+f.rm.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></details>'}).join('');
+  if(planned)h+='<h2 class="sec">Planned courses</h2><p class="lede">We are adding courses in every field. These are planned and not yet available. Each one will have lessons, a quiz and a certificate.</p>';
+  h+=FIELDS.filter(function(f){return f.rm.length}).map(function(f){return '<details class="rm"><summary>'+f.e+' '+esc(f.n)+' <span class="pill plan">'+f.rm.length+' planned</span></summary><ul>'+f.rm.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></details>'}).join('');
   h+='<h2 class="sec">Choose your certificate design</h2><p class="lede">When you pass a course you can pick any of six designs, download it as an image, print it as a PDF, and share a link that lets anyone check it is genuine.</p><div class="tpls">'+TPL.map(function(t,i){return '<div class="tpl">'+certSVG(i,sampleData(),true)+t.n+'</div>'}).join('')+'</div>';
   h+='<section class="creator"><div class="eyebrow" style="color:#9fc5ae">Coming soon</div><h2>Teach on Ace Academy</h2><p>Lecturers, private teachers, tutoring centres and professionals will be able to publish video lessons and courses, build a subscriber base and earn from every subscription, while Ace handles hosting, payments and certificates. We are building this now. If you want to be among the first creators, message us.</p><a class="btn" href="https://wa.me/27732891424?text=I%20want%20to%20teach%20on%20Ace%20Academy" target="_blank" rel="noopener">Message us on WhatsApp</a></section>';
   return h;
