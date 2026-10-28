@@ -24,6 +24,7 @@ import dsa_m1, dsa_m2, dsa_m3, dsa_m4, dsa_m5
 import em_m1, em_m2, em_m3, em_m4, em_m5
 import oc_m1, oc_m2, oc_m3, oc_m4, oc_m5
 import da_m1, da_m2, da_m3, da_m4, da_m5
+import ml_m1, ml_m2, ml_m3, ml_m4, ml_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -161,6 +162,12 @@ DA, nq19 = course('Introduction to Data Analysis', [da_m1, da_m2, da_m3, da_m4, 
     'faculties': ['sci', 'comp', 'biz', 'soc', 'health'],
 })
 
+ML, nq20 = course('Machine Learning Foundations', [ml_m1, ml_m2, ml_m3, ml_m4, ml_m5], {
+    'source': 'Written by Ace for second-year university Machine Learning Foundations. Matches the common core of introductory machine learning courses for computer science, data science and engineering students in Nigeria, Ghana, Kenya and South Africa, in the UK and Ireland, and in North America. Every metric, gradient step, clustering result and parameter count was checked by running the code (NumPy, SciPy and scikit-learn).',
+    'paper_info': 'Second year • usually 3 to 4 credits • learning types and evaluation, linear models and gradient descent, classification, unsupervised learning, neural networks and responsible deployment',
+    'faculties': ['comp', 'sci', 'eng'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -182,7 +189,7 @@ CATALOGUE = [
     {'name': 'Organic Chemistry', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'health']},
     {'name': 'Electricity and Magnetism', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'eng']},
     {'name': 'Introduction to Data Analysis', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'comp', 'biz', 'soc', 'health']},
-    {'name': 'Machine Learning Foundations', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'sci', 'eng']},
+    {'name': 'Machine Learning Foundations', 'track': 'Second year', 'status': 'live', 'faculties': ['comp', 'sci', 'eng']},
 ]
 
 DATA = {
@@ -191,7 +198,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA, 'Machine Learning Foundations': ML}}},
 }
 
 if problems:
@@ -231,12 +238,13 @@ page = f'''<!DOCTYPE html>
 <h2>Data Structures and Algorithms ({nq16} questions)</h2><ul>{rows(DSA)}</ul>
 <h2>Electricity and Magnetism ({nq17} questions)</h2><ul>{rows(EM)}</ul>
 <h2>Organic Chemistry ({nq18} questions)</h2><ul>{rows(OC)}</ul>
-<h2>Introduction to Data Analysis ({nq19} questions)</h2><ul>{rows(DA)}</ul></div>
+<h2>Introduction to Data Analysis ({nq19} questions)</h2><ul>{rows(DA)}</ul>
+<h2>Machine Learning Foundations ({nq20} questions)</h2><ul>{rows(ML)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19), ('Machine Learning Foundations', ML, nq20)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
