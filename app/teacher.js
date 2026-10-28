@@ -403,11 +403,13 @@
     // chemistry notation (v37): isotopes, ion charges, double and triple bonds, much-greater-than
     s = s.replace(/(^|[\s(])([⁰¹²³⁴⁵⁶⁷⁸⁹]+)([A-Z][a-z]?)/g, (m, a, d, el) => a + el + ' ' + d.replace(/./g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)) + ' ');
     s = s.replace(/([A-Za-z\])₀-₉])⁺/g, '$1+').replace(/([A-Za-z\])₀-₉])⁻(?![⁰¹²³⁴⁵⁶⁷⁸⁹])/g, '$1 ' + W.mi + ' ').replace(/\b([CNOS])=([CNOS])\b/g, '$1 ' + (W.db || 'double bond') + ' $2').replace(/\b([CN])≡([CN])\b/g, '$1 ' + (W.tb || 'triple bond') + ' $2').replace(/≫/g, '>');
+    // statistics notation (v37): x-bar, y-bar, y-hat, p-hat
+    s = s.replace(/([A-Za-z])\u0304/g, '$1 bar').replace(/ȳ/g, 'y bar').replace(/ŷ/g, 'y hat').replace(/([A-Za-z])\u0302/g, '$1 hat');
     // electromagnetism units and symbols (v37): ohms, micro- prefixes, closed integrals, parallel bars
     s = s.replace(/(\d)\s*kΩ/g, '$1 kilohms').replace(/(\d)\s*MΩ/g, '$1 megohms').replace(/Ω\s*·\s*m\b/g, ' ohm metres').replace(/(\d)\s*Ω/g, '$1 ohms').replace(/(\d)\s*μ(F|C|T|s|m|A|V|H)\b/g, (m, d, u) => d + ' micro' + ({ F: 'farads', C: 'coulombs', T: 'tesla', s: 'seconds', m: 'metres', A: 'amps', V: 'volts', H: 'henries' })[u]).replace(/(\d)\s*μ(?=[A-Za-z])/g, '$1 micro').replace(/∮/g, ' ' + W.ig + ' ').replace(/\s*∥\s*/g, ' parallel ').replace(/Φ/g, ' phi ');
     s = s.replace(/([αβγδεηθκλμνξρστφχψωΩ])([₀-₉]*)/g, (m, g, d) => ' ' + ({ α: 'alpha', β: 'beta', γ: 'gamma', δ: 'delta', ε: 'epsilon', θ: 'theta', λ: 'lambda', μ: 'mu', ν: 'nu', ρ: 'rho', σ: 'sigma', τ: 'tau', φ: 'phi', ω: 'omega', Ω: 'omega', η: 'eta', κ: 'kappa', ξ: 'xi', χ: 'chi', ψ: 'psi' })[g] + (d ? ' ' + sub(d) : '') + ' ');
     s = s.replace(/([A-Za-z0-9])\s*_(?=[A-Za-z0-9])/g, '$1 ');
-    s = s.replace(/\b([0-9]+|[0-9A-F]*[0-9][0-9A-F]*(?=₁₆)|[A-F]{2,}(?=₁₆))([₀-₉]+)/g, (m, n, b) => n + ' ' + W.base + ' ' + sub(b)).replace(/([A-Za-z)])([₀-₉ₖₙᵢ₊]+)/g, (m, l, b) => l + ' ' + sub(b).replace(/ₖ/g, 'k').replace(/ₙ/g, 'n').replace(/ᵢ/g, 'i').replace(/₊/g, ' + ') + ' ');
+    s = s.replace(/\b([0-9]+|[0-9A-F]*[0-9][0-9A-F]*(?=₁₆)|[A-F]{2,}(?=₁₆))([₀-₉]+)/g, (m, n, b) => n + ' ' + W.base + ' ' + sub(b)).replace(/([A-Za-z)])([₀-₉ₖₙᵢₓⱼ₊]+)/g, (m, l, b) => l + ' ' + sub(b).replace(/ₖ/g, 'k').replace(/ₙ/g, 'n').replace(/ᵢ/g, 'i').replace(/ₓ/g, 'x').replace(/ⱼ/g, 'j').replace(/₊/g, ' + ') + ' ');
     s = s.replace(/([\w)])([ᵏⁿˣ])/g, (m, a, b) => a + ' ' + W.pw + ' ' + ({ 'ᵏ': 'k', 'ⁿ': 'n', 'ˣ': 'x' })[b]);
     s = s.replace(/√\s*\(((?:[^()]|\([^()]*\))+)\)/g, ' ' + W.rt + ' $1 ').replace(/√\s*(\w+)/g, ' ' + W.rt + ' $1 ');
     s = s.replace(/⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]{2,}|[⁰²³⁴⁵⁶⁷⁸⁹])/g, (m, d) => ' ' + W.pw + ' ' + W.mi + ' ' + d.replace(/./g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)) + ' ').replace(/([0-9)])([⁰¹²³⁴⁵⁶⁷⁸⁹]{2,})/g, (m, a, d) => a + ' ' + W.pw + ' ' + d.replace(/./g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)) + ' ');

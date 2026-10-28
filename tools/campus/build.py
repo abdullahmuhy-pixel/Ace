@@ -23,6 +23,7 @@ import dm_m1, dm_m2, dm_m3, dm_m4, dm_m5
 import dsa_m1, dsa_m2, dsa_m3, dsa_m4, dsa_m5
 import em_m1, em_m2, em_m3, em_m4, em_m5
 import oc_m1, oc_m2, oc_m3, oc_m4, oc_m5
+import da_m1, da_m2, da_m3, da_m4, da_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -154,6 +155,12 @@ OC, nq18 = course('Organic Chemistry', [oc_m1, oc_m2, oc_m3, oc_m4, oc_m5], {
     'faculties': ['sci', 'health'],
 })
 
+DA, nq19 = course('Introduction to Data Analysis', [da_m1, da_m2, da_m3, da_m4, da_m5], {
+    'source': 'Written by Ace for second-year university Introduction to Data Analysis. Matches the common core of introductory data analysis and data science courses for science, computing, business, social science and health students in Nigeria, Ghana, Kenya and South Africa, in the UK and Ireland, and in North America. Every statistic, test result, pandas output and SQL result was checked by running the code.',
+    'paper_info': 'Second year • usually 3 credits • descriptive statistics, data wrangling with pandas, sampling and inference, correlation and regression, A/B testing, time series, SQL and responsible communication',
+    'faculties': ['sci', 'comp', 'biz', 'soc', 'health'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -174,7 +181,7 @@ CATALOGUE = [
     {'name': 'Discrete Mathematics and Logic', 'track': 'Second year', 'status': 'live', 'faculties': ['comp', 'sci']},
     {'name': 'Organic Chemistry', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'health']},
     {'name': 'Electricity and Magnetism', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'eng']},
-    {'name': 'Introduction to Data Analysis', 'track': 'Second year', 'status': 'soon', 'faculties': ['sci', 'comp', 'biz', 'soc', 'health']},
+    {'name': 'Introduction to Data Analysis', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'comp', 'biz', 'soc', 'health']},
     {'name': 'Machine Learning Foundations', 'track': 'Second year', 'status': 'soon', 'faculties': ['comp', 'sci', 'eng']},
 ]
 
@@ -184,7 +191,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA}}},
 }
 
 if problems:
@@ -223,12 +230,13 @@ page = f'''<!DOCTYPE html>
 <h2>Discrete Mathematics and Logic ({nq15} questions)</h2><ul>{rows(DM)}</ul>
 <h2>Data Structures and Algorithms ({nq16} questions)</h2><ul>{rows(DSA)}</ul>
 <h2>Electricity and Magnetism ({nq17} questions)</h2><ul>{rows(EM)}</ul>
-<h2>Organic Chemistry ({nq18} questions)</h2><ul>{rows(OC)}</ul></div>
+<h2>Organic Chemistry ({nq18} questions)</h2><ul>{rows(OC)}</ul>
+<h2>Introduction to Data Analysis ({nq19} questions)</h2><ul>{rows(DA)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
