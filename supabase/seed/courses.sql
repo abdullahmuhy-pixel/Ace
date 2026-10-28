@@ -25,6 +25,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('academic-writing','editing',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='academic-writing' and lesson_id not in ('understand-the-task','paragraphs','clear-sentences','using-sources','referencing','editing');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('agribusiness-basics','Agribusiness and Farm Management Basics','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='agribusiness-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('agribusiness-basics','q1',1,'It links inputs, production, processing, distribution and consumers.'),
+  ('agribusiness-basics','q2',3,'50 x 0.20 = 10 kg.'),
+  ('agribusiness-basics','q3',0,'Each bag has 10 kg N, so 60 / 10 = 6.'),
+  ('agribusiness-basics','q4',2,'Legumes fix nitrogen; rotation disrupts pests.'),
+  ('agribusiness-basics','q5',2,'2 x 4 x 3500 = 28 000.'),
+  ('agribusiness-basics','q6',0,'28 000 - 18 000 = 10 000.'),
+  ('agribusiness-basics','q7',3,'9000 / 3500 is about 2.57.'),
+  ('agribusiness-basics','q8',1,'100 x 0.2 x 3000 = 60 000.'),
+  ('agribusiness-basics','q9',0,'Moisture encourages moulds and toxins.'),
+  ('agribusiness-basics','q10',2,'9.8 x 3900 - 1500 = 36 720, versus 30 000.'),
+  ('agribusiness-basics','q11',1,'Bulking and shared services improve bargaining power.'),
+  ('agribusiness-basics','q12',3,'20 000 x 0.18 x 0.5 = 1800.'),
+  ('agribusiness-basics','q13',3,'2500 / 0.9 is about 2778.'),
+  ('agribusiness-basics','q14',1,'It conserves soil and moisture.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('agribusiness-basics','value-chain',0),
+  ('agribusiness-basics','soil-crops-inputs',1),
+  ('agribusiness-basics','records-costs',2),
+  ('agribusiness-basics','post-harvest',3),
+  ('agribusiness-basics','marketing-finance',4),
+  ('agribusiness-basics','climate-smart',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='agribusiness-basics' and lesson_id not in ('value-chain','soil-crops-inputs','records-costs','post-harvest','marketing-finance','climate-smart');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('ai-literacy','Using AI Tools Wisely','all',70,6,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='ai-literacy';
@@ -167,6 +194,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('civic-skills','reporting-consumers-online',6)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='civic-skills' and lesson_id not in ('rights-responsibilities','communities-local-government','voting-and-participation','volunteering-and-projects','respectful-debate','media-misinformation','reporting-consumers-online');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('cloud-computing-basics','Cloud Computing Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='cloud-computing-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('cloud-computing-basics','q1',1,'Resources scale up and down on demand.'),
+  ('cloud-computing-basics','q2',3,'Infrastructure as a Service.'),
+  ('cloud-computing-basics','q3',0,'Complete software delivered as a service.'),
+  ('cloud-computing-basics','q4',2,'A mix of private and public.'),
+  ('cloud-computing-basics','q5',2,'500 x 0.023.'),
+  ('cloud-computing-basics','q6',0,'2 x 0.05 x 730.'),
+  ('cloud-computing-basics','q7',3,'Customers secure their use of services.'),
+  ('cloud-computing-basics','q8',1,'Limiting permissions limits damage.'),
+  ('cloud-computing-basics','q9',0,'Exposed keys are a common cause of breaches.'),
+  ('cloud-computing-basics','q10',2,'0.001 x 8760 hours.'),
+  ('cloud-computing-basics','q11',1,'0.999 x 0.999.'),
+  ('cloud-computing-basics','q12',3,'Scaling out.'),
+  ('cloud-computing-basics','q13',3,'Shorter distance means faster responses.'),
+  ('cloud-computing-basics','q14',1,'Alerts prevent surprise bills.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('cloud-computing-basics','what-is-cloud',0),
+  ('cloud-computing-basics','service-models',1),
+  ('cloud-computing-basics','core-services',2),
+  ('cloud-computing-basics','security',3),
+  ('cloud-computing-basics','scaling-reliability',4),
+  ('cloud-computing-basics','cost-careers',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='cloud-computing-basics' and lesson_id not in ('what-is-cloud','service-models','core-services','security','scaling-reliability','cost-careers');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('computer-networks-basics','Computer Networking Fundamentals','all',70,6,14,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='computer-networks-basics';
@@ -194,6 +248,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('computer-networks-basics','careers-practice',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='computer-networks-basics' and lesson_id not in ('what-network','models-protocols','addressing','wireless-speed','security','careers-practice');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('contract-law-basics','Contract Law Essentials','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='contract-law-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('contract-law-basics','q1',1,'Displays invite customers to make offers.'),
+  ('contract-law-basics','q2',3,'Changing a term rejects the offer.'),
+  ('contract-law-basics','q3',0,'Acceptance must usually be communicated.'),
+  ('contract-law-basics','q4',2,'South African law focuses on serious intention instead.'),
+  ('contract-law-basics','q5',2,'Consumer and sale-of-goods law imply quality terms.'),
+  ('contract-law-basics','q6',0,'Only breach of a condition allows termination.'),
+  ('contract-law-basics','q7',3,'Consent obtained by threats is not real.'),
+  ('contract-law-basics','q8',1,'It sets the contract aside.'),
+  ('contract-law-basics','q9',0,'120 000 - 100 000.'),
+  ('contract-law-basics','q10',2,'Avoidable losses are not recoverable.'),
+  ('contract-law-basics','q11',1,'50 000 x 0.10 x 60 / 365.'),
+  ('contract-law-basics','q12',3,'It is an exceptional remedy.'),
+  ('contract-law-basics','q13',3,'Many contracts renew unless notice is given in time.'),
+  ('contract-law-basics','q14',1,'Written amendments are evidence.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('contract-law-basics','what-is-a-contract',0),
+  ('contract-law-basics','offer-acceptance',1),
+  ('contract-law-basics','terms',2),
+  ('contract-law-basics','vitiating-factors',3),
+  ('contract-law-basics','breach-remedies',4),
+  ('contract-law-basics','drafting-reviewing',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='contract-law-basics' and lesson_id not in ('what-is-a-contract','offer-acceptance','terms','vitiating-factors','breach-remedies','drafting-reviewing');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('critical-thinking','Critical Thinking and Logical Reasoning','all',70,6,16,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='critical-thinking';
@@ -643,6 +724,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('graphic-design-basics','copyright-licences',6)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='graphic-design-basics' and lesson_id not in ('purpose-audience-hierarchy','layout-and-crap','colour','typography','images-formats','design-projects','copyright-licences');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('hr-basics','Human Resource Management Essentials','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='hr-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('hr-basics','q1',1,'HR attracts, develops, rewards and keeps people.'),
+  ('hr-basics','q2',3,'The job description covers tasks; the person specification the person needed.'),
+  ('hr-basics','q3',0,'60 000 / 4 = 15 000.'),
+  ('hr-basics','q4',2,'Same questions and scoring for all reduce bias.'),
+  ('hr-basics','q5',2,'Early weeks shape whether people stay.'),
+  ('hr-basics','q6',0,'It is specific, measurable and time-bound.'),
+  ('hr-basics','q7',3,'You must be able to tell if it was achieved.'),
+  ('hr-basics','q8',1,'2250 + 375 = 2625.'),
+  ('hr-basics','q9',0,'Fair reason and fair procedure are both needed.'),
+  ('hr-basics','q10',2,'18 / 120 x 100 = 15%.'),
+  ('hr-basics','q11',1,'(100 + 140) / 2 = 120.'),
+  ('hr-basics','q12',3,'240 / 26 400 x 100 is about 0.91%.'),
+  ('hr-basics','q13',3,'Laws such as POPIA set duties for personal data.'),
+  ('hr-basics','q14',1,'Patterns in reasons for leaving guide improvements.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('hr-basics','role-of-hr',0),
+  ('hr-basics','recruitment-selection',1),
+  ('hr-basics','onboarding-development',2),
+  ('hr-basics','performance-management',3),
+  ('hr-basics','pay-relations',4),
+  ('hr-basics','wellbeing-metrics',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='hr-basics' and lesson_id not in ('role-of-hr','recruitment-selection','onboarding-development','performance-management','pay-relations','wellbeing-metrics');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('html-css-basics','Build a Web Page: HTML and CSS','all',70,6,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='html-css-basics';
@@ -914,6 +1022,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('philosophy-intro','doing-philosophy',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='philosophy-intro' and lesson_id not in ('what-is-philosophy','arguments-logic','knowledge','ethics','society','doing-philosophy');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('photography-basics','Photography Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='photography-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('photography-basics','q1',1,'Shutter speed sets the duration.'),
+  ('photography-basics','q2',3,'Wide openings blur the background.'),
+  ('photography-basics','q3',0,'(4 / 2.8)² is about 2, so one stop less.'),
+  ('photography-basics','q4',2,'100 to 200 to 400: two doublings.'),
+  ('photography-basics','q5',2,'Amplifying the signal adds noise.'),
+  ('photography-basics','q6',0,'Short exposures freeze motion.'),
+  ('photography-basics','q7',3,'One stop more aperture, one stop less time.'),
+  ('photography-basics','q8',1,'A 3 x 3 grid guides placement.'),
+  ('photography-basics','q9',0,'Low sun gives warm, soft light.'),
+  ('photography-basics','q10',2,'RAW gives more editing latitude.'),
+  ('photography-basics','q11',1,'6000 x 4000 = 24 000 000.'),
+  ('photography-basics','q12',3,'6000 / 300 = 20.'),
+  ('photography-basics','q13',3,'Commercial use needs consent.'),
+  ('photography-basics','q14',1,'(20 000 + 4000) / 8 = 3000.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('photography-basics','camera-basics',0),
+  ('photography-basics','exposure',1),
+  ('photography-basics','composition',2),
+  ('photography-basics','light',3),
+  ('photography-basics','editing-files',4),
+  ('photography-basics','business-ethics',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='photography-basics' and lesson_id not in ('camera-basics','exposure','composition','light','editing-files','business-ethics');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('project-management-basics','Project Management Fundamentals','all',70,6,14,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='project-management-basics';
@@ -968,6 +1103,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('psychology-intro','apply',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='psychology-intro' and lesson_id not in ('what-is-psychology','memory-learning','development','social','research-methods','apply');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('public-health-basics','Public Health Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='public-health-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('public-health-basics','q1',1,'It works at population level, mostly through prevention.'),
+  ('public-health-basics','q2',3,'Living conditions and socio-economic factors shape health.'),
+  ('public-health-basics','q3',0,'250 / 500 000 x 100 000 = 50.'),
+  ('public-health-basics','q4',2,'12 / 400 = 0.03.'),
+  ('public-health-basics','q5',2,'Incidence counts new cases.'),
+  ('public-health-basics','q6',0,'Randomisation gives the fairest comparison.'),
+  ('public-health-basics','q7',3,'1 - 1/4 = 0.75.'),
+  ('public-health-basics','q8',1,'Anopheles mosquitoes transmit the parasite.'),
+  ('public-health-basics','q9',0,'Specificity is the share of healthy people who test negative.'),
+  ('public-health-basics','q10',2,'10% of the 9800 without disease.'),
+  ('public-health-basics','q11',1,'190 / (190 + 980).'),
+  ('public-health-basics','q12',3,'Wasting is low weight for height.'),
+  ('public-health-basics','q13',3,'Access plus financial protection.'),
+  ('public-health-basics','q14',1,'Tobacco taxes reduce smoking.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('public-health-basics','what-is-public-health',0),
+  ('public-health-basics','measuring-health',1),
+  ('public-health-basics','infectious-disease',2),
+  ('public-health-basics','screening-vaccines',3),
+  ('public-health-basics','environment-nutrition',4),
+  ('public-health-basics','health-systems-promotion',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='public-health-basics' and lesson_id not in ('what-is-public-health','measuring-health','infectious-disease','screening-vaccines','environment-nutrition','health-systems-promotion');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('public-speaking','Public Speaking and Presentation Skills','all',70,7,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='public-speaking';
@@ -1055,6 +1217,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('research-skills','surveys-ethics-outline',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='research-skills' and lesson_id not in ('topic-and-question','finding-sources','evaluating-credibility','notes-and-originality','citing-references','surveys-ethics-outline');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('solar-pv-basics','Solar PV Systems: Design and Installation Basics','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='solar-pv-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('solar-pv-basics','q1',1,'PV cells produce DC; an inverter converts it to AC.'),
+  ('solar-pv-basics','q2',3,'400 / (1000 x 1.9) is about 0.21.'),
+  ('solar-pv-basics','q3',0,'5 x 10 x 5 = 250 Wh.'),
+  ('solar-pv-basics','q4',2,'2090 / (5 x 0.75) is about 557 W.'),
+  ('solar-pv-basics','q5',2,'24 x 120 = 2880 Wh.'),
+  ('solar-pv-basics','q6',0,'2090 / 0.8 = 2612.5 Wh.'),
+  ('solar-pv-basics','q7',3,'Regular deep discharge damages lead-acid batteries.'),
+  ('solar-pv-basics','q8',1,'MPPT tracks the best operating point, often gaining 10 to 30%.'),
+  ('solar-pv-basics','q9',0,'1.25 x 380 = 475 W.'),
+  ('solar-pv-basics','q10',2,'Fridges and pumps can draw about three times their running power at start.'),
+  ('solar-pv-basics','q11',1,'In the southern hemisphere the sun is mostly to the north.'),
+  ('solar-pv-basics','q12',3,'45 000 / 600 = 75 months = 6.25 years.'),
+  ('solar-pv-basics','q13',3,'P = V x I, so higher V means lower I.'),
+  ('solar-pv-basics','q14',1,'DC parts stay live in daylight; batteries can deliver huge currents.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('solar-pv-basics','how-solar-works',0),
+  ('solar-pv-basics','energy-needs',1),
+  ('solar-pv-basics','sizing-panels',2),
+  ('solar-pv-basics','batteries',3),
+  ('solar-pv-basics','controllers-inverters',4),
+  ('solar-pv-basics','safety-maintenance-costs',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='solar-pv-basics' and lesson_id not in ('how-solar-works','energy-needs','sizing-panels','batteries','controllers-inverters','safety-maintenance-costs');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('spreadsheet-skills','Spreadsheet Skills for Study and Work','all',70,6,14,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='spreadsheet-skills';
@@ -1164,6 +1353,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('study-skills','exam-technique',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='study-skills' and lesson_id not in ('plan-your-week','retrieval-practice','spacing-interleaving','notes-reading','focus-sleep','exam-technique');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('supply-chain-basics','Supply Chain and Logistics Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='supply-chain-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('supply-chain-basics','q1',1,'Goods move down, information both ways, money back up.'),
+  ('supply-chain-basics','q2',3,'Buffers added at each stage amplify demand changes.'),
+  ('supply-chain-basics','q3',0,'0.4x7 + 0.35x9 + 0.25x8 = 7.95.'),
+  ('supply-chain-basics','q4',2,'TCO counts every cost of acquiring and using the item.'),
+  ('supply-chain-basics','q5',2,'√(2 x 12 000 x 500 / 12) = 1000.'),
+  ('supply-chain-basics','q6',0,'12 000 / 1000 = 12.'),
+  ('supply-chain-basics','q7',3,'40 x 7 + 100 = 380.'),
+  ('supply-chain-basics','q8',1,'1 200 000 / 200 000 = 6.'),
+  ('supply-chain-basics','q9',0,'The earliest expiry must leave first.'),
+  ('supply-chain-basics','q10',2,'Frequent small counts keep records accurate.'),
+  ('supply-chain-basics','q11',1,'18 000 / 30 = 600.'),
+  ('supply-chain-basics','q12',3,'Free On Board: risk passes on loading.'),
+  ('supply-chain-basics','q13',3,'450 / 500 = 0.9.'),
+  ('supply-chain-basics','q14',1,'Alternatives and buffers protect against disruption.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('supply-chain-basics','what-is-scm',0),
+  ('supply-chain-basics','procurement',1),
+  ('supply-chain-basics','inventory',2),
+  ('supply-chain-basics','warehousing',3),
+  ('supply-chain-basics','transport-logistics',4),
+  ('supply-chain-basics','kpis-risk',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='supply-chain-basics' and lesson_id not in ('what-is-scm','procurement','inventory','warehousing','transport-logistics','kpis-risk');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('sustainability-green-skills','Sustainability and Green Skills','all',70,7,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='sustainability-green-skills';

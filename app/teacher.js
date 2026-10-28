@@ -403,6 +403,8 @@
     // chemistry notation (v37): isotopes, ion charges, double and triple bonds, much-greater-than
     s = s.replace(/(^|[\s(])([⁰¹²³⁴⁵⁶⁷⁸⁹]+)([A-Z][a-z]?)/g, (m, a, d, el) => a + el + ' ' + d.replace(/./g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(c)) + ' ');
     s = s.replace(/([A-Za-z\])₀-₉])⁺/g, '$1+').replace(/([A-Za-z\])₀-₉])⁻(?![⁰¹²³⁴⁵⁶⁷⁸⁹])/g, '$1 ' + W.mi + ' ').replace(/\b([CNOS])=([CNOS])\b/g, '$1 ' + (W.db || 'double bond') + ' $2').replace(/\b([CN])≡([CN])\b/g, '$1 ' + (W.tb || 'triple bond') + ' $2').replace(/≫/g, '>');
+    // plain-text multiplication (v37): "5 x 10" → "5 times 10"
+    s = s.replace(/(\d)\s+x\s+(?=[\d(])/g, '$1 ' + W.tm + ' ').replace(/(\d)\s+x\s+(?=\d)/g, '$1 ' + W.tm + ' ');
     // statistics notation (v37): x-bar, y-bar, y-hat, p-hat
     s = s.replace(/([A-Za-z])\u0304/g, '$1 bar').replace(/ȳ/g, 'y bar').replace(/ŷ/g, 'y hat').replace(/([A-Za-z])\u0302/g, '$1 hat');
     // electromagnetism units and symbols (v37): ohms, micro- prefixes, closed integrals, parallel bars
