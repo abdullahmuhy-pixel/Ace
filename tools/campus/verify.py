@@ -18,7 +18,7 @@ def to_sym(s):
     """Parse a displayed answer such as '3x² − 2', 'e^(2x)', '√(x + 1)', '−1/2', '∞' into SymPy."""
     s = re.sub(r'^[a-zA-Z](\([a-z]\))? = ', '', str(s).strip())
     s = re.sub(r'\s*%$', '', s)
-    s = re.sub(r'\s+(years?|minutes?|words?|days?|weeks?|students?|participants?|per unit|units?|billion|million|hours?|marks?|K|J|kJ|kJ/mol|L|mL|mol|kPa|Pa|g|kg|mol/L|g/mol|N|kN|W|kW|Hz|N m|N·m|kg m/s|kg·m/s|N s|N·s|rad/s|rad/s²)$', '', s)
+    s = re.sub(r'\s+(years?|minutes?|words?|days?|weeks?|students?|participants?|per unit|units?|billion|million|hours?|marks?|K|J|kJ|kJ/mol|L|mL|mol|kPa|Pa|g|kg|mol/L|g/mol|N|kN|W|kW|Hz|N m|N·m|kg m/s|kg·m/s|N s|N·s|rad/s|rad/s²|V|kV|mV|A|mA|Ω|kΩ|μF|nF|pF|μC|nC|T|mT|μT|Wb|H|mH|ms|V/m|N/C|eV)$', '', s)
     if s in ('∞', '+∞'): return sp.oo
     if s == '−∞': return -sp.oo
     s = s.replace('−', '-').replace('×', '*').replace('÷', '/').replace('·', '*').replace('π', 'pi').replace('∞', 'oo')
