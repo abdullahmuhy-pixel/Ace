@@ -356,6 +356,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('cv-interview','interview-day',4)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='cv-interview' and lesson_id not in ('cv-structure','achievement-bullets','tailoring','interview-prep','interview-day');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('cybersecurity-fundamentals','Cybersecurity Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='cybersecurity-fundamentals';
+insert into public.course_keys(course,qid,answer,why) values
+  ('cybersecurity-fundamentals','q1',1,'The three core security goals.'),
+  ('cybersecurity-fundamentals','q2',3,'Phishing is the most common way in.'),
+  ('cybersecurity-fundamentals','q3',0,'An attacker also needs the second factor.'),
+  ('cybersecurity-fundamentals','q4',2,'26 choices for each of 8 positions.'),
+  ('cybersecurity-fundamentals','q5',2,'2.1 x 10¹¹ / 10¹⁰ is about 21 seconds.'),
+  ('cybersecurity-fundamentals','q6',0,'Limits damage from mistakes and compromise.'),
+  ('cybersecurity-fundamentals','q7',3,'443 is HTTPS; 22 SSH; 3389 Remote Desktop.'),
+  ('cybersecurity-fundamentals','q8',1,'Segments contain breaches.'),
+  ('cybersecurity-fundamentals','q9',0,'CVSS ranks vulnerabilities from 0 to 10.'),
+  ('cybersecurity-fundamentals','q10',2,'Parameters keep data separate from commands.'),
+  ('cybersecurity-fundamentals','q11',1,'SLE = 50 000; ALE = 50 000 x 0.5.'),
+  ('cybersecurity-fundamentals','q12',3,'Insurance moves the financial impact to another party.'),
+  ('cybersecurity-fundamentals','q13',3,'It keeps a copy safe from local disasters and ransomware.'),
+  ('cybersecurity-fundamentals','q14',1,'Containment stops the spread.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('cybersecurity-fundamentals','cia-and-threats',0),
+  ('cybersecurity-fundamentals','authentication',1),
+  ('cybersecurity-fundamentals','network-security',2),
+  ('cybersecurity-fundamentals','vulnerabilities',3),
+  ('cybersecurity-fundamentals','risk-management',4),
+  ('cybersecurity-fundamentals','incident-response',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='cybersecurity-fundamentals' and lesson_id not in ('cia-and-threats','authentication','network-security','vulnerabilities','risk-management','incident-response');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('data-literacy','Reading Data: Tables, Charts and Averages','all',70,6,16,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='data-literacy';
@@ -385,6 +412,60 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('data-literacy','claims-samples-bias',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='data-literacy' and lesson_id not in ('reading-tables','reading-charts','misleading-charts','averages','percentages','claims-samples-bias');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('databases-data-modelling','Databases and Data Modelling','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='databases-data-modelling';
+insert into public.course_keys(course,qid,answer,why) values
+  ('databases-data-modelling','q1',1,'It must be unique and not empty.'),
+  ('databases-data-modelling','q2',3,'It creates relationships between tables.'),
+  ('databases-data-modelling','q3',0,'Many-to-many relationships use a junction table.'),
+  ('databases-data-modelling','q4',2,'It describes the student-course relationship.'),
+  ('databases-data-modelling','q5',2,'1NF requires single values.'),
+  ('databases-data-modelling','q6',0,'Non-key columns must depend only on the key.'),
+  ('databases-data-modelling','q7',3,'There are five enrolment rows.'),
+  ('databases-data-modelling','q8',1,'Chidi scored 82.'),
+  ('databases-data-modelling','q9',0,'231 / 3 = 77.'),
+  ('databases-data-modelling','q10',2,'Unmatched rows have NULLs.'),
+  ('databases-data-modelling','q11',1,'CHECK enforces the allowed range.'),
+  ('databases-data-modelling','q12',3,'On average half the rows.'),
+  ('databases-data-modelling','q13',3,'Atomicity.'),
+  ('databases-data-modelling','q14',1,'Key-value stores are fast for simple lookups.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('databases-data-modelling','why-databases',0),
+  ('databases-data-modelling','relational-model',1),
+  ('databases-data-modelling','er-modelling',2),
+  ('databases-data-modelling','normalisation',3),
+  ('databases-data-modelling','sql-design',4),
+  ('databases-data-modelling','performance-transactions',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='databases-data-modelling' and lesson_id not in ('why-databases','relational-model','er-modelling','normalisation','sql-design','performance-transactions');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('devops-basics','DevOps Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='devops-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('devops-basics','q1',1,'Dev and Ops share responsibility.'),
+  ('devops-basics','q2',3,'Smaller blast radius.'),
+  ('devops-basics','q3',0,'Secrets belong in a secrets manager.'),
+  ('devops-basics','q4',2,'Problems are found within minutes.'),
+  ('devops-basics','q5',2,'pytest executes the test suite.'),
+  ('devops-basics','q6',0,'Limits the impact of a bad release.'),
+  ('devops-basics','q7',3,'Layer caching speeds builds.'),
+  ('devops-basics','q8',1,'They are lightweight.'),
+  ('devops-basics','q9',0,'Environments can be rebuilt reliably.'),
+  ('devops-basics','q10',2,'Manual drift makes servers unique and fragile.'),
+  ('devops-basics','q11',1,'43 200 minutes x 0.001.'),
+  ('devops-basics','q12',3,'3 / 40.'),
+  ('devops-basics','q13',3,'120 / 3.'),
+  ('devops-basics','q14',1,'Learning, not blame.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('devops-basics','devops-culture',0),
+  ('devops-basics','version-control',1),
+  ('devops-basics','ci-cd',2),
+  ('devops-basics','containers',3),
+  ('devops-basics','infrastructure-as-code',4),
+  ('devops-basics','monitoring-sre',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='devops-basics' and lesson_id not in ('devops-culture','version-control','ci-cd','containers','infrastructure-as-code','monitoring-sre');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('digital-literacy','Digital Skills for Study and Work','all',70,7,16,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='digital-literacy';
@@ -859,6 +940,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('intro-python','errors-and-project',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='intro-python' and lesson_id not in ('first-program','input-and-f-strings','numbers-and-decisions','loops','lists-and-functions','errors-and-project');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('it-helpdesk-support','IT Helpdesk and Technical Support','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='it-helpdesk-support';
+insert into public.course_keys(course,qid,answer,why) values
+  ('it-helpdesk-support','q1',1,'Standard requests are service requests.'),
+  ('it-helpdesk-support','q2',3,'Problem management removes root causes.'),
+  ('it-helpdesk-support','q3',0,'Both how widespread and how time-critical.'),
+  ('it-helpdesk-support','q4',2,'47 / 50.'),
+  ('it-helpdesk-support','q5',2,'Understand before acting.'),
+  ('it-helpdesk-support','q6',0,'Multiple changes hide the cause.'),
+  ('it-helpdesk-support','q7',3,'8 x 1024.'),
+  ('it-helpdesk-support','q8',1,'256 addresses minus network and broadcast.'),
+  ('it-helpdesk-support','q9',0,'169.254 is a self-assigned link-local address.'),
+  ('it-helpdesk-support','q10',2,'DNS translates names to addresses.'),
+  ('it-helpdesk-support','q11',1,'Attackers impersonate users.'),
+  ('it-helpdesk-support','q12',3,'Old accounts are a security risk.'),
+  ('it-helpdesk-support','q13',3,'360 / 450.'),
+  ('it-helpdesk-support','q14',1,'It enables self-service and consistent fixes.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('it-helpdesk-support','helpdesk-role',0),
+  ('it-helpdesk-support','troubleshooting',1),
+  ('it-helpdesk-support','hardware-os',2),
+  ('it-helpdesk-support','network-troubleshooting',3),
+  ('it-helpdesk-support','accounts-security',4),
+  ('it-helpdesk-support','communication-knowledge',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='it-helpdesk-support' and lesson_id not in ('helpdesk-role','troubleshooting','hardware-os','network-troubleshooting','accounts-security','communication-knowledge');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('javascript-basics','JavaScript Basics','all',70,6,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='javascript-basics';
@@ -914,6 +1022,33 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('law-basics','legal-method-ethics',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='law-basics' and lesson_id not in ('what-is-law','courts-and-hierarchy','contract-law','tort-law','criminal-law','legal-method-ethics');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('linux-command-line','Linux Command Line Essentials','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='linux-command-line';
+insert into public.course_keys(course,qid,answer,why) values
+  ('linux-command-line','q1',1,'pwd means print working directory.'),
+  ('linux-command-line','q2',3,'.. is the parent directory.'),
+  ('linux-command-line','q3',0,'-p creates parents as needed.'),
+  ('linux-command-line','q4',2,'Deletions are immediate.'),
+  ('linux-command-line','q5',2,'It counts lines.'),
+  ('linux-command-line','q6',0,'Two lines contain Lagos.'),
+  ('linux-command-line','q7',3,'Pipes chain commands.'),
+  ('linux-command-line','q8',1,'>> would append.'),
+  ('linux-command-line','q9',0,'7 = rwx, 5 = r-x, 4 = r--.'),
+  ('linux-command-line','q10',2,'4 + 2 + 1.'),
+  ('linux-command-line','q11',1,'It elevates one command.'),
+  ('linux-command-line','q12',3,'apt is Ubuntu''s package manager.'),
+  ('linux-command-line','q13',3,'Minute 0, hour 2, every day.'),
+  ('linux-command-line','q14',1,'Unquoted names split on spaces.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('linux-command-line','shell-basics',0),
+  ('linux-command-line','files-directories',1),
+  ('linux-command-line','search-pipes',2),
+  ('linux-command-line','permissions',3),
+  ('linux-command-line','processes-packages',4),
+  ('linux-command-line','scripting',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='linux-command-line' and lesson_id not in ('shell-basics','files-directories','search-pipes','permissions','processes-packages','scripting');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('literature-analysis','Reading and Analysing Literature','all',70,6,13,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='literature-analysis';
@@ -940,6 +1075,60 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('literature-analysis','reading-life',5)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='literature-analysis' and lesson_id not in ('why-read-literature','narrative','poetry','themes-context','writing-about','reading-life');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('machine-learning-foundations','Machine Learning Foundations','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='machine-learning-foundations';
+insert into public.course_keys(course,qid,answer,why) values
+  ('machine-learning-foundations','q1',1,'The label is a number.'),
+  ('machine-learning-foundations','q2',3,'No answers are given.'),
+  ('machine-learning-foundations','q3',0,'Labels are the answers.'),
+  ('machine-learning-foundations','q4',2,'It inflates test scores falsely.'),
+  ('machine-learning-foundations','q5',2,'It estimates real-world performance.'),
+  ('machine-learning-foundations','q6',0,'The model memorised the training data.'),
+  ('machine-learning-foundations','q7',3,'970 / 1000.'),
+  ('machine-learning-foundations','q8',1,'40 / (40 + 10).'),
+  ('machine-learning-foundations','q9',0,'40 / (40 + 20).'),
+  ('machine-learning-foundations','q10',2,'Trees split on questions.'),
+  ('machine-learning-foundations','q11',1,'30% of 150.'),
+  ('machine-learning-foundations','q12',3,'Fixed seed, same results each run.'),
+  ('machine-learning-foundations','q13',3,'0.45 / 0.60.'),
+  ('machine-learning-foundations','q14',1,'Drift degrades models.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('machine-learning-foundations','what-is-ml',0),
+  ('machine-learning-foundations','data-features',1),
+  ('machine-learning-foundations','training-testing',2),
+  ('machine-learning-foundations','algorithms',3),
+  ('machine-learning-foundations','first-project',4),
+  ('machine-learning-foundations','responsible-ml',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='machine-learning-foundations' and lesson_id not in ('what-is-ml','data-features','training-testing','algorithms','first-project','responsible-ml');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('mobile-app-development','Mobile App Development Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='mobile-app-development';
+insert into public.course_keys(course,qid,answer,why) values
+  ('mobile-app-development','q1',1,'Flutter and React Native target both platforms.'),
+  ('mobile-app-development','q2',3,'PWAs are web apps with app-like features.'),
+  ('mobile-app-development','q3',0,'Large enough for a fingertip.'),
+  ('mobile-app-development','q4',2,'25 / 1024 x 80.'),
+  ('mobile-app-development','q5',2,'Offline behaviour matters for real users.'),
+  ('mobile-app-development','q6',0,'It marks state as changed.'),
+  ('mobile-app-development','q7',3,'Separation improves maintainability.'),
+  ('mobile-app-development','q8',1,'Secure storage protects secrets.'),
+  ('mobile-app-development','q9',0,'Local data first, then sync.'),
+  ('mobile-app-development','q10',2,'Keep secrets on the server.'),
+  ('mobile-app-development','q11',1,'30 / 1000.'),
+  ('mobile-app-development','q12',3,'100 x 0.85.'),
+  ('mobile-app-development','q13',3,'Contextual requests build trust.'),
+  ('mobile-app-development','q14',1,'4200 / 10 000.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('mobile-app-development','platforms',0),
+  ('mobile-app-development','mobile-design',1),
+  ('mobile-app-development','building-ui',2),
+  ('mobile-app-development','data-apis',3),
+  ('mobile-app-development','quality-performance',4),
+  ('mobile-app-development','publishing',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='mobile-app-development' and lesson_id not in ('platforms','mobile-design','building-ui','data-apis','quality-performance','publishing');
 insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('online-safety-cybersecurity','Online Safety and Cybersecurity Basics','all',70,6,15,true)
   on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
 delete from public.course_keys where course='online-safety-cybersecurity';
@@ -1493,3 +1682,57 @@ insert into public.course_lessons(course,lesson_id,position) values
   ('time-management','review',6)
   on conflict (course,lesson_id) do update set position=excluded.position;
 delete from public.course_lessons where course='time-management' and lesson_id not in ('goals','priorities','weekly-plan','deadlines','procrastination-focus','rest-boundaries','review');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('ux-design-basics','UX Design Fundamentals','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='ux-design-basics';
+insert into public.course_keys(course,qid,answer,why) values
+  ('ux-design-basics','q1',1,'UI is part of UX.'),
+  ('ux-design-basics','q2',3,'Each cycle improves the design.'),
+  ('ux-design-basics','q3',0,'Ask about real past behaviour without leading.'),
+  ('ux-design-basics','q4',2,'Otherwise it repeats assumptions.'),
+  ('ux-design-basics','q5',2,'It informs information architecture.'),
+  ('ux-design-basics','q6',0,'It focuses on structure.'),
+  ('ux-design-basics','q7',3,'Users should know what is happening.'),
+  ('ux-design-basics','q8',1,'It explains the problem and the fix.'),
+  ('ux-design-basics','q9',0,'Large text needs 3 : 1.'),
+  ('ux-design-basics','q10',2,'2.85 is below 4.5.'),
+  ('ux-design-basics','q11',1,'Add text or icons.'),
+  ('ux-design-basics','q12',3,'1 - 0.69⁵ is about 0.84.'),
+  ('ux-design-basics','q13',3,'18 / 20.'),
+  ('ux-design-basics','q14',1,'Odd: 3+4+3+3+4; even: 3+4+3+3+3; total 33 x 2.5.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('ux-design-basics','what-is-ux',0),
+  ('ux-design-basics','user-research',1),
+  ('ux-design-basics','structure-wireframes',2),
+  ('ux-design-basics','heuristics',3),
+  ('ux-design-basics','accessibility',4),
+  ('ux-design-basics','testing-metrics',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='ux-design-basics' and lesson_id not in ('what-is-ux','user-research','structure-wireframes','heuristics','accessibility','testing-metrics');
+insert into public.courses(slug,title,level,pass_mark,lesson_count,quiz_count,active) values ('web-development-react','Web Development with React','all',70,6,14,true)
+  on conflict (slug) do update set title=excluded.title, level=excluded.level, pass_mark=excluded.pass_mark, lesson_count=excluded.lesson_count, quiz_count=excluded.quiz_count, active=true, updated_at=now();
+delete from public.course_keys where course='web-development-react';
+insert into public.course_keys(course,qid,answer,why) values
+  ('web-development-react','q1',1,'Components are reusable UI functions.'),
+  ('web-development-react','q2',3,'Props are like function arguments.'),
+  ('web-development-react','q3',0,'JSX is JavaScript.'),
+  ('web-development-react','q4',2,'Change state instead.'),
+  ('web-development-react','q5',2,'React re-renders with the new state.'),
+  ('web-development-react','q6',0,'Both calls use the same captured value, 0.'),
+  ('web-development-react','q7',3,'Each updater receives the latest value.'),
+  ('web-development-react','q8',1,'Create a new array; never mutate state.'),
+  ('web-development-react','q9',0,'Stable keys prevent mix-ups.'),
+  ('web-development-react','q10',2,'350 and 100 are under 1000.'),
+  ('web-development-react','q11',1,'Side effects run after rendering.'),
+  ('web-development-react','q12',3,'No dependencies, so it runs once.'),
+  ('web-development-react','q13',3,'Keep secrets on a server.'),
+  ('web-development-react','q14',1,'Build output is deployed to a host.');
+insert into public.course_lessons(course,lesson_id,position) values
+  ('web-development-react','why-react',0),
+  ('web-development-react','components-props',1),
+  ('web-development-react','state-events',2),
+  ('web-development-react','lists-conditions',3),
+  ('web-development-react','effects-data',4),
+  ('web-development-react','forms-routing-deploy',5)
+  on conflict (course,lesson_id) do update set position=excluded.position;
+delete from public.course_lessons where course='web-development-react' and lesson_id not in ('why-react','components-props','state-events','lists-conditions','effects-data','forms-routing-deploy');
