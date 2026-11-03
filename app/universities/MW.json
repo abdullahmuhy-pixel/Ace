@@ -1,0 +1,270 @@
+{
+ "country": "MW",
+ "updated": "2026-11-03",
+ "admissions_overview": {
+  "summary": "In Malawi, school-leavers apply to the public universities through the National Council for Higher Education (NCHE), which advertises one public university selection each year after the MSCE results. Most degree programmes ask for at least six credits (grades 1 to 6) at MSCE including English, with good grades in the subjects that matter for the programme; competitive programmes such as medicine, engineering and law need mainly distinctions. Fees can be covered by the Higher Education Students' Loans and Grants Board, and private universities admit students directly.",
+  "official_url": "https://www.nche.ac.mw",
+  "notes": "UNIMA programme names are from the NCHE institution register, Mzuzu University names from its undergraduate programmes page and LUANAR names from the NCHE register. Mzuzu University and LUANAR do not publish faculty groupings on those pages, so the grouping here is Ace's own. Requirements change every year, so check the current NCHE call and each university before applying. UNIMA also offers a Bachelor of Laws (Honours), applied for through its own law admissions portal."
+ },
+ "universities": [
+  {
+   "id": "unima",
+   "name": "University of Malawi",
+   "short": "UNIMA",
+   "type": "public",
+   "city": "Zomba",
+   "url": "https://unima.ac.mw",
+   "admissions_url": "https://unima.ac.mw/international/entry-requirements",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculty of Science",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Computer Science"
+      },
+      {
+       "name": "Bachelor of Science in Mathematics"
+      },
+      {
+       "name": "Bachelor of Science in Statistics"
+      },
+      {
+       "name": "Bachelor of Science in Actuarial Sciences (Hons)"
+      },
+      {
+       "name": "Bachelor of Science in Geology"
+      },
+      {
+       "name": "Bachelor of Science in Chemistry (Hons)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Social Science",
+     "courses": [
+      {
+       "name": "Bachelor of Arts in Economics"
+      },
+      {
+       "name": "Bachelor of Arts in Psychology"
+      },
+      {
+       "name": "Bachelor of Social Science (Social Work)"
+      },
+      {
+       "name": "Bachelor of Arts Political Science"
+      },
+      {
+       "name": "Bachelor of Arts Public Administration"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Humanities",
+     "courses": [
+      {
+       "name": "Bachelor of Arts (Humanities)"
+      },
+      {
+       "name": "Bachelor of Arts in Communication Studies"
+      },
+      {
+       "name": "Bachelor of Arts (Theology)"
+      }
+     ]
+    },
+    {
+     "name": "School of Education",
+     "courses": [
+      {
+       "name": "Bachelor of Education (Mathematics)"
+      },
+      {
+       "name": "Bachelor of Education (Science)"
+      },
+      {
+       "name": "Bachelor of Education (Language)"
+      },
+      {
+       "name": "Bachelor of Education (Computer Science)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mzuni",
+   "name": "Mzuzu University",
+   "short": "Mzuni",
+   "type": "public",
+   "city": "Mzuzu",
+   "url": "https://www.mzuni.ac.mw",
+   "admissions_url": "https://www.mzuni.ac.mw/undergraduate-programmes/",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Science, Technology and Engineering",
+     "courses": [
+      {
+       "name": "BSc Data Science"
+      },
+      {
+       "name": "BSc Information Communication Technology"
+      },
+      {
+       "name": "BSc (Hons) Mathematics and Statistics"
+      },
+      {
+       "name": "BSc (Hons) Renewable Energy Systems Engineering"
+      },
+      {
+       "name": "BSc Water Resources Engineering and Management"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "BSc Nursing and Midwifery (Generic)"
+      },
+      {
+       "name": "BSc (Hons) Optometry"
+      },
+      {
+       "name": "BSc (Hons) Biomedical Laboratory Science"
+      }
+     ]
+    },
+    {
+     "name": "Environmental Sciences",
+     "courses": [
+      {
+       "name": "BSc Forestry"
+      },
+      {
+       "name": "BSc Fisheries and Aquatic Sciences"
+      },
+      {
+       "name": "BSc (Hons) Biodiversity Conservation and Management"
+      }
+     ]
+    },
+    {
+     "name": "Humanities, Social Sciences and Education",
+     "courses": [
+      {
+       "name": "BA Development Studies"
+      },
+      {
+       "name": "BA Communication Studies"
+      },
+      {
+       "name": "BA Politics and Governance"
+      },
+      {
+       "name": "BEd Education (Science)"
+      },
+      {
+       "name": "BEd Education (Languages)"
+      }
+     ]
+    },
+    {
+     "name": "Tourism and Hospitality",
+     "courses": [
+      {
+       "name": "Bachelor of Business (Tourism Management)"
+      },
+      {
+       "name": "BSc Hospitality Management"
+      },
+      {
+       "name": "BA Culinary Arts"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "luanar",
+   "name": "Lilongwe University of Agriculture and Natural Resources",
+   "short": "LUANAR",
+   "type": "public",
+   "city": "Lilongwe",
+   "url": "https://luanar.mw",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Agriculture and Food",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Science in Agronomy"
+      },
+      {
+       "name": "Bachelor of Science in Horticulture"
+      },
+      {
+       "name": "Bachelor of Science in Food Science and Technology"
+      },
+      {
+       "name": "Bachelor of Science in Nutrition and Food Science"
+      }
+     ]
+    },
+    {
+     "name": "Agribusiness and Development",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agricultural Economics"
+      },
+      {
+       "name": "Bachelor of Science in Agribusiness Management"
+      },
+      {
+       "name": "Bachelor of Science in Development Economics"
+      },
+      {
+       "name": "Bachelor of Science in Agricultural Extension"
+      }
+     ]
+    },
+    {
+     "name": "Engineering and Natural Resources",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Agricultural Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Irrigation Engineering"
+      },
+      {
+       "name": "Bachelor of Science in Forestry"
+      },
+      {
+       "name": "Bachelor of Science in Aquaculture and Fisheries Sciences"
+      },
+      {
+       "name": "Bachelor of Science in Environmental Sciences"
+      }
+     ]
+    },
+    {
+     "name": "Veterinary Medicine and Animal Science",
+     "courses": [
+      {
+       "name": "Bachelor of Veterinary Medicine"
+      },
+      {
+       "name": "Bachelor of Science in Animal Science"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

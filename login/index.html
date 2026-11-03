@@ -32,6 +32,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 [data-country="PT"]{--primary:#046A38;--primary-dark:#024A27;--accent:#DA291C}
 [data-country="DE"]{--primary:#DD0000;--primary-dark:#8C0000;--accent:#FFCE00}
 [data-country="NA"]{--primary:#003580;--primary-dark:#00224F;--accent:#009543}
+[data-country="MW"]{--primary:#CE1126;--primary-dark:#8E0B1A;--accent:#339E35}
 [data-country="ZW"]{--primary:#1A7F37;--primary-dark:#0F5223;--accent:#FFD200}
 [data-country="IE"]{--primary:#169B62;--primary-dark:#0E6B43;--accent:#FF883E}
 *,*::before,*::after{box-sizing:inherit}
@@ -124,7 +125,8 @@ FR:{n:'France',f:'🇫🇷',l:'fr',x:['Épreuves anticipées','Baccalauréat','B
 IT:{n:'Italia',f:'🇮🇹',l:'it',x:['Esame di Maturità'],tg:'Triennio • Esame di Maturità',gr:['Terzo anno','Quarto anno','Quinto anno'],cl:'5ª A',u:'Roma',p:'GDPR'},
 PT:{n:'Portugal',f:'🇵🇹',l:'pt',x:['Exames Nacionais'],tg:'10.º • 11.º • 12.º ano • Exames Nacionais',gr:['10.º ano','11.º ano','12.º ano'],cl:'12.º A',u:'Lisboa',p:'RGPD'},
 DE:{n:'Deutschland',f:'🇩🇪',l:'de',x:['Abitur'],tg:'Einführungsphase • Q1 • Q2 • Abitur',gr:['Einführungsphase','Q1','Q2'],cl:'Q2 Mathe-LK',u:'Berlin',p:'DSGVO'},
-NA:{n:'Namibia',f:'🇳🇦',x:['NSSCO', 'NSSCAS'],tg:'NSSCO & NSSCAS Exam Prep • Grade 8–12',gr:G(8,12,'Grade '),cl:'Grade 11A',u:'Windhoek',p:'Constitution, Article 13'}};
+NA:{n:'Namibia',f:'🇳🇦',x:['NSSCO', 'NSSCAS'],tg:'NSSCO & NSSCAS Exam Prep • Grade 8–12',gr:G(8,12,'Grade '),cl:'Grade 11A',u:'Windhoek',p:'Constitution, Article 13'},
+MW:{n:'Malawi',f:'🇲🇼',x:['MSCE'],tg:'MSCE Exam Prep • Form 1–4',gr:G(1,4,'Form '),cl:'Form 4A',u:'Lilongwe',p:'Data Protection Act, 2024'}};
 const exFor=(c,g)=>{if(!g)return c.x;const jr=/^(JHS|JSS)|^Grade [789]$/.test(g);let r=c.x;
  if(g=='Primary 6')r=c.x.filter(k=>k=='NPSE');else if(jr&&c.x.some(k=>/^(BECE|GABECE)$/.test(k)))r=c.x.filter(k=>/^(BECE|GABECE)$/.test(k));
  else if(c.x.some(k=>/^(BECE|GABECE|NPSE)$/.test(k)))r=c.x.filter(k=>!/^(BECE|GABECE|NPSE)$/.test(k));return r.length?r:c.x};

@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 22 countries, 37 exams, 49,157 practice questions, 9,646 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 38 exams, 49,287 practice questions, 9,672 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -193,8 +193,16 @@ Totals: 17 subjects, 283 topics, 1,415 questions.
 - NSSCO (DNEA (Directorate of National Examinations and Assessment, Ministry of Education)): Mathematics, English Second Language, Biology, Chemistry, Physics, Computer Science, Geography, History, Accounting, Business Studies, Agricultural Science, Economics, Development Studies
 - NSSCAS (DNEA (Directorate of National Examinations and Assessment, Ministry of Education)): Mathematics, Physics, Chemistry, Biology
 
+## Malawi
+URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi
+Exams: The Malawi School Certificate of Education (MSCE), set by the Malawi National Examinations Board (MANEB) at the end of Form 4. Learners sit the Junior Certificate of Education (JCE) at the end of Form 2. Since the calendar change, the MSCE has been written around June and July (in 2026 from 30 June to 24 July).
+Grading: MSCE grades run from 1 (best) to 9: 1 and 2 are distinction, 3 to 6 credit, 7 and 8 pass, and 9 fail. The best six subjects give the aggregate points, so 6 is the best possible.
+Levels: Form 1 – Form 4
+Totals: 1 subjects, 26 topics, 130 questions.
+- MSCE (MANEB (Malawi National Examinations Board)): Mathematics
+
 ## FAQ
-**Which exams does Ace Education cover today?** More than twenty exams across nineteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; the Exames Nacionais in Portugal; the Abitur in Germany; NSSCO and NSSCAS in Namibia; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
+**Which exams does Ace Education cover today?** More than twenty exams across nineteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; the Exames Nacionais in Portugal; the Abitur in Germany; NSSCO and NSSCAS in Namibia; the MSCE in Malawi; and the SEC in Malta. The Countries page shows exactly which subjects each one has.
 **Are the questions copied from past papers?** No. Topic lists follow each exam body's published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.
 **Has a teacher checked the content?** Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher's sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.
 **How do you make sure the content is local?** Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.

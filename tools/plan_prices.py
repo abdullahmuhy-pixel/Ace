@@ -16,6 +16,7 @@ P = {
  'za': ('ZA', 'ZAR', '59', '149', '449', '1099'),
  'bw': ('BW', 'BWP', '40', '100', '300', '750'),
  'na': ('NA', 'NAD', '59', '149', '449', '1099'),
+ 'mw': ('MW', 'MWK', '3000', '7500', '22500', '52500'),
  'ng': ('NG', 'NGN', '1500', '4000', '12000', '30000'),
  'gh': ('GH', 'GHS', '20', '50', '150', '375'),
  'ke': ('KE', 'KES', '200', '500', '1500', '3750'),
@@ -30,7 +31,7 @@ P = {
 CAMPUS = ('USD', '4.99', '39.99')   # Ace Campus, any country
 # School / tutor licence: price per student per year, about 30% of one student's yearly plan (minimum 30 students
 # for a school, 10 for a tutor; the minimum is enforced in the checkout-start function)
-SCHOOL = {'gb': '12', 'ie': '12', 'mt': '12', 'es': '12', 'fr': '12', 'it': '12', 'pt': '9', 'de': '12', 'ca': '18', 'za': '135', 'bw': '90', 'na': '135', 'ng': '3600',
+SCHOOL = {'gb': '12', 'ie': '12', 'mt': '12', 'es': '12', 'fr': '12', 'it': '12', 'pt': '9', 'de': '12', 'ca': '18', 'za': '135', 'bw': '90', 'na': '135', 'mw': '6750', 'ng': '3600',
           'gh': '45', 'ke': '450', 'ug': '15000', 'tz': '10500', 'zm': '90', 'sl': '90', 'gm': '300', 'zw': '4.50', 'lr': '4.50'}
 rows = []
 def minor(x): v = D(x) * 100; assert v == v.to_integral_value(), x; return int(v)
