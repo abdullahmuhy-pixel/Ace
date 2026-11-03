@@ -146,10 +146,10 @@ DE:{name:'Deutschland',flag:'🇩🇪',lang:'Deutsch',levels:'Einführungsphase 
  next:["Deutsch, Englisch, Französisch, Latein", "Biologie, Chemie, Physik, Informatik", "Geschichte, Geographie, Politik und Wirtschaft, Philosophie, Religion und Ethik", "Teacher review of the German content"]},
 NA:{name:'Namibia',flag:'🇳🇦',lang:'English',levels:'Grade 8 – Grade 12',law:'Constitution, Article 13',
  sys:"The Namibia Senior Secondary Certificate at two levels, set by the Directorate of National Examinations and Assessment (DNEA) in the Ministry of Education: NSSCO (Ordinary level) at the end of Grade 11 and NSSCAS (Advanced Subsidiary level) at the end of Grade 12. Learners who do well enough at NSSCO go on to Grade 12 and the NSSCAS; others can enter vocational training, NAMCOL or some diplomas.",
- intro:"Namibia follows the DNEA NSSCO and NSSCAS syllabuses introduced in 2021. Ace starts with NSSCO Mathematics, with Namibia dollars in the money questions and Namibian places and examples throughout.",
+ intro:"Namibia follows the DNEA NSSCO and NSSCAS syllabuses introduced in 2021. Ace covers NSSCO Mathematics, English Second Language, Biology, Chemistry, Physics, Computer Science, Geography, History, Accounting, Business Studies, Agricultural Science, Economics and Development Studies, and NSSCAS Mathematics, Physics, Chemistry and Biology, with Namibia dollars in the money questions and Namibian places and examples throughout.",
  ex:{"NSSCO": "The Namibia Senior Secondary Certificate Ordinary level, written in October and November at the end of Grade 11. Learners usually take six or more subjects.", "NSSCAS": "The Namibia Senior Secondary Certificate Advanced Subsidiary level, written in October and November at the end of Grade 12 in the subjects a learner qualified for at NSSCO."},
  scale:"NSSCO grades run from A* (highest) to G, and NSSCAS grades from A to E; U means ungraded.",
- next:["English Second Language, Biology, Chemistry, Physics, Computer Science", "Geography, History, Accounting, Business Studies, Agricultural Science", "NSSCAS Mathematics and sciences", "Teacher review of the Namibia content"]}
+ next:["NSSCO Entrepreneurship and languages","More NSSCAS subjects (English, Geography, History, Accounting, Economics)","Teacher review of the Namibia content"]}
 };
 
 const STUDENT_TOOLS = [
