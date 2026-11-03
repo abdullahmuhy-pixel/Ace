@@ -8,7 +8,7 @@
   'use strict';
   const L = (en, es) => TX(en, es), F = (en, es, v) => TXF(en, es, v);
   // monthly price per country, from tools/plan_prices.py (public.plans is the real price list)
-  const MONTH = {"GB":["GBP",499],"IE":["EUR",499],"MT":["EUR",499],"ES":["EUR",499],"FR":["EUR",499],"IT":["EUR",499],"PT":["EUR",399],"DE":["EUR",499],"CA":["CAD",799],"ZA":["ZAR",5900],"BW":["BWP",4000],"NG":["NGN",150000],"GH":["GHS",2000],"KE":["KES",20000],"UG":["UGX",700000],"TZ":["TZS",500000],"ZM":["ZMW",4000],"SL":["SLE",4000],"GM":["GMD",15000],"ZW":["USD",200],"LR":["USD",200],"CAMPUS":["USD",499]};
+  const MONTH = {"GB":["GBP",499],"IE":["EUR",499],"MT":["EUR",499],"ES":["EUR",499],"FR":["EUR",499],"IT":["EUR",499],"PT":["EUR",399],"DE":["EUR",499],"CA":["CAD",799],"ZA":["ZAR",5900],"BW":["BWP",4000],"NA":["NAD",5900],"NG":["NGN",150000],"GH":["GHS",2000],"KE":["KES",20000],"UG":["UGX",700000],"TZ":["TZS",500000],"ZM":["ZMW",4000],"SL":["SLE",4000],"GM":["GMD",15000],"ZW":["USD",200],"LR":["USD",200],"CAMPUS":["USD",499]};
   const FREE_MOCKS = 1;
   let lim = null, loading = null;
 

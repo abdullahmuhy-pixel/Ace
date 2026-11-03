@@ -1,0 +1,266 @@
+{
+ "country": "NA",
+ "updated": "2026-11-03",
+ "admissions_overview": {
+  "summary": "In Namibia you apply directly to each institution, usually between May and September of the year before you start (UNAM's 2027 applications ran from 22 May to 30 September 2026). Admission uses your NSSCO and NSSCAS results across five subjects. For a UNAM degree you need two NSSCAS subjects averaging D or better plus three NSSCO subjects at C or better, or three NSSCAS subjects averaging D or better plus two NSSCO subjects at D or better, with English at least C at NSSCO; many diplomas accept five NSSCO subjects. Study loans and grants come from the Namibia Students Financial Assistance Fund (NSFAF).",
+  "official_url": "https://www.unam.edu.na/requirements",
+  "notes": "UNAM programme names are from its 2027 career guidance leaflets and NUST names from its undergraduate programmes page. IUM publishes its degrees without naming the faculty, so the grouping by faculty here is Ace's own. Requirements change every year, so check each institution before applying."
+ },
+ "universities": [
+  {
+   "id": "unam",
+   "name": "University of Namibia",
+   "short": "UNAM",
+   "type": "public",
+   "city": "Windhoek",
+   "url": "https://www.unam.edu.na",
+   "admissions_url": "https://www.unam.edu.na/requirements",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculty of Agriculture, Engineering and Natural Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Civil Engineering (Honours)"
+      },
+      {
+       "name": "Bachelor of Science in Mining Engineering (Honours)"
+      },
+      {
+       "name": "Bachelor of Science in Electrical Engineering (Honours)"
+      },
+      {
+       "name": "Bachelor of Science in Computing"
+      },
+      {
+       "name": "Bachelor of Science in Data Science"
+      },
+      {
+       "name": "Bachelor of Science in Fisheries and Ocean Sciences"
+      },
+      {
+       "name": "Bachelor of Science in Animal Science (Honours)"
+      },
+      {
+       "name": "Bachelor of Science in Geology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health Sciences and Veterinary Medicine",
+     "courses": [
+      {
+       "name": "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+      },
+      {
+       "name": "Bachelor of Pharmacy (Honours)"
+      },
+      {
+       "name": "Bachelor of Nursing and Midwifery Science (Honours)"
+      },
+      {
+       "name": "Bachelor of Dental Surgery"
+      },
+      {
+       "name": "Bachelor of Veterinary Medicine"
+      },
+      {
+       "name": "Bachelor of Science in Physiotherapy (Honours)"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce, Management and Law",
+     "courses": [
+      {
+       "name": "Bachelor of Laws (LLB) (Honours)"
+      },
+      {
+       "name": "Bachelor of Accounting (Chartered Accountancy)"
+      },
+      {
+       "name": "Bachelor of Commerce in Accounting"
+      },
+      {
+       "name": "Bachelor of Economics"
+      },
+      {
+       "name": "Bachelor of Business Administration"
+      },
+      {
+       "name": "Bachelor of Public Management"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nust",
+   "name": "Namibia University of Science and Technology",
+   "short": "NUST",
+   "type": "public",
+   "city": "Windhoek",
+   "url": "https://www.nust.na",
+   "admissions_url": "https://www.nust.na/undergraduate-programmes",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculty of Computing and Informatics",
+     "courses": [
+      {
+       "name": "Bachelor of Computer Science"
+      },
+      {
+       "name": "Bachelor of Computer Science (Cyber Security)"
+      },
+      {
+       "name": "Bachelor of Informatics"
+      },
+      {
+       "name": "Bachelor of Artificial Intelligence"
+      },
+      {
+       "name": "Bachelor of Journalism and Media Technology"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Engineering and the Built Environment",
+     "courses": [
+      {
+       "name": "Bachelor of Engineering in Civil Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering in Mining"
+      },
+      {
+       "name": "Bachelor of Engineering in Chemical Engineering"
+      },
+      {
+       "name": "Bachelor of Engineering in Industrial Engineering"
+      },
+      {
+       "name": "Bachelor of Technology in Mechanical Engineering"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Health, Natural Resources and Applied Sciences",
+     "courses": [
+      {
+       "name": "Bachelor of Medical Laboratory Sciences"
+      },
+      {
+       "name": "Bachelor of Emergency Medical Care"
+      },
+      {
+       "name": "Bachelor of Human Nutrition"
+      },
+      {
+       "name": "Bachelor of Science in Agriculture"
+      },
+      {
+       "name": "Bachelor of Natural Resource Management"
+      }
+     ]
+    },
+    {
+     "name": "Faculty of Commerce, Human Sciences and Education",
+     "courses": [
+      {
+       "name": "Bachelor of Accounting"
+      },
+      {
+       "name": "Bachelor of Economics"
+      },
+      {
+       "name": "Bachelor of Business Management"
+      },
+      {
+       "name": "Bachelor of Tourism Management"
+      },
+      {
+       "name": "Bachelor of Communication"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ium",
+   "name": "International University of Management",
+   "short": "IUM",
+   "type": "private",
+   "city": "Windhoek",
+   "url": "https://www.ium.edu.na",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Information and Communication Technology",
+     "courses": [
+      {
+       "name": "Bachelor of Science in Software Development"
+      },
+      {
+       "name": "Bachelor of Science in Business Information Systems"
+      },
+      {
+       "name": "Bachelor of Science in Electronics Engineering Honours"
+      }
+     ]
+    },
+    {
+     "name": "Business and Management",
+     "courses": [
+      {
+       "name": "Bachelor of Business Administration"
+      },
+      {
+       "name": "Bachelor of Marketing Management"
+      },
+      {
+       "name": "Bachelor of Human Resource Management"
+      },
+      {
+       "name": "Bachelor of Finance Management"
+      },
+      {
+       "name": "Bachelor of Accounting Honours"
+      }
+     ]
+    },
+    {
+     "name": "Health Sciences",
+     "courses": [
+      {
+       "name": "Bachelor in Nursing Honours"
+      },
+      {
+       "name": "Bachelor of Health and Wellness Studies"
+      },
+      {
+       "name": "Bachelor of Science in Occupational Health and Safety Honours"
+      }
+     ]
+    },
+    {
+     "name": "Environment, Sustainability and Education",
+     "courses": [
+      {
+       "name": "Bachelor of Environmental Management and Sustainable Development Honours"
+      },
+      {
+       "name": "Bachelor of Climate Change Mitigation and Adaptation Honours"
+      },
+      {
+       "name": "Bachelor of Education Honours (Secondary Education)"
+      },
+      {
+       "name": "Bachelor of Education Honours (Junior Primary)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
