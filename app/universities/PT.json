@@ -1,0 +1,550 @@
+{
+ "country": "PT",
+ "updated": "2026-11-03",
+ "admissions_overview": {
+  "summary": "Para entrar numa universidade ou num politécnico público candidatas-te ao Concurso Nacional de Acesso, gerido pela Direção-Geral do Ensino Superior (DGES). Cada curso indica as provas de ingresso (exames nacionais do secundário) que exige e a fórmula da nota de candidatura, que junta a média do secundário e as provas de ingresso, por vezes com pré-requisitos. Há três fases de candidatura, entre julho e outubro. As licenciaturas duram normalmente 3 anos (Direito 4) e os mestrados integrados, como Medicina, 6 anos. As instituições privadas têm candidaturas próprias.",
+  "official_url": "https://www.dges.gov.pt",
+  "notes": "Os nomes indicados são cursos e unidades orgânicas das instituições, não a oferta completa. Provas de ingresso, vagas, prazos e propinas mudam todos os anos: confirma sempre em dges.gov.pt e no site de cada instituição."
+ },
+ "universities": [
+  {
+   "id": "ulisboa",
+   "name": "Universidade de Lisboa",
+   "short": "ULisboa",
+   "type": "public",
+   "city": "Lisboa",
+   "url": "https://www.ulisboa.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculdade de Medicina",
+     "courses": [
+      {
+       "name": "Medicina",
+       "years": 6
+      },
+      {
+       "name": "Ciências da Nutrição",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Instituto Superior Técnico",
+     "courses": [
+      {
+       "name": "Engenharia Informática e de Computadores",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Aeroespacial",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Civil",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Direito e ISCSP",
+     "courses": [
+      {
+       "name": "Direito",
+       "years": 4
+      },
+      {
+       "name": "Ciência Política",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Letras",
+     "courses": [
+      {
+       "name": "Estudos Portugueses",
+       "years": 3
+      },
+      {
+       "name": "História",
+       "years": 3
+      },
+      {
+       "name": "Filosofia",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uporto",
+   "name": "Universidade do Porto",
+   "short": "U.Porto",
+   "type": "public",
+   "city": "Porto",
+   "url": "https://www.up.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculdade de Engenharia (FEUP)",
+     "courses": [
+      {
+       "name": "Engenharia Informática e Computação",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Mecânica",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Eletrotécnica e de Computadores",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Medicina e ICBAS",
+     "courses": [
+      {
+       "name": "Medicina",
+       "years": 6
+      },
+      {
+       "name": "Medicina Veterinária",
+       "years": 6
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Economia (FEP)",
+     "courses": [
+      {
+       "name": "Economia",
+       "years": 3
+      },
+      {
+       "name": "Gestão",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Ciências (FCUP)",
+     "courses": [
+      {
+       "name": "Matemática",
+       "years": 3
+      },
+      {
+       "name": "Física",
+       "years": 3
+      },
+      {
+       "name": "Arquitetura Paisagista",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucoimbra",
+   "name": "Universidade de Coimbra",
+   "short": "UC",
+   "type": "public",
+   "city": "Coimbra",
+   "url": "https://www.uc.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Faculdade de Direito",
+     "courses": [
+      {
+       "name": "Direito",
+       "years": 4
+      },
+      {
+       "name": "Administração Pública",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Medicina",
+     "courses": [
+      {
+       "name": "Medicina",
+       "years": 6
+      },
+      {
+       "name": "Medicina Dentária",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Ciências e Tecnologia",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Física",
+       "years": 3
+      },
+      {
+       "name": "Química",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Letras",
+     "courses": [
+      {
+       "name": "Línguas Modernas",
+       "years": 3
+      },
+      {
+       "name": "Jornalismo e Comunicação",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "unova",
+   "name": "Universidade NOVA de Lisboa",
+   "short": "NOVA",
+   "type": "public",
+   "city": "Lisboa",
+   "url": "https://www.unl.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "NOVA School of Business and Economics",
+     "courses": [
+      {
+       "name": "Economia",
+       "years": 3
+      },
+      {
+       "name": "Gestão",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "NOVA Medical School",
+     "courses": [
+      {
+       "name": "Medicina",
+       "years": 6
+      },
+      {
+       "name": "Ciências da Nutrição",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "NOVA School of Science and Technology",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Biomédica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Ciências Sociais e Humanas",
+     "courses": [
+      {
+       "name": "Ciências da Comunicação",
+       "years": 3
+      },
+      {
+       "name": "Antropologia",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uminho",
+   "name": "Universidade do Minho",
+   "short": "UMinho",
+   "type": "public",
+   "city": "Braga e Guimarães",
+   "url": "https://www.uminho.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Escola de Engenharia",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Civil",
+       "years": 3
+      },
+      {
+       "name": "Engenharia de Materiais",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Escola de Medicina",
+     "courses": [
+      {
+       "name": "Medicina",
+       "years": 6
+      },
+      {
+       "name": "Ciências Biomédicas",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Escola de Economia, Gestão e Ciência Política",
+     "courses": [
+      {
+       "name": "Economia",
+       "years": 3
+      },
+      {
+       "name": "Gestão",
+       "years": 3
+      },
+      {
+       "name": "Ciência Política",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uaveiro",
+   "name": "Universidade de Aveiro",
+   "short": "UA",
+   "type": "public",
+   "city": "Aveiro",
+   "url": "https://www.ua.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Departamento de Eletrónica, Telecomunicações e Informática",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Engenharia de Computadores e Informática",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Escola Superior de Saúde",
+     "courses": [
+      {
+       "name": "Enfermagem",
+       "years": 4
+      },
+      {
+       "name": "Fisioterapia",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Instituto Superior de Contabilidade e Administração",
+     "courses": [
+      {
+       "name": "Contabilidade",
+       "years": 3
+      },
+      {
+       "name": "Marketing",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "iscte",
+   "name": "Iscte – Instituto Universitário de Lisboa",
+   "short": "Iscte",
+   "type": "public",
+   "city": "Lisboa",
+   "url": "https://www.iscte-iul.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Iscte Business School",
+     "courses": [
+      {
+       "name": "Gestão",
+       "years": 3
+      },
+      {
+       "name": "Finanças e Contabilidade",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Escola de Tecnologias e Arquitetura",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Arquitetura",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Escola de Sociologia e Políticas Públicas",
+     "courses": [
+      {
+       "name": "Sociologia",
+       "years": 3
+      },
+      {
+       "name": "Serviço Social",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ucp",
+   "name": "Universidade Católica Portuguesa",
+   "short": "Católica",
+   "type": "private",
+   "city": "Lisboa, Porto, Braga e Viseu",
+   "url": "https://www.ucp.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Católica Lisbon School of Business and Economics",
+     "courses": [
+      {
+       "name": "Gestão",
+       "years": 3
+      },
+      {
+       "name": "Economia",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Direito e Instituto de Estudos Políticos",
+     "courses": [
+      {
+       "name": "Direito",
+       "years": 4
+      },
+      {
+       "name": "Ciência Política e Relações Internacionais",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Faculdade de Ciências Humanas",
+     "courses": [
+      {
+       "name": "Comunicação Social e Cultural",
+       "years": 3
+      },
+      {
+       "name": "Psicologia",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ipporto",
+   "name": "Instituto Politécnico do Porto",
+   "short": "P.Porto",
+   "type": "public",
+   "city": "Porto",
+   "url": "https://www.ipp.pt",
+   "admissions_url": "https://www.dges.gov.pt",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Instituto Superior de Engenharia do Porto (ISEP)",
+     "courses": [
+      {
+       "name": "Engenharia Informática",
+       "years": 3
+      },
+      {
+       "name": "Engenharia Mecânica",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Escola Superior de Saúde",
+     "courses": [
+      {
+       "name": "Fisioterapia",
+       "years": 4
+      },
+      {
+       "name": "Terapia da Fala",
+       "years": 4
+      }
+     ]
+    },
+    {
+     "name": "Escola Superior de Educação",
+     "courses": [
+      {
+       "name": "Educação Básica",
+       "years": 3
+      },
+      {
+       "name": "Educação Social",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
