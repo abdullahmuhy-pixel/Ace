@@ -26,6 +26,7 @@ import oc_m1, oc_m2, oc_m3, oc_m4, oc_m5
 import da_m1, da_m2, da_m3, da_m4, da_m5
 import ml_m1, ml_m2, ml_m3, ml_m4, ml_m5
 import law_m1, law_m2, law_m3, law_m4, law_m5
+import ap_m1, ap_m2, ap_m3, ap_m4, ap_m5
 import phil_m1, phil_m2, phil_m3, phil_m4, phil_m5
 import edu_m1, edu_m2, edu_m3, edu_m4, edu_m5
 
@@ -189,6 +190,12 @@ PHIL, nq23 = course('Introduction to Philosophy and Logic', [phil_m1, phil_m2, p
     'faculties': ['arts', 'law', 'soc', 'edu'],
 })
 
+AP, nq24 = course('Human Anatomy and Physiology', [ap_m1, ap_m2, ap_m3, ap_m4, ap_m5], {
+    'source': 'Written by Ace for first-year university Human Anatomy and Physiology for nursing, medicine, pharmacy, physiotherapy, medical laboratory science and other health programmes. Matches the common core of first-year anatomy and physiology courses in Nigeria, Ghana, Kenya, Uganda and South Africa, in the UK and Ireland, and in North America. Clinical examples are for learning, not for diagnosis or treatment; every calculation was checked in code.',
+    'paper_info': 'First-year core • usually 3 to 4 credits • body organisation and tissues, skin, bones and muscles, nervous and endocrine control, blood, heart and breathing, and digestion, kidneys and reproduction',
+    'faculties': ['health', 'sci'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -212,6 +219,7 @@ CATALOGUE = [
     {'name': 'Introduction to Data Analysis', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'comp', 'biz', 'soc', 'health']},
     {'name': 'Machine Learning Foundations', 'track': 'Second year', 'status': 'live', 'faculties': ['comp', 'sci', 'eng']},
     {'name': 'Introduction to Law and Legal Systems', 'track': 'First-year core', 'status': 'live', 'faculties': ['law', 'soc', 'biz']},
+    {'name': 'Human Anatomy and Physiology', 'track': 'First-year core', 'status': 'live', 'faculties': ['health', 'sci']},
     {'name': 'Introduction to Philosophy and Logic', 'track': 'First-year core', 'status': 'live', 'faculties': ['arts', 'law', 'soc', 'edu']},
     {'name': 'Foundations of Education', 'track': 'First-year core', 'status': 'live', 'faculties': ['edu', 'soc']},
 ]
@@ -222,7 +230,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Introduction to Law and Legal Systems': LAW, 'Introduction to Philosophy and Logic': PHIL, 'Foundations of Education': EDU, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA, 'Machine Learning Foundations': ML}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Introduction to Law and Legal Systems': LAW, 'Human Anatomy and Physiology': AP, 'Introduction to Philosophy and Logic': PHIL, 'Foundations of Education': EDU, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA, 'Machine Learning Foundations': ML}}},
 }
 
 if problems:
@@ -266,12 +274,13 @@ page = f'''<!DOCTYPE html>
 <h2>Machine Learning Foundations ({nq20} questions)</h2><ul>{rows(ML)}</ul>
 <h2>Introduction to Law and Legal Systems ({nq21} questions)</h2><ul>{rows(LAW)}</ul>
 <h2>Foundations of Education ({nq22} questions)</h2><ul>{rows(EDU)}</ul>
-<h2>Introduction to Philosophy and Logic ({nq23} questions)</h2><ul>{rows(PHIL)}</ul></div>
+<h2>Introduction to Philosophy and Logic ({nq23} questions)</h2><ul>{rows(PHIL)}</ul>
+<h2>Human Anatomy and Physiology ({nq24} questions)</h2><ul>{rows(AP)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19), ('Machine Learning Foundations', ML, nq20), ('Introduction to Law and Legal Systems', LAW, nq21), ('Foundations of Education', EDU, nq22), ('Introduction to Philosophy and Logic', PHIL, nq23)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19), ('Machine Learning Foundations', ML, nq20), ('Introduction to Law and Legal Systems', LAW, nq21), ('Foundations of Education', EDU, nq22), ('Introduction to Philosophy and Logic', PHIL, nq23), ('Human Anatomy and Physiology', AP, nq24)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
