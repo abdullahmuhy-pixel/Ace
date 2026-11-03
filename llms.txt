@@ -32,7 +32,7 @@
 - [France: Épreuves anticipées, Baccalauréat, Bac technologique](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france): 51 subjects, 3,820 practice questions
 - [Italia: Esame di Maturità](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy): 19 subjects, 1,485 practice questions
 - [Portugal: Exames Nacionais](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-portugal): 19 subjects, 1,290 practice questions
-- [Deutschland: Abitur](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-germany): 9 subjects, 610 practice questions
+- [Deutschland: Abitur](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-germany): 10 subjects, 660 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)
