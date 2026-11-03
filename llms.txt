@@ -27,7 +27,7 @@
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 29 subjects, 3,090 practice questions
 - [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 22 subjects, 2,308 practice questions
 - [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 28 subjects, 3,200 practice questions
-- [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 20 subjects, 2,125 practice questions
+- [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 22 subjects, 2,305 practice questions
 - [Botswana: BGCSE, JCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana): 18 subjects, 1,500 practice questions
 - [France: Épreuves anticipées, Baccalauréat, Bac technologique](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france): 51 subjects, 3,820 practice questions
 - [Italia: Esame di Maturità](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy): 19 subjects, 1,485 practice questions
