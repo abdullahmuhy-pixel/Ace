@@ -25,6 +25,9 @@ import em_m1, em_m2, em_m3, em_m4, em_m5
 import oc_m1, oc_m2, oc_m3, oc_m4, oc_m5
 import da_m1, da_m2, da_m3, da_m4, da_m5
 import ml_m1, ml_m2, ml_m3, ml_m4, ml_m5
+import law_m1, law_m2, law_m3, law_m4, law_m5
+import phil_m1, phil_m2, phil_m3, phil_m4, phil_m5
+import edu_m1, edu_m2, edu_m3, edu_m4, edu_m5
 
 OUT = os.path.join(HERE, '..', '..', 'app', 'campus-syllabus.html')
 problems = []
@@ -168,6 +171,24 @@ ML, nq20 = course('Machine Learning Foundations', [ml_m1, ml_m2, ml_m3, ml_m4, m
     'faculties': ['comp', 'sci', 'eng'],
 })
 
+LAW, nq21 = course('Introduction to Law and Legal Systems', [law_m1, law_m2, law_m3, law_m4, law_m5], {
+    'source': 'Written by Ace for first-year university Introduction to Law (Legal Systems and Methods). Matches the common core of courses such as Legal Methods / Nigerian Legal System (Nigeria), Introduction to Law and Legal Method (Ghana and Kenya), Foundations of South African Law, and English Legal System or Legal Method (UK and Ireland). Leading cases and statutes are cited as examples; check the rules of your own jurisdiction, which may differ. Not legal advice.',
+    'paper_info': 'First-year core • usually 3 to 4 credits • nature and sources of law, courts and precedent, constitutional law and rights, contract and tort, criminal law and legal method',
+    'faculties': ['law', 'soc', 'biz'],
+})
+
+EDU, nq22 = course('Foundations of Education', [edu_m1, edu_m2, edu_m3, edu_m4, edu_m5], {
+    'source': "Written by Ace for first-year university Foundations of Education (Introduction to Education / Principles of Teaching). Matches the common core of education courses in colleges of education and faculties of education in Nigeria, Ghana, Kenya, Uganda, Tanzania and South Africa, and of introductory teacher-education modules in the UK and Ireland. National policies and bodies are given as examples; check your own country's current policy.",
+    'paper_info': 'First-year core • usually 2 to 3 credits • aims and history of education, how learners learn, curriculum and instruction, assessment, and the classroom, society and the profession',
+    'faculties': ['edu', 'soc'],
+})
+
+PHIL, nq23 = course('Introduction to Philosophy and Logic', [phil_m1, phil_m2, phil_m3, phil_m4, phil_m5], {
+    'source': 'Written by Ace for first-year university Introduction to Philosophy and Logic. Matches the common core of courses such as Philosophy, Logic and Human Existence (GST, Nigeria), Introduction to Philosophy and Critical Thinking (Ghana, Kenya, Uganda), Introduction to Philosophy (South Africa) and first-year philosophy and logic modules in the UK, Ireland and North America, with African philosophy alongside the Western canon. Truth tables and argument forms were checked in code.',
+    'paper_info': 'First-year core • usually 2 to 3 credits • what philosophy is, arguments and fallacies, symbolic logic, knowledge, mind and reality, and ethics and political philosophy',
+    'faculties': ['arts', 'law', 'soc', 'edu'],
+})
+
 # Courses on the plan, shown as "coming soon" in the catalogue. Nothing is shown as live until it is written and checked.
 CATALOGUE = [
     {'name': 'Calculus I', 'track': 'First-year core', 'status': 'live', 'faculties': ['sci', 'eng', 'comp', 'biz', 'health']},
@@ -190,6 +211,9 @@ CATALOGUE = [
     {'name': 'Electricity and Magnetism', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'eng']},
     {'name': 'Introduction to Data Analysis', 'track': 'Second year', 'status': 'live', 'faculties': ['sci', 'comp', 'biz', 'soc', 'health']},
     {'name': 'Machine Learning Foundations', 'track': 'Second year', 'status': 'live', 'faculties': ['comp', 'sci', 'eng']},
+    {'name': 'Introduction to Law and Legal Systems', 'track': 'First-year core', 'status': 'live', 'faculties': ['law', 'soc', 'biz']},
+    {'name': 'Introduction to Philosophy and Logic', 'track': 'First-year core', 'status': 'live', 'faculties': ['arts', 'law', 'soc', 'edu']},
+    {'name': 'Foundations of Education', 'track': 'First-year core', 'status': 'live', 'faculties': ['edu', 'soc']},
 ]
 
 DATA = {
@@ -198,7 +222,7 @@ DATA = {
     'settings': {'quiz_questions': 5, 'mock_default': {'questions': 30, 'minutes': 60}},
     'faculties': {'sci': 'Science', 'eng': 'Engineering', 'comp': 'Computing', 'biz': 'Business and economics', 'health': 'Health and medicine', 'soc': 'Social sciences', 'law': 'Law', 'arts': 'Arts and humanities', 'edu': 'Education'},
     'catalogue': CATALOGUE,
-    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA, 'Machine Learning Foundations': ML}}},
+    'exams': {'First-year core': {'body': 'Ace Campus', 'subjects': {'Calculus I': CALC1, 'Linear Algebra': LA, 'Probability and Statistics': STAT, 'Calculus II': CALC2, 'Principles of Microeconomics': MICRO, 'Principles of Macroeconomics': MACRO, 'Financial Accounting I': ACC, 'Programming with Python': PY, 'General Chemistry': CHEM, 'Physics I: Mechanics': PHYS, 'Cell Biology': BIO, 'Introduction to Psychology': PSY, 'Introduction to Law and Legal Systems': LAW, 'Introduction to Philosophy and Logic': PHIL, 'Foundations of Education': EDU, 'Academic Writing and Research Methods': AW, 'Differential Equations': DE, 'Discrete Mathematics and Logic': DM, 'Data Structures and Algorithms': DSA, 'Electricity and Magnetism': EM, 'Organic Chemistry': OC, 'Introduction to Data Analysis': DA, 'Machine Learning Foundations': ML}}},
 }
 
 if problems:
@@ -239,12 +263,15 @@ page = f'''<!DOCTYPE html>
 <h2>Electricity and Magnetism ({nq17} questions)</h2><ul>{rows(EM)}</ul>
 <h2>Organic Chemistry ({nq18} questions)</h2><ul>{rows(OC)}</ul>
 <h2>Introduction to Data Analysis ({nq19} questions)</h2><ul>{rows(DA)}</ul>
-<h2>Machine Learning Foundations ({nq20} questions)</h2><ul>{rows(ML)}</ul></div>
+<h2>Machine Learning Foundations ({nq20} questions)</h2><ul>{rows(ML)}</ul>
+<h2>Introduction to Law and Legal Systems ({nq21} questions)</h2><ul>{rows(LAW)}</ul>
+<h2>Foundations of Education ({nq22} questions)</h2><ul>{rows(EDU)}</ul>
+<h2>Introduction to Philosophy and Logic ({nq23} questions)</h2><ul>{rows(PHIL)}</ul></div>
 <script type="application/json" id="syllabus-data">{js}</script>
 </body>
 </html>
 '''
 open(OUT, 'w', encoding='utf-8').write(page)
-for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19), ('Machine Learning Foundations', ML, nq20)):
+for nm, C, n in (('Calculus I', CALC1, nq), ('Linear Algebra', LA, nq2), ('Probability and Statistics', STAT, nq3), ('Calculus II', CALC2, nq4), ('Principles of Microeconomics', MICRO, nq5), ('Principles of Macroeconomics', MACRO, nq6), ('Financial Accounting I', ACC, nq7), ('Programming with Python', PY, nq8), ('General Chemistry', CHEM, nq9), ('Physics I: Mechanics', PHYS, nq10), ('Cell Biology', BIO, nq11), ('Introduction to Psychology', PSY, nq12), ('Academic Writing and Research Methods', AW, nq13), ('Differential Equations', DE, nq14), ('Discrete Mathematics and Logic', DM, nq15), ('Data Structures and Algorithms', DSA, nq16), ('Electricity and Magnetism', EM, nq17), ('Organic Chemistry', OC, nq18), ('Introduction to Data Analysis', DA, nq19), ('Machine Learning Foundations', ML, nq20), ('Introduction to Law and Legal Systems', LAW, nq21), ('Foundations of Education', EDU, nq22), ('Introduction to Philosophy and Logic', PHIL, nq23)):
     print(f'{nm}: {sum(len(m["topics"]) for m in C["modules"])} topics, {n} questions, {len(C["flashcards"])} flashcards')
 print('wrote', os.path.relpath(OUT))
