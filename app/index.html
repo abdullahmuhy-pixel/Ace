@@ -236,7 +236,7 @@ const exk=ex=>{const c=C[S.c];if(c&&c.xk){const i=c.x.indexOf(ex);return c.xk[i<
 const realSub=(c,s,ex)=>ACE_LOADED[S.c]&&SYL[exk(ex)]&&SYL[exk(ex)][s];
 const nq=(c,s,i,ex)=>ACE_LOADED[S.c]?(NGQ[s]||0):QN[i];
 const SYLX=s=>{const c=C[S.c],e=SYL[exk(c.x[S.x%c.x.length])];return (e&&e[s])||(SYL.WASSCE||{})[s]};
-const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6'],LR:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],MT:['Year 9','Year 10','Year 11','Sixth Form 1','Sixth Form 2'],ZW:['Form 3', 'Form 4', 'Lower 6', 'Upper 6'],BW:['Form 4', 'Form 5'],FR:['Seconde', 'Première', 'Terminale'],IT:['Terzo anno', 'Quarto anno', 'Quinto anno'],PT:['10.º ano', '11.º ano', '12.º ano'],DE:['Einführungsphase', 'Q1', 'Q2'],NA:['Grade 10', 'Grade 11', 'Grade 12'],MW:['Form 3', 'Form 4']};
+const LV={NG:['SS1','SS2','SS3'],SL:['Primary 6','JSS1','JSS2','JSS3','SS1','SS2','SS3'],GM:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GH:['JHS 1','JHS 2','JHS 3','SHS 1','SHS 2','SHS 3'],KE:['Form 3','Form 4'],ZM:['Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],GB:['Year 10','Year 11','Year 12','Year 13'],CA:['Grade 11','Grade 12'],ES:['1º Bachillerato','2º Bachillerato'],IE:['5th Year','6th Year'],ZA:['Grade 10', 'Grade 11', 'Grade 12'],UG:['S3', 'S4', 'S5', 'S6'],TZ:['Form 3', 'Form 4', 'Form 5', 'Form 6'],LR:['Grade 7','Grade 8','Grade 9','Grade 10','Grade 11','Grade 12'],MT:['Year 9','Year 10','Year 11','Sixth Form 1','Sixth Form 2'],ZW:['Form 3', 'Form 4', 'Lower 6', 'Upper 6'],BW:['Form 4', 'Form 5'],FR:['Seconde', 'Première', 'Terminale'],IT:['Terzo anno', 'Quarto anno', 'Quinto anno'],PT:['10.º ano', '11.º ano', '12.º ano'],DE:['Einführungsphase', 'Q1', 'Q2'],NA:['Grade 10', 'Grade 11', 'Grade 12'],MW:['Form 3', 'Form 4']};
 let P={done:{},g:{},s:{},goal:20,rem:true,str:true,wk:false,hc:false,dy:false,email:'',vr:false,snd:true,voice:false,vc:'melodic'};
 try{Object.assign(P,JSON.parse(localStorage.getItem('ace-prefs')||'{}'))}catch(e){}
 const svP=()=>{try{localStorage.setItem('ace-prefs',JSON.stringify(P))}catch(e){}};
@@ -251,7 +251,7 @@ GH:{n:'Ghana',f:'🇬🇭',b:'WAEC',x:['WASSCE'],s:['Core Mathematics','English 
 SL:{n:'Sierra Leone',f:'🇸🇱',b:'WAEC',x:['WASSCE'],s:['Core Mathematics','English Language','Social Studies','Physics','Chemistry','Biology','Economics','Commerce','Financial Accounting'],t:'waec',d:'2027-05-10',u:'Guest'},
 GM:{n:'The Gambia',f:'🇬🇲',b:'WAEC',x:['WASSCE'],s:['Core Mathematics','English Language','Social Studies','Physics','Chemistry','Biology','Economics','Commerce','Financial Accounting'],t:'waec',d:'2027-05-10',u:'Guest'},
 KE:{n:'Kenya',f:'🇰🇪',b:'KNEC',x:['KCSE','CATs','Joint mocks'],s:['Mathematics','English','Kiswahili','Biology','Chemistry','Business Studies'],t:'ke',d:'2026-11-02',u:'Guest',p:'DPA 2019'},
-ZM:{n:'Zambia',f:'🇿🇲',b:'ECZ',x:['ECZ Grade 12','ECZ Grade 9'],s:['Mathematics','English Language','Integrated Science','Biology','Commerce','Civic Education'],t:'zm',d:'2026-10-26',u:'Guest',p:'DPA 2021'},
+ZM:{n:'Zambia',f:'🇿🇲',b:'ECZ',x:['ECZ Grade 12','ECZ Grade 9'],s:['Mathematics','English Language','Science','Biology','Chemistry','Physics','Commerce','Civic Education'],t:'zm',d:'2026-10-26',u:'Guest',p:'DPA 2021'},
 GB:{n:'United Kingdom',f:'🇬🇧',b:'AQA, Edexcel, OCR',x:['GCSE','AS-Level','A-Level'],s:['Mathematics','English Language','Combined Science','Biology','History','Geography'],t:'gb',d:'2027-05-13',u:'Guest',p:'UK GDPR'},
 CA:{n:'Canada',f:'🇨🇦',b:'Provincial',x:['OSSD','Provincial diploma exams'],s:['Functions & Calculus','English Grade 12','Biology','Chemistry','Physics','Canadian History'],t:'ca',d:'2027-06-15',u:'Guest',p:'PIPEDA'},
 ES:{n:'España',f:'🇪🇸',b:'EBAU',l:'es',x:['EBAU / Selectividad','2º Bachillerato'],s:['Matemáticas II','Lengua Castellana y Literatura','Historia de España','Inglés','Física','Química'],t:'es',d:'2027-06-08',u:'Invitado',p:'RGPD'},
@@ -683,7 +683,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  else if(a=='nt'){if(v in P){P[v]=!P[v];svP()}}
  else if(a=='sheet')S.sh=v;
  else if(a=='shclose')S.sh=null;
- else if(a=='setgrade'){P.g[S.c]=v;svP();S.sh=null;{const jr=/^(JHS|JSS)|^Grade [789]$/.test(v),xs=c.xk||[],ji=xs.findIndex(k=>/^(BECE|GABECE|LJHSCE)$/.test(k)),si=xs.findIndex(k=>k=='WASSCE'),ni=xs.findIndex(k=>k=='NPSE'),t=v=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0){S.x=t;S.sub=null;S.open=null}const mi=xs.indexOf('Matriculation');if(mi>=0){S.x=/^Sixth Form/.test(v)?mi:0;S.sub=null;S.open=null}}}
+ else if(a=='setgrade'){P.g[S.c]=v;svP();S.sh=null;{const jr=/^(JHS|JSS)|^Grade [789]$/.test(v),xs=c.xk||[],ji=xs.findIndex(k=>/^(BECE|GABECE|LJHSCE|ECZ Grade 9)$/.test(k)),si=xs.findIndex(k=>k=='WASSCE'),ni=xs.findIndex(k=>k=='NPSE'),t=v=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0){S.x=t;S.sub=null;S.open=null}const mi=xs.indexOf('Matriculation');if(mi>=0){S.x=/^Sixth Form/.test(v)?mi:0;S.sub=null;S.open=null}}}
  else if(a=='setgoal'){P.goal=+v;svP();S.sh=null}
  else if(a=='togsub'){const cur=(P.s[S.c]||c.s).slice(),j=cur.indexOf(v);if(j>=0){if(cur.length==1){toast(TX('Keep at least one subject','Elige al menos una'));return}cur.splice(j,1)}else cur.push(v);P.s[S.c]=c.s.filter(z=>cur.includes(z));svP()}
  else if(a=='savename'){const n=($('#sh-in').value||'').trim();if(!n){toast(TX('Enter a name','Escribe un nombre'));return}for(const k in C)C[k].u=n;try{localStorage.setItem('ace-name',n)}catch(z){}S.sh=null}
@@ -804,7 +804,7 @@ try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)&&!/clau
   if(cc&&C[cc]&&cc!==S.c){S.c=cc;S.x=0;S.sub=null;S.open=null;S.qz=null;try{localStorage.setItem('ace-country',cc)}catch(e){}useCountry(cc)}
   var n=function(x){return String(x).replace(/\s+/g,'').replace(/^SSS/,'SS').toLowerCase()};
   if(!CAMPUS&&pl.class_level){var hit=(LV[S.c]||[]).filter(function(g){return n(g)===n(pl.class_level)})[0];if(hit){P.g[S.c]=hit;svP();
-   var jr=/^(JHS|JSS)|^Grade [789]$/.test(hit),xs=C[S.c].xk||[],ji=xs.findIndex(function(k){return /^(BECE|GABECE|LJHSCE)$/.test(k)}),si=xs.findIndex(function(k){return k=='WASSCE'}),ni=xs.findIndex(function(k){return k=='NPSE'});
+   var jr=/^(JHS|JSS)|^Grade [789]$/.test(hit),xs=C[S.c].xk||[],ji=xs.findIndex(function(k){return /^(BECE|GABECE|LJHSCE|ECZ Grade 9)$/.test(k)}),si=xs.findIndex(function(k){return k=='WASSCE'}),ni=xs.findIndex(function(k){return k=='NPSE'});
    var t=hit=='Primary 6'&&ni>=0?ni:jr?ji:si;if(t>=0&&si>=0)S.x=t;var mi=xs.indexOf('Matriculation');if(mi>=0)S.x=/^Sixth Form/.test(hit)?mi:0}}
   if(!CAMPUS&&pl.exam_target&&!pl.class_level){var xi=C[S.c].x.indexOf(pl.exam_target);if(xi>=0)S.x=xi}
  }catch(e){}}
