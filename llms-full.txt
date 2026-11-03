@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 38 exams, 50,392 practice questions, 9,893 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 38 exams, 50,517 practice questions, 9,918 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -138,8 +138,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe
 Exams: O Level at the end of Form 4 and A Level at the end of Upper 6, both set by ZIMSEC, the Zimbabwe School Examinations Council.
 Grading: O Level: grades A to E, and C or better is a pass. A Level: grades A to E, worth 5 points (A) down to 1 point (E).
 Levels: Form 1 – Upper 6
-Totals: 15 subjects, 312 topics, 1,560 questions.
-- O Level (ZIMSEC): Mathematics, English Language, Chemistry, Biology, Physics, Computer Science, Principles of Accounting, Commerce, Geography, History, Heritage Studies
+Totals: 16 subjects, 337 topics, 1,685 questions.
+- O Level (ZIMSEC): Mathematics, English Language, Chemistry, Biology, Physics, Computer Science, Principles of Accounting, Commerce, Geography, History, Heritage Studies, Combined Science
 - A Level (ZIMSEC): Mathematics, Physics, Chemistry, Biology
 
 ## Botswana
