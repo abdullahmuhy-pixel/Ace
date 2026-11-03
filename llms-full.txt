@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 41 exams, 54,208 practice questions, 10,654 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 41 exams, 54,373 practice questions, 10,687 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -192,9 +192,9 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-namibia
 Exams: The Namibia Senior Secondary Certificate at two levels, set by the Directorate of National Examinations and Assessment (DNEA) in the Ministry of Education: NSSCO (Ordinary level) at the end of Grade 11 and NSSCAS (Advanced Subsidiary level) at the end of Grade 12. Learners who do well enough at NSSCO go on to Grade 12 and the NSSCAS; others can enter vocational training, NAMCOL or some diplomas.
 Grading: NSSCO grades run from A* (highest) to G, and NSSCAS grades from A to E; U means ungraded.
 Levels: Grade 8 – Grade 12
-Totals: 20 subjects, 317 topics, 1,585 questions.
+Totals: 22 subjects, 350 topics, 1,750 questions.
 - NSSCO (DNEA (Directorate of National Examinations and Assessment, Ministry of Education)): Mathematics, English Second Language, Biology, Chemistry, Physics, Computer Science, Geography, History, Accounting, Business Studies, Agricultural Science, Economics, Development Studies, Entrepreneurship
-- NSSCAS (DNEA (Directorate of National Examinations and Assessment, Ministry of Education)): Mathematics, Physics, Chemistry, Biology, Economics, Accounting
+- NSSCAS (DNEA (Directorate of National Examinations and Assessment, Ministry of Education)): Mathematics, Physics, Chemistry, Biology, Economics, Accounting, Geography, History
 
 ## Malawi
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi
