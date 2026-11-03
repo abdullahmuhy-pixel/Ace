@@ -27,14 +27,14 @@
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 29 subjects, 3,090 practice questions
 - [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 22 subjects, 2,308 practice questions
 - [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 28 subjects, 3,200 practice questions
-- [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 19 subjects, 2,040 practice questions
+- [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 20 subjects, 2,125 practice questions
 - [Botswana: BGCSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana): 13 subjects, 1,220 practice questions
 - [France: Épreuves anticipées, Baccalauréat, Bac technologique](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france): 51 subjects, 3,820 practice questions
 - [Italia: Esame di Maturità](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-italy): 19 subjects, 1,485 practice questions
 - [Portugal: Exames Nacionais](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-portugal): 19 subjects, 1,290 practice questions
 - [Deutschland: Abitur](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-germany): 13 subjects, 810 practice questions
 - [Namibia: NSSCO, NSSCAS](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-namibia): 17 subjects, 1,415 practice questions
-- [Malawi: MSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 12 subjects, 1,040 practice questions
+- [Malawi: MSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 13 subjects, 1,090 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)

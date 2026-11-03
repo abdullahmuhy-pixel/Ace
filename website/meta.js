@@ -112,10 +112,10 @@ MT:{name:'Malta',flag:'🇲🇹',lang:'English and Maltese',levels:'Year 9 – S
  next:['Recorded listening practice for the language orals','SEC options such as Italian, Religious Knowledge and Social Studies','Teacher review of the Malta content']},
 ZW:{name:'Zimbabwe',flag:'🇿🇼',lang:'English',levels:'Form 1 – Upper 6',law:'Cyber and Data Protection Act',
  sys:'O Level at the end of Form 4 and A Level at the end of Upper 6, both set by ZIMSEC, the Zimbabwe School Examinations Council.',
- intro:'Zimbabwe follows the ZIMSEC syllabuses. Ace covers 12 O Level subjects (including Combined Science, Principles of Accounting, Commerce, Geography, History and Heritage Studies) and A Level Mathematics, Physics, Chemistry, Biology, Economics, Computer Science and Business Studies, with US dollars in the money questions and Zimbabwean places and examples throughout.',
+ intro:'Zimbabwe follows the ZIMSEC syllabuses. Ace covers 12 O Level subjects (including Combined Science, Principles of Accounting, Commerce, Geography, History and Heritage Studies) and A Level Mathematics, Physics, Chemistry, Biology, Economics, Computer Science, Business Studies and Accounting, with US dollars in the money questions and Zimbabwean places and examples throughout.',
  ex:{'O Level':'The ZIMSEC Ordinary Level certificate, taken at the end of Form 4. Most further study needs five passes including English Language.','A Level':'The ZIMSEC Advanced Level certificate, taken at the end of Upper 6. Universities select on A Level points.'},
  scale:'O Level: grades A to E, and C or better is a pass. A Level: grades A to E, worth 5 points (A) down to 1 point (E).',
- next:['A Level Accounting, Geography and History','Literature in English and Shona','Teacher review of the Zimbabwe content']},
+ next:['A Level Geography and History','Literature in English and Shona','Teacher review of the Zimbabwe content']},
 BW:{name:'Botswana',flag:'🇧🇼',lang:'English and Setswana',levels:'Form 1 – Form 5',law:'Data Protection Act',
  sys:"The Botswana General Certificate of Secondary Education (BGCSE) at the end of Form 5, set by the Botswana Examinations Council (BEC). The Junior Certificate (JCE) comes at the end of Form 3.",
  intro:"Botswana follows the BEC BGCSE syllabuses. Ace covers Mathematics, English Language, Biology, Chemistry, Physics, Science Double Award, Computer Studies, Accounting, Commerce, Geography, History, Agriculture and Development Studies, with pula in the money questions and Botswana places and examples throughout.",
@@ -154,10 +154,10 @@ NA:{name:'Namibia',flag:'🇳🇦',lang:'English',levels:'Grade 8 – Grade 12',
  next:["NSSCO Entrepreneurship and languages","More NSSCAS subjects (English, Geography, History, Accounting, Economics)","Teacher review of the Namibia content"]},
 MW:{name:'Malawi',flag:'🇲🇼',lang:'English and Chichewa',levels:'Form 1 – Form 4',law:'Data Protection Act, 2024',
  sys:"The Malawi School Certificate of Education (MSCE), set by the Malawi National Examinations Board (MANEB) at the end of Form 4. Learners sit the Junior Certificate of Education (JCE) at the end of Form 2. Since the calendar change, the MSCE has been written around June and July (in 2026 from 30 June to 24 July).",
- intro:"Malawi follows the MANEB MSCE syllabuses. Ace covers MSCE Mathematics, English, Biology, Chemistry, Physics, Computer Studies, Geography, History, Agriculture, Social Studies, Business Studies and Bible Knowledge, with kwacha in the money questions and Malawian places and examples throughout.",
+ intro:"Malawi follows the MANEB MSCE syllabuses. Ace covers MSCE Mathematics, English, Biology, Chemistry, Physics, Computer Studies, Geography, History, Agriculture, Social Studies, Business Studies, Bible Knowledge and Life Skills, with kwacha in the money questions and Malawian places and examples throughout.",
  ex:{"MSCE": "The Malawi School Certificate of Education, written at the end of Form 4. Learners take at least six subjects; the certificate needs a pass in English and five other subjects, at least one of them at credit level."},
  scale:"MSCE grades run from 1 (best) to 9: 1 and 2 are distinction, 3 to 6 credit, 7 and 8 pass, and 9 fail. The best six subjects give the aggregate points, so 6 is the best possible.",
- next:["Chichewa and Life Skills","Physical Education and Expressive Arts","Teacher review of the Malawi content"]}
+ next:["Chichewa","Physical Education and Expressive Arts","Teacher review of the Malawi content"]}
 };
 
 const STUDENT_TOOLS = [
