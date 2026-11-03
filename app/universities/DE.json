@@ -1,0 +1,538 @@
+{
+ "country": "DE",
+ "updated": "2026-11-03",
+ "admissions_overview": {
+  "summary": "Mit dem Abitur (allgemeine Hochschulreife) kannst du an jeder Universität und Fachhochschule studieren. Zulassungsfreie Studiengänge nehmen alle Bewerberinnen und Bewerber auf. Zulassungsbeschränkte Studiengänge (Numerus clausus) vergeben Plätze vor allem nach der Abiturnote, oft über das Dialogorientierte Serviceverfahren von hochschulstart.de; Medizin, Zahnmedizin, Tiermedizin und Pharmazie laufen zentral über die Stiftung für Hochschulzulassung, mit Abiturnote, Tests wie dem TMS und weiteren Kriterien. Die Frist für das Wintersemester ist meist der 15. Juli. Ein Bachelor dauert meist 3 Jahre (6 Semester), Medizin rund 6 Jahre, Rechtswissenschaft mit Staatsexamen etwa 5 Jahre. An staatlichen Hochschulen fallen meist nur Semesterbeiträge an.",
+  "official_url": "https://www.hochschulstart.de",
+  "notes": "Die genannten Fakultäten und Studiengänge sind Beispiele, nicht das ganze Angebot. NC-Werte, Fristen und Beiträge ändern sich jedes Semester: prüf sie immer auf hochschulstart.de und der Website der Hochschule."
+ },
+ "universities": [
+  {
+   "id": "tum",
+   "name": "Technische Universität München",
+   "short": "TUM",
+   "type": "public",
+   "city": "München",
+   "url": "https://www.tum.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "TUM School of Computation, Information and Technology",
+     "courses": [
+      {
+       "name": "Informatik",
+       "years": 3
+      },
+      {
+       "name": "Elektrotechnik und Informationstechnik",
+       "years": 3
+      },
+      {
+       "name": "Mathematik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "TUM School of Engineering and Design",
+     "courses": [
+      {
+       "name": "Maschinenwesen",
+       "years": 3
+      },
+      {
+       "name": "Bauingenieurwesen",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "TUM School of Medicine and Health",
+     "courses": [
+      {
+       "name": "Humanmedizin",
+       "years": 6
+      },
+      {
+       "name": "Gesundheitswissenschaften",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lmu",
+   "name": "Ludwig-Maximilians-Universität München",
+   "short": "LMU",
+   "type": "public",
+   "city": "München",
+   "url": "https://www.lmu.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Medizinische Fakultät",
+     "courses": [
+      {
+       "name": "Humanmedizin",
+       "years": 6
+      },
+      {
+       "name": "Zahnmedizin",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Juristische Fakultät",
+     "courses": [
+      {
+       "name": "Rechtswissenschaft (Staatsexamen)",
+       "years": 5
+      },
+      {
+       "name": "Master of Laws (LL.M.)",
+       "years": 1
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Betriebswirtschaft",
+     "courses": [
+      {
+       "name": "Betriebswirtschaftslehre",
+       "years": 3
+      },
+      {
+       "name": "Wirtschaftspädagogik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Psychologie und Pädagogik",
+     "courses": [
+      {
+       "name": "Psychologie",
+       "years": 3
+      },
+      {
+       "name": "Pädagogik",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uni-heidelberg",
+   "name": "Ruprecht-Karls-Universität Heidelberg",
+   "short": "Uni Heidelberg",
+   "type": "public",
+   "city": "Heidelberg",
+   "url": "https://www.uni-heidelberg.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Medizinische Fakultät Heidelberg",
+     "courses": [
+      {
+       "name": "Humanmedizin",
+       "years": 6
+      },
+      {
+       "name": "Zahnmedizin",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Biowissenschaften",
+     "courses": [
+      {
+       "name": "Biowissenschaften",
+       "years": 3
+      },
+      {
+       "name": "Molekulare Biotechnologie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Physik und Astronomie",
+     "courses": [
+      {
+       "name": "Physik",
+       "years": 3
+      },
+      {
+       "name": "Physik (Master)",
+       "years": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hu-berlin",
+   "name": "Humboldt-Universität zu Berlin",
+   "short": "HU Berlin",
+   "type": "public",
+   "city": "Berlin",
+   "url": "https://www.hu-berlin.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Juristische Fakultät",
+     "courses": [
+      {
+       "name": "Rechtswissenschaft (Staatsexamen)",
+       "years": 5
+      },
+      {
+       "name": "Master of Laws (LL.M.)",
+       "years": 1
+      }
+     ]
+    },
+    {
+     "name": "Philosophische Fakultät",
+     "courses": [
+      {
+       "name": "Geschichtswissenschaften",
+       "years": 3
+      },
+      {
+       "name": "Philosophie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Lebenswissenschaftliche Fakultät",
+     "courses": [
+      {
+       "name": "Biologie",
+       "years": 3
+      },
+      {
+       "name": "Psychologie",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fu-berlin",
+   "name": "Freie Universität Berlin",
+   "short": "FU Berlin",
+   "type": "public",
+   "city": "Berlin",
+   "url": "https://www.fu-berlin.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Fachbereich Rechtswissenschaft",
+     "courses": [
+      {
+       "name": "Rechtswissenschaft (Staatsexamen)",
+       "years": 5
+      },
+      {
+       "name": "Master of Laws (LL.M.)",
+       "years": 1
+      }
+     ]
+    },
+    {
+     "name": "Fachbereich Politik- und Sozialwissenschaften",
+     "courses": [
+      {
+       "name": "Politikwissenschaft",
+       "years": 3
+      },
+      {
+       "name": "Soziologie",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fachbereich Mathematik und Informatik",
+     "courses": [
+      {
+       "name": "Informatik",
+       "years": 3
+      },
+      {
+       "name": "Mathematik",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rwth",
+   "name": "RWTH Aachen University",
+   "short": "RWTH Aachen",
+   "type": "public",
+   "city": "Aachen",
+   "url": "https://www.rwth-aachen.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Fakultät für Maschinenwesen",
+     "courses": [
+      {
+       "name": "Maschinenbau",
+       "years": 3
+      },
+      {
+       "name": "Wirtschaftsingenieurwesen Fachrichtung Maschinenbau",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Elektrotechnik und Informationstechnik",
+     "courses": [
+      {
+       "name": "Elektrotechnik, Informationstechnik und Technische Informatik",
+       "years": 3
+      },
+      {
+       "name": "Wirtschaftsingenieurwesen Fachrichtung Elektrische Energietechnik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Medizinische Fakultät",
+     "courses": [
+      {
+       "name": "Medizin",
+       "years": 6
+      },
+      {
+       "name": "Zahnmedizin",
+       "years": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kit",
+   "name": "Karlsruher Institut für Technologie",
+   "short": "KIT",
+   "type": "public",
+   "city": "Karlsruhe",
+   "url": "https://www.kit.edu",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "KIT-Fakultät für Informatik",
+     "courses": [
+      {
+       "name": "Informatik",
+       "years": 3
+      },
+      {
+       "name": "Wirtschaftsinformatik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "KIT-Fakultät für Maschinenbau",
+     "courses": [
+      {
+       "name": "Maschinenbau",
+       "years": 3
+      },
+      {
+       "name": "Mechatronik und Informationstechnik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "KIT-Fakultät für Wirtschaftswissenschaften",
+     "courses": [
+      {
+       "name": "Wirtschaftsingenieurwesen",
+       "years": 3
+      },
+      {
+       "name": "Technische Volkswirtschaftslehre",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uni-hamburg",
+   "name": "Universität Hamburg",
+   "short": "UHH",
+   "type": "public",
+   "city": "Hamburg",
+   "url": "https://www.uni-hamburg.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Fakultät für Rechtswissenschaft",
+     "courses": [
+      {
+       "name": "Rechtswissenschaft (Staatsexamen)",
+       "years": 5
+      },
+      {
+       "name": "Master of Laws (LL.M.)",
+       "years": 1
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Erziehungswissenschaft",
+     "courses": [
+      {
+       "name": "Lehramt an Gymnasien",
+       "years": 3
+      },
+      {
+       "name": "Lehramt an Grundschulen",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fakultät für Betriebswirtschaft",
+     "courses": [
+      {
+       "name": "Betriebswirtschaftslehre",
+       "years": 3
+      },
+      {
+       "name": "Betriebswirtschaftslehre (Master)",
+       "years": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uni-koeln",
+   "name": "Universität zu Köln",
+   "short": "Uni Köln",
+   "type": "public",
+   "city": "Köln",
+   "url": "https://www.uni-koeln.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Wirtschafts- und Sozialwissenschaftliche Fakultät",
+     "courses": [
+      {
+       "name": "Betriebswirtschaftslehre",
+       "years": 3
+      },
+      {
+       "name": "Volkswirtschaftslehre",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Medizinische Fakultät",
+     "courses": [
+      {
+       "name": "Humanmedizin",
+       "years": 6
+      },
+      {
+       "name": "Zahnmedizin",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Humanwissenschaftliche Fakultät",
+     "courses": [
+      {
+       "name": "Lehramt Sonderpädagogik",
+       "years": 3
+      },
+      {
+       "name": "Psychologie",
+       "years": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goethe-uni",
+   "name": "Goethe-Universität Frankfurt am Main",
+   "short": "Goethe-Uni",
+   "type": "public",
+   "city": "Frankfurt am Main",
+   "url": "https://www.uni-frankfurt.de",
+   "admissions_url": "https://www.hochschulstart.de",
+   "verified_on": "2026-11-03",
+   "faculties": [
+    {
+     "name": "Fachbereich Wirtschaftswissenschaften",
+     "courses": [
+      {
+       "name": "Wirtschaftswissenschaften",
+       "years": 3
+      },
+      {
+       "name": "Wirtschaftspädagogik",
+       "years": 3
+      }
+     ]
+    },
+    {
+     "name": "Fachbereich Medizin",
+     "courses": [
+      {
+       "name": "Humanmedizin",
+       "years": 6
+      },
+      {
+       "name": "Zahnmedizin",
+       "years": 5
+      }
+     ]
+    },
+    {
+     "name": "Fachbereich Rechtswissenschaft",
+     "courses": [
+      {
+       "name": "Rechtswissenschaft (Staatsexamen)",
+       "years": 5
+      },
+      {
+       "name": "Master of Laws (LL.M.)",
+       "years": 1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
