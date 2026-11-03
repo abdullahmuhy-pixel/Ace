@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 39 exams, 52,668 practice questions, 10,346 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 39 exams, 53,108 practice questions, 10,434 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -103,8 +103,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda
 Exams: The Uganda Certificate of Education (UCE, S4) and the Uganda Advanced Certificate of Education (UACE, S6), set by UNEB.
 Grading: UCE: grades 1 (best) to 9 and a division. UACE: principal passes A to F and subsidiary O or F.
 Levels: S1 – S6
-Totals: 28 subjects, 595 topics, 2,975 questions.
-- UCE (UNEB): Mathematics, English Language, Biology, Chemistry, Physics, Geography, History and Political Education, Commerce, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Entrepreneurship Education
+Totals: 29 subjects, 609 topics, 3,045 questions.
+- UCE (UNEB): Mathematics, English Language, Biology, Chemistry, Physics, Geography, History and Political Education, Commerce, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Entrepreneurship Education, Fine Art
 - UACE (UNEB): Mathematics, Physics, Biology, Literature in English, General Paper, Subsidiary ICT, Subsidiary Mathematics, Chemistry, Economics, Geography, History, Commerce, Entrepreneurship
 
 ## Tanzania
@@ -112,8 +112,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania
 Exams: The Certificate of Secondary Education Examination (CSEE, Form 4) and the Advanced Certificate of Secondary Education Examination (ACSEE, Form 6), set by NECTA.
 Grading: CSEE: divisions I to IV and 0 (grades A to F). ACSEE: grades A to F and S, with points for university.
 Levels: Form 1 – 6
-Totals: 28 subjects, 604 topics, 3,020 questions.
-- CSEE (NECTA): Basic Mathematics, English Language, Biology, Chemistry, Physics, Geography, History, Commerce, Bible Knowledge, Islamic Knowledge, Agriculture, Information and Computer Studies, Literature in English, Kiswahili
+Totals: 29 subjects, 618 topics, 3,090 questions.
+- CSEE (NECTA): Basic Mathematics, English Language, Biology, Chemistry, Physics, Geography, History, Commerce, Bible Knowledge, Islamic Knowledge, Agriculture, Information and Computer Studies, Literature in English, Kiswahili, Fine Art
 - ACSEE (NECTA): Advanced Mathematics, Physics, Biology, General Studies, Information and Computer Studies, English Language, Basic Applied Mathematics, Chemistry, Economics, Geography, History, Accountancy, Commerce, Kiswahili
 
 ## Liberia
@@ -121,8 +121,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia
 Exams: WASSCE at the end of senior high school (Grade 12) and the LJHSCE at the end of junior high school (Grade 9), both administered in Liberia by WAEC.
 Grading: WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.
 Levels: Grade 7 – 12
-Totals: 20 subjects, 414 topics, 2,153 questions.
-- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English, Government, Commerce, Financial Accounting, Information and Communication Technology, French, Further Mathematics, Agricultural Science
+Totals: 22 subjects, 445 topics, 2,308 questions.
+- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English, Government, Commerce, Financial Accounting, Information and Communication Technology, French, Further Mathematics, Agricultural Science, Christian Religious Studies, Visual Art
 - LJHSCE (WAEC): English Language, Mathematics, General Science, Social Studies
 
 ## Malta
@@ -199,8 +199,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi
 Exams: The Malawi School Certificate of Education (MSCE), set by the Malawi National Examinations Board (MANEB) at the end of Form 4. Learners sit the Junior Certificate of Education (JCE) at the end of Form 2. Since the calendar change, the MSCE has been written around June and July (in 2026 from 30 June to 24 July).
 Grading: MSCE grades run from 1 (best) to 9: 1 and 2 are distinction, 3 to 6 credit, 7 and 8 pass, and 9 fail. The best six subjects give the aggregate points, so 6 is the best possible.
 Levels: Form 1 – Form 4
-Totals: 10 subjects, 179 topics, 895 questions.
-- MSCE (MANEB (Malawi National Examinations Board)): Mathematics, English, Biology, Chemistry, Physics, Computer Studies, Geography, History, Agriculture, Social Studies
+Totals: 12 subjects, 208 topics, 1,040 questions.
+- MSCE (MANEB (Malawi National Examinations Board)): Mathematics, English, Biology, Chemistry, Physics, Computer Studies, Geography, History, Agriculture, Social Studies, Business Studies, Bible Knowledge
 
 ## FAQ
 **Which exams does Ace Education cover today?** More than twenty exams across nineteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; the Exames Nacionais in Portugal; the Abitur in Germany; NSSCO and NSSCAS in Namibia; the MSCE in Malawi; and the SEC in Malta. The Countries page shows exactly which subjects each one has.

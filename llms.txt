@@ -23,9 +23,9 @@
 - [España: EBAU / Selectividad](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-spain): 20 subjects, 1,475 practice questions
 - [Ireland: Leaving Certificate](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ireland): 18 subjects, 1,664 practice questions
 - [South Africa: NSC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa): 23 subjects, 2,140 practice questions
-- [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 28 subjects, 2,975 practice questions
-- [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 28 subjects, 3,020 practice questions
-- [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 20 subjects, 2,153 practice questions
+- [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 29 subjects, 3,045 practice questions
+- [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 29 subjects, 3,090 practice questions
+- [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 22 subjects, 2,308 practice questions
 - [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 28 subjects, 3,200 practice questions
 - [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 19 subjects, 2,040 practice questions
 - [Botswana: BGCSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana): 13 subjects, 1,220 practice questions
@@ -34,7 +34,7 @@
 - [Portugal: Exames Nacionais](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-portugal): 19 subjects, 1,290 practice questions
 - [Deutschland: Abitur](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-germany): 13 subjects, 810 practice questions
 - [Namibia: NSSCO, NSSCAS](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-namibia): 17 subjects, 1,415 practice questions
-- [Malawi: MSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 10 subjects, 895 practice questions
+- [Malawi: MSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 12 subjects, 1,040 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)
