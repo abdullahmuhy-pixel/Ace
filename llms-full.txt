@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 38 exams, 51,422 practice questions, 10,099 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 39 exams, 52,668 practice questions, 10,346 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -17,7 +17,7 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ghana
 Exams: WASSCE at the end of senior high school and the BECE at the end of junior high school.
 Grading: WASSCE: A1 to F9. BECE: grades 1 to 9 in each subject.
 Levels: SHS 1 – SHS 3
-Totals: 33 subjects, 559 topics, 2,877 questions.
+Totals: 33 subjects, 582 topics, 2,992 questions.
 - WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Integrated Science, Elective Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
 - BECE (WAEC): Mathematics, English Language, Integrated Science, Social Studies, Creative Arts and Design, Career Technology, French, Home Economics, Information and Communication Technology, Religious and Moral Education
 
@@ -26,7 +26,7 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-sierra-leone
 Exams: WASSCE for senior secondary, the BECE for junior secondary and the NPSE for primary.
 Grading: WASSCE: A1 to F9.
 Levels: SS1 – SS3
-Totals: 42 subjects, 637 topics, 3,267 questions.
+Totals: 42 subjects, 660 topics, 3,382 questions.
 - WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Integrated Science, Further Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
 - BECE (WAEC): Mathematics, English Language, Integrated Science, Social Studies, Agricultural Science, Business Studies, Basic Technology, French, Civic Education, Home Economics, Computer Studies, Religious and Moral Education
 - NPSE (WAEC): Mathematics, English Language, General Studies, Quantitative Aptitude, Verbal Aptitude, Science, Social Studies
@@ -36,8 +36,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-gambia
 Exams: WASSCE at Grade 12 and the GABECE at the end of basic education.
 Grading: WASSCE: A1 to F9.
 Levels: Grade 10 – 12
-Totals: 35 subjects, 605 topics, 3,107 questions.
-- WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Further Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
+Totals: 36 subjects, 622 topics, 3,192 questions.
+- WASSCE (WAEC): Core Mathematics, English Language, Social Studies, Integrated Science, Physics, Chemistry, Biology, Economics, Commerce, Financial Accounting, Further Mathematics, Agricultural Science, Literature in English, Geography, Information and Communication Technology, Government, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
 - GABECE (WAEC): Mathematics, English Language, Social and Environmental Studies, Science, Agricultural Science, Business Studies, Creative Arts, Basic Technology, French, Civic Education, Home Economics, Information and Communication Technology, Religious and Moral Education
 
 ## Kenya
@@ -118,11 +118,12 @@ Totals: 28 subjects, 604 topics, 3,020 questions.
 
 ## Liberia
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia
-Exams: WASSCE at the end of senior high school (Grade 12), administered in Liberia by WAEC.
+Exams: WASSCE at the end of senior high school (Grade 12) and the LJHSCE at the end of junior high school (Grade 9), both administered in Liberia by WAEC.
 Grading: WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.
-Levels: Grade 10 – 12
-Totals: 9 subjects, 230 topics, 1,222 questions.
-- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English
+Levels: Grade 7 – 12
+Totals: 20 subjects, 414 topics, 2,153 questions.
+- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English, Government, Commerce, Financial Accounting, Information and Communication Technology, French, Further Mathematics, Agricultural Science
+- LJHSCE (WAEC): English Language, Mathematics, General Science, Social Studies
 
 ## Malta
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta
