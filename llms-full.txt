@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 38 exams, 51,372 practice questions, 10,089 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 38 exams, 51,422 practice questions, 10,099 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -147,8 +147,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-botswana
 Exams: The Botswana General Certificate of Secondary Education (BGCSE) at the end of Form 5, set by the Botswana Examinations Council (BEC). The Junior Certificate (JCE) comes at the end of Form 3.
 Grading: BGCSE grades run from A* (highest) to G; U means ungraded.
 Levels: Form 1 – Form 5
-Totals: 12 subjects, 234 topics, 1,170 questions.
-- BGCSE (BEC): Computer Studies, Mathematics, English Language, Biology, Chemistry, Physics, Accounting, Commerce, Science Double Award, Geography, History, Agriculture
+Totals: 13 subjects, 244 topics, 1,220 questions.
+- BGCSE (BEC): Computer Studies, Mathematics, English Language, Biology, Chemistry, Physics, Accounting, Commerce, Science Double Award, Geography, History, Agriculture, Development Studies
 
 ## France
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-france
