@@ -152,10 +152,10 @@ NA:{name:'Namibia',flag:'🇳🇦',lang:'English',levels:'Grade 8 – Grade 12',
  next:["NSSCO Entrepreneurship and languages","More NSSCAS subjects (English, Geography, History, Accounting, Economics)","Teacher review of the Namibia content"]},
 MW:{name:'Malawi',flag:'🇲🇼',lang:'English and Chichewa',levels:'Form 1 – Form 4',law:'Data Protection Act, 2024',
  sys:"The Malawi School Certificate of Education (MSCE), set by the Malawi National Examinations Board (MANEB) at the end of Form 4. Learners sit the Junior Certificate of Education (JCE) at the end of Form 2. Since the calendar change, the MSCE has been written around June and July (in 2026 from 30 June to 24 July).",
- intro:"Malawi follows the MANEB MSCE syllabuses. Ace starts with MSCE Mathematics, with kwacha in the money questions and Malawian places and examples throughout.",
+ intro:"Malawi follows the MANEB MSCE syllabuses. Ace covers MSCE Mathematics, English, Biology, Chemistry, Physics, Computer Studies, Geography, History, Agriculture and Social Studies, with kwacha in the money questions and Malawian places and examples throughout.",
  ex:{"MSCE": "The Malawi School Certificate of Education, written at the end of Form 4. Learners take at least six subjects; the certificate needs a pass in English and five other subjects, at least one of them at credit level."},
  scale:"MSCE grades run from 1 (best) to 9: 1 and 2 are distinction, 3 to 6 credit, 7 and 8 pass, and 9 fail. The best six subjects give the aggregate points, so 6 is the best possible.",
- next:["English, Biology, Physics, Chemistry, Computer Studies", "Geography, History, Agriculture, Social and Development Studies", "Teacher review of the Malawi content"]}
+ next:["Chichewa, Bible Knowledge and Life Skills","Additional subjects such as Business Studies","Teacher review of the Malawi content"]}
 };
 
 const STUDENT_TOOLS = [
