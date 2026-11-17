@@ -85,17 +85,20 @@ handler(async (req, b, admin) => {
     if (!uid) throw new HttpError(500, "Could not create the student account. Try again.");
     const { error: eErr } = await admin.rpc("application_mark_enrolled", { p_app: a.id, p_student: uid, p_class: cls.id, p_actor: user.id });
     if (eErr) { await admin.auth.admin.deleteUser(uid); throw new HttpError(400, eErr.message); }
+    await admin.from("student_records").upsert({ student_id: uid, school_id: a.school_id, date_of_birth: a.date_of_birth, gender: a.gender,
+      address: a.address, phone: a.applicant_phone, previous_school: a.previous_school, admitted_on: new Date().toISOString().slice(0, 10) });
+    const { data: adm } = await admin.from("profiles").select("admission_no").eq("id", uid).single();
     if (a.guardian_email) await admin.from("guardians").insert({ student_id: uid, name: a.guardian_name, email: a.guardian_email, created_by: user.id });
     let emailed = false;
     if (b.email_family === true && family) {
       const login = `${SITE_URL.replace(/\/$/, "")}/login/`;
       await sendEmail(family, `${a.schools.name}: welcome, ${a.first_name}`,
         `<p>${esc(a.first_name)} ${esc(a.surname)} is enrolled at <b>${esc(a.schools.name)}</b>.</p>
-         <p>Sign in to Ace at <a href="${login}">${login}</a><br>Username: <b>${username}</b><br>Temporary password: <b>${pw}</b><br>Student number: <b>${num}</b></p>
+         <p>Sign in to Ace at <a href="${login}">${login}</a><br>Username: <b>${username}</b><br>Temporary password: <b>${pw}</b><br>${adm?.admission_no ? `Admission number: <b>${adm.admission_no}</b><br>` : ""}Ace student number: <b>${num}</b></p>
          <p>Ace asks for a new password at the first sign-in.</p>`).then(() => emailed = true).catch(console.error);
     }
     await audit(admin, user.id, "admissions.enrol", a.id, { student: uid });
-    return { ok: true, username, temp_password: pw, student_number: num, emailed };
+    return { ok: true, username, temp_password: pw, student_number: num, admission_no: adm?.admission_no ?? null, emailed };
   }
 
   throw new HttpError(400, "Unknown action.");

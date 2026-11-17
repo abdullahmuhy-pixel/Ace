@@ -72,3 +72,10 @@ in Ace Teach, **Admissions**.
 4. Personal data: declined and withdrawn applications should go after a year. An Ace platform admin calls
    `admissions-manage` with `{ "action": "purge" }` (deletes the rows and the files); schedule it monthly if you can.
 Behaviour tests: `supabase/tests/44_admissions_test.sql` (41 checks: who can read what, the status rules, enrolment, purge).
+
+## Student records (migration 0046)
+Admission numbers per school (prefix, optional year, running number; set in Ace Teach, Settings), enrolment status
+(active, suspended, withdrawn, transferred, graduated) with a logged history, and a record card per student
+(`student_records`). Leavers drop out of their classes and stop counting towards seats; their record stays.
+`move_students()` replaces direct updates of `profiles.class_id`, which the column grants never allowed.
+Tests: `supabase/tests/46_student_records_test.sql` (36 checks).
