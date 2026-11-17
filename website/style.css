@@ -311,3 +311,77 @@ header .bar a,header .bar .btn,header .brand{white-space:nowrap}
 .amt{font:800 2rem/1.1 var(--display);font-variant-numeric:tabular-nums;margin-top:.3rem}
 .plans small,.card>small{color:var(--ink2)}
 .plans .best{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* =====================================================================
+   NOTEBOOK v2 — same look as the student app and the Question Bank:
+   cool graph paper, navy ink, highlighter yellow for the main action,
+   thin borders with soft paper shadows. Loaded last, so it wins.
+   ===================================================================== */
+:root{--paper:#EEF1F8;--grid:rgba(36,52,104,.07);--sheet:#FFFFFF;--ink:#121A2E;--ink2:#4A5573;--line:#D6DCEA;--tint:#F4F6FB;
+ --green:#2B3FA8;--green-ink:#FFFFFF;--primary:#2B3FA8;--navy:#18213B;--ledge:rgba(18,26,46,.10);--btn-ledge:#05080F;
+ --mark:#FFC72C;--mark-ledge:#C99400;--mark-ink:#2A1E00;--mark-text:#8A5E00;--hl:rgba(255,199,44,.55);
+ --bad:#C2343A;--good:#0B8A5E;--okbg:#DDF5EA;--nobg:#FDE4E5;--warn:#8A5E00;--warnbg:#FFF4D1;
+ --shadow:0 18px 40px -22px rgba(18,26,46,.45);--paper-sh:0 1px 0 rgba(18,26,46,.04),0 12px 28px -20px rgba(18,26,46,.5)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0E1322;--grid:rgba(160,180,255,.045);--sheet:#161D31;--ink:#EEF1FA;--ink2:#A9B2CC;--line:#2A3556;--tint:#1C2440;
+ --green:#9DB0FF;--green-ink:#0E1322;--primary:#9DB0FF;--navy:#232E52;--ledge:rgba(0,0,0,.35);--btn-ledge:#151C33;--mark-text:#FFD866;--hl:rgba(255,199,44,.42);
+ --bad:#FF7A7F;--good:#3DD9A0;--okbg:#0F3A30;--nobg:#40182A;--warn:#FFD866;--warnbg:#3A2E10;
+ --shadow:0 22px 44px -22px rgba(0,0,0,.8);--paper-sh:0 14px 30px -18px rgba(0,0,0,.85);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0E1322;--grid:rgba(160,180,255,.045);--sheet:#161D31;--ink:#EEF1FA;--ink2:#A9B2CC;--line:#2A3556;--tint:#1C2440;
+ --green:#9DB0FF;--green-ink:#0E1322;--primary:#9DB0FF;--navy:#232E52;--ledge:rgba(0,0,0,.35);--btn-ledge:#151C33;--mark-text:#FFD866;--hl:rgba(255,199,44,.42);
+ --bad:#FF7A7F;--good:#3DD9A0;--okbg:#0F3A30;--nobg:#40182A;--warn:#FFD866;--warnbg:#3A2E10;
+ --shadow:0 22px 44px -22px rgba(0,0,0,.8);--paper-sh:0 14px 30px -18px rgba(0,0,0,.85);color-scheme:dark}
+body{background-size:28px 28px;font-size:16.5px}
+
+/* header */
+header{border-bottom:1px solid var(--line)}
+nav.main a{font-weight:700;border-radius:10px}
+nav.main a.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.icon{border:1.5px solid var(--line);border-radius:12px}
+
+/* buttons: one yellow main action, the rest paper */
+.btn{border:1.5px solid var(--line);border-radius:13px;box-shadow:0 2px 0 var(--ledge)}
+.btn:hover{border-color:var(--ink2)}
+.btn.primary{background:var(--mark);border-color:var(--mark);color:var(--mark-ink);box-shadow:0 3px 0 var(--mark-ledge)}
+.btn.primary:hover{border-color:var(--mark);filter:brightness(1.04)}
+.btn.primary:active{box-shadow:0 1px 0 var(--mark-ledge)}
+.btn.chk:disabled{background:var(--tint);border-color:var(--line);box-shadow:none}
+.chip{border:1.5px solid var(--line)}
+.chip.on,.tab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tab{border:1.5px solid var(--line)}
+.lnk,.who-p a{color:var(--green)}
+.eyebrow::before{width:22px;height:4px;border-radius:3px;box-shadow:none}
+
+/* paper surfaces */
+.card,.stat4>div,.mod,.tw,.worked,.steps4 li,.sheet{border:1.5px solid var(--line);box-shadow:var(--paper-sh)}
+.card,.stat4>div,.mod,.tw,.worked,.steps4 li{border-radius:18px}
+button.card:hover,a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ink2)}
+.sheet{border-radius:22px}
+.band{border-block:1px solid var(--line)}
+footer{border-top:1px solid var(--line)}
+.sel select,.sel input,.form input,.form select,.form textarea{border:1.5px solid var(--line)}
+.sel select:focus,.sel input:focus,.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--mark)}
+.note{border-width:1.5px}.ok{border-width:1.5px}
+
+/* highlighter on titles, ink numbers */
+.hero h1 .hl{background:linear-gradient(transparent 58%,var(--hl) 58% 90%,transparent 90%)}
+.hd h2,.hero h1{text-wrap:balance}
+.facts{border-top:1.5px dashed var(--line)}
+.facts b{color:var(--mark-text)}
+.stat4 b{color:var(--ink)}
+.steps li::before,.steps4 li::before{background:var(--ink);color:var(--paper)}
+.time{border-left-color:var(--ink)}.time>div::before{border-color:var(--ink)}
+.plans .best{border-color:var(--ink);box-shadow:var(--shadow)}
+.amt{color:var(--ink)}
+
+/* hero mini lesson: an exam paper */
+.lsn-top .seg i.c{background:color-mix(in srgb,var(--mark) 60%,var(--tint))}
+.lsn-ic{border:1.5px solid var(--line);box-shadow:none}
+.opt{border:1.5px solid var(--line);box-shadow:0 2px 0 var(--ledge)}
+.opt .b{border-radius:50%;border:1.5px solid var(--line);background:var(--sheet)}
+.opt:hover:not(:disabled){border-color:var(--ink2)}
+.opt.pk{border-color:var(--ink);background:color-mix(in srgb,var(--mark) 14%,var(--sheet))}.opt.pk .b{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.opt.good{border-color:var(--good);box-shadow:0 2px 0 #076043}.opt.good .b{background:var(--good);border-color:var(--good)}
+.opt.bad{border-color:var(--bad);box-shadow:0 2px 0 #8E2328}.opt.bad .b{background:var(--bad);border-color:var(--bad)}
+.lsn-top .seg i.ok{background:var(--good)}.lsn-top .seg i.no{background:var(--bad)}
+.mbar{border:1.5px solid var(--line);box-shadow:var(--shadow)}
+.aic{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 2.5h14a3 3 0 0 1 3 3v9.5a3 3 0 0 1-3 3h-7.6L6 22v-4H5a3 3 0 0 1-3-3V5.5a3 3 0 0 1 3-3z' fill='%232B3FA8'/%3E%3Cpath d='M11.3 5.2l1.5 3.6 3.6 1.5-3.6 1.5-1.5 3.6-1.5-3.6-3.6-1.5 3.6-1.5z' fill='%23FFC72C'/%3E%3Ccircle cx='17.4' cy='6.4' r='1.25' fill='%23FFC72C'/%3E%3C/svg%3E")}
