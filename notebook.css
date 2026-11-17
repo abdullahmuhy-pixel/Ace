@@ -1,0 +1,59 @@
+/* Ace "notebook" look, shared by the portals that keep their own page styles
+   (Academy, Login, Teach/staff, Studio, Creators, Family view, Certificate
+   check, Key maker). Same palette as the student app (app/ui.css) and the
+   website (site.css): cool graph paper, navy ink, highlighter yellow, thin
+   borders with soft paper shadows. Linked last in each page, so it wins.
+   It redefines every token name those pages use, so their own rules pick
+   the new colours up without being rewritten. */
+:root,:root[data-country]{
+ --bg:#EEF1F8;--grid:rgba(36,52,104,.07);--card:#FFFFFF;--surface:#FFFFFF;
+ --ink:#121A2E;--text:#121A2E;--text2:#4A5573;--text3:#7A84A0;--mut:#4A5573;--muted:#4A5573;
+ --line:#D6DCEA;--border:#D6DCEA;--soft:#F4F6FB;--tint:#F4F6FB;--tint2:#E4E8F2;
+ --pri:#18213B;--pri2:#2B3FA8;--primary:#18213B;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--btn:#18213B;--btn-ledge:#05080F;
+ --yellow:#FFC72C;--yellow-ledge:#C99400;--accent:#FFC72C;--hl:rgba(255,199,44,.55);--mark-text:#8A5E00;
+ --ok:#0B8A5E;--green:#0B8A5E;--mint:#0B8A5E;--mint-ledge:#076043;--bad:#C2343A;--red:#C2343A;--coral:#C2343A;
+ --warn:#8A5E00;--amber:#8A5E00;--gold:#8A5E00;--bar:#C9D2EC;--ok-bg:#DDF5EA;--no-bg:#FDE4E5;--warn-bg:#FFF4D1;
+ --ledge:rgba(18,26,46,.10);--sh:0 1px 0 rgba(18,26,46,.04),0 12px 28px -20px rgba(18,26,46,.5);
+ --shadow:0 18px 40px -22px rgba(18,26,46,.45);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]),:root[data-country]:not([data-theme=light]){
+ --bg:#0E1322;--grid:rgba(160,180,255,.045);--card:#161D31;--surface:#161D31;
+ --ink:#EEF1FA;--text:#EEF1FA;--text2:#A9B2CC;--text3:#7682A3;--mut:#A9B2CC;--muted:#A9B2CC;
+ --line:#2A3556;--border:#2A3556;--soft:#1C2440;--tint:#1C2440;--tint2:#26304F;
+ --pri:#4A5DB8;--pri2:#9DB0FF;--primary:#4A5DB8;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--btn:#34437A;--btn-ledge:#151C33;
+ --mark-text:#FFD866;--hl:rgba(255,199,44,.42);
+ --ok:#3DD9A0;--green:#3DD9A0;--mint:#2FBF8A;--mint-ledge:#13694B;--bad:#FF7A7F;--red:#FF7A7F;--coral:#E5535A;
+ --warn:#FFD866;--amber:#FFD866;--gold:#FFD866;--bar:#34437A;--ok-bg:#0F3A30;--no-bg:#40182A;--warn-bg:#3A2E10;
+ --ledge:rgba(0,0,0,.35);--sh:0 14px 30px -18px rgba(0,0,0,.85);--shadow:0 22px 44px -22px rgba(0,0,0,.8);color-scheme:dark}}
+:root[data-theme=dark],:root[data-country][data-theme=dark]{
+ --bg:#0E1322;--grid:rgba(160,180,255,.045);--card:#161D31;--surface:#161D31;
+ --ink:#EEF1FA;--text:#EEF1FA;--text2:#A9B2CC;--text3:#7682A3;--mut:#A9B2CC;--muted:#A9B2CC;
+ --line:#2A3556;--border:#2A3556;--soft:#1C2440;--tint:#1C2440;--tint2:#26304F;
+ --pri:#4A5DB8;--pri2:#9DB0FF;--primary:#4A5DB8;--priInk:#FFFFFF;--primary-ink:#FFFFFF;--btn:#34437A;--btn-ledge:#151C33;
+ --mark-text:#FFD866;--hl:rgba(255,199,44,.42);
+ --ok:#3DD9A0;--green:#3DD9A0;--mint:#2FBF8A;--mint-ledge:#13694B;--bad:#FF7A7F;--red:#FF7A7F;--coral:#E5535A;
+ --warn:#FFD866;--amber:#FFD866;--gold:#FFD866;--bar:#34437A;--ok-bg:#0F3A30;--no-bg:#40182A;--warn-bg:#3A2E10;
+ --ledge:rgba(0,0,0,.35);--sh:0 14px 30px -18px rgba(0,0,0,.85);--shadow:0 22px 44px -22px rgba(0,0,0,.8);color-scheme:dark}
+
+body{background-color:var(--bg);color:var(--text);
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+:focus-visible{outline:3px solid #FFC72C;outline-offset:2px}
+
+/* paper surfaces: thin border, soft shadow */
+.card,.pane,.cert,.lesson,.item,.creator,.certbox,.box,.panel,.tile,.stat,.kpi{border-width:1.5px!important;box-shadow:var(--sh)!important}
+.card,.pane,.lesson,.item,.creator,.box,.panel,.tile,.stat,.kpi{border-radius:18px!important}
+header,header.top,.top,.side{border-bottom-width:1px!important}
+.side{border-right-width:1px!important}
+input,select,textarea{border-width:1.5px!important}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#FFC72C!important}
+
+/* selected tabs, chips and nav: filled ink */
+.chip.on,.tabs button.on,nav button.on,.tpl.on,.ni.on,.seg button.on,.tab.on{background:var(--text)!important;color:var(--bg)!important;border-color:var(--text)!important;box-shadow:none!important}
+
+/* the main action on each page is highlighter yellow */
+.btn.y,.btn.main,.btn.p,.btn.pri,button.b,.go,#go,#signin,#loginBtn,form button[type=submit]:not(.o):not(.s):not(.g):not(.ghost){
+ background:#FFC72C!important;color:#2A1E00!important;border-color:#FFC72C!important;box-shadow:0 3px 0 #C99400!important}
+
+/* titles get the highlighter stroke used in the app */
+.hl,h1 mark{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 90%,transparent 90%);color:inherit;padding:0 .08em}
+
+.logo b,.brand b{color:var(--text)!important}

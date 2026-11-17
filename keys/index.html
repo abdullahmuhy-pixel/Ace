@@ -11,7 +11,9 @@ label{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase
 textarea{width:100%;min-height:74px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;resize:vertical}
 button{border:0;border-radius:10px;background:var(--primary);color:var(--bg);padding:12px 16px;font:inherit;font-weight:700;cursor:pointer;margin:6px 8px 0 0}
 button.alt{background:transparent;color:var(--primary);border:1px solid var(--primary)}.warn{color:var(--warn);font-weight:600}
-</style></head><body><div class="wrap">
+</style>
+<link rel="stylesheet" href="../notebook.css">
+</head><body><div class="wrap">
 <h1>Ace key maker</h1>
 <p>Makes the secret values for push notifications and the daily reminder job. Everything is created inside your browser on this device. Nothing is sent anywhere or saved.</p>
 <p class="warn">Copy each value straight into Supabase (Edge Functions, Secrets) and into GitHub (Settings, Secrets), then close this page. Anyone who sees the private key can send push messages as you.</p>
