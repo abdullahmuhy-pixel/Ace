@@ -58,7 +58,7 @@ window.ACE_LANG.pt={"tr": {"No class with that code. Check it with your teacher.
 "Termly (3 months)": "Trimestral (3 meses)",
 "Yearly": "Anual",
 "Save {n}%": "Poupa {n}%",
-"MY STUDY": "O MEU ESTUDO",
+"My study": "O meu estudo",
 "A streak freeze saved your ": "Um congelamento salvou a tua série de ",
 "-day streak 🧊": "dias 🧊",
 "en-GB": "pt-PT",

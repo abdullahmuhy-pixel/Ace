@@ -60,7 +60,7 @@ window.ACE_LANG.fr={
 "Termly (3 months)": "Trimestriel (3 mois)",
 "Yearly": "Annuel",
 "Save {n}%": "Économise {n} %",
-"MY STUDY": "MES ÉTUDES",
+"My study": "Mes études",
 "A streak freeze saved your ": "Un gel de série a sauvé ta série de ",
 "-day streak 🧊": "jours 🧊",
 "en-GB": "fr-FR",
