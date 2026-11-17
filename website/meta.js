@@ -188,7 +188,7 @@ const FEATURES = [
  ['⏱️','Timed mock exams','A paper drawn evenly from every module, with a countdown, a score by module and the topics to revise.','Live','Exam prep'],
  ['<i class="aic"></i>','Ask Ace','An AI study buddy that knows which subject, topic and exam the student is on and explains step by step.','Live','Learn'],
  ['🔥','Daily challenge and streaks','Five questions a day, XP, and a streak that builds as the student keeps coming back.','Live','Habits'],
- ['🌍','Thirteen countries, one app','Switch country and the exams, subjects, currency and examples change with it. Spain also switches the interface to Spanish.','Live','Learn'],
+ ['🌍',`${Object.keys(CM).length} countries, one app`,'Switch country and the exams, subjects, currency and examples change with it. Spain, France, Italy, Portugal and Germany also switch the interface to their own language.','Live','Learn'],
  ['🎓','Choose your subjects','Students pick the subjects they actually take, and the app shows only those.','Live','Habits'],
  ['♿','Accessibility settings','Dark mode, high-contrast mode and a dyslexia-friendly font.','Live','Habits'],
  ['✍️','What my teacher taught today','The student types what was covered in class. Ace returns a summary, key terms, a worked example and practice questions, and schedules revision.','Backend ready','Daily use'],
@@ -231,7 +231,7 @@ const SCHOOL_STATUS = [
 ];
 
 const FAQ = [
- ['Which exams does Ace Education cover today?','More than twenty exams across nineteen countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; the Exames Nacionais in Portugal; the Abitur in Germany; NSSCO and NSSCAS in Namibia; the MSCE in Malawi; and the SEC in Malta. The Countries page shows exactly which subjects each one has.'],
+ ['Which exams does Ace Education cover today?',`More than forty exams across ${Object.keys(CM).length} countries, including: WASSCE, NECO and UTME in Nigeria; WASSCE and BECE in Ghana; WASSCE, BECE and NPSE in Sierra Leone; WASSCE and GABECE in The Gambia; WASSCE in Liberia; KCSE in Kenya; ECZ Grade 12 in Zambia; GCSE and A-Level in the UK; the OSSD and Alberta diploma exams in Canada; the PAU (EBAU) in Spain with regional content; the Leaving Certificate in Ireland; the NSC in South Africa; UCE and UACE in Uganda; CSEE and ACSEE in Tanzania; O Level and A Level in Zimbabwe; BGCSE in Botswana; the baccalauréat in France; the Esame di Maturità in Italy; the Exames Nacionais in Portugal; the Abitur in Germany; NSSCO and NSSCAS in Namibia; the MSCE in Malawi; and the SEC in Malta. The Countries page shows exactly which subjects each one has.`],
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
@@ -282,7 +282,7 @@ const COMPARE = [
 ];
 
 const ROADMAP = [
- ['Now','Thirteen countries with their own exams, subjects and syllabus files','Student app with notes, quizzes, flashcards, mocks, weak-topic radar and Ask Ace','Open student sign-up, school codes and a staff dashboard'],
+ ['Now',`${Object.keys(CM).length} countries with their own exams, subjects and syllabus files`,'Student app with notes, quizzes, flashcards, mocks, weak-topic radar and Ask Ace','Open student sign-up, school codes and a staff dashboard'],
  ['Next','Teacher review of every subject, country by country','Teacher review of every university entry, and more universities per country','Formula sheets, study planner and exam timetables'],
  ['Later','More subjects and exams per country, starting with the gaps listed on each country page','Official past-paper style mark schemes, formula sheets and exam timetables','Data-saver and offline modes, and more countries']
 ];

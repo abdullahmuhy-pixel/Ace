@@ -385,3 +385,59 @@ footer{border-top:1px solid var(--line)}
 .lsn-top .seg i.ok{background:var(--good)}.lsn-top .seg i.no{background:var(--bad)}
 .mbar{border:1.5px solid var(--line);box-shadow:var(--shadow)}
 .aic{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 2.5h14a3 3 0 0 1 3 3v9.5a3 3 0 0 1-3 3h-7.6L6 22v-4H5a3 3 0 0 1-3-3V5.5a3 3 0 0 1 3-3z' fill='%232B3FA8'/%3E%3Cpath d='M11.3 5.2l1.5 3.6 3.6 1.5-3.6 1.5-1.5 3.6-1.5-3.6-3.6-1.5 3.6-1.5z' fill='%23FFC72C'/%3E%3Ccircle cx='17.4' cy='6.4' r='1.25' fill='%23FFC72C'/%3E%3C/svg%3E")}
+
+/* ===== language picker ===== */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lng{display:inline-flex;flex:none}
+.lng select{appearance:none;-webkit-appearance:none;height:38px;border:1.5px solid var(--line);border-radius:12px;background:var(--sheet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A84A0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18'/%3E%3C/svg%3E") no-repeat 9px center/16px;color:var(--ink);font:700 .85rem var(--body);padding:0 .7rem 0 2rem;cursor:pointer;max-width:132px}
+.lng select:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+@media (max-width:520px){.lng select{width:40px;max-width:40px;padding:0;color:transparent;background-position:center}.lng select option{color:var(--ink);background:var(--sheet)}}
+
+/* ===== country colours =====
+   html[data-country] is set on a country page, and on other pages once the visitor's country is known.
+   --cty is the main flag colour, --cty-dark a deeper shade for text and pressed states, --cty-accent the third flag colour. */
+[data-country="NG"]{--cty:#008751;--cty-dark:#005C37;--cty-accent:#F5C518}
+[data-country="GH"]{--cty:#006B3F;--cty-dark:#00472A;--cty-accent:#CE1126}
+[data-country="SL"]{--cty:#118AC9;--cty-dark:#0B5D88;--cty-accent:#17B978}
+[data-country="GM"]{--cty:#0C1C8C;--cty-dark:#08125C;--cty-accent:#CE1126}
+[data-country="KE"]{--cty:#922724;--cty-dark:#631816;--cty-accent:#111111}
+[data-country="ZM"]{--cty:#197B30;--cty-dark:#105220;--cty-accent:#EF7D00}
+[data-country="GB"]{--cty:#00247D;--cty-dark:#001854;--cty-accent:#CF142B}
+[data-country="CA"]{--cty:#D80621;--cty-dark:#A30419;--cty-accent:#1A1A1A}
+[data-country="ES"]{--cty:#AA152B;--cty-dark:#7A0F1E;--cty-accent:#F1BF00}
+[data-country="IE"]{--cty:#169B62;--cty-dark:#0E6B43;--cty-accent:#FF883E}
+[data-country="ZA"]{--cty:#007749;--cty-dark:#005233;--cty-accent:#FFB81C}
+[data-country="UG"]{--cty:#D90000;--cty-dark:#8F0000;--cty-accent:#FCDC04}
+[data-country="TZ"]{--cty:#1EB53A;--cty-dark:#0E7A24;--cty-accent:#FCD116}
+[data-country="LR"]{--cty:#002868;--cty-dark:#001A45;--cty-accent:#BF0A30}
+[data-country="MT"]{--cty:#CF142B;--cty-dark:#9B0F20;--cty-accent:#5B6770}
+[data-country="ZW"]{--cty:#1A7F37;--cty-dark:#0F5223;--cty-accent:#E0A800}
+[data-country="BW"]{--cty:#4A8FC4;--cty-dark:#2A6390;--cty-accent:#1C1C1C}
+[data-country="FR"]{--cty:#2D5BD0;--cty-dark:#1B3C94;--cty-accent:#E1000F}
+[data-country="IT"]{--cty:#008C45;--cty-dark:#00592C;--cty-accent:#CD212A}
+[data-country="PT"]{--cty:#046A38;--cty-dark:#024A27;--cty-accent:#DA291C}
+[data-country="DE"]{--cty:#DD0000;--cty-dark:#8C0000;--cty-accent:#FFCE00}
+[data-country="NA"]{--cty:#003580;--cty-dark:#00224F;--cty-accent:#009543}
+[data-country="MW"]{--cty:#CE1126;--cty-dark:#8E0B1A;--cty-accent:#339E35}
+[data-country]{--cty-ink:var(--cty-dark);--cty-soft:color-mix(in srgb,var(--cty) 10%,var(--sheet))}
+@media (prefers-color-scheme:dark){:root[data-country]:not([data-theme="light"]){--cty-ink:color-mix(in srgb,var(--cty) 45%,#fff);--cty-soft:color-mix(in srgb,var(--cty) 18%,var(--sheet))}}
+:root[data-country][data-theme="dark"]{--cty-ink:color-mix(in srgb,var(--cty) 45%,#fff);--cty-soft:color-mix(in srgb,var(--cty) 18%,var(--sheet))}
+
+/* the flag as a band under the header and above the page */
+[data-country] header{border-bottom:0}
+[data-country] header::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:4px;background:linear-gradient(90deg,var(--cty) 0 33.4%,var(--cty-accent) 33.4% 66.7%,var(--cty-dark) 66.7%)}
+[data-country] .eyebrow::before{background:linear-gradient(90deg,var(--cty) 0 50%,var(--cty-accent) 50%);height:5px;width:28px}
+/* the main action and selected states take the flag colour */
+[data-country] .btn.primary{background:var(--cty);border-color:var(--cty);color:#fff;box-shadow:0 3px 0 var(--cty-dark)}
+[data-country] .btn.primary:active{box-shadow:0 1px 0 var(--cty-dark)}
+[data-country] nav.main a.on,[data-country] .chip.on,[data-country] .tab.on{background:var(--cty-dark);border-color:var(--cty-dark);color:#fff}
+[data-country] .steps li::before,[data-country] .steps4 li::before{background:var(--cty);color:#fff}
+[data-country] .facts b,[data-country] .lnk,[data-country] .who-p a,[data-country] .stat4 b{color:var(--cty-ink)}
+[data-country] .hero h1 .hl{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--cty-accent) 45%,transparent) 58% 90%,transparent 90%)}
+[data-country] .time{border-left-color:var(--cty)}[data-country] .time>div::before{background:var(--cty-accent);border-color:var(--cty)}
+[data-country] button.card:hover,[data-country] a.card:hover{border-color:var(--cty)}
+[data-country] .sheet{border-top:5px solid var(--cty)}
+[data-country] .band{background:var(--cty-soft)}
+[data-country] .opt.pk{border-color:var(--cty);background:var(--cty-soft)}[data-country] .opt.pk .b{background:var(--cty);border-color:var(--cty);color:#fff}
+[data-country] .mbar .btn.primary{background:var(--cty)}
+[data-country] .lng select:focus-visible,[data-country] :focus-visible{outline-color:var(--cty-accent)}

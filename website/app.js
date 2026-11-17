@@ -4,6 +4,91 @@ const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;
 const nf = n => Number(n).toLocaleString('en-US');
 const $ = q => document.querySelector(q);
 
+/* ---------- languages ----------
+   The site is written in English. For Spanish, French, Italian, Portuguese and German visitors, every rendered
+   text node is looked up in a dictionary (site-i18n-<lang>.js, built from website/i18n/<lang>.json). Numbers in a
+   sentence are matched as {0}, {1}... and country names as {C}, so one entry covers every country. Anything not in
+   the dictionary (syllabus names, sample questions, guide articles) stays as written. */
+const LANGS = {en: 'English', es: 'Español', fr: 'Français', it: 'Italiano', pt: 'Português', de: 'Deutsch'};
+const I18N = {};                                   // lang -> {k: {key: text}, names: {English name: local name}}
+function pickLang() {
+  try { const v = localStorage.getItem('ace-site-lang'); if (v && LANGS[v]) return v; } catch (e) {}
+  try { for (const l of (navigator.languages || [navigator.language])) { const c = String(l || '').slice(0, 2).toLowerCase(); if (LANGS[c]) return c; } } catch (e) {}
+  return 'en';
+}
+function loadLang(l, then) {
+  if (l === 'en' || I18N[l]) { then(); return; }
+  const sc = document.createElement('script'); sc.src = 'site-i18n-' + l + '.js'; sc.onload = then; sc.onerror = then;
+  document.head.appendChild(sc);
+}
+function setLang(l) {
+  if (!LANGS[l]) l = 'en';
+  S.lang = l; try { localStorage.setItem('ace-site-lang', l); } catch (e) {}
+  loadLang(l, () => { render(); setTitle(); });
+}
+const NUMRX = /\d+(?:[.,]\d+)*/g;
+let CNAME_RX = null;
+function trText(raw) {
+  const L = I18N[S.lang]; if (!L) return raw;
+  const lead = raw.match(/^\s*/)[0], tail = raw.match(/\s*$/)[0], t = raw.replace(/\s+/g, ' ').trim();
+  if (/^\d{1,3}(,\d{3})+$/.test(t)) return lead + Number(t.replace(/,/g, '')).toLocaleString(S.lang) + tail;   // 1,475 -> 1.475
+  if (!t || !/[A-Za-z]/.test(t)) return raw;
+  const fl = t.match(/^([\u{1F1E6}-\u{1F1FF}]{2})\s*(.*)$/u);              // "🇳🇬 Nigeria"
+  const bare = fl ? fl[2] : t;
+  if (L.names[bare]) return lead + (fl ? fl[1] + ' ' : '') + L.names[bare] + tail;
+  const nums = []; let i = 0;
+  const k = t.replace(NUMRX, m => { nums.push(m); return '{' + (i++) + '}'; });
+  let out = L.k[k], cs = [];
+  if (out == null) {
+    if (!CNAME_RX) CNAME_RX = new RegExp(Object.values(CM).map(c => c.name).concat(['the UK', 'the Gambia']).sort((a, b) => b.length - a.length).map(x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+    const kc = k.replace(CNAME_RX, m => { cs.push(m); return '{C}'; });
+    if (cs.length) out = L.k[kc];
+  }
+  if (out == null && L.affix) {                                           // "WASSCE, Mathematics. A real question from the app"
+    for (const [en, tr] of Object.entries(L.affix)) {
+      if (en.startsWith('…') && t.endsWith(en.slice(1))) { out = t.slice(0, t.length - en.length + 1) + tr.slice(1); nums.length = 0; break; }
+      if (en.endsWith('…') && t.startsWith(en.slice(0, -1))) { out = tr.slice(0, -1) + t.slice(en.length - 1); nums.length = 0; break; }
+    }
+    if (out != null) return lead + out + tail;
+  }
+  if (out == null && L.rx) {                                              // "WASSCE & NECO Exam Prep in Nigeria | Ace Education"
+    for (const [src, tpl] of L.rx) {
+      const m = t.match(new RegExp(src));
+      if (m) return lead + tpl.replace(/\$([TN]?)(\d)/g, (z, f, d) => { const g = m[+d] || ''; return f === 'T' ? trText(g) : f === 'N' ? trText(g).trim() : (L.names[g] || g); }) + tail;
+    }
+  }
+  if (out == null) return raw;
+  const fmt = n => /^\d{1,3}(,\d{3})+$/.test(n) ? Number(n.replace(/,/g, '')).toLocaleString(S.lang) : n;
+  let ci = 0;
+  out = out.replace(/\{(\d+)\}/g, (m, d) => nums[+d] != null ? fmt(nums[+d]) : m).replace(/\{C\}/g, () => { const n = cs[ci++] || ''; return L.names[n] || n; });
+  return lead + out + tail;
+}
+const NO_TR = '.q,.opt,.fml,script,style,[data-notr]';
+function applyLang(root) {
+  document.documentElement.lang = S.lang;
+  if (S.lang === 'en' || !I18N[S.lang]) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n; const todo = [];
+  while ((n = w.nextNode())) if (!n.parentElement.closest(NO_TR)) todo.push(n);
+  todo.forEach(n => { const v = trText(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; });
+  root.querySelectorAll('[placeholder],[title],[aria-label]').forEach(e => ['placeholder', 'title', 'aria-label'].forEach(a => { const v = e.getAttribute(a); if (v) { const t = trText(v); if (t !== v) e.setAttribute(a, t); } }));
+}
+function setTitle() { try { document.title = trText(routeMeta(S.page, S.arg).title); } catch (e) {} }
+
+/* ---------- country colours ----------
+   On a country page, and on every other page once we know the visitor's country (the app's saved country, or the
+   region in the browser language, e.g. es-ES), the site takes that country's flag colours (see [data-country] in site.css). */
+function visitorCountry() {
+  try { const v = localStorage.getItem('ace-country'); if (v && CM[v]) return v; } catch (e) {}
+  try { for (const l of (navigator.languages || [navigator.language])) { const m = String(l || '').match(/-([A-Za-z]{2})$/); if (m && CM[m[1].toUpperCase()]) return m[1].toUpperCase(); } } catch (e) {}
+  return null;
+}
+const VISITOR_CC = visitorCountry();
+function paintCountry() {
+  const cc = S.page === 'country' ? S.arg : S.page === 'home' && S.heroPicked ? S.hero : VISITOR_CC;
+  const r = document.documentElement;
+  if (cc && CM[cc]) r.dataset.country = cc; else delete r.dataset.country;
+}
+
 /* ---------- numbers computed from the data ---------- */
 function tally(cc) {
   const v = D[cc]; let subs = 0, q = 0, t = 0, fc = 0;
@@ -15,7 +100,7 @@ const TOT = CCS.reduce((a, cc) => ({exams: a.exams + T[cc].exams, subs: a.subs +
 const LIVE = FEATURES.filter(f => f[3] === 'Live').length;
 
 /* ---------- state ---------- */
-const S = {page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
+const S = {lang: 'en', heroPicked: false, page: 'home', arg: null, hero: 'NG', picked: null, anim: true, snd: true, gfilter: 'All', ffilter: 'All', ex: {cc: 'NG', ex: 0, sub: 0, q: ''}, formDone: null, cq: {}};
 const NAV = [['home','Home'],['countries','Countries'],['features','Features'],['pricing','Pricing'],['teachers','Teachers'],['schools','Schools'],['guides','Guides']];
 
 const SLUG = {NG:'nigeria',GH:'ghana',SL:'sierra-leone',GM:'gambia',KE:'kenya',ZM:'zambia',GB:'united-kingdom',CA:'canada',ES:'spain',IE:'ireland',ZA:'south-africa',UG:'uganda',TZ:'tanzania',LR:'liberia',MT:'malta',ZW:'zimbabwe',BW:'botswana',FR:'france',IT:'italy',PT:'portugal',DE:'germany',NA:'namibia',MW:'malawi'};
@@ -35,7 +120,7 @@ function go(page, arg) {
   S.page = page; S.arg = arg || null; S.formDone = null;
   try { history.pushState(null, '', pathFor(page, arg)); } catch (e) {}
   render(); window.scrollTo(0, 0);
-  try { document.title = routeMeta(S.page, S.arg).title; } catch (e) {}
+  setTitle();
 }
 function fromLocation() {
   let q = '', h = '';
@@ -87,7 +172,7 @@ function routeMeta(page, arg) {
     out.ld = [org, crumbs([['Home', ''], ['Guides', 'guides'], [g[2], P]]), {'@type': 'Article', headline: g[2], description: g[3], author: {'@id': base + '#org'}, publisher: {'@id': base + '#org'}, mainEntityOfPage: url}];
   } else {
     const M = {
-      countries: ['Exam Prep by Country: 13 Countries, 23 Exams | Ace Education', `Compare the exams Ace Education covers in ${CCS.length} countries: ${CCS.map(cc => CM[cc].name).join(', ')}. Grading scales, subjects and question counts for each.`],
+      countries: [`Exam Prep by Country: ${CCS.length} Countries, ${TOT.exams} Exams | Ace Education`, `Compare the exams Ace Education covers in ${CCS.length} countries: ${CCS.map(cc => CM[cc].name).join(', ')}. Grading scales, subjects and question counts for each.`],
       features: ['Features: Topic Notes, Quizzes, Flashcards, Mock Exams and AI Tutor | Ace Education', 'Everything in the Ace Education study app: topic notes, quizzes, a question bank, flashcards, timed mock exams, daily challenge, weak-topic radar, an AI study buddy and university guides.'],
       syllabus: ['Syllabus Explorer: Topics and Sample Questions for Every Subject | Ace Education', 'Browse every subject, module and topic Ace Education covers for each exam in each country, with real sample questions.'],
       teachers: ['Ace Education for Teachers and Tutors: Your Own Classes, Free to Start', 'Private tutors, after-school teachers and tutoring centres: create a class, share a join code, assign Ace quizzes and lessons, mark work and follow every student. Students keep their own accounts.'],
@@ -421,6 +506,7 @@ function header() {
   return `<header><div class="bar"><button class="brand" data-go="home" aria-label="Ace Education home">${PENCIL}Ace Education</button>
   <nav class="main" id="nav">${NAV.map(n => `<a data-go="${n[0]}" class="${S.page === n[0] || (S.page === 'country' && n[0] === 'countries') || (S.page === 'guide' && n[0] === 'guides') ? 'on' : ''}">${n[1]}</a>`).join('')}<a href="${esc(PORTAL('campus'))}" target="_blank" rel="noopener">Campus</a><a href="${esc(PORTAL('academy'))}" target="_blank" rel="noopener">Academy</a><a data-go="quote" class="${S.page === 'quote' ? 'on' : ''}">Get a quote</a></nav>
   <a class="btn sm hide-s" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a><a class="btn sm primary hide-s" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Student app</a>
+  <label class="lng"><span class="sr">Language</span><select id="lang" aria-label="Language" data-notr>${Object.entries(LANGS).map(([k, v]) => `<option value="${k}"${S.lang === k ? ' selected' : ''}>${v}</option>`).join('')}</select></label>
   <button class="icon" id="theme" aria-label="Toggle theme">🌓</button><button class="icon menu" id="menu" aria-label="Menu">☰</button></div></header>`;
 }
 function footer() {
@@ -434,8 +520,11 @@ function render() {
   const P = S.page;
   const body = P === 'home' ? pHome() : P === 'countries' ? pCountries() : P === 'country' ? pCountry(S.arg) : P === 'features' ? pFeatures() : P === 'syllabus' ? pSyllabus() : P === 'teachers' ? pTeachers() : P === 'schools' ? pSchools() : P === 'quote' ? pQuote() : P === 'pricing' ? pPricing() : P === 'guides' ? pGuides() : P === 'guide' ? pGuide(S.arg) : P === 'about' ? pAbout() : P === 'contact' ? pContact() : P === 'privacy' ? pPrivacy() : P === 'terms' ? pTerms() : pHome();
   const keep = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.act === 'exq';
-  $('#root').innerHTML = header() + `<main class="wrap">${body}</main>` + footer() + `<div class="mbar"><a class="btn primary" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Open the app</a><a class="btn" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>`;
+  const enOnly = S.lang !== 'en' && ['guide', 'privacy', 'terms'].includes(P) ? '<p class="note" style="margin-top:1rem">This page is only available in English for now.</p>' : '';
+  $('#root').innerHTML = header() + `<main class="wrap">${enOnly}${body}</main>` + footer() + `<div class="mbar"><a class="btn primary" href="${esc(SITE_CONFIG.appUrl)}" target="_blank" rel="noopener">Open the app</a><a class="btn" href="${esc(SITE_CONFIG.loginUrl)}" target="_blank" rel="noopener">Sign in</a></div>`;
   anchorize();
+  paintCountry();
+  applyLang($('#root'));
   S.anim = false;
   if (keep) { const i = $('input[data-act="exq"]'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
 }
@@ -458,7 +547,7 @@ document.addEventListener('click', e => {
   if (g) { if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; e.preventDefault(); go(g.dataset.go, g.dataset.arg); return; }
   const a = e.target.closest('[data-act]'); if (a) {
     const k = a.dataset.act;
-    if (k === 'hero') { S.hero = a.dataset.cc; S.picked = null; S.anim = true; render(); }
+    if (k === 'hero') { S.hero = a.dataset.cc; S.heroPicked = true; S.picked = null; S.anim = true; render(); }
     else if (k === 'snd') { S.snd = !S.snd; render(); }
     else if (k === 'check') { const P = S.picked; if (!P || P.key !== a.dataset.key) return; P.done = true; const smp = D[S.page === 'country' ? S.arg : S.hero].sample, ok = P.i === smp.a; render(); if (ok) { SFX.ok(); const g = document.querySelector('.opt.good'); if (g) { const r = g.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + r.height / 2); } } else SFX.no(); }
     else if (k === 'pick') { if (S.picked && S.picked.done) return; S.picked = {key: a.dataset.key, i: +a.dataset.i}; SFX.pick(); render(); }
@@ -472,6 +561,7 @@ document.addEventListener('click', e => {
   if (e.target.closest('#menu')) { $('#nav').classList.toggle('open'); return; }
 });
 document.addEventListener('change', e => {
+  if (e.target.id === 'lang') { setLang(e.target.value); return; }
   if (e.target.dataset && e.target.dataset.act === 'pcc') { S.pcc = e.target.value; render(); return; }
   const k = e.target.dataset && e.target.dataset.act; if (!k) return;
   if (k === 'exc') { S.ex = {cc: e.target.value, ex: 0, sub: 0, q: S.ex.q}; render(); }
@@ -489,4 +579,6 @@ document.addEventListener('submit', e => {
   else done(false);
 });
 function alert_(f, m) { let n = f.querySelector('.err'); if (!n) { n = document.createElement('p'); n.className = 'note err'; f.prepend(n); } n.textContent = m; }
-fromLocation(); render(); try { document.title = routeMeta(S.page, S.arg).title; } catch (e) {}
+if (VISITOR_CC && D[VISITOR_CC] && D[VISITOR_CC].sample) S.hero = VISITOR_CC;
+fromLocation(); S.lang = pickLang(); render(); setTitle();
+if (S.lang !== 'en') loadLang(S.lang, () => { render(); setTitle(); });

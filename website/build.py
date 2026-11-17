@@ -5,7 +5,7 @@
   SITE_URL=https://aceeducation.app/ python3 build.py      (once you own a domain)
 
 Output in dist/ (flat, upload every file to the repo root, no folders):
-  index.html, exam-prep-<country>.html x13, features.html, ... , site.css, site.js,
+  index.html, exam-prep-<country>.html x13, features.html, ... , site.css, site.js, site-i18n-<lang>.js (es, fr, it, pt, de),
   sitemap.xml, robots.txt, llms.txt, llms-full.txt, og-image.png, 404.html
 Every page already contains its full text (so Google, Bing and AI crawlers that do not run JavaScript can read it);
 site.js then takes over in the browser for fast navigation.
@@ -30,6 +30,12 @@ open(f'{OUT}/site.css', 'w', encoding='utf-8').write(css)
 sys.path.insert(0, os.path.join(HERE, '..', 'tools')); import plan_prices          # prices live in one place
 PRICES = json.dumps(plan_prices.site_prices(), separators=(',', ':'))
 open(f'{OUT}/site.js', 'w', encoding='utf-8').write(f'const SITE_URL={json.dumps(SITE_URL)};\nconst SITE_DATA={J};\nconst PRICES={PRICES};\n{meta}\n{app}\n')
+# languages: one small script per language, loaded by site.js only when a visitor picks it
+import glob
+for jf in sorted(glob.glob('i18n/*.json')):
+    L = json.load(open(jf, encoding='utf-8'))
+    body = json.dumps({'names': L['names'], 'affix': L.get('affix', {}), 'rx': L.get('rx', []), 'k': L['k']}, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    open(f"{OUT}/site-i18n-{L['lang']}.js", 'w', encoding='utf-8').write(f'I18N[{json.dumps(L["lang"])}]={body};\n')
 render_shell = f'<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="site.css"></head><body><div id="root"></div><script src="site.js"></script></body></html>'
 open(f'{OUT}/_render.html', 'w', encoding='utf-8').write(render_shell)
 
