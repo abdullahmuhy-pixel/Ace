@@ -91,7 +91,7 @@ function navFor() {
   const g = [['Teaching', [['overview', '📊', 'Overview'], ['students', '👥', isTutor() ? 'My students' : 'My class'], ['progress', '📈', 'Progress'], ['register', '📅', 'Register']]],
     ['Classroom', [['work', '📝', 'Assign work'], ['grades', '📒', 'Gradebook'], ['pacing', '🗺️', 'Pacing'], ['live', '⚡', 'Live quiz'], ['qna', '💬', 'Q&A board'], ['library', '📚', 'Library'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages']]],
     ['Tools', [['ai', '✨', 'AI planner'], ['reportcards', '📄', 'Report cards'], ['planner', '🗓️', 'Term planner'], ['rubrics', '📐', 'Rubrics'], ['parents', '👪', 'Parents']]]];
-  if (isAdmin()) g.push([isTutor() ? 'My workspace' : 'School', [['classes', '🏛️', 'Classes'], ['people', '🧑‍🏫', isTutor() ? 'Students and teachers' : 'People'], ...(isTutor() ? [] : [['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees']]), ['schoolrep', '📋', isTutor() ? 'Workspace report' : 'School report'], ['mod', '🛡️', 'Moderation'], ['settings', '⚙️', 'Settings']]]);
+  if (isAdmin()) g.push([isTutor() ? 'My workspace' : 'School', [['classes', '🏛️', 'Classes'], ['admissions', '📨', 'Admissions'], ['people', '🧑‍🏫', isTutor() ? 'Students and teachers' : 'People'], ...(isTutor() ? [] : [['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees']]), ['schoolrep', '📋', isTutor() ? 'Workspace report' : 'School report'], ['mod', '🛡️', 'Moderation'], ['settings', '⚙️', 'Settings']]]);
   else g.push(['Account', [['settings', '⚙️', 'Settings']]]);
   return g;
 }
@@ -156,7 +156,7 @@ const V = {}, A = {}, F = {};
 A.signout = async () => { await sb.auth.signOut(); location.href = '../login/'; };
 A.copycode = () => { const c = cls(); if (!c) return; const t = `Join my class "${c.name}" on Ace Education: open ${location.origin}${location.pathname.replace(/staff\/.*$/, '')}app/ , go to Tools, My classes, and enter the code ${c.join_code}`; try { navigator.clipboard.writeText(t).then(() => toast('Join code copied with instructions.'), () => toast('Code: ' + c.join_code)); } catch (e) { toast('Code: ' + c.join_code); } };
 document.addEventListener('click', guard(async e => {
-  const g = e.target.closest('[data-go]'); if (g) { St.view = g.dataset.go; St.sel = St.sub = St.task = St.asmt = St.live = St.peer = St.stu = ''; window.scrollTo(0, 0); return go(); }
+  const g = e.target.closest('[data-go]'); if (g) { St.view = g.dataset.go; St.sel = St.sub = St.task = St.asmt = St.live = St.peer = St.stu = St.appid = ''; St.cred = null; window.scrollTo(0, 0); return go(); }
   if (e.target.closest('[data-more]')) { $('#more').hidden = false; return; }
   if (e.target.closest('[data-close]') || e.target.id === 'more') { $('#more').hidden = true; return; }
   if (e.target.classList && e.target.classList.contains('drawer')) { e.target.remove(); return; }

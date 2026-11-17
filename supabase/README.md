@@ -60,3 +60,15 @@ plans, payments, promo codes, AI usage, push subscriptions, content reports and 
 - `0007`: courses and certificates, moderated study groups, push helpers. Load the catalogue with the files in `paste/sql/seed-parts` (idempotent).
 - `0008`: family view. A student creates up to 3 revocable 90-day links; `family_view(code)` (anon-callable) returns a weekly summary only: first name, streak, questions, subjects, attendance counts, course progress. Never messages, notes, group posts or surnames.
 - New functions: `taught-today`, `notes-pack`, `send-push`, `revision-reminders`. Secrets: `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `CRON_SECRET` (see DEPLOY.md).
+
+## Admissions (migration 0044)
+Families apply to a school online at `/apply/?s=<SCHOOL CODE>` without an account; school admins review, decide and enrol
+in Ace Teach, **Admissions**.
+1. Run `0044_admissions.sql`. On Supabase it also creates the private storage bucket `admissions` (PDF, JPG, PNG, 5 MB).
+   If the bucket is missing, create it in Storage with those limits and keep it private.
+2. Deploy the functions: `supabase functions deploy admissions admissions-manage` (both are in `config.toml` with
+   `verify_jwt = false`; `admissions-manage` checks the caller itself, `admissions` is public and throttled per IP).
+3. `RESEND_API_KEY` and `MAIL_FROM` send the confirmation, decision and welcome emails; `SITE_URL` builds the links in them.
+4. Personal data: declined and withdrawn applications should go after a year. An Ace platform admin calls
+   `admissions-manage` with `{ "action": "purge" }` (deletes the rows and the files); schedule it monthly if you can.
+Behaviour tests: `supabase/tests/44_admissions_test.sql` (41 checks: who can read what, the status rules, enrolment, purge).

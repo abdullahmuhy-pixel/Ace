@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en"><head>
+<script>if(window.top!==window.self){try{window.top.location=window.self.location.href}catch(e){document.documentElement.style.display="none"}}</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Apply to a school</title>
+<script>try{var th=JSON.parse(localStorage.getItem("ace-prefs")||"{}").theme;if(th)document.documentElement.dataset.theme=th}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F8;--grid:rgba(36,52,104,.07);--card:#fff;--ink:#121A2E;--mut:#4A5573;--line:#D6DCEA;--soft:#F4F6FB;--pri:#18213B;--btn-ledge:#05080F;--yellow:#FFC72C;--ok:#0B8A5E;--bad:#C2343A;--ok-bg:#DDF5EA;--no-bg:#FDE4E5;--warn-bg:#FFF4D1;--warn:#8A5E00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0E1322;--grid:rgba(160,180,255,.06);--card:#161D31;--ink:#E9EDF7;--mut:#AAB3CC;--line:#2A3450;--soft:#1C2440;--pri:#E9EDF7;--btn-ledge:#000;--ok:#3DD9A0;--bad:#FF8085;--ok-bg:#123327;--no-bg:#3A1A1D;--warn-bg:#3A2E10;--warn:#FFC72C;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0E1322;--grid:rgba(160,180,255,.06);--card:#161D31;--ink:#E9EDF7;--mut:#AAB3CC;--line:#2A3450;--soft:#1C2440;--pri:#E9EDF7;--btn-ledge:#000;--ok:#3DD9A0;--bad:#FF8085;--ok-bg:#123327;--no-bg:#3A1A1D;--warn-bg:#3A2E10;--warn:#FFC72C;color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;padding:24px 16px 48px;color:var(--ink);font:16px/1.55 "Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;background:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,.brand{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:28px;line-height:1.15;margin:0 0 6px}h2{font-size:18px;margin:0 0 4px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;margin:0 0 28px}
+.brand i{width:22px;height:24px;background:var(--yellow);border-radius:4px 4px 50% 50%;box-shadow:inset 0 5px 0 #FF8FB1}.brand small{font-weight:600;color:var(--mut)}
+.lead{color:var(--mut);margin:0 0 20px;max-width:62ch}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:20px;margin:0 0 16px}
+.card>p.sub{color:var(--mut);margin:0 0 14px;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}.grid .full{grid-column:1/-1}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+label{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:700;min-width:0}
+label em{font-style:normal;font-weight:400;color:var(--mut)}
+input,select,textarea{width:100%;padding:11px 12px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit;font-weight:400}
+textarea{min-height:96px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+input[type=file]{padding:9px;background:var(--soft)}
+.check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400}.check input{width:20px;height:20px;margin:2px 0 0;flex:0 0 auto}
+.btn{display:inline-block;border:0;border-radius:14px;background:var(--pri);color:var(--card);padding:13px 20px;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 4px 0 var(--btn-ledge);text-decoration:none}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--btn-ledge)}.btn[disabled]{opacity:.55;cursor:wait}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.btn.danger{background:var(--bad);color:#fff;box-shadow:none}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.msg{padding:12px 14px;border-radius:14px;margin:12px 0 0;font-size:15px}.msg.err{background:var(--no-bg);color:var(--bad)}.msg.ok{background:var(--ok-bg);color:var(--ok)}.msg.warn{background:var(--warn-bg);color:var(--warn)}
+.codes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media (max-width:480px){.codes{grid-template-columns:1fr}}
+.codes div{background:var(--soft);border:2px dashed var(--line);border-radius:14px;padding:12px 14px}
+.codes small{display:block;color:var(--mut);font-size:13px}.codes b{font:700 22px/1.3 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.06em;word-break:break-all}
+.stage{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;margin:4px 0 6px}
+.stage i{width:12px;height:12px;border-radius:50%;background:var(--yellow);flex:0 0 auto}
+.stage.good i{background:var(--ok)}.stage.bad i{background:var(--bad)}
+.tl{list-style:none;margin:14px 0 0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 14px 18px}.tl li:before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--mut)}
+.tl b{display:block}.tl small{color:var(--mut)}.tl p{margin:4px 0 0;white-space:pre-wrap}
+.docs{list-style:none;padding:0;margin:8px 0 0}.docs li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.tag{font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--soft);white-space:nowrap}.tag.ok{background:var(--ok-bg);color:var(--ok)}.tag.no{background:var(--no-bg);color:var(--bad)}
+.filehint{font-size:13px;color:var(--mut);font-weight:400}
+.tabs{display:flex;gap:6px;margin:0 0 18px;flex-wrap:wrap}
+.tabs a{padding:8px 14px;border-radius:99px;border:2px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:14px;background:var(--card)}
+.tabs a[aria-current]{background:var(--pri);color:var(--card);border-color:transparent}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--mut)}.foot a{color:var(--mut)}
+.confirm{background:var(--soft);border-radius:14px;padding:14px;margin-top:12px}
+[hidden]{display:none!important}
+</style>
+</head><body><div class="wrap">
+<a class="brand" href="../"><i></i>Ace <small>Education</small></a>
+<nav class="tabs" aria-label="Applications"><a href="#" data-tab="apply">Apply</a><a href="#" data-tab="status">Check an application</a></nav>
+<main id="view" aria-live="polite"><p class="lead">Loading…</p></main>
+<p class="foot">Applications go to the school, which decides on places. Ace only carries the form. <a href="../privacy">Privacy</a> · <a href="../contact">Contact</a></p>
+</div>
+<script src="../config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+'use strict';
+var cfg=window.ACE_CONFIG||{},V=document.getElementById('view'),Q=new URLSearchParams(location.search);
+var state={school:Q.get('s')||Q.get('school')||'',ref:Q.get('ref')||'',info:null,tab:(Q.get('ref')?'status':'apply')};
+var MAX=5*1024*1024,TYPES={'application/pdf':1,'image/jpeg':1,'image/png':1};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function call(body){
+  if(!cfg.supabaseUrl||!cfg.supabaseAnonKey)return Promise.reject(new Error('This page is not connected yet.'));
+  return fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/functions/v1/admissions',{method:'POST',headers:{'Content-Type':'application/json',apikey:cfg.supabaseAnonKey,Authorization:'Bearer '+cfg.supabaseAnonKey},body:JSON.stringify(body)})
+   .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok)throw new Error(j.error||'Something went wrong. Try again.');return j})});
+}
+function setUrl(){var u=new URLSearchParams();if(state.school)u.set('s',state.school);if(state.tab==='status'&&state.ref)u.set('ref',state.ref);try{history.replaceState(null,'','?'+u.toString())}catch(e){}}
+function tabs(){[].forEach.call(document.querySelectorAll('[data-tab]'),function(a){if(a.dataset.tab===state.tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-tab]');if(t){e.preventDefault();state.tab=t.dataset.tab;render()}});
+function render(){tabs();setUrl();if(state.tab==='status')return statusView();if(!state.school)return pickSchool();loadSchool()}
+
+/* ---------- choose a school ---------- */
+function pickSchool(msg){
+  document.title='Apply to a school';
+  V.innerHTML='<h1>Apply to a school</h1><p class="lead">Schools that take applications through Ace share a link or a school code. Enter the code to open the school\'s form.</p>'+
+  '<form class="card" id="pick"><label>School code<input id="sc" required maxlength="20" autocomplete="off" placeholder="e.g. GRF-2K4Q" style="text-transform:uppercase;letter-spacing:.08em"></label><div class="row" style="margin-top:14px"><button class="btn">Open the form</button></div>'+(msg?'<div class="msg err">'+esc(msg)+'</div>':'')+'</form>';
+  document.getElementById('pick').onsubmit=function(e){e.preventDefault();state.school=document.getElementById('sc').value.trim().toUpperCase();state.info=null;render()};
+}
+function loadSchool(){
+  if(state.info&&state.info._code===state.school)return applyView();
+  V.innerHTML='<p class="lead">Opening the school\'s form…</p>';
+  call({action:'info',school_code:state.school}).then(function(i){i._code=state.school;state.info=i;applyView()}).catch(function(e){state.school='';pickSchool(e.message)});
+}
+
+/* ---------- the form ---------- */
+function applyView(){
+  var i=state.info;document.title='Apply to '+i.name;
+  if(!i.open){V.innerHTML='<h1>'+esc(i.name)+'</h1><p class="lead">'+esc(i.region||'')+'</p><div class="card"><h2>Applications are closed</h2><p class="sub">This school is not taking applications online right now. Contact the school directly, or try again later.</p></div>';return}
+  var docs=(i.documents||[]).slice(0,5),opt=function(v){return'<option>'+esc(v)+'</option>'};
+  var h='<h1>Apply to '+esc(i.name)+'</h1><p class="lead">'+(i.region?esc(i.region)+'. ':'')+'Fill in the form and attach the documents the school asks for. You get a reference and a private status code at the end.</p>'+
+  (i.note?'<div class="card" style="border-style:dashed"><h2>From the school</h2><p style="margin:4px 0 0;white-space:pre-wrap">'+esc(i.note)+'</p></div>':'')+
+  '<form id="app" novalidate>'+
+  '<section class="card"><h2>The applicant</h2><p class="sub">The person who will be the student.</p><div class="grid">'+
+   '<label>First name<input name="first_name" required maxlength="60" autocomplete="given-name"></label>'+
+   '<label>Surname<input name="surname" required maxlength="60" autocomplete="family-name"></label>'+
+   '<label>Date of birth<input name="date_of_birth" type="date"></label>'+
+   '<label>Gender <em>(optional)</em><select name="gender"><option value=""></option>'+opt('Female')+opt('Male')+opt('Prefer not to say')+'</select></label>'+
+   '<label>Class applied for'+(i.grades&&i.grades.length?'<select name="grade_applied" required><option value=""></option>'+i.grades.map(opt).join('')+'</select>':'<input name="grade_applied" required maxlength="40">')+'</label>'+
+   '<label>Starting <em>(term or year)</em><input name="start_term" maxlength="40" placeholder="e.g. January 2027"></label>'+
+   '<label class="full">Current or last school <em>(optional)</em><input name="previous_school" maxlength="120"></label>'+
+  '</div></section>'+
+  '<section class="card"><h2>Parent or guardian</h2><p class="sub">The school uses these details to contact you. Give at least one email address or phone number.</p><div class="grid">'+
+   '<label>Full name<input name="guardian_name" maxlength="80" autocomplete="name"></label>'+
+   '<label>Relationship<input name="guardian_relation" maxlength="40" placeholder="e.g. Mother"></label>'+
+   '<label>Email<input name="guardian_email" type="email" maxlength="120" autocomplete="email"></label>'+
+   '<label>Phone<input name="guardian_phone" type="tel" maxlength="30" autocomplete="tel"></label>'+
+   '<label class="full">Home address <em>(optional)</em><input name="address" maxlength="300" autocomplete="street-address"></label>'+
+  '</div></section>'+
+  '<section class="card"><h2>Student contact <em style="font:400 14px Atkinson Hyperlegible,sans-serif;color:var(--mut)">(optional)</em></h2><p class="sub">For older students who use their own email or phone.</p><div class="grid">'+
+   '<label>Email<input name="applicant_email" type="email" maxlength="120"></label><label>Phone<input name="applicant_phone" type="tel" maxlength="30"></label>'+
+  '</div></section>'+
+  '<section class="card"><h2>Documents</h2><p class="sub">PDF, JPG or PNG, up to 5 MB each. A clear phone photo is fine.</p><div class="grid">'+
+   docs.map(function(d,k){return'<label class="full">'+esc(d)+'<input type="file" data-kind="'+esc(d)+'" accept="application/pdf,image/jpeg,image/png"></label>'}).join('')+
+   '<label class="full">Any other document <em>(optional)</em><input type="file" data-kind="Other" accept="application/pdf,image/jpeg,image/png"></label>'+
+  '</div></section>'+
+  '<section class="card"><label>Anything else the school should know? <em>(optional)</em><textarea name="message" maxlength="1500"></textarea></label>'+
+   '<label class="check" style="margin-top:14px"><input type="checkbox" name="consent">I am the applicant or their parent or guardian, the details are correct, and I agree to '+esc(i.name)+' using them to process this application.</label>'+
+   '<div class="row" style="margin-top:16px"><button class="btn" id="go">Submit application</button></div><div id="err"></div></section>'+
+  '</form>';
+  V.innerHTML=h;
+  document.getElementById('app').onsubmit=submit;
+}
+function fail(m){var e=document.getElementById('err');e.innerHTML='<div class="msg err" role="alert">'+esc(m)+'</div>'}
+function submit(e){
+  e.preventDefault();var f=e.target,d={},btn=document.getElementById('go');
+  new FormData(f).forEach(function(v,k){if(typeof v==='string')d[k]=v.trim()});
+  if(!d.first_name||!d.surname)return fail('Enter the applicant\'s first name and surname.');
+  if(!d.grade_applied)return fail('Choose the class applied for.');
+  if(!d.guardian_email&&!d.guardian_phone&&!d.applicant_email&&!d.applicant_phone)return fail('Give at least one email address or phone number.');
+  if(!f.consent.checked)return fail('Tick the box to agree before submitting.');
+  var files=[].map.call(f.querySelectorAll('input[type=file]'),function(x){return{kind:x.dataset.kind,file:x.files[0]}}).filter(function(x){return x.file});
+  for(var k=0;k<files.length;k++){var fl=files[k].file;if(!TYPES[fl.type])return fail(fl.name+' is not a PDF, JPG or PNG.');if(fl.size>MAX)return fail(fl.name+' is larger than 5 MB.')}
+  d.school_code=state.school;d.action='submit';d.consent=true;
+  d.documents=files.map(function(x){return{kind:x.kind,name:x.file.name,mime:x.file.type,size:x.file.size}});
+  btn.disabled=true;btn.textContent='Sending…';
+  call(d).then(function(r){
+    var up=r.uploads||[],done=[],client=null;
+    if(up.length&&window.supabase)client=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey,{auth:{persistSession:false}});
+    var chain=Promise.resolve();
+    up.forEach(function(u,k){chain=chain.then(function(){btn.textContent='Uploading file '+(k+1)+' of '+up.length+'…';
+      if(!client)return;return client.storage.from('admissions').uploadToSignedUrl(u.path,u.token,files[k].file,{contentType:files[k].file.type}).then(function(x){if(!x.error)done.push(u.document_id)})})});
+    return chain.then(function(){return done.length?call({action:'uploaded',reference:r.reference,code:r.code,document_ids:done}):{uploaded:0}})
+      .catch(function(){return{uploaded:done.length}})
+      .then(function(c){thanks(r,up.length,c.uploaded||0)});
+  }).catch(function(x){btn.disabled=false;btn.textContent='Submit application';fail(x.message)});
+}
+function thanks(r,want,got){
+  state.ref=r.reference;window.scrollTo(0,0);
+  V.innerHTML='<h1>Application sent</h1><p class="lead">'+esc(state.info.name)+' has your application. Save the reference and status code below: you need both to check progress or withdraw.</p>'+
+  '<div class="card"><div class="codes"><div><small>Reference</small><b>'+esc(r.reference)+'</b></div><div><small>Status code (keep private)</small><b>'+esc(r.code)+'</b></div></div>'+
+  '<div class="row"><button class="btn ghost" id="cp">Copy both</button><a class="btn" href="?ref='+encodeURIComponent(r.reference)+'">Check status</a></div>'+
+  (r.emailed?'<div class="msg ok">We also emailed them to the address you gave.</div>':'<div class="msg warn">No email address was given, so write these down now. This page will not show the status code again.</div>')+
+  (want&&got<want?'<div class="msg err">'+(want-got)+' of '+want+' files did not upload. The school can still see your application; ask them how to send the missing documents.</div>':want?'<div class="msg ok">All '+want+' files were received.</div>':'')+'</div>';
+  var cp=document.getElementById('cp');cp.onclick=function(){var t='Reference '+r.reference+', status code '+r.code;try{navigator.clipboard.writeText(t).then(function(){cp.textContent='Copied'},function(){cp.textContent=t})}catch(e){cp.textContent=t}};
+}
+
+/* ---------- status ---------- */
+var STAGE={submitted:['Received',''],reviewing:['Under review',''],interview:['Interview',''],waitlisted:['Waiting list',''],accepted:['Accepted','good'],enrolled:['Enrolled','good'],declined:['Not offered a place','bad'],withdrawn:['Withdrawn','bad']};
+function day(s){try{return new Date(s).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}catch(e){return String(s).slice(0,10)}}
+function statusView(msg){
+  document.title='Check an application';
+  V.innerHTML='<h1>Check an application</h1><p class="lead">Use the reference and status code from your confirmation.</p>'+
+  '<form class="card" id="st"><div class="grid"><label>Reference<input id="rf" required maxlength="20" autocomplete="off" placeholder="AP26-XXXXXX" value="'+esc(state.ref)+'" style="text-transform:uppercase"></label>'+
+  '<label>Status code<input id="cd" required maxlength="20" autocomplete="off" style="text-transform:uppercase;letter-spacing:.06em"></label></div><div class="row" style="margin-top:14px"><button class="btn">Check</button></div>'+(msg?'<div class="msg err">'+esc(msg)+'</div>':'')+'</form><div id="res"></div>';
+  document.getElementById('st').onsubmit=function(e){e.preventDefault();state.ref=document.getElementById('rf').value.trim().toUpperCase();lookup('status',document.getElementById('cd').value)};
+}
+function lookup(action,code){
+  var res=document.getElementById('res');res.innerHTML='<p class="lead">Checking…</p>';setUrl();
+  call({action:action,reference:state.ref,code:code}).then(function(a){
+    var s=STAGE[a.status]||[a.status,''];
+    res.innerHTML='<div class="card"><small style="color:var(--mut)">'+esc(a.school)+' · '+esc(a.reference)+'</small><div class="stage '+s[1]+'"><i></i>'+esc(s[0])+'</div><p style="margin:0 0 4px">'+esc(a.status_text)+'</p>'+
+    '<p class="sub" style="color:var(--mut);margin:0">'+esc(a.name)+', '+esc(a.grade)+'. Sent '+day(a.submitted_at)+', last update '+day(a.updated_at)+'.</p>'+
+    '<ol class="tl">'+a.timeline.slice().reverse().map(function(t){var x=STAGE[t.status]||[t.status];return'<li><b>'+esc(x[0])+'</b><small>'+day(t.at)+'</small>'+(t.message?'<p>'+esc(t.message)+'</p>':'')+'</li>'}).join('')+'</ol>'+
+    (a.documents.length?'<h2 style="margin-top:6px">Documents</h2><ul class="docs">'+a.documents.map(function(d){return'<li><span>'+esc(d.kind)+' <span class="filehint">'+esc(d.name)+'</span></span><span class="tag '+(d.received?'ok':'no')+'">'+(d.received?'Received':'Not received')+'</span></li>'}).join('')+'</ul>':'')+
+    (a.can_withdraw?'<div class="row" style="margin-top:16px"><button class="btn ghost" id="wd">Withdraw this application</button></div><div id="wdc"></div>':'')+'</div>';
+    var wd=document.getElementById('wd');if(wd)wd.onclick=function(){document.getElementById('wdc').innerHTML='<div class="confirm"><b>Withdraw the application?</b><p style="margin:4px 0 10px">The school will see that you withdrew. This cannot be undone; you would need to apply again.</p><div class="row"><button class="btn danger" id="wy">Yes, withdraw</button><button class="btn ghost" id="wn">Keep it</button></div></div>';
+      document.getElementById('wn').onclick=function(){document.getElementById('wdc').innerHTML=''};document.getElementById('wy').onclick=function(){lookup('withdraw',code)}};
+  }).catch(function(e){res.innerHTML='<div class="msg err">'+esc(e.message)+'</div>'});
+}
+render();
+})();
+</script></body></html>
