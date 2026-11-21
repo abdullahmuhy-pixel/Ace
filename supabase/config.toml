@@ -50,3 +50,5 @@ verify_jwt = false
 verify_jwt = false
 [functions.admissions-manage]
 verify_jwt = false
+[functions.fee-reminders]
+verify_jwt = false

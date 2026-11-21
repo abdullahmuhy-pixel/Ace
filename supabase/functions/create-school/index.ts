@@ -12,7 +12,7 @@ handler(async (req, b, admin) => {
 
   const { data: code } = await admin.rpc("gen_school_code", { prefix: name });
   const { data: school, error } = await admin.from("schools")
-    .insert({ name, country_code: cc, region: clean(b.region, 80) || null, school_code: code }).select().single();
+    .insert({ name, country_code: cc, region: clean(b.region, 80) || null, school_code: code, product: b.product === "sis" ? "sis" : "full" }).select().single();
   if (error) throw new HttpError(400, "Could not create the school.");
 
   const { data: inv, error: iErr } = await admin.auth.admin.inviteUserByEmail(email, { redirectTo: SITE_URL });

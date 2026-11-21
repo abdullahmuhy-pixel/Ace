@@ -45,7 +45,7 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
 </style>
 <link rel="stylesheet" href="../notebook.css">
 </head><body><div class="wrap">
-<a class="brand" href="../"><i></i>Ace <small>Education</small></a><h1>Family view</h1><p class="lead">Enter the link code the student shared with you to see their study progress. The view is read-only and the student can turn it off at any time.</p>
+<a class="brand" href="../"><i></i>Ace <small>Education</small></a><h1>Family view</h1><p class="lead">Enter the link code from the student or their school to see term reports, school fees, the school calendar and study progress. The view is read-only.</p>
 <form id="f"><input id="c" maxlength="20" placeholder="LINK CODE" autocomplete="off" aria-label="Link code"><button>Open</button></form>
 <div id="out" aria-live="polite"></div><p class="foot"><a href="../">Ace Education</a> · <a href="../privacy">Privacy</a> · <a href="../contact">Contact</a></p></div>
 <script src="../config.js"></script>
@@ -54,18 +54,41 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
   var cfg=window.ACE_CONFIG||{},out=document.getElementById('out'),inp=document.getElementById('c');
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
   function pct(c,q){return q?Math.round(100*c/q)+'%':'-'}
+  function money(v,c){return (c?c+' ':'')+Number(v||0).toLocaleString(undefined,{maximumFractionDigits:2})}
+  function day(x){try{return new Date(String(x).slice(0,10)+'T00:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}catch(e){return esc(x)}}
+  function cents(v){return Math.round(Number(v||0)*100)}
+  function schoolPart(d){
+    var s=d.school,h='<div class="card"><h2>'+esc(s.name)+'</h2><p><b style="color:var(--text)">'+esc((d.first_name||'')+' '+(s.surname||''))+'</b>'+(s['class']?' • '+esc(s['class']):'')+(s.admission_no?' • '+esc(s.admission_no):'')+'</p>'+(s.term?'<p>'+esc(s.term.name)+' ends '+day(s.term.ends_on)+'.</p>':'')+'</div>';
+    var KN={holiday:'Holiday',exam:'Exams',closure:'School closed',deadline:'Deadline',meeting:'Meeting',event:'Event'};
+    if((s.events||[]).length)h+='<div class="card"><h2>Coming up</h2>'+s.events.map(function(e){return '<div class="row"><span><b style="color:var(--text)">'+esc(e.title)+'</b>'+(e.note?'<br><span class="small">'+esc(e.note)+'</span>':'')+'</span><span class="small" style="text-align:right">'+day(e.starts_on)+(e.ends_on!==e.starts_on?' – '+day(e.ends_on):'')+'<br>'+esc(KN[e.kind]||'')+'</span></div>'}).join('')+'</div>';
+    var F=s.fees||[];
+    if(F.length){var cur=F[0].currency,bal=F.reduce(function(n,f){return n+cents(f.amount)-cents(f.paid)},0)/100,od=F.reduce(function(n,f){return n+cents(f.overdue)},0)/100;
+      h+='<div class="card"><h2>School fees</h2><div class="big"><div><b>'+money(bal)+'</b><span>balance ('+esc(cur)+')</span></div><div><b style="color:'+(od>0?'var(--bad)':'var(--primary)')+'">'+money(od)+'</b><span>due now</span></div></div>'
+       +F.slice().reverse().map(function(f){return '<details style="margin-top:10px"><summary><b style="color:var(--text)">'+esc(f.term)+'</b>: paid '+money(f.paid)+' of '+money(f.amount,f.currency)+'</summary>'
+         +(f.items||[]).map(function(i){return '<div class="row"><span>'+esc(i.label)+'</span><span>'+money(i.amount)+'</span></div>'}).join('')
+         +((f.instalments||[]).length?'<p class="small" style="margin-top:6px">Instalments: '+f.instalments.map(function(n){return day(n.due_on)+' '+money(n.amount)}).join('; ')+'</p>':(f.due_on?'<p class="small">Due '+day(f.due_on)+'</p>':''))
+         +((f.payments||[]).length?'<p class="small">Payments: '+f.payments.map(function(y){return day(y.paid_on)+' '+money(y.amount)+' (receipt '+esc(y.receipt)+')'}).join('; ')+'</p>':'')+'</details>'}).join('')
+       +(s.fee_note?'<p class="small" style="margin-top:10px;white-space:pre-wrap;border:1px dashed var(--border);border-radius:10px;padding:8px">'+esc(s.fee_note)+'</p>':'')+'<p class="small">Pay the school directly. Ace only shows the school\'s record.</p></div>'}
+    (s.reports||[]).forEach(function(r,i){h+='<div class="card"><h2>'+esc(r.term)+'</h2><p>'+esc(r['class']||'')+' • average '+(r.average==null?'–':Number(r.average).toFixed(1))+(r.position?' • position '+r.position+' of '+r.class_size:'')+(r.attendance_pct!=null?' • attendance '+Math.round(r.attendance_pct)+'%':'')+'</p>'
+      +(r.results||[]).map(function(x){return '<div class="row"><span>'+esc(x.subject)+'</span><span>'+(x.score==null?'–':Number(x.score).toFixed(1).replace(/\.0$/,''))+' <b style="color:var(--text)">'+esc(x.grade||'')+'</b></span></div>'}).join('')
+      +(r.teacher_comment?'<p style="margin-top:8px"><b style="color:var(--text)">Class teacher:</b> '+esc(r.teacher_comment)+'</p>':'')+(r.head_comment?'<p><b style="color:var(--text)">Head of school:</b> '+esc(r.head_comment)+'</p>':'')+'</div>'});
+    if((s.behaviour||[]).length)h+='<div class="card"><h2>Merits and notes from school</h2>'+s.behaviour.map(function(b){return '<div class="row"><span><b style="color:var(--text)">'+(b.kind==='merit'?'Merit: ':'')+esc(b.category||'')+'</b><br><span class="small">'+esc(b.description)+'</span></span><span class="small">'+day(b.occurred_on)+'</span></div>'}).join('')+'</div>';
+    return h;
+  }
   function render(d){
+    var sch=d.school&&d.school.name?schoolPart(d):'',sisOnly=d.school&&d.school.product==='sis';
+    if(sisOnly){out.innerHTML=sch+'<p class="small">This link expires on '+esc(String(d.expires_at).slice(0,10))+'. It does not show messages or private notes.</p>';return}
     var w=d.week||[],mx=Math.max.apply(null,w.map(function(x){return x.questions}).concat([1])),tq=0,tc=0;
     w.forEach(function(x){tq+=x.questions;tc+=x.correct});
     var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    var h='<p>Progress for <b>'+esc(d.first_name||'your student')+'</b>. Read-only; shared by the student.</p>'
+    var h=sch+'<p>Study progress for <b>'+esc(d.first_name||'your student')+'</b>. Read-only.</p>'
       +'<div class="card big"><div><b>'+esc(d.streak)+'</b><span>day streak</span></div><div><b>'+tq+'</b><span>questions this week</span></div><div><b>'+pct(tc,tq)+'</b><span>correct this week</span></div></div>'
       +'<div class="card"><h2>Last 7 days</h2><div class="bars">'+w.map(function(x){var dt=new Date(x.day+'T00:00:00');return '<div title="'+x.questions+' questions"><i style="height:'+Math.round(70*x.questions/mx)+'px"></i>'+days[dt.getDay()]+'</div>'}).join('')+'</div></div>';
     if((d.subjects||[]).length)h+='<div class="card"><h2>Subjects, last 30 days</h2>'+d.subjects.map(function(s){return '<div class="row"><span>'+esc(s.subject)+'</span><span>'+s.questions+' questions, '+pct(s.correct,s.questions)+'</span></div>'}).join('')+'</div>';
     var a=d.attendance_30d||{},at=0;for(var k in a)at+=a[k];
     if(at)h+='<div class="card"><h2>School attendance, last 30 days</h2><div class="row"><span>Present</span><span>'+(a.present||0)+'</span></div><div class="row"><span>Late</span><span>'+(a.late||0)+'</span></div><div class="row"><span>Absent</span><span>'+(a.absent||0)+'</span></div><div class="row"><span>Excused</span><span>'+(a.excused||0)+'</span></div></div>';
     if((d.courses||[]).length)h+='<div class="card"><h2>Courses</h2>'+d.courses.map(function(c){return '<div class="row"><span>'+esc(c.title)+'</span><span>'+(c.certified?'Certificate earned':esc(c.lessons)+' of '+esc(c.of)+' lessons')+'</span></div>'}).join('')+'</div>';
-    h+='<p class="small">This link expires on '+esc(String(d.expires_at).slice(0,10))+'. The student can stop it at any time. It does not show messages, notes or group posts.</p>';
+    h+='<p class="small">This link expires on '+esc(String(d.expires_at).slice(0,10))+'. It can be stopped at any time. It does not show messages, private notes or group posts.</p>';
     out.innerHTML=h;
   }
   function open(code){
@@ -75,7 +98,7 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
     out.innerHTML='<p>Opening…</p>';
     fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/rest/v1/rpc/family_view',{method:'POST',headers:{'Content-Type':'application/json',apikey:cfg.supabaseAnonKey,Authorization:'Bearer '+cfg.supabaseAnonKey},body:JSON.stringify({p_code:code})})
     .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
-      if(!d){out.innerHTML='<p class="no">That link has expired, was stopped, or the code is wrong. Ask the student for a new one.</p>';return}
+      if(!d){out.innerHTML='<p class="no">That link has expired, was stopped, or the code is wrong. Ask the student or the school for a new one.</p>';return}
       render(d);
     }).catch(function(){out.innerHTML='<p class="no">Could not open right now. Try again.</p>'});
   }

@@ -50,10 +50,12 @@ ${age != null ? `<p class="muted" style="margin:0 0 8px">Age ${age}.</p>` : ''}<
 <h3 style="margin-top:20px">Status</h3><form data-f="ststatus" data-id="${p.id}"><div class="row"><label>Change to<select name="status">${Object.keys(STATUS).filter(k => k !== st).map(k => opt(k, STATUS[k][0])).join('')}</select></label><label>From<input name="effective" type="date" value="${new Date().toISOString().slice(0, 10)}"></label></div>
 <label>Reason<input name="reason" maxlength="300" placeholder="e.g. Moved to another town; finished Form 4"></label><p class="sub">Withdrawn, transferred and graduated students leave their classes and stop using a seat; their record, marks and history stay. You can make them active again.</p><button class="b">Change status</button></form>
 ${r.left_on ? `<p class="muted">Left on ${day(r.left_on)}${r.leaving_reason ? ': ' + esc(r.leaving_reason) : ''}.</p>` : ''}
+<h3 style="margin-top:20px">Family link</h3><div id="flinks" data-id="${p.id}"><p class="muted">Loading…</p></div>
 <h3 style="margin-top:20px">Guardians</h3>${(gu.data || []).length ? `<div class="lst">${gu.data.map(g => `<div class="it"><div class="m"><b>${esc(g.name || g.email)}</b><small>${esc(g.email)}${g.digest_opt_in && g.consent_at ? ' • weekly email on' : ''}</small></div></div>`).join('')}</div>` : `<p class="muted">None yet${app.data && app.data.guardian_phone ? `. From the application: ${esc(app.data.guardian_name || '')} ${esc(app.data.guardian_phone)}` : ''}. Add them in Parents.</p>`}
 <h3 style="margin-top:20px">Behaviour and welfare</h3>${(beh.data || []).length && H.behaviourEntry ? `<div class="lst">${beh.data.map(e => H.behaviourEntry(e, {})).join('')}</div>` : '<p class="muted">Nothing recorded.</p>'}<p><button class="g" type="button" data-a="bnew" data-id="${p.id}" data-k="welfare">Add a welfare note</button></p>
 <h3 style="margin-top:20px">History</h3><div class="lst">${(ev.data || []).map(e => `<div class="it"><div class="m"><b>${esc((STATUS[e.from_status] || [e.from_status || ''])[0])} → ${esc((STATUS[e.to_status] || [e.to_status])[0])}</b><small>${day(e.effective_on)} • ${esc(who[e.actor] || 'Staff')}${e.reason ? ' • ' + esc(e.reason) : ''}</small></div></div>`).join('') || `<p class="muted">On Ace since ${day(p.created_at)}. No status changes yet.</p>`}</div></div>`;
   document.body.appendChild(d);
+  if (H.loadFamilyLinks) H.loadFamilyLinks(p.id);
 };
 F.strec = async (d, f) => {
   const row = { student_id: f.dataset.id, school_id: me().school_id, updated_by: me().id, updated_at: new Date().toISOString() };

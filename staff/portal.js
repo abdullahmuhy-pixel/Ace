@@ -88,6 +88,12 @@ const curEx = async () => { const d = await syllabus(); const c = cls(); return 
 /* ---------- navigation by role ---------- */
 function navFor() {
   if (isPlat()) return [['Console', [['dash', '📊', 'Dashboard'], ['schools', '🏫', 'Schools and tutors'], ['users', '👥', 'People'], ['money', '💰', 'Plans and revenue'], ['creators', '🎬', 'Creators'], ['config', '📢', 'Broadcast and config'], ['reports', '🧾', 'Reports and errors'], ['mod', '🛡️', 'Moderation']]]];
+  if (isSIS()) {
+    const o = [['Classroom', [['register', '📅', 'Register'], ['grades', '📒', 'Gradebook'], ['behaviour', '⭐', 'Behaviour'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages'], ['parents', '👪', 'Parents'], ['calendar', '📆', 'School calendar']]]];
+    if (isAdmin()) o.unshift(['School office', [['sdash', '📊', 'Dashboard'], ['admissions', '📨', 'Admissions'], ['people', '🧑‍🏫', 'People'], ['classes', '🏛️', 'Classes'], ['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees'], ['results', '🏅', 'Results'], ['settings', '⚙️', 'Settings']]]);
+    else o.push(['Account', [['settings', '⚙️', 'Settings']]]);
+    return o;
+  }
   const g = [['Teaching', [['overview', '📊', 'Overview'], ['students', '👥', isTutor() ? 'My students' : 'My class'], ['progress', '📈', 'Progress'], ['register', '📅', 'Register']]],
     ['Classroom', [['work', '📝', 'Assign work'], ['grades', '📒', 'Gradebook'], ['pacing', '🗺️', 'Pacing'], ['live', '⚡', 'Live quiz'], ['behaviour', '⭐', 'Behaviour'], ['qna', '💬', 'Q&A board'], ['library', '📚', 'Library'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages']]],
     ['Tools', [['ai', '✨', 'AI planner'], ['calendar', '📆', 'School calendar'], ['reportcards', '📄', 'Report cards'], ['planner', '🗓️', 'Term planner'], ['rubrics', '📐', 'Rubrics'], ['parents', '👪', 'Parents']]]];
@@ -95,7 +101,8 @@ function navFor() {
   else g.push(['Account', [['settings', '⚙️', 'Settings']]]);
   return g;
 }
-const DOCK = () => isPlat() ? ['dash', 'schools', 'users', 'money'] : ['overview', 'students', 'work', 'messages'];
+const isSIS = () => !isPlat() && !!school && school.product === 'sis';
+const DOCK = () => isPlat() ? ['dash', 'schools', 'users', 'money'] : isSIS() ? (isAdmin() ? ['sdash', 'people', 'fees', 'register'] : ['register', 'grades', 'behaviour', 'messages']) : ['overview', 'students', 'work', 'messages'];
 const NEEDS_CLASS = new Set(['overview', 'students', 'progress', 'register', 'work', 'grades', 'pacing', 'live', 'qna', 'library', 'notices', 'messages', 'reportcards', 'planner', 'parents', 'behaviour']);
 const TITLES = {};
 function drawNav() {
@@ -130,7 +137,7 @@ async function boot() {
   $('#ws').innerHTML = isPlat() ? `<b>Ace team</b><small>Founder console</small><span class="rb">Platform admin</span>` : `<b>${esc(school ? school.name : '')}</b><small>${esc(CN[cc()] || cc())}</small><span class="rb">${isTutor() ? (isAdmin() ? 'Tutor' : 'Teacher') : me.role === 'school_admin' ? 'School admin' : me.role === 'subject_teacher' ? 'Subject teacher' : 'Teacher'}</span>`;
   $('#me').innerHTML = `<span class="av">${esc(ini(me))}</span><div><b>${nm(me)}</b><small>${esc(me.contact_email || me.username || '')}</small></div><button class="ib" data-a="signout" aria-label="Sign out" title="Sign out">⎋</button>`;
   const h = (location.hash || '').slice(1);
-  St.view = h && TITLES_OK(h) ? h : isPlat() ? 'dash' : (St.classes.length ? 'overview' : (isAdmin() ? 'classes' : 'overview'));
+  St.view = h && TITLES_OK(h) ? h : isPlat() ? 'dash' : isSIS() ? (isAdmin() ? 'sdash' : 'register') : (St.classes.length ? 'overview' : (isAdmin() ? 'classes' : 'overview'));
   try { const fc = localStorage.getItem('ace-first-code'); if (fc) { localStorage.removeItem('ace-first-code'); toast('Your first class is ready. Share the code ' + fc + ' with your students.'); } } catch (e) { }
   go();
 }
@@ -174,6 +181,6 @@ document.addEventListener('submit', guard(async e => {
   const btn = f.querySelector('button.b,button[type=submit]'); if (btn) btn.disabled = true;
   try { await F[f.dataset.f](d, f); } finally { if (btn) btn.disabled = false; }
 }));
-window.AceTeach = { V, A, F, St, go, get sb() { return sb; }, get me() { return me; }, get school() { return school; }, helpers: { esc, table, bar, pct, nm, ini, ago, daysAgo, csv, saveCsv, must, fn, toast, guard, syllabus, examKey, subjectsOf, modulesOf, curEx, cls, isAdmin, isTutor, isPlat, cc, empty, CA, CN, today, loadClasses, md } };
+window.AceTeach = { V, A, F, St, go, get sb() { return sb; }, get me() { return me; }, get school() { return school; }, helpers: { esc, table, bar, pct, nm, ini, ago, daysAgo, csv, saveCsv, must, fn, toast, guard, syllabus, examKey, subjectsOf, modulesOf, curEx, cls, isAdmin, isTutor, isPlat, isSIS, cc, empty, CA, CN, today, loadClasses, md } };
 window.addEventListener('load', () => guard(boot)());
 })();

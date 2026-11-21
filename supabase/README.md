@@ -110,3 +110,13 @@ enrolment (current, by status and class, joined and left, 12-month trend), admis
 students below 90%), fees (billed, collected, outstanding, overdue, collected in the period, per currency),
 behaviour, and teacher workload (classes, students, timetabled periods and hours, assessments and tasks set).
 Ace Teach, School, Dashboard; CSV export. Tests: `supabase/tests/50_school_dashboard_test.sql` (20 checks).
+
+## School management only, family links from the school, fee reminders (migration 0051)
+`schools.product`: `full` (default) or `sis` (school management without the learning tools; Ace Teach shows a School
+office menu, and the family view shows only school information). Set when onboarding a school, or by the school
+admin in Settings. `school_family_link`, `student_family_links`, `school_revoke_family_link`: school admins make and
+stop family links for a student (valid a year). `family_view` now also returns the school side: published reports,
+fees with items, instalments and receipts, payment details, coming events and shared behaviour entries.
+`fee_reminder_list` + the `fee-reminders` edge function: email reminders to guardians of students with fees due
+(at most weekly, with the family link), or copyable WhatsApp/SMS messages while email is not set up; `fee_reminders`
+logs both. Tests: `supabase/tests/51_sis_family_reminders_test.sql` (25 checks).
