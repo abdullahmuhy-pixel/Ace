@@ -22,7 +22,7 @@ const overdue = (f, inst) => { const t = today(), mine = inst.filter(i => i.fee_
 
 /* print one document (statement or receipt) without the portal around it */
 const css = document.createElement('style');
-css.textContent = `#printdoc{display:none}@media print{body.pdoc>*:not(#printdoc){display:none!important}body.pdoc #printdoc{display:block;color:#000;font:13px/1.45 system-ui,sans-serif}#printdoc table{width:100%;border-collapse:collapse;margin:8px 0 14px}#printdoc th,#printdoc td{border-bottom:1px solid #bbb;padding:5px 6px;text-align:left}#printdoc td.n,#printdoc th.n{text-align:right}#printdoc h1{font-size:20px;margin:0}#printdoc .hd{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:12px}#printdoc .void td{text-decoration:line-through;color:#777}}`;
+css.textContent = `#printdoc{display:none}@media print{body.pdoc>*:not(#printdoc){display:none!important}body.pdoc #printdoc{display:block;color:#000;font:13px/1.45 system-ui,sans-serif}#printdoc table{width:100%;border-collapse:collapse;margin:8px 0 14px}#printdoc th,#printdoc td{border-bottom:1px solid #bbb;padding:5px 6px;text-align:left}#printdoc td.n,#printdoc th.n{text-align:right}#printdoc h1{font-size:20px;margin:0}#printdoc .hd{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:12px}#printdoc .void td{text-decoration:line-through;color:#777}#printdoc .pb{break-after:page}}`;
 document.head.appendChild(css);
 function printDoc(html) {
   let d = document.getElementById('printdoc'); if (!d) { d = document.createElement('div'); d.id = 'printdoc'; document.body.appendChild(d); }
@@ -30,8 +30,10 @@ function printDoc(html) {
   const done = () => { document.body.classList.remove('pdoc'); window.removeEventListener('afterprint', done); };
   window.addEventListener('afterprint', done); window.print(); setTimeout(done, 1500);
 }
+H.printDoc = html => printDoc(html);
 const head = (title, sub) => { const s = T.school || {}; return `<div class="hd"><div><h1>${esc(s.name || '')}</h1><div>${esc(title)}</div></div><div style="text-align:right">${sub}<br>Printed ${day(today())}</div></div>`; };
 
+H.printHead = (t, sub) => head(t, sub);
 async function load() {
   const [f, p] = await Promise.all([
     sb().from('fees').select('*').eq('school_id', me().school_id).order('created_at', { ascending: false }).limit(5000),

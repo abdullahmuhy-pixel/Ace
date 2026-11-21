@@ -91,7 +91,7 @@ function navFor() {
   const g = [['Teaching', [['overview', '📊', 'Overview'], ['students', '👥', isTutor() ? 'My students' : 'My class'], ['progress', '📈', 'Progress'], ['register', '📅', 'Register']]],
     ['Classroom', [['work', '📝', 'Assign work'], ['grades', '📒', 'Gradebook'], ['pacing', '🗺️', 'Pacing'], ['live', '⚡', 'Live quiz'], ['qna', '💬', 'Q&A board'], ['library', '📚', 'Library'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages']]],
     ['Tools', [['ai', '✨', 'AI planner'], ['reportcards', '📄', 'Report cards'], ['planner', '🗓️', 'Term planner'], ['rubrics', '📐', 'Rubrics'], ['parents', '👪', 'Parents']]]];
-  if (isAdmin()) g.push([isTutor() ? 'My workspace' : 'School', [['classes', '🏛️', 'Classes'], ['admissions', '📨', 'Admissions'], ['people', '🧑‍🏫', isTutor() ? 'Students and teachers' : 'People'], ...(isTutor() ? [] : [['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees']]), ['schoolrep', '📋', isTutor() ? 'Workspace report' : 'School report'], ['mod', '🛡️', 'Moderation'], ['settings', '⚙️', 'Settings']]]);
+  if (isAdmin()) g.push([isTutor() ? 'My workspace' : 'School', [['classes', '🏛️', 'Classes'], ['admissions', '📨', 'Admissions'], ['people', '🧑‍🏫', isTutor() ? 'Students and teachers' : 'People'], ...(isTutor() ? [] : [['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees'], ['results', '🏅', 'Results']]), ['schoolrep', '📋', isTutor() ? 'Workspace report' : 'School report'], ['mod', '🛡️', 'Moderation'], ['settings', '⚙️', 'Settings']]]);
   else g.push(['Account', [['settings', '⚙️', 'Settings']]]);
   return g;
 }

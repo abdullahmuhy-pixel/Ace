@@ -44,8 +44,8 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
 </style>
 <link rel="stylesheet" href="../notebook.css">
 </head><body><div class="wrap">
-<a class="brand" href="../"><i></i>Ace <small>Education</small></a><h1>Certificate check</h1><p>Enter the code printed on a certificate to confirm it is genuine.</p>
-<form id="f"><input id="c" maxlength="20" placeholder="CERTIFICATE CODE" autocomplete="off" aria-label="Certificate code"><button>Check</button></form>
+<a class="brand" href="../"><i></i>Ace <small>Education</small></a><h1>Certificate and transcript check</h1><p>Enter the code printed on an Ace certificate or a school transcript to confirm it is genuine.</p>
+<form id="f"><input id="c" maxlength="20" placeholder="CODE" autocomplete="off" aria-label="Certificate or transcript code"><button>Check</button></form>
 <div id="out" aria-live="polite"></div><p class="foot"><a href="../">Ace Education</a> · <a href="../privacy">Privacy</a> · <a href="../contact">Contact</a></p></div>
 <script src="../config.js"></script>
 <script>
@@ -57,11 +57,23 @@ input,select,textarea{border-width:2px!important;border-radius:12px!important}
     code=(code||'').replace(/[^A-Za-z0-9]/g,'').toUpperCase(); if(code.length<8)return show('<p class="no">Enter the full code.</p>');
     if(!cfg.supabaseUrl||!cfg.supabaseAnonKey)return show('<p class="no">This page is not connected yet.</p>');
     show('<p>Checking…</p>');
+    if(/^TR[A-Z0-9]{10}$/.test(code))return transcript(code);
     fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/rest/v1/rpc/verify_certificate',{method:'POST',headers:{'Content-Type':'application/json',apikey:cfg.supabaseAnonKey,Authorization:'Bearer '+cfg.supabaseAnonKey},body:JSON.stringify({p_code:code})})
     .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){
       if(!rows||!rows.length)return show('<p class="no">No certificate matches that code. Check for typing mistakes.</p>');
       var c=rows[0],d=String(c.issued_at).slice(0,10);
       show('<div class="cert"><div class="k">Ace Education</div><h2>Certificate of completion</h2><div class="k">This certifies that</div><div class="name">'+esc(c.holder_name)+'</div><div class="k">completed and passed</div><h2>'+esc(c.course_title)+'</h2><div>Score '+esc(c.score)+'% • Issued '+esc(d)+'</div><p class="ok">✔ Verified</p><div class="small">Code '+esc(code)+'. This certificate shows course completion on Ace Education. It is not an accredited qualification.</div></div><p class="noprint"><button onclick="window.print()">Print or save as PDF</button></p>');
+    }).catch(function(){show('<p class="no">Could not check right now. Try again.</p>')});
+  }
+  function transcript(code){
+    fetch(cfg.supabaseUrl.replace(/\/$/,'')+'/rest/v1/rpc/verify_transcript',{method:'POST',headers:{'Content-Type':'application/json',apikey:cfg.supabaseAnonKey,Authorization:'Bearer '+cfg.supabaseAnonKey},body:JSON.stringify({p_code:code})})
+    .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){
+      if(!rows||!rows.length)return show('<p class="no">No transcript matches that code. Check for typing mistakes.</p>');
+      var t=rows[0],d=String(t.issued_at).slice(0,10);
+      if(t.revoked)return show('<p class="no">This transcript ('+esc(code)+') was issued by '+esc(t.school)+' on '+esc(d)+' and later withdrawn by the school. It is no longer valid.</p>');
+      var s=t.snapshot||{},n=function(v){return v==null?'–':esc(v)};
+      var terms=(s.terms||[]).map(function(x){return '<h3 style="margin:18px 0 6px">'+esc(x.term)+(x.class?' <small>'+esc(x.class)+'</small>':'')+'</h3><table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left">Subject</th><th style="text-align:right">Score</th><th style="text-align:right">Grade</th></tr>'+(x.results||[]).map(function(r){return '<tr><td>'+esc(r.subject)+'</td><td style="text-align:right">'+n(r.score)+'</td><td style="text-align:right">'+n(r.grade)+'</td></tr>'}).join('')+'</table><div class="small">Average '+n(x.average)+(x.position?' • position '+esc(x.position)+' of '+esc(x.class_size):'')+(x.attendance_pct!=null?' • attendance '+esc(Math.round(x.attendance_pct))+'%':'')+'</div>'}).join('');
+      show('<div class="cert" style="text-align:left"><div class="k">'+esc(t.school)+'</div><h2>Academic transcript</h2><div class="name">'+esc(s.name||'')+'</div><div class="small">'+(s.admission_no?'Admission number '+esc(s.admission_no)+' • ':'')+(s.admitted_on?'admitted '+esc(s.admitted_on)+' • ':'')+(s.left_on?'left '+esc(s.left_on)+' • ':'')+'issued '+esc(d)+'</div>'+terms+'<p class="ok">✔ Verified: issued by the school through Ace</p><div class="small">Code '+esc(code)+'. The school is responsible for these results.</div></div><p class="noprint"><button onclick="window.print()">Print or save as PDF</button></p>');
     }).catch(function(){show('<p class="no">Could not check right now. Try again.</p>')});
   }
   document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();check(inp.value)});

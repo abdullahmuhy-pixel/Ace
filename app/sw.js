@@ -7,7 +7,7 @@
 const VERSION = 'v164';
 const SHELL = 'ace-shell-' + VERSION;
 const DATA = 'ace-syllabus-' + VERSION;
-const PRECACHE = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'today.js', 'learn.js', 'class.js', 'learner.js', 'ui.js', 'motion.js', 'teacher.js', 'tiers.js', 'ui.css', 'campus.js', 'campus.css', 'chat.js', 'files.js', 'friends.js', 'lang/fr.js', 'lang/it.js', 'lang/pt.js', 'lang/de.js'];
+const PRECACHE = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'today.js', 'learn.js', 'class.js', 'record.js', 'learner.js', 'ui.js', 'motion.js', 'teacher.js', 'tiers.js', 'ui.css', 'campus.js', 'campus.css', 'chat.js', 'files.js', 'friends.js', 'lang/fr.js', 'lang/it.js', 'lang/pt.js', 'lang/de.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(SHELL).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

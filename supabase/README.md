@@ -86,3 +86,12 @@ and receipted payments (`fee_payments`, never edited or deleted, only voided wit
 `fees.paid` are kept by triggers and cannot be edited directly. School admins call `bill_students`, `record_payment`
 and `void_payment`; `fee_overdue` gives what is due now. Ace Teach, Fees: invoices, who owes, receipts log, billing,
 statements and receipts to print. Tests: `supabase/tests/47_fee_statements_test.sql` (35 checks).
+
+## Academic record and transcripts (migration 0048)
+`academic_terms` (per school, with dates), `term_results` (score out of 100 and grade per subject; compiled from the
+gradebook by `compile_term`, or entered by hand) and `term_reports` (average, position, attendance, comments).
+`publish_term` makes a class's reports visible to its students and locks them. Grade bands per school
+(`schools.grade_bands`, default A–F). `transcripts`: students ask with `request_transcript`, admins
+`issue_transcript` (frozen snapshot of published reports, code TR + 10 characters) or decline/withdraw with
+`decide_transcript`; anyone checks a code with `verify_transcript` on /verify/. Students see it all in the app,
+Tools, My results. Tests: `supabase/tests/48_academic_record_test.sql` (42 checks).
