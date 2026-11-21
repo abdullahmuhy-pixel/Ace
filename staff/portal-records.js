@@ -18,13 +18,15 @@ A.strec = async el => {
   const id = el.dataset.id || St.recid; St.recid = id;
   const p = must(await sb().from('profiles').select('id,first_name,surname,username,student_number,admission_no,enrolment_status,status_changed_at,class_id,contact_email,last_seen_at,created_at,exam_target').eq('id', id).maybeSingle());
   if (!p) return toast('Student not found.', true);
-  const [rec, ev, gu, app, att, fees] = await Promise.all([
+  St.bnames = Object.assign(St.bnames || {}, { [p.id]: p });
+  const [rec, ev, gu, app, att, fees, beh] = await Promise.all([
     sb().from('student_records').select('*').eq('student_id', id).maybeSingle(),
     sb().from('enrolment_events').select('*').eq('student_id', id).order('created_at', { ascending: false }),
     sb().from('guardians').select('name,email,digest_opt_in,consent_at').eq('student_id', id),
     sb().from('applications').select('reference,created_at,guardian_name,guardian_phone').eq('student_id', id).maybeSingle(),
     sb().from('attendance').select('status').eq('student_id', id).gte('day', new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10)),
-    sb().from('fees').select('term,amount,paid,currency_code').eq('student_id', id).order('term')
+    sb().from('fees').select('term,amount,paid,currency_code').eq('student_id', id).order('term'),
+    sb().from('behaviour_entries').select('*').eq('student_id', id).order('occurred_on', { ascending: false }).limit(15)
   ]);
   const r = rec.data || {}, C = {}; (St.classes || []).forEach(c => C[c.id] = c);
   const A3 = (att.data || []).filter(a => a.status !== 'excused'), present = A3.filter(a => a.status === 'present' || a.status === 'late').length;
@@ -49,6 +51,7 @@ ${age != null ? `<p class="muted" style="margin:0 0 8px">Age ${age}.</p>` : ''}<
 <label>Reason<input name="reason" maxlength="300" placeholder="e.g. Moved to another town; finished Form 4"></label><p class="sub">Withdrawn, transferred and graduated students leave their classes and stop using a seat; their record, marks and history stay. You can make them active again.</p><button class="b">Change status</button></form>
 ${r.left_on ? `<p class="muted">Left on ${day(r.left_on)}${r.leaving_reason ? ': ' + esc(r.leaving_reason) : ''}.</p>` : ''}
 <h3 style="margin-top:20px">Guardians</h3>${(gu.data || []).length ? `<div class="lst">${gu.data.map(g => `<div class="it"><div class="m"><b>${esc(g.name || g.email)}</b><small>${esc(g.email)}${g.digest_opt_in && g.consent_at ? ' • weekly email on' : ''}</small></div></div>`).join('')}</div>` : `<p class="muted">None yet${app.data && app.data.guardian_phone ? `. From the application: ${esc(app.data.guardian_name || '')} ${esc(app.data.guardian_phone)}` : ''}. Add them in Parents.</p>`}
+<h3 style="margin-top:20px">Behaviour and welfare</h3>${(beh.data || []).length && H.behaviourEntry ? `<div class="lst">${beh.data.map(e => H.behaviourEntry(e, {})).join('')}</div>` : '<p class="muted">Nothing recorded.</p>'}<p><button class="g" type="button" data-a="bnew" data-id="${p.id}" data-k="welfare">Add a welfare note</button></p>
 <h3 style="margin-top:20px">History</h3><div class="lst">${(ev.data || []).map(e => `<div class="it"><div class="m"><b>${esc((STATUS[e.from_status] || [e.from_status || ''])[0])} → ${esc((STATUS[e.to_status] || [e.to_status])[0])}</b><small>${day(e.effective_on)} • ${esc(who[e.actor] || 'Staff')}${e.reason ? ' • ' + esc(e.reason) : ''}</small></div></div>`).join('') || `<p class="muted">On Ace since ${day(p.created_at)}. No status changes yet.</p>`}</div></div>`;
   document.body.appendChild(d);
 };

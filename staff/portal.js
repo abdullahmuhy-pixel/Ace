@@ -89,14 +89,14 @@ const curEx = async () => { const d = await syllabus(); const c = cls(); return 
 function navFor() {
   if (isPlat()) return [['Console', [['dash', '📊', 'Dashboard'], ['schools', '🏫', 'Schools and tutors'], ['users', '👥', 'People'], ['money', '💰', 'Plans and revenue'], ['creators', '🎬', 'Creators'], ['config', '📢', 'Broadcast and config'], ['reports', '🧾', 'Reports and errors'], ['mod', '🛡️', 'Moderation']]]];
   const g = [['Teaching', [['overview', '📊', 'Overview'], ['students', '👥', isTutor() ? 'My students' : 'My class'], ['progress', '📈', 'Progress'], ['register', '📅', 'Register']]],
-    ['Classroom', [['work', '📝', 'Assign work'], ['grades', '📒', 'Gradebook'], ['pacing', '🗺️', 'Pacing'], ['live', '⚡', 'Live quiz'], ['qna', '💬', 'Q&A board'], ['library', '📚', 'Library'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages']]],
-    ['Tools', [['ai', '✨', 'AI planner'], ['reportcards', '📄', 'Report cards'], ['planner', '🗓️', 'Term planner'], ['rubrics', '📐', 'Rubrics'], ['parents', '👪', 'Parents']]]];
+    ['Classroom', [['work', '📝', 'Assign work'], ['grades', '📒', 'Gradebook'], ['pacing', '🗺️', 'Pacing'], ['live', '⚡', 'Live quiz'], ['behaviour', '⭐', 'Behaviour'], ['qna', '💬', 'Q&A board'], ['library', '📚', 'Library'], ['notices', '📢', 'Notices'], ['messages', '✉️', 'Messages']]],
+    ['Tools', [['ai', '✨', 'AI planner'], ['calendar', '📆', 'School calendar'], ['reportcards', '📄', 'Report cards'], ['planner', '🗓️', 'Term planner'], ['rubrics', '📐', 'Rubrics'], ['parents', '👪', 'Parents']]]];
   if (isAdmin()) g.push([isTutor() ? 'My workspace' : 'School', [['classes', '🏛️', 'Classes'], ['admissions', '📨', 'Admissions'], ['people', '🧑‍🏫', isTutor() ? 'Students and teachers' : 'People'], ...(isTutor() ? [] : [['timetable', '🕒', 'Timetables'], ['fees', '💳', 'Fees'], ['results', '🏅', 'Results']]), ['schoolrep', '📋', isTutor() ? 'Workspace report' : 'School report'], ['mod', '🛡️', 'Moderation'], ['settings', '⚙️', 'Settings']]]);
   else g.push(['Account', [['settings', '⚙️', 'Settings']]]);
   return g;
 }
 const DOCK = () => isPlat() ? ['dash', 'schools', 'users', 'money'] : ['overview', 'students', 'work', 'messages'];
-const NEEDS_CLASS = new Set(['overview', 'students', 'progress', 'register', 'work', 'grades', 'pacing', 'live', 'qna', 'library', 'notices', 'messages', 'reportcards', 'planner', 'parents']);
+const NEEDS_CLASS = new Set(['overview', 'students', 'progress', 'register', 'work', 'grades', 'pacing', 'live', 'qna', 'library', 'notices', 'messages', 'reportcards', 'planner', 'parents', 'behaviour']);
 const TITLES = {};
 function drawNav() {
   const groups = navFor(); groups.forEach(g => g[1].forEach(i => TITLES[i[0]] = i[2]));

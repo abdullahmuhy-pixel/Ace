@@ -95,3 +95,10 @@ gradebook by `compile_term`, or entered by hand) and `term_reports` (average, po
 `issue_transcript` (frozen snapshot of published reports, code TR + 10 characters) or decline/withdraw with
 `decide_transcript`; anyone checks a code with `verify_transcript` on /verify/. Students see it all in the app,
 Tools, My results. Tests: `supabase/tests/48_academic_record_test.sql` (42 checks).
+
+## School calendar and behaviour log (migration 0049)
+`school_events`: events, holidays, exam weeks, closures, meetings and deadlines per school, for everyone or staff only
+(school admins edit; students see the everyone items in the app). `behaviour_entries`: merits, concerns and incidents
+by the student's teachers or school admins (teachers can fix or delete their own entry for 24 hours), and welfare
+notes that only school admins can read and that are never shared. Entries marked for the family show in the
+student's app. `class_behaviour()` summarises a class over a period. Tests: `supabase/tests/49_calendar_behaviour_test.sql` (27 checks).

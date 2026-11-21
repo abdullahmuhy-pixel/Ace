@@ -132,7 +132,7 @@ ${tool('📝', L('Lecture notes', 'Apuntes'), L('Paste notes, get a study pack',
 ${tool('📣', L('From my teachers', 'De mis profesores'), L('Notices and messages', 'Avisos y mensajes'), 'inbox')}
 ${tool('📋', L('Class tasks', 'Tareas'), L('Set by your teacher', 'Puestas por tu profesor'), 'tasks')}
 ${tool('⚡', L('Live quiz', 'Quiz en vivo'), L('Join with a code', 'Entra con un código'), 'livej')}
-${tool('🏅', L('My results', 'Mis resultados'), L('Reports, fees, transcripts', 'Boletines, cuotas, certificados'), 'myrec')}</div>
+${tool('🏅', L('My results', 'Mis resultados'), L('Calendar, reports, fees', 'Calendario, boletines, cuotas'), 'myrec')}</div>
 <div class="sh">${L('Learn and explore', 'Aprende y explora')}</div><div class="tg2">
 ${tool('🎓', L('Courses', 'Cursos'), L('Short courses with certificates', 'Cursos con certificado'), 'learn')}
 ${tool('🏛️', L('Universities', 'Universidades'), L('Courses and how to apply', 'Carreras y cómo acceder'), 'unis')}

@@ -4,7 +4,7 @@
   'use strict';
   if (!window.AceX || !AceX.h) return;
   const { L, esc, back, needSignIn, signedIn, sync } = AceX.h, X = AceX;
-  const R = window.AceR = { reps: null, res: [], terms: {}, fees: [], pays: [], tr: [], open: '', purpose: '', busy: false, err: '', ok: '' };
+  const R = window.AceR = { ev: [], beh: [], reps: null, res: [], terms: {}, fees: [], pays: [], tr: [], open: '', purpose: '', busy: false, err: '', ok: '' };
   const msg = e => (e && (e.msg || e.message)) || L('Something went wrong. Try again.', 'Algo salió mal.');
   const n1 = v => v == null ? '–' : (+v).toLocaleString(undefined, { maximumFractionDigits: 1 });
   const money = (v, c) => (c ? c + ' ' : '') + (+v || 0).toLocaleString(undefined, { maximumFractionDigits: 2 });
@@ -13,11 +13,14 @@
   const verify = c => location.pathname.replace(/app\/.*$/, '') + 'verify/?code=' + c;
 
   function view() {
-    let h = `<div class="pad">${back()}<h2 style="margin:0 0 6px">${L('My results', 'Mis resultados')}</h2><p class="note" style="margin-top:0">${L('Term reports, fees and transcripts from your school.', 'Boletines, cuotas y certificados de tu colegio.')}</p>`;
+    let h = `<div class="pad">${back()}<h2 style="margin:0 0 6px">${L('My results', 'Mis resultados')}</h2><p class="note" style="margin-top:0">${L('Your school calendar, term reports, fees and transcripts.', 'Calendario, boletines, cuotas y certificados de tu colegio.')}</p>`;
     if (!signedIn()) return h + needSignIn() + '</div>';
     if (!R.reps) return h + (R.err ? `<p class="note" style="color:var(--red)">${esc(R.err)}</p>` : '<p class="note">…</p>') + '</div>';
     if (R.err) h += `<p class="note" style="color:var(--red)">${esc(R.err)}</p>`;
     if (R.ok) h += `<p class="note" style="color:var(--green)">${esc(R.ok)}</p>`;
+    // what is coming up at school
+    const KN = { holiday: L('Holiday', 'Vacaciones'), exam: L('Exams', 'Exámenes'), closure: L('School closed', 'Cerrado'), deadline: L('Deadline', 'Plazo') };
+    if (R.ev.length) h += `<div class="sh">${L('Coming up', 'Próximamente')}</div><div class="card">${R.ev.map(e => `<p style="margin:6px 0"><b>${esc(e.title)}</b> <small>${day(e.starts_on)}${e.ends_on !== e.starts_on ? ' – ' + day(e.ends_on) : ''}${KN[e.kind] ? ' • ' + KN[e.kind] : ''}</small>${e.note ? `<br><small>${esc(e.note)}</small>` : ''}</p>`).join('')}</div>`;
     // term reports
     h += `<div class="sh">${L('Term reports', 'Boletines')}</div>`;
     if (!R.reps.length) h += `<p class="note">${L('Your school has not published a term report for you yet.', 'Tu colegio aún no ha publicado boletines.')}</p>`;
@@ -25,6 +28,9 @@
       return `<div class="card" style="margin:8px 0"><button class="li" data-r="open" data-v="${r.id}" style="width:100%;border:0;background:none;padding:0"><span class="m"><b>${esc(t.name || '')}</b><small>${esc(r.class_name || '')} • ${L('Average', 'Media')} ${n1(r.average)}${r.position ? ' • ' + ord(r.position) + ' ' + L('of', 'de') + ' ' + r.class_size : ''}</small></span><span>${op ? '▴' : '▾'}</span></button>
 ${op ? `<table style="width:100%;border-collapse:collapse;margin-top:10px">${mine.map(x => `<tr style="border-top:1px solid var(--line)"><td style="padding:6px 0">${esc(x.subject)}</td><td style="text-align:right">${n1(x.score)}</td><td style="text-align:right;width:48px"><b>${esc(x.grade || '')}</b></td></tr>`).join('')}</table>
 ${r.attendance_pct != null ? `<p class="note">${L('Attendance', 'Asistencia')} ${Math.round(r.attendance_pct)}%</p>` : ''}${r.teacher_comment ? `<p style="margin:6px 0"><b>${L('Class teacher', 'Tutor')}:</b> ${esc(r.teacher_comment)}</p>` : ''}${r.head_comment ? `<p style="margin:6px 0"><b>${L('Head of school', 'Dirección')}:</b> ${esc(r.head_comment)}</p>` : ''}` : ''}</div>`; }).join('');
+    // merits and notes the school shared
+    if (R.beh.length) { const m = R.beh.filter(b => b.kind === 'merit').length;
+      h += `<div class="sh">${L('Merits and notes', 'Méritos y notas')}</div><div class="card">${m ? `<b>${m} ${m === 1 ? L('merit', 'mérito') : L('merits', 'méritos')}</b>` : ''}${R.beh.map(b => `<p style="margin:6px 0">${b.kind === 'merit' ? '⭐' : '•'} <b>${esc(b.category || '')}</b> <small>${day(b.occurred_on)}</small><br><small>${esc(b.description)}</small></p>`).join('')}</div>`; }
     // fees
     if (R.fees.length) {
       const bal = R.fees.reduce((s, f) => s + Math.round(f.amount * 100) - Math.round(f.paid * 100), 0) / 100, cur = R.fees[0].currency_code;
@@ -51,8 +57,11 @@ ${t.status === 'issued' && !t.revoked_at ? `<p style="margin:6px 0">${L('Code', 
       t('academic_terms').then(q => q.select('id,name,starts_on')),
       t('fees').then(q => q.select('id,term,amount,paid,currency_code,due_on').order('created_at')),
       t('fee_payments').then(q => q.select('amount,paid_on,receipt_no').is('voided_at', null).order('paid_on', { ascending: false }).limit(1)),
-      t('transcripts').then(q => q.select('id,status,purpose,code,requested_at,decided_at,decline_reason,revoked_at').order('requested_at', { ascending: false }))
-    ]).then(([a, b, c, d, e, f]) => {
+      t('transcripts').then(q => q.select('id,status,purpose,code,requested_at,decided_at,decline_reason,revoked_at').order('requested_at', { ascending: false })),
+      t('school_events').then(q => q.select('title,kind,starts_on,ends_on,note').gte('ends_on', new Date().toISOString().slice(0, 10)).order('starts_on').limit(8)),
+      t('behaviour_entries').then(q => q.select('kind,category,points,description,occurred_on').order('occurred_on', { ascending: false }).limit(10))
+    ]).then(([a, b, c, d, e, f, g, k]) => {
+      R.ev = g.data || []; R.beh = k.data || [];
       R.terms = {}; (c.data || []).forEach(x => R.terms[x.id] = x);
       R.reps = (a.data || []).sort((x, y) => String((R.terms[y.term_id] || {}).starts_on).localeCompare(String((R.terms[x.term_id] || {}).starts_on)));
       R.res = b.data || []; R.fees = d.data || []; R.pays = e.data || []; R.tr = f.data || [];
