@@ -79,3 +79,10 @@ Admission numbers per school (prefix, optional year, running number; set in Ace 
 (`student_records`). Leavers drop out of their classes and stop counting towards seats; their record stays.
 `move_students()` replaces direct updates of `profiles.class_id`, which the column grants never allowed.
 Tests: `supabase/tests/46_student_records_test.sql` (36 checks).
+
+## Fee statements (migration 0047)
+Itemised term invoices (`fee_items`, negative lines for discounts and bursaries), instalment plans (`fee_instalments`)
+and receipted payments (`fee_payments`, never edited or deleted, only voided with a reason). `fees.amount` and
+`fees.paid` are kept by triggers and cannot be edited directly. School admins call `bill_students`, `record_payment`
+and `void_payment`; `fee_overdue` gives what is due now. Ace Teach, Fees: invoices, who owes, receipts log, billing,
+statements and receipts to print. Tests: `supabase/tests/47_fee_statements_test.sql` (35 checks).
