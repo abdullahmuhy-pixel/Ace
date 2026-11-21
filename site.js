@@ -220,16 +220,25 @@ const FEATURES = [
 
 const SCHOOL = [
  ['👩‍🏫','Class teacher','Run a class day to day and see who is falling behind.',
-  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Written work with rubrics and feedback','Curriculum pacing from the syllabus','Printable report cards']],
+  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Merits, concerns and incidents in a behaviour log','Curriculum pacing from the syllabus','Printable report cards']],
  ['📚','Subject teacher','One subject across several classes, without the class-admin work.',
   ['Results for your subject only','Hardest topics for each class','Live class quiz from the question bank','AI lesson plans and worksheets','Q&A board and class library']],
  ['🏫','School admin','The whole school in one view, with the controls a head teacher needs.',
-  ['Create classes and invite staff','Bulk student accounts and class moves at year end','Timetables and fees records','School report by class','Control how much AI help students get']]
+  ['Online admissions and enrolment','Student records with admission numbers and status','Fee invoices, receipts and reminders','Term results and verifiable transcripts','A dashboard for enrolment, results, attendance and fees']]
+];
+const SIS = [
+ ['📨','Admissions','Families apply online with documents and get a reference to track progress. Staff review, decide and enrol in one step, and the student account is created for them.'],
+ ['🗂️','Student records','A record card for every student: admission number, details, guardians, status (active, suspended, withdrawn, transferred, graduated) and the full history.'],
+ ['💳','Fees','Itemised term invoices with discounts and instalments, receipts that cannot be changed afterwards, a statement for each student, a list of who owes, and reminders by email, WhatsApp or SMS.'],
+ ['🏅','Results and transcripts','Term results compiled from the gradebook with grades, averages and class positions. Published reports appear in the app, and transcripts carry a code anyone can check online.'],
+ ['📆','Calendar and behaviour','Terms, holidays, exam weeks and events for the whole school. Merits, concerns and incidents for each student, with private welfare notes for school leaders.'],
+ ['📊','Dashboard and parents','Enrolment, pass rates, attendance, fees and teacher workload in one view, exportable. Parents see reports, fees and the calendar through a link, with no account.']
 ];
 const SCHOOL_STATUS = [
  ['Done','School, class, student and staff accounts, with row-level security so each school only sees its own data.'],
  ['Done','Ace Teach: dashboards for school admins, teachers, subject teachers and private tutors.'],
- ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables, fees records and exports.'],
+ ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables and exports.'],
+ ['Done','School management: admissions, student records, fees and reminders, term results, transcripts, calendar, behaviour, a school dashboard and a family view.'],
  ['Next','Online payments for school plans, once the payment providers are connected.']
 ];
 
@@ -238,6 +247,7 @@ const FAQ = [
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
+ ['Can a school use only the school management side?','Yes. A school can choose school management only: admissions, records, fees, results, transcripts, the calendar, behaviour and the dashboard, without the learning tools. Teachers then see a simpler menu, and parents see only school information. Students can still study on Ace on their own.'],
  ['Is it free for students?','Anyone can create a student account and start practising. Schools and centres agree a plan with us for class tools and extra seats. See the Quote page.'],
  ['Does it work on a phone with little data?','The app is a web page that works in a phone browser with no download. Pages are text-first and light. A dedicated data-saver mode and offline use are on the roadmap.'],
  ['Is my data safe?','We collect only what the service needs, we do not sell data, and students or schools can ask for deletion at any time. The Privacy page lists the data-protection law that applies in each country.'],
@@ -468,7 +478,7 @@ function routeMeta(page, arg) {
       features: ['Features: Topic Notes, Quizzes, Flashcards, Mock Exams and AI Tutor | Ace Education', 'Everything in the Ace Education study app: topic notes, quizzes, a question bank, flashcards, timed mock exams, daily challenge, weak-topic radar, an AI study buddy and university guides.'],
       syllabus: ['Syllabus Explorer: Topics and Sample Questions for Every Subject | Ace Education', 'Browse every subject, module and topic Ace Education covers for each exam in each country, with real sample questions.'],
       teachers: ['Ace Education for Teachers and Tutors: Your Own Classes, Free to Start', 'Private tutors, after-school teachers and tutoring centres: create a class, share a join code, assign Ace quizzes and lessons, mark work and follow every student. Students keep their own accounts.'],
-      schools: ['Ace Education for Schools: Class, Teacher and Admin Tools', 'Run exam preparation for a whole class or school: add students, assign topics and quizzes, read class results and control AI help. Built for schools and tutoring centres.'],
+      schools: ['Ace Education for Schools: Class, Teacher and Admin Tools', 'Run exam preparation and the school office: classes, quizzes and results, plus admissions, student records, fees, report cards, transcripts and a school dashboard. Built for schools and tutoring centres.'],
       pricing: ['Pricing: Free to Start, Plans in Your Currency | Ace Education', 'What is free on Ace Education and what a plan adds, with prices for every country in local currency: monthly, termly, yearly, a group plan for four, and school licences per student.'],
       quote: ['Get a School Quote | Ace Education', 'School licences are priced per student per year. Tell us about your school, tutoring centre or organisation for a quote on large or custom rollouts.'],
       guides: ['Study Guides: Revision, Mock Exams and Exam Stress | Ace Education', 'Plain-language guides on active recall, mock exams, six-week revision plans, maths habits, science practicals, comparing exam systems and managing exam stress.'],
@@ -659,8 +669,11 @@ function pTeachers() {
 function pSchools() {
   return `<section class="blk"><div class="wrap">${head('For schools and centres', 'A class, a school or a tutoring centre on one platform.', 'Teachers and administrators get Ace Teach, their own dashboard. Students sign in with a username the school gives them, or join a class with a code from their own account.')}
   <div class="grid g3">${SCHOOL.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p><ul class="ticks">${r[3].map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>
+  <div style="margin-top:3rem">${head('School management', 'Run the school office in Ace Teach too.', 'Everything a school office needs, from the first application to the last transcript, joined up with the classroom. Use it with the learning tools, or on its own.')}
+  <div class="grid g3">${SIS.map(r => `<div class="card"><h3><span class="ic">${r[0]}</span>${esc(r[1])}</h3><p>${esc(r[2])}</p></div>`).join('')}</div>
+  <div class="grid g2" style="margin-top:1.5rem"><div class="card"><h3>Everything</h3><p>The learning tools for every student (syllabus, notes, quizzes, mocks and AI help) plus classroom tools and school management.</p></div><div class="card"><h3>School management only</h3><p>For schools that want the office side without the learning tools: admissions, records, fees, results, transcripts, calendar, behaviour and the dashboard. Ask us for a quote.</p></div></div></div>
   <div style="margin-top:3rem" class="split" ><div>${head('Status', 'What is done and what is next.')}<div class="time">${SCHOOL_STATUS.map(s => `<div><span class="pill ${s[0] === 'Done' ? 'live' : s[0] === 'In build' ? 'back' : 'plan'}">${esc(s[0])}</span><p style="margin-top:.4rem;color:var(--ink2)">${esc(s[1])}</p></div>`).join('')}</div></div>
-  <div>${head('Getting a school started', 'Five steps.')}<ol class="steps">${['Request a quote and tell us the exams and number of learners.', 'We create your school and give you a school code.', 'Invite teachers, or let them join with the code.', 'Add students one by one or by bulk import. Each gets a username, so no email is needed.', 'Choose the subjects each class sees and start practising.'].map(x => `<li><span>${x}</span></li>`).join('')}</ol></div></div>
+  <div>${head('Getting a school started', 'Five steps.')}<ol class="steps">${['Request a quote and tell us the exams, the number of learners and whether you want everything or school management only.', 'We create your school and give you a school code.', 'Invite teachers, or let them join with the code.', 'Add students one by one or by bulk import. Each gets a username, so no email is needed.', 'Choose the subjects each class sees and start practising.'].map(x => `<li><span>${x}</span></li>`).join('')}</ol></div></div>
   <div style="margin-top:3rem">${head('More than a chatbot', 'A school needs more than a chatbot.')}
   <div class="grid g2"><div class="card"><h3>A study chatbot</h3><ul class="ticks"><li><span>Answers one question at a time</span></li><li><span>Knows nothing about your class</span></li><li><span>No student accounts or school records</span></li><li><span>No visibility for teachers</span></li></ul></div>
   <div class="card" style="border-color:var(--ink)"><h3>Ace Education for schools</h3><ul class="ticks"><li><span>A full syllabus, notes, quizzes and mocks for every subject</span></li><li><span>School, class and student accounts with strict separation between schools</span></li><li><span>Username sign-in for students</span></li><li><span>Bulk import and staff invitations</span></li></ul></div></div></div>
@@ -670,7 +683,7 @@ function pSchools() {
 function formHtml(kind) {
   const q = kind === 'quote';
   return `<form class="form" data-form="${kind}" novalidate>
-  ${q ? `<div class="row"><label>I am a<select name="type"><option>School</option><option>Tutoring centre</option><option>Organisation or NGO</option><option>Other</option></select></label><label>Number of learners<input name="learners" inputmode="numeric" placeholder="e.g. 250"></label></div>` : ''}
+  ${q ? `<div class="row"><label>I am a<select name="type"><option>School</option><option>Tutoring centre</option><option>Organisation or NGO</option><option>Other</option></select></label><label>We want<select name="product"><option>Everything</option><option>School management only</option></select></label><label>Number of learners<input name="learners" inputmode="numeric" placeholder="e.g. 250"></label></div>` : ''}
   <div class="row"><label>${q ? 'School or centre name' : 'Your name'}<input name="name" required></label><label>Email<input name="email" type="email" required></label></div>
   <div class="row"><label>Country<select name="country">${CCS.map(cc => `<option value="${cc}">${CM[cc].flag} ${esc(CM[cc].name)}</option>`).join('')}<option value="other">Another country</option></select></label><label>Phone or WhatsApp (optional)<input name="phone"></label></div>
   ${q ? `<label>Exams and grades<input name="exams" placeholder="e.g. WASSCE, SS1 to SS3"></label>` : ''}

@@ -217,16 +217,25 @@ const FEATURES = [
 
 const SCHOOL = [
  ['👩‍🏫','Class teacher','Run a class day to day and see who is falling behind.',
-  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Written work with rubrics and feedback','Curriculum pacing from the syllabus','Printable report cards']],
+  ['Register, gradebook and continuous-assessment markbook','Assign Ace quizzes, lessons and mocks, marked automatically','Merits, concerns and incidents in a behaviour log','Curriculum pacing from the syllabus','Printable report cards']],
  ['📚','Subject teacher','One subject across several classes, without the class-admin work.',
   ['Results for your subject only','Hardest topics for each class','Live class quiz from the question bank','AI lesson plans and worksheets','Q&A board and class library']],
  ['🏫','School admin','The whole school in one view, with the controls a head teacher needs.',
-  ['Create classes and invite staff','Bulk student accounts and class moves at year end','Timetables and fees records','School report by class','Control how much AI help students get']]
+  ['Online admissions and enrolment','Student records with admission numbers and status','Fee invoices, receipts and reminders','Term results and verifiable transcripts','A dashboard for enrolment, results, attendance and fees']]
+];
+const SIS = [
+ ['📨','Admissions','Families apply online with documents and get a reference to track progress. Staff review, decide and enrol in one step, and the student account is created for them.'],
+ ['🗂️','Student records','A record card for every student: admission number, details, guardians, status (active, suspended, withdrawn, transferred, graduated) and the full history.'],
+ ['💳','Fees','Itemised term invoices with discounts and instalments, receipts that cannot be changed afterwards, a statement for each student, a list of who owes, and reminders by email, WhatsApp or SMS.'],
+ ['🏅','Results and transcripts','Term results compiled from the gradebook with grades, averages and class positions. Published reports appear in the app, and transcripts carry a code anyone can check online.'],
+ ['📆','Calendar and behaviour','Terms, holidays, exam weeks and events for the whole school. Merits, concerns and incidents for each student, with private welfare notes for school leaders.'],
+ ['📊','Dashboard and parents','Enrolment, pass rates, attendance, fees and teacher workload in one view, exportable. Parents see reports, fees and the calendar through a link, with no account.']
 ];
 const SCHOOL_STATUS = [
  ['Done','School, class, student and staff accounts, with row-level security so each school only sees its own data.'],
  ['Done','Ace Teach: dashboards for school admins, teachers, subject teachers and private tutors.'],
- ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables, fees records and exports.'],
+ ['Done','Register, gradebook, continuous-assessment markbook, report cards, timetables and exports.'],
+ ['Done','School management: admissions, student records, fees and reminders, term results, transcripts, calendar, behaviour, a school dashboard and a family view.'],
  ['Next','Online payments for school plans, once the payment providers are connected.']
 ];
 
@@ -235,6 +244,7 @@ const FAQ = [
  ['Are the questions copied from past papers?','No. Topic lists follow each exam body\'s published syllabus, and the notes and questions are written for the app. We do not reproduce past papers or textbooks.'],
  ['Has a teacher checked the content?','Every note and question is checked by code (answers recomputed, duplicates and answer positions tested) and read through for local accuracy. A subject teacher\'s sign-off is the next stage, and until it happens the item carries a "needs review" label. The Countries page shows the review status for each country.'],
  ['How do you make sure the content is local?','Each country has its own file with its own exams, subjects, currency, tax rate and examples. A Kenyan student sees shillings and 16% VAT, a student in Ireland sees euro and 23% VAT, and a student in Canada sees 13% HST and 120 V mains.'],
+ ['Can a school use only the school management side?','Yes. A school can choose school management only: admissions, records, fees, results, transcripts, the calendar, behaviour and the dashboard, without the learning tools. Teachers then see a simpler menu, and parents see only school information. Students can still study on Ace on their own.'],
  ['Is it free for students?','Anyone can create a student account and start practising. Schools and centres agree a plan with us for class tools and extra seats. See the Quote page.'],
  ['Does it work on a phone with little data?','The app is a web page that works in a phone browser with no download. Pages are text-first and light. A dedicated data-saver mode and offline use are on the roadmap.'],
  ['Is my data safe?','We collect only what the service needs, we do not sell data, and students or schools can ask for deletion at any time. The Privacy page lists the data-protection law that applies in each country.'],
