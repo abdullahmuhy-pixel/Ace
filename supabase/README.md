@@ -102,3 +102,11 @@ Tools, My results. Tests: `supabase/tests/48_academic_record_test.sql` (42 check
 by the student's teachers or school admins (teachers can fix or delete their own entry for 24 hours), and welfare
 notes that only school admins can read and that are never shared. Entries marked for the family show in the
 student's app. `class_behaviour()` summarises a class over a period. Tests: `supabase/tests/49_calendar_behaviour_test.sql` (27 checks).
+
+## Management dashboard (migration 0050)
+`school_dashboard(p_from, p_to, p_term)` returns one JSON document for the caller's school (school admins only):
+enrolment (current, by status and class, joined and left, 12-month trend), admissions, results of the term
+(average, pass rate by subject and class against `schools.pass_mark`, default 50), attendance (rate, by class,
+students below 90%), fees (billed, collected, outstanding, overdue, collected in the period, per currency),
+behaviour, and teacher workload (classes, students, timetabled periods and hours, assessments and tasks set).
+Ace Teach, School, Dashboard; CSV export. Tests: `supabase/tests/50_school_dashboard_test.sql` (20 checks).
