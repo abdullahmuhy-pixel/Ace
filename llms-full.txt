@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 41 exams, 56,649 practice questions, 11,118 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 41 exams, 56,689 practice questions, 11,126 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -53,9 +53,9 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zambia
 Exams: ECZ Grade 12 school certificate examinations and the ECZ Grade 9 junior secondary examination.
 Grading: ECZ: grades 1 (distinction) to 9.
 Levels: Grade 8 – 12
-Totals: 23 subjects, 421 topics, 2,167 questions.
+Totals: 24 subjects, 429 topics, 2,207 questions.
 - ECZ Grade 12 (ECZ): Mathematics, Biology, Chemistry, Physics, Civic Education, Geography, English Language, Religious Education, Agricultural Science, Computer Studies, Literature in English, History, Commerce, Principles of Accounts, Additional Mathematics, Science
-- ECZ Grade 9 (ECZ): English Language, Mathematics, Integrated Science, Social Studies, Business Studies, Religious Education, Agricultural Science
+- ECZ Grade 9 (ECZ): English Language, Mathematics, Integrated Science, Social Studies, Business Studies, Religious Education, Agricultural Science, Computer Studies
 
 ## United Kingdom
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-united-kingdom
