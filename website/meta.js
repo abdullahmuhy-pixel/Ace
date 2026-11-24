@@ -63,7 +63,7 @@ GB:{name:'United Kingdom',flag:'🇬🇧',lang:'English',levels:'Year 10 – Yea
   'AS-Level':'The standalone AS, normally taken after one year of sixth form and graded A to E. Ace covers the AS content of all nineteen of its A-Level subjects.',
   'A-Level':'Advanced Level qualifications for 16 to 18 year-olds, graded A* to E. Boards include AQA, Edexcel, OCR, Eduqas and WJEC.'},
  scale:'GCSE in England: 9 to 1. GCSE in Wales (WJEC): A* to G. GCSE in Northern Ireland (CCEA): A* to G, with a C* grade. AS and A-Level: A* to E (AS: A to E). National 5 and Higher: A to D.',
- next:['More GCSE subjects (Drama, PE, Design and Technology, Food, Psychology and Sociology)','Welsh Language and Scottish Gaelic (need first-language review)']},
+ next:['Welsh Language and Scottish Gaelic (need first-language speakers)','Teacher review of the UK content']},
 CA:{name:'Canada',flag:'🇨🇦',lang:'English',levels:'Grade 11 – 12',law:'PIPEDA',
  sys:'The Ontario Secondary School Diploma (OSSD), from the Ontario Ministry of Education.',
  intro:'Canada starts with Ontario. Courses use Canadian examples, with 120 V mains in physics and 13% HST in the money questions.',
