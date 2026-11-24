@@ -23,7 +23,7 @@
 - [España: EBAU / Selectividad](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-spain): 20 subjects, 1,475 practice questions
 - [Ireland: Leaving Certificate](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ireland): 18 subjects, 1,664 practice questions
 - [South Africa: NSC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa): 23 subjects, 2,140 practice questions
-- [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 37 subjects, 3,645 practice questions
+- [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 38 subjects, 3,705 practice questions
 - [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 34 subjects, 3,460 practice questions
 - [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 24 subjects, 2,463 practice questions
 - [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 53 subjects, 4,805 practice questions
