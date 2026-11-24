@@ -18,7 +18,7 @@ NG:{name:'Nigeria',flag:'🇳🇬',lang:'English',levels:'SS1 – SS3',law:'Nige
   NECO:'The National Examinations Council senior school certificate. It follows the same national curriculum. Where Ace has not yet written NECO-specific notes, the subject reuses the WASSCE content and says so.',
   UTME:'JAMB\'s computer-based admission test. Four subjects of 100 marks each give a score out of 400; English is compulsory.'},
  scale:'WASSCE/NECO: A1 to F9 (credit = C6 or better). UTME: 0 to 400.',
- next:['Subject-specific NECO notes where WASSCE content is reused today','A combined UTME mock (English plus three subjects, run as one sitting)','More UTME subjects (Arabic, Hausa, Igbo and Yoruba, which need first-language review)']},
+ next:['Subject-specific NECO notes where WASSCE content is reused today','More UTME subjects (Arabic, Hausa, Igbo and Yoruba, which need first-language review)']},
 GH:{name:'Ghana',flag:'🇬🇭',lang:'English',levels:'SHS 1 – SHS 3',law:'Data Protection Act, 2012 (Act 843)',
  sys:'WASSCE at the end of senior high school and the BECE at the end of junior high school.',
  intro:'Ghana\'s subject list uses Ghana\'s own names, such as Core Mathematics and Social Studies, and the local currency (₵) in every money question.',
