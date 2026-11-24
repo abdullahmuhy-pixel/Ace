@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 42 exams, 63,895 practice questions, 12,549 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 42 exams, 63,911 practice questions, 12,549 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -45,7 +45,7 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-kenya
 Exams: KCSE, set and marked by KNEC at the end of Form 4.
 Grading: KCSE: mean grade A to E, from 12 points down to 1.
 Levels: Form 3 – Form 4
-Totals: 17 subjects, 318 topics, 1,716 questions.
+Totals: 17 subjects, 318 topics, 1,732 questions.
 - KCSE (KNEC): Mathematics, Biology, Chemistry, Physics, Geography, History and Government, Business Studies, English Language, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Home Science, Art and Design, Music
 
 ## Zambia
