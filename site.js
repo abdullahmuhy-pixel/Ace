@@ -46,7 +46,7 @@ GM:{name:'The Gambia',flag:'🇬🇲',lang:'English',levels:'Grade 10 – 12',la
  next:['Local-language options','Teacher review of the Gambia content']},
 KE:{name:'Kenya',flag:'🇰🇪',lang:'English',levels:'Form 3 – Form 4',law:'Data Protection Act, 2019',
  sys:'KCSE, set and marked by KNEC at the end of Form 4.',
- intro:'Kenya has its own exam body, KNEC, its own subjects (Business Studies, History and Government) and Kenya shillings (KSh) in the money questions. Ace covers 17 KCSE subjects, including Art and Design and Music with Kenyan crafts, instruments and styles. Each subject also has CATs (short timed tests on one module, like the ones set in class) and a written paper of KCSE-style structured questions with marking schemes. Kenya is moving to a competency-based curriculum, so check which system your class follows.',
+ intro:'Kenya has its own exam body, KNEC, its own subjects (Business Studies, History and Government) and Kenya shillings (KSh) in the money questions. Ace covers 17 KCSE subjects, including Art and Design and Music with Kenyan crafts, instruments and styles. Each subject also has CATs (short timed tests on one module, like the ones set in class) and, in every subject except Kiswahili so far, a written paper of KCSE-style structured questions with marking schemes. Kenya is moving to a competency-based curriculum, so check which system your class follows.',
  ex:{KCSE:'The Kenya Certificate of Secondary Education, taken at the end of Form 4. The mean grade runs from A (best) to E.'},
  scale:'KCSE: mean grade A to E, from 12 points down to 1.',
  next:['Written-paper questions in Kiswahili (needs a first-language teacher) and more per subject','Teacher review of the Kenya content']},
