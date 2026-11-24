@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 45 exams, 65,232 practice questions, 12,808 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 45 exams, 65,288 practice questions, 12,819 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -62,12 +62,12 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-united-kingdom
 Exams: GCSE at 16 and A-Level at 18, set by AQA, Edexcel, OCR and WJEC; in Scotland, National 5 and Higher, set by the SQA.
 Grading: GCSE: 9 to 1. AS and A-Level: A* to E (AS: A to E). National 5 and Higher: A to D.
 Levels: Year 10 – Year 13
-Totals: 46 subjects, 796 topics, 4,017 questions.
+Totals: 47 subjects, 807 topics, 4,073 questions.
 - GCSE (AQA, Edexcel, OCR, WJEC): Physics, Mathematics, Biology, Chemistry, English Language, Geography, English Literature, History, Computer Science, Business, Religious Studies, Combined Science
 - A-Level (AQA, Edexcel, OCR): Mathematics, Biology, Chemistry, Physics, Further Mathematics, Economics, Psychology, Computer Science, Business, History, Geography, English Literature, Sociology, French, Spanish, German, Art and Design, Music, Drama and Theatre
 - AS-Level (AQA, Edexcel, OCR): Mathematics, Biology, Chemistry, Physics, Psychology, Economics
 - National 5 (SQA (Scottish Qualifications Authority)): Mathematics, Biology, Chemistry, Physics
-- Higher (SQA (Scottish Qualifications Authority)): Mathematics, Biology, Chemistry, Physics, History
+- Higher (SQA (Scottish Qualifications Authority)): Mathematics, Biology, Chemistry, Physics, History, English
 
 ## Canada
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-canada
