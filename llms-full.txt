@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 41 exams, 62,635 practice questions, 12,314 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 41 exams, 62,685 practice questions, 12,324 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -113,9 +113,9 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania
 Exams: The Certificate of Secondary Education Examination (CSEE, Form 4) and the Advanced Certificate of Secondary Education Examination (ACSEE, Form 6), set by NECTA.
 Grading: CSEE: divisions I to IV and 0 (grades A to F). ACSEE: grades A to F and S, with points for university.
 Levels: Form 1 – 6
-Totals: 37 subjects, 730 topics, 3,650 questions.
+Totals: 38 subjects, 740 topics, 3,700 questions.
 - CSEE (NECTA): Basic Mathematics, English Language, Biology, Chemistry, Physics, Geography, History, Commerce, Bible Knowledge, Islamic Knowledge, Agriculture, Information and Computer Studies, Literature in English, Kiswahili, Fine Art, Book-keeping, Civics, French, Physical Education, Food and Human Nutrition
-- ACSEE (NECTA): Advanced Mathematics, Physics, Biology, General Studies, Information and Computer Studies, English Language, Basic Applied Mathematics, Chemistry, Economics, Geography, History, Accountancy, Commerce, Kiswahili, Divinity, Islamic Knowledge, Agriculture
+- ACSEE (NECTA): Advanced Mathematics, Physics, Biology, General Studies, Information and Computer Studies, English Language, Basic Applied Mathematics, Chemistry, Economics, Geography, History, Accountancy, Commerce, Kiswahili, Divinity, Islamic Knowledge, Agriculture, French
 
 ## Liberia
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia
