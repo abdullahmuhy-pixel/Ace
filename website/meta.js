@@ -93,7 +93,7 @@ UG:{name:'Uganda',flag:'🇺🇬',lang:'English',levels:'S1 – S6',law:'DPPA 20
  next:['UACE Divinity, Islam, Agriculture and Fine Art','Teacher and first-language Luganda review of the Uganda content']},
 TZ:{name:'Tanzania',flag:'🇹🇿',lang:'English',levels:'Form 1 – 6',law:'PDPA 2022',
  sys:'The Certificate of Secondary Education Examination (CSEE, Form 4) and the Advanced Certificate of Secondary Education Examination (ACSEE, Form 6), set by NECTA.',
- intro:'Tanzania follows the NECTA and TIE syllabuses, with Tanzanian shillings (TSh) in the money questions and 18% VAT. ACSEE results go to the Central Admission System (CAS).',
+ intro:'Tanzania follows the NECTA and TIE syllabuses, with Tanzanian shillings (TSh) in the money questions and 18% VAT. ACSEE results go to the Central Admission System (CAS). CSEE includes Book-keeping alongside Commerce.',
  ex:{'CSEE':'The Form 4 national exam set by NECTA.','ACSEE':'The Form 6 national exam set by NECTA, graded A to F and S, with points used for admission.'},
  scale:'CSEE: divisions I to IV and 0 (grades A to F). ACSEE: grades A to F and S, with points for university.',
  next:['Remaining electives','Swahili-medium notes','Teacher review of the Tanzania content']},
