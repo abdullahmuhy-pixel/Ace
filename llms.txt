@@ -12,7 +12,7 @@
 - [Student app](https://abdullahmuhy-pixel.github.io/Ace/app/): the study app itself
 
 ## Exam prep by country
-- [Nigeria: WASSCE, UTME, NECO](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria): 65 subjects, 5,943 practice questions
+- [Nigeria: WASSCE, UTME, NECO](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria): 66 subjects, 6,013 practice questions
 - [Ghana: WASSCE, BECE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ghana): 33 subjects, 2,992 practice questions
 - [Sierra Leone: WASSCE, BECE, NPSE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-sierra-leone): 42 subjects, 3,382 practice questions
 - [The Gambia: WASSCE, GABECE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-gambia): 36 subjects, 3,192 practice questions
