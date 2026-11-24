@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 45 exams, 66,889 practice questions, 13,139 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 45 exams, 66,959 practice questions, 13,153 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -62,8 +62,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-united-kingdom
 Exams: GCSE at 16 and A-Level at 18, set by AQA, Edexcel, OCR and WJEC; in Scotland, National 5 and Higher, set by the SQA.
 Grading: GCSE in England: 9 to 1. GCSE in Wales (WJEC): A* to G. GCSE in Northern Ireland (CCEA): A* to G, with a C* grade. AS and A-Level: A* to E (AS: A to E). National 5 and Higher: A to D.
 Levels: Year 10 – Year 13
-Totals: 78 subjects, 1,127 topics, 5,674 questions.
-- GCSE (AQA, Edexcel, OCR, WJEC): Physics, Mathematics, Biology, Chemistry, English Language, Geography, English Literature, History, Computer Science, Business, Religious Studies, Combined Science, French, Spanish
+Totals: 79 subjects, 1,141 topics, 5,744 questions.
+- GCSE (AQA, Edexcel, OCR, WJEC): Physics, Mathematics, Biology, Chemistry, English Language, Geography, English Literature, History, Computer Science, Business, Religious Studies, Combined Science, French, Spanish, German
 - A-Level (AQA, Edexcel, OCR): Mathematics, Biology, Chemistry, Physics, Further Mathematics, Economics, Psychology, Computer Science, Business, History, Geography, English Literature, Sociology, French, Spanish, German, Art and Design, Music, Drama and Theatre
 - AS-Level (AQA, Edexcel, OCR): Mathematics, Biology, Chemistry, Physics, Psychology, Economics, Further Mathematics, Computer Science, Business, History, Geography, English Literature, Sociology, French, Spanish, German, Art and Design, Music, Drama and Theatre
 - National 5 (SQA (Scottish Qualifications Authority)): Mathematics, Biology, Chemistry, Physics, English, Modern Studies, Geography, History, Computing Science, Business Management
