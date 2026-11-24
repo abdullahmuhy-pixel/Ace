@@ -60,7 +60,7 @@ GB:{name:'United Kingdom',flag:'🇬🇧',lang:'English',levels:'Year 10 – Yea
  ex:{GCSE:'General Certificate of Secondary Education, graded 9 (highest) to 1. Boards include AQA, Edexcel, OCR and WJEC.',
   'A-Level':'Advanced Level qualifications for 16 to 18 year-olds, graded A* to E. Boards include AQA, Edexcel, OCR, Eduqas and WJEC.'},
  scale:'GCSE: 9 to 1. A-Level: A* to E.',
- next:['AS-Level split','Scottish, Welsh and Northern Irish variants','A-Level Drama and Theatre']},
+ next:['AS-Level split','Scottish, Welsh and Northern Irish variants']},
 CA:{name:'Canada',flag:'🇨🇦',lang:'English',levels:'Grade 11 – 12',law:'PIPEDA',
  sys:'The Ontario Secondary School Diploma (OSSD), from the Ontario Ministry of Education.',
  intro:'Canada starts with Ontario. Courses use Canadian examples, with 120 V mains in physics and 13% HST in the money questions.',
