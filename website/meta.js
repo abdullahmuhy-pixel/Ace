@@ -56,7 +56,7 @@ ZM:{name:'Zambia',flag:'🇿🇲',lang:'English',levels:'Grade 8 – 12',law:'Da
  next:['Chitonga, Silozi, Kiikaonde, Lunda and Luvale, written with first-language speakers','Teacher and first-language review of the Zambia content']},
 GB:{name:'United Kingdom',flag:'🇬🇧',lang:'English',levels:'Year 10 – Year 13',law:'UK GDPR and the Data Protection Act 2018',
  sys:'GCSE at 16 and A-Level at 18, set by AQA, Edexcel, OCR and WJEC; in Scotland, National 5 and Higher, set by the SQA.',
- intro:'The UK page covers GCSE and A-Level, written against the common content that the exam boards share. Always check your own board\'s specification for the details.',
+ intro:'The UK page covers GCSE (23 subjects), AS and A-Level (19 each), and Scotland\'s National 5 and Higher (16 each), written against the common content that the exam boards share. Always check your own board\'s specification for the details.',
  ex:{GCSE:'General Certificate of Secondary Education, graded 9 (highest) to 1. Boards include AQA, Edexcel, OCR and WJEC.',
   'National 5':'Scottish qualification usually taken in S4, set by the SQA and graded A to D. Ace covers sixteen subjects, from English and Mathematics to the sciences, social subjects, languages and the arts.',
   'Higher':'Scottish qualification usually taken in S5, the main university entry qualification in Scotland, graded A to D. Ace covers sixteen subjects, from English and Mathematics to the sciences, social subjects, languages and the arts.',
