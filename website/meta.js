@@ -59,7 +59,7 @@ GB:{name:'United Kingdom',flag:'🇬🇧',lang:'English',levels:'Year 10 – Yea
  intro:'The UK page covers GCSE and A-Level, written against the common content that the exam boards share. Always check your own board\'s specification for the details.',
  ex:{GCSE:'General Certificate of Secondary Education, graded 9 (highest) to 1. Boards include AQA, Edexcel, OCR and WJEC.',
   'National 5':'Scottish qualification usually taken in S4, set by the SQA and graded A to D. Ace covers Mathematics, Biology, Chemistry and Physics.',
-  'Higher':'Scottish qualification usually taken in S5, the main university entry qualification in Scotland, graded A to D. Ace covers Mathematics, Biology, Chemistry and Physics.',
+  'Higher':'Scottish qualification usually taken in S5, the main university entry qualification in Scotland, graded A to D. Ace covers Mathematics, Biology, Chemistry, Physics and History.',
   'AS-Level':'The standalone AS, normally taken after one year of sixth form and graded A to E. Ace covers the AS content of Mathematics, Biology, Chemistry, Physics, Psychology and Economics.',
   'A-Level':'Advanced Level qualifications for 16 to 18 year-olds, graded A* to E. Boards include AQA, Edexcel, OCR, Eduqas and WJEC.'},
  scale:'GCSE: 9 to 1. AS and A-Level: A* to E (AS: A to E). National 5 and Higher: A to D.',
