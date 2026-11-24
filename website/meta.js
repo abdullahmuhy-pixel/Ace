@@ -49,7 +49,7 @@ KE:{name:'Kenya',flag:'🇰🇪',lang:'English',levels:'Form 3 – Form 4',law:'
  next:['Art and Design and Music','3-D geometry in Mathematics','CATs and joint mock formats']},
 ZM:{name:'Zambia',flag:'🇿🇲',lang:'English',levels:'Grade 8 – 12',law:'Data Protection Act, 2021',
  sys:'ECZ Grade 12 school certificate examinations and the ECZ Grade 9 junior secondary examination.',
- intro:'Zambia\'s content follows the Examinations Council of Zambia, with Civic Education and Geography as national subjects and kwacha (K) in every money question. Grade 12 includes Science 5124, the combined physics and chemistry course, and Grade 9 students can revise English, Mathematics, Integrated Science, Social Studies, Business Studies, Religious Education, Agricultural Science and Computer Studies.',
+ intro:'Zambia\'s content follows the Examinations Council of Zambia, with Civic Education and Geography as national subjects and kwacha (K) in every money question. Grade 12 includes Science 5124, the combined physics and chemistry course, and Grade 9 students can revise English, Mathematics, Integrated Science, Social Studies, Business Studies, Religious Education, Agricultural Science, Computer Studies and Home Economics.',
  ex:{'ECZ Grade 12':'The Examinations Council of Zambia Grade 12 school certificate. Grades run from 1 (best) to 9.',
   'ECZ Grade 9':'The Examinations Council of Zambia Grade 9 (junior secondary) examination. Zambia is moving to a new curriculum, so check which examination applies to your year group.'},
  scale:'ECZ: grades 1 (distinction) to 9.',
