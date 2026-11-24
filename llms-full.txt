@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 41 exams, 59,310 practice questions, 11,649 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 41 exams, 59,380 practice questions, 11,663 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -104,8 +104,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda
 Exams: The Uganda Certificate of Education (UCE, S4) and the Uganda Advanced Certificate of Education (UACE, S6), set by UNEB.
 Grading: UCE: grades 1 (best) to 9 and a division. UACE: principal passes A to F and subsidiary O or F.
 Levels: S1 – S6
-Totals: 29 subjects, 609 topics, 3,045 questions.
-- UCE (UNEB): Mathematics, English Language, Biology, Chemistry, Physics, Geography, History and Political Education, Commerce, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Entrepreneurship Education, Fine Art
+Totals: 30 subjects, 623 topics, 3,115 questions.
+- UCE (UNEB): Mathematics, English Language, Biology, Chemistry, Physics, Geography, History and Political Education, Commerce, Christian Religious Education, Islamic Religious Education, Agriculture, Computer Studies, Literature in English, Kiswahili, Entrepreneurship Education, Fine Art, Luganda
 - UACE (UNEB): Mathematics, Physics, Biology, Literature in English, General Paper, Subsidiary ICT, Subsidiary Mathematics, Chemistry, Economics, Geography, History, Commerce, Entrepreneurship
 
 ## Tanzania
