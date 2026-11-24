@@ -1,13 +1,13 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 42 exams, 63,810 practice questions, 12,549 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 42 exams, 63,837 practice questions, 12,549 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
 Exams: WASSCE and NECO SSCE for school leavers, and JAMB UTME for university admission.
 Grading: WASSCE/NECO: A1 to F9 (credit = C6 or better). UTME: 0 to 400.
 Levels: SS1 – SS3
-Totals: 66 subjects, 1,164 topics, 6,013 questions.
+Totals: 66 subjects, 1,164 topics, 6,040 questions.
 - WASSCE (WAEC): Mathematics, English Language, Physics, Chemistry, Biology, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Information and Communication Technology, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French, Further Mathematics, Agricultural Science
 - UTME (JAMB): Mathematics, English Language, Physics, Biology, Chemistry, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Agricultural Science, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Visual Art, French, Computer Studies, Physical and Health Education, Music
 - NECO (NECO): Mathematics, English Language, Physics, Chemistry, Biology, Economics, Government, Commerce, Financial Accounting, Civic Education, Literature in English, Geography, Information and Communication Technology, Further Mathematics, Agricultural Science, History, Christian Religious Studies, Islamic Studies, Food and Nutrition, Technical Drawing, Visual Art, French
