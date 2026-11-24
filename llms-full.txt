@@ -1,6 +1,6 @@
 # Ace Education: full reference
 
-Exam prep and study app. 23 countries, 41 exams, 60,215 practice questions, 11,830 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
+Exam prep and study app. 23 countries, 41 exams, 60,370 practice questions, 11,861 topic notes. Site: https://abdullahmuhy-pixel.github.io/Ace/
 
 ## Nigeria
 URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-nigeria
@@ -122,8 +122,8 @@ URL: https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia
 Exams: WASSCE at the end of senior high school (Grade 12) and the LJHSCE at the end of junior high school (Grade 9), both administered in Liberia by WAEC.
 Grading: WASSCE grades and pass rules are set by WAEC; check the current rules for Liberia.
 Levels: Grade 7 – 12
-Totals: 22 subjects, 445 topics, 2,308 questions.
-- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English, Government, Commerce, Financial Accounting, Information and Communication Technology, French, Further Mathematics, Agricultural Science, Christian Religious Studies, Visual Art
+Totals: 24 subjects, 476 topics, 2,463 questions.
+- WASSCE (WAEC): English Language, Mathematics, Biology, Chemistry, Physics, Economics, Geography, History, Literature in English, Government, Commerce, Financial Accounting, Information and Communication Technology, French, Further Mathematics, Agricultural Science, Christian Religious Studies, Visual Art, Islamic Studies, Technical Drawing
 - LJHSCE (WAEC): English Language, Mathematics, General Science, Social Studies
 
 ## Malta
