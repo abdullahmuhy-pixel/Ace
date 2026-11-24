@@ -24,7 +24,7 @@
 - [Ireland: Leaving Certificate](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-ireland): 18 subjects, 1,664 practice questions
 - [South Africa: NSC](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-south-africa): 23 subjects, 2,140 practice questions
 - [Uganda: UCE, UACE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-uganda): 36 subjects, 3,580 practice questions
-- [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 33 subjects, 3,365 practice questions
+- [Tanzania: CSEE, ACSEE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-tanzania): 34 subjects, 3,460 practice questions
 - [Liberia: WASSCE, LJHSCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-liberia): 22 subjects, 2,308 practice questions
 - [Malta: SEC, Matriculation](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malta): 28 subjects, 3,200 practice questions
 - [Zimbabwe: O Level, A Level](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-zimbabwe): 33 subjects, 3,304 practice questions
