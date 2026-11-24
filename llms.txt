@@ -34,7 +34,7 @@
 - [Portugal: Exames Nacionais](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-portugal): 19 subjects, 1,290 practice questions
 - [Deutschland: Abitur](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-germany): 13 subjects, 810 practice questions
 - [Namibia: NSSCO, NSSCAS](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-namibia): 24 subjects, 2,428 practice questions
-- [Malawi: MSCE, JCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 25 subjects, 1,805 practice questions
+- [Malawi: MSCE, JCE](https://abdullahmuhy-pixel.github.io/Ace/exam-prep-malawi): 26 subjects, 1,845 practice questions
 
 ## Guides
 - [active-recall](https://abdullahmuhy-pixel.github.io/Ace/guide-active-recall)
